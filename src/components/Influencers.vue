@@ -11,9 +11,29 @@
       
     </li>
 
-    <input type='button' value='Add' @click='addRecord();'>
+    
+    <h1> Add New Influencer </h1>
+    <form>
+
+    <p>Name: <input type="text" name="name" required></p>
+    <p>Description: <input type="text" name="description" required></p>
+    <p>Activity: <input type="text" name="activity" required></p>
+    <p>Relevance: <input type="text" name="relevance" required></p>
+    <p>Engagement: <input type="text" name="engagement" required></p>
+
+    <input type="submit" value='Add' @click='openForm();'>
+
+    </form>
+
+    
+
   </ul>
+
+  
+  
 </template>
+
+
 
 <script>
 import API from 'axios'
@@ -39,8 +59,14 @@ export default {
         })
         .catch(alert)
     },
-    deleteRecord(id){
+    deleteRecord(id){    
       API.delete('http://localhost:4000/v0/influencers/'+id)
+      .then(this.loadInfluencers)
+      .catch(alert)
+    },
+    addRecord(){
+      if(this.name != '' && this.description != '' && this.activity != '' && this.relevance !='' && this.engagement !='')
+      API.post('http://localhost:4000/v0/influencers/'+id)
       .then(this.loadInfluencers)
       .catch(alert)
     }
