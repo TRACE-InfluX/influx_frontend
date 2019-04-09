@@ -7,7 +7,11 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
+      <input type='button' value='Delete' @click='deleteRecord(index, influencer.id);'>
+      
     </li>
+
+    <input type='button' value='Add' @click='addRecord();'>
   </ul>
 </template>
 
