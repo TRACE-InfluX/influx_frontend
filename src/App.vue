@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Influencers />
+    <!-- <Influencers /> -->
+    <router-link to="/influencers">Influencers</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
