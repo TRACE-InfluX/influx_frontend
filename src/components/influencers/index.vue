@@ -7,7 +7,7 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
-      <router-link to="/influencers/edit">edit</router-link>
+      <router-link :to="`/influencers/${influencer.id}/edit`">edit</router-link>
     </li>
   </ul>
 </template>
@@ -26,7 +26,7 @@ export default {
       .then(res => {
         this.influencers = res.data.data
           .sort((a,b)=>{
-            return (b.activity + b.relevance + b.engagement)/3 
+            return (b.activity + b.relevance + b.engagement)/3
                   -(a.activity + a.relevance + a.engagement)/3
           })
       })
