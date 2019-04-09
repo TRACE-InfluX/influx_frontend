@@ -7,7 +7,7 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
-      <input type='button' value='Delete' @click='deleteRecord(index, influencer.id);'>
+      <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
       
     </li>
 
@@ -25,15 +25,25 @@ export default {
     }
   },
   mounted() {
-    API.get('http://localhost:4000/v0/influencers')
-      .then(res => {
-        this.influencers = res.data.data
-          .sort((a,b)=>{
-            return (b.activity + b.relevance + b.engagement)/3 
-                  -(a.activity + a.relevance + a.engagement)/3
-          })
-      })
+    this.loadInfluencers()
+  },
+  methods: {
+    loadInfluencers() {
+      API.get('http://localhost:4000/v0/influencers')
+        .then(res => {
+          this.influencers = res.data.data
+            .sort((a,b)=>{
+              return (b.activity + b.relevance + b.engagement)/3 
+                    -(a.activity + a.relevance + a.engagement)/3
+            })
+        })
+        .catch(alert)
+    },
+    deleteRecord(id){
+      API.delete('http://localhost:4000/v0/influencers/'+id)
+      .then(this.loadInfluencers)
       .catch(alert)
+    }
   }
 }
 </script>
