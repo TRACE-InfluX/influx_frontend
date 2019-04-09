@@ -7,6 +7,7 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
+      <router-link to="/influencers/edit">edit</router-link>
     </li>
   </ul>
 </template>

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Influencers from './components/Influencers.vue'
+import Influencers from './components/influencers'
 
 export default {
   name: 'app',
