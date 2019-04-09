@@ -13,7 +13,7 @@
 
     
     <h1> Add New Influencer </h1>
-    <form>
+    <form action="/influencer" method="post">
 
     <p>Name: <input type="text" name="name" required></p>
     <p>Description: <input type="text" name="description" required></p>
@@ -21,8 +21,8 @@
     <p>Relevance: <input type="text" name="relevance" required></p>
     <p>Engagement: <input type="text" name="engagement" required></p>
 
-    <input type="submit" value='Add' @click='openForm();'>
-
+    <input type="submit" value='Add' @click='addRecord(influencer.id)'>
+    <input type="reset" value="Clear" @click='resetRecord();'>
     </form>
 
     
@@ -64,9 +64,26 @@ export default {
       .then(this.loadInfluencers)
       .catch(alert)
     },
+    resetRecord(form){
+      var inputs = form.getElementsByTagName('input');
+    for (var i = 0; i<inputs.length; i++) {
+        switch (inputs[i].type) {
+            // case 'hidden':
+            case 'text':
+                inputs[i].value = '';
+                break; 
+        }
+    }
+    },
     addRecord(){
       if(this.name != '' && this.description != '' && this.activity != '' && this.relevance !='' && this.engagement !='')
-      API.post('http://localhost:4000/v0/influencers/'+id)
+      API.post('http://localhost:4000/v0/influencers/', {
+      name: this.name, 
+      description: this.description,
+      activity: this.activity, 
+      relevance: this.relevance, 
+      engagement: this.engagement
+      })
       .then(this.loadInfluencers)
       .catch(alert)
     }
