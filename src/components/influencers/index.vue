@@ -2,7 +2,7 @@
   <ul>
     <h1>Influencers</h1>
     <li v-for="influencer in influencers" :key="influencer.id">
-      <h2>Name: {{influencer.name}}</h2>
+        <h2>Name: <router-link :to="`/influencers/${influencer.id}`">{{influencer.name}}</router-link></h2>
       <p>Description: {{influencer.description}}</p>
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
