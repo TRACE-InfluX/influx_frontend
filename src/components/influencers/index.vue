@@ -21,8 +21,8 @@
     <p>Relevance: <input type="text" v-model="relevance" required></p>
     <p>Engagement: <input type="text" v-model="engagement" required></p>
 
-    <input type="submit" value='Add' @click='addRecord(influencer.id)'>
-    <input type="reset" value="Clear" @click='resetRecord();'>
+    <input type="submit" value='Add' @click='addRecord()'>
+    <input type="reset" value="Clear" @click='resetRecord()'>
     </form>
 
 
