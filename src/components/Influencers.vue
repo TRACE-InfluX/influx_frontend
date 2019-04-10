@@ -13,13 +13,13 @@
 
     
     <h1> Add New Influencer </h1>
-    <form action="/influencer" method="post">
+    <form @submit.prevent="addRecord()" method="post">
 
-    <p>Name: <input type="text" name="name" required></p>
-    <p>Description: <input type="text" name="description" required></p>
-    <p>Activity: <input type="text" name="activity" required></p>
-    <p>Relevance: <input type="text" name="relevance" required></p>
-    <p>Engagement: <input type="text" name="engagement" required></p>
+    <p>Name: <input type="text" v-model="name" required></p>
+    <p>Description: <input type="text" v-model="description" required></p>
+    <p>Activity: <input type="text" v-model="activity" required></p>
+    <p>Relevance: <input type="text" v-model="relevance" required></p>
+    <p>Engagement: <input type="text" v-model="engagement" required></p>
 
     <input type="submit" value='Add' @click='addRecord(influencer.id)'>
     <input type="reset" value="Clear" @click='resetRecord();'>
@@ -75,17 +75,15 @@ export default {
         }
     }
     },
-    addRecord(){
-      if(this.name != '' && this.description != '' && this.activity != '' && this.relevance !='' && this.engagement !='')
-      API.post('http://localhost:4000/v0/influencers/', {
-      name: this.name, 
+    addRecord: function(){
+      const influencer = {
+      name: this.name,
       description: this.description,
-      activity: this.activity, 
-      relevance: this.relevance, 
-      engagement: this.engagement
-      })
-      .then(this.loadInfluencers)
-      .catch(alert)
+      activity: this.activity ,
+      relevance: this.relevance,
+      engagement: this.engagement,
+      }
+      API.post('http://localhost:4000/v0/influencers', {influencer});
     }
   }
 }
