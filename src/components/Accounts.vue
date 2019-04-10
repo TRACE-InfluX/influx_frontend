@@ -9,10 +9,18 @@
             </li>
         </ul>
         <form @submit.prevent="send" method="post">
-            <input type="text" v-model="accountform.email" placeholder="Enter email" />
-            <input type="text" v-model="accountform.name" placeholder="Enter name" />
-            <input type="text" v-model="accountform.website" placeholder="Enter website" />
-            <input type="password" v-model="accountform.password" placeholder="Enter password" />
+            <p>
+                <input type="text" v-model="accountform.email" placeholder="Enter email" />
+            </p>
+            <p>
+                <input type="text" v-model="accountform.name" placeholder="Enter name" />
+            </p>
+            <p>
+                <input type="text" v-model="accountform.website" placeholder="Enter website" />
+            </p>
+            <p>
+                <input type="password" v-model="accountform.password" placeholder="Enter password" />
+            </p>
             <input type="submit" name="Submit" />
         </form>
     </div>

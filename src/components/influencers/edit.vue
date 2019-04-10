@@ -4,7 +4,7 @@
     @submit.prevent="submit"
   >
     <p>
-      <label for="name">Name</label>
+      <label for="name">Name: </label>
       <input
         id="name"
         v-model="influencer.name"
@@ -13,7 +13,7 @@
       >
     </p>
     <p>
-      <label for="description">Description</label>
+      <label for="description">Description: </label>
       <input
         id="description"
         v-model="influencer.description"
@@ -22,7 +22,7 @@
       >
     </p>
     <p>
-      <label for="activity">Activity</label>
+      <label for="activity">Activity: </label>
       <input
         id="activity"
         v-model="influencer.activity"
@@ -31,7 +31,7 @@
       >
     </p>
     <p>
-      <label for="relevance">Relevance</label>
+      <label for="relevance">Relevance: </label>
       <input
         id="relevance"
         v-model="influencer.relevance"
@@ -40,7 +40,7 @@
       >
     </p>
     <p>
-      <label for="engagement">Engagement</label>
+      <label for="engagement">Engagement: </label>
       <input
         id="engagement"
         v-model="influencer.engagement"

@@ -7,13 +7,11 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
+      <router-link :to="`/influencers/${influencer.id}/edit`" tag="button">Edit</router-link>
       <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
-      
-      <router-link to="/influencers/edit">edit</router-link>
-      <router-link :to="`/influencers/${influencer.id}/edit`">edit</router-link>
     </li>
 
-    
+
     <h1> Add New Influencer </h1>
     <form @submit.prevent="addRecord()" method="post">
 
@@ -27,12 +25,12 @@
     <input type="reset" value="Clear" @click='resetRecord();'>
     </form>
 
-    
+
 
   </ul>
 
-  
-  
+
+
 </template>
 
 
@@ -55,13 +53,13 @@ export default {
         .then(res => {
           this.influencers = res.data.data
             .sort((a,b)=>{
-              return (b.activity + b.relevance + b.engagement)/3 
+              return (b.activity + b.relevance + b.engagement)/3
                     -(a.activity + a.relevance + a.engagement)/3
             })
         })
         .catch(alert)
     },
-    deleteRecord(id){    
+    deleteRecord(id){
       API.delete('http://localhost:4000/v0/influencers/'+id)
       .then(this.loadInfluencers)
     API.get('http://localhost:4000/v0/influencers')
@@ -81,7 +79,7 @@ export default {
             // case 'hidden':
             case 'text':
                 inputs[i].value = '';
-                break; 
+                break;
         }
     }
     },
