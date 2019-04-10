@@ -9,6 +9,7 @@
       <p>Engagement: {{influencer.engagement}}</p>
       <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
       
+      <router-link to="/influencers/edit">edit</router-link>
     </li>
 
     
