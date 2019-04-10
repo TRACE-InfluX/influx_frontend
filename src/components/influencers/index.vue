@@ -10,6 +10,7 @@
       <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
       
       <router-link to="/influencers/edit">edit</router-link>
+      <router-link :to="`/influencers/${influencer.id}/edit`">edit</router-link>
     </li>
 
     
@@ -63,6 +64,14 @@ export default {
     deleteRecord(id){    
       API.delete('http://localhost:4000/v0/influencers/'+id)
       .then(this.loadInfluencers)
+    API.get('http://localhost:4000/v0/influencers')
+      .then(res => {
+        this.influencers = res.data.data
+          .sort((a,b)=>{
+            return (b.activity + b.relevance + b.engagement)/3
+                  -(a.activity + a.relevance + a.engagement)/3
+          })
+      })
       .catch(alert)
     },
     resetRecord(form){
