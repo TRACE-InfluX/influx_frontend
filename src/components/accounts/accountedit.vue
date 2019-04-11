@@ -13,30 +13,30 @@
       >
     </p>
     <p>
-      <label for="description">Email: </label>
+      <label for="email">Email: </label>
       <input
-        id="description"
+        id="email"
         v-model="account.email"
         type="text"
-        name="description"
+        name="email"
       >
     </p>
     <p>
-      <label for="activity">Website </label>
+      <label for="website">Website: </label>
       <input
-        id="activity"
+        id="website"
         v-model="account.website"
         type="text"
-        name="activity"
+        name="website"
       >
     </p>
     <p>
-      <label for="activity">Password </label>
+      <label for="password">Password: </label>
       <input
-        id="activity"
+        id="password"
         v-model="account.password"
         type="text"
-        name="activity"
+        name="password"
       >
     </p>
     <p>
@@ -52,26 +52,26 @@
 import API from 'axios'
 
 export default {
-  name:"influencer-form",
+  name:"accountform",
   data() {
     return {
-        influencer: {}
+        account: {}
     }
   },
   mounted() {
-    API.get('http://localhost:4000/v0/influencers/' + this.$route.params.id)
+    API.get('http://localhost:4000/v0/accounts/' + this.$route.params.id)
         .then(res => {
-            this.influencer = res.data.data
+            this.account = res.data.data
         })
         .catch(alert)
   },
   methods: {
     submit() {
-        API.put('http://localhost:4000/v0/influencers/' + this.$route.params.id,
-        {influencer: this.influencer})
+        API.put('http://localhost:4000/v0/accounts/' + this.$route.params.id,
+        {account: this.account})
         .then(res => {
             alert('saved')
-            this.influencer = res.data.data
+            this.account = res.data.data
         })
         .catch(alert)
     }
