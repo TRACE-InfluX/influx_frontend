@@ -35,12 +35,7 @@
         data() {
             return {
                 accounts: [],
-                accountform: {
-                    email: '',
-                    password:'',
-                    website: '',
-                    name: ''
-                }
+                accountform: {}
             }
         },
   mounted() {
@@ -50,29 +45,29 @@
     loadInfluencers() {
       API.get('http://localhost:4000/v0/accounts')
         .then(res => {
-          this.accounts = res.data.data
-            .sort((a,b)=>{
-              return (b.activity + b.relevance + b.engagement)/3
-                    -(a.activity + a.relevance + a.engagement)/3
-            })
+          this.accounts = res.data.data;
         })
         .catch(alert)
     },
+
     deleteRecord(id){
       API.delete('http://localhost:4000/v0/accounts/'+id)
       .then(this.loadInfluencers)
       .catch(alert)
+
     },
+
+    resetRecord(){
+      this.accountform = {};
+    },
+
     send: function () {
                 var actualroute = 'http://localhost:4000/v0/accounts';
-                const account = {
-                    email: this.accountform.email,
-                    name: this.accountform.name,
-                    website: this.accountform.website,
-                    password: this.accountform.password
-                }
-                API.post(actualroute, { account });
-            }
+                const account = this.accountform;
+                API.post(actualroute, { account })
+                .then(this.resetRecord)
+                .then(this.loadInfluencers);
+            },
         }
     }
 </script>
