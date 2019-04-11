@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Accounts yeet</h1>
+        <h1>Accounts</h1>
         <ul>
             <li v-for="account in accounts" :key="account.id">
                 <h2>Name: <router-link :to="'/accounts/account/' + account.id">{{account.name}}</router-link></h2>
@@ -10,20 +10,14 @@
                       <input type='button' value='Delete' @click='deleteRecord(account.id);'>
             </li>
         </ul>
+        <h1> Add New Account </h1>
         <form @submit.prevent="send" method="post">
-            <p>
-                <input type="text" v-model="accountform.email" placeholder="Enter email" />
-            </p>
-            <p>
-                <input type="text" v-model="accountform.name" placeholder="Enter name" />
-            </p>
-            <p>
-                <input type="text" v-model="accountform.website" placeholder="Enter website" />
-            </p>
-            <p>
-                <input type="password" v-model="accountform.password" placeholder="Enter password" />
-            </p>
-            <input type="submit" name="Submit" />
+            <p><input type="text" v-model="accountform.email" required placeholder="Enter email" /></p>
+            <p><input type="text" v-model="accountform.name" required placeholder="Enter name" /></p>
+            <p><input type="text" v-model="accountform.website" required placeholder="Enter website" /></p>
+            <p><input type="password" v-model="accountform.password" required placeholder="Enter password" /></p>
+            <input type="submit" name="Add" />
+            <input type="reset" value="Clear" @click='resetRecord' />
         </form>
     </div>
 </template>
