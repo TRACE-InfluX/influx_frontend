@@ -6,7 +6,7 @@
       <p>Check out:</p>
       <router-link to="/influencers">Influencers</router-link>
       &nbsp;
-      <router-link to="/accounts">Accounts</router-link>
+      <router-link to="/accounts/accountindex">Accounts</router-link>
     </div>
     <router-view></router-view>
   </div>
