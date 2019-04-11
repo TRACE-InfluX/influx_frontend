@@ -1,6 +1,9 @@
+
+<!-- edit page for accounts -->
 <template>
   <form
     id="form"
+        <!-- calls submit function on form submit-->
     @submit.prevent="submit"
   >
     <p>
@@ -49,16 +52,19 @@
 </template>
 
 <script>
+    //package to make HTTPrequests :)
 import API from 'axios'
 
 export default {
   name:"accountform",
   data() {
-    return {
+      return {
+        //data for specific account
         account: {}
     }
   },
-  mounted() {
+        mounted() {
+      //API call to backend via GET + id
     API.get('http://localhost:4000/v0/accounts/' + this.$route.params.id)
         .then(res => {
             this.account = res.data.data
@@ -66,7 +72,8 @@ export default {
         .catch(alert)
   },
   methods: {
-    submit() {
+      submit() {
+        //onsubmit function update record of the specific account
         API.put('http://localhost:4000/v0/accounts/' + this.$route.params.id,
         {account: this.account})
         .then(res => {

@@ -1,3 +1,4 @@
+<!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
     <div>
         <ul>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+    //package to send httprequests
     import API from 'axios'
 
     export default {
@@ -22,10 +24,13 @@
             }
         },
         mounted() {
+            //Setting id given by url / parameter from id from router
             var routeparams = this.$router.currentRoute.params.id;
+            //appending id to URL to backend application in a RESTish manner
             var actualroute = 'http://localhost:4000/v0/influencers/' + routeparams;
             API.get(actualroute)
                 .then(res => {
+                    //populating influencer data with response data
                     this.influencer = res.data.data
                 })
                 .catch(alert)
@@ -33,6 +38,7 @@
     }
 </script>
 
+<!--component specific styling-->
 <style lang="scss" scoped>
 
     li {

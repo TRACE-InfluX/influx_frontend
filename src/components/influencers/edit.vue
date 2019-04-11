@@ -1,6 +1,8 @@
+<!-- template for editing an influencer.-->
 <template>
   <form
     id="form"
+        <!--calls submit function in methods array below-->
     @submit.prevent="submit"
   >
     <p>
@@ -58,23 +60,27 @@
 </template>
 
 <script>
+    //using package to make HTTPrequests
 import API from 'axios'
 
 export default {
   name:"influencer-form",
   data() {
-    return {
+      return {
+        //data for influencers 
         influencer: {}
     }
   },
-  mounted() {
+        mounted() {
+      //get specific data to prefill form for editing the influencer
     API.get('http://localhost:4000/v0/influencers/' + this.$route.params.id)
         .then(res => {
             this.influencer = res.data.data
         })
         .catch(alert)
   },
-  methods: {
+        methods: {
+      //updating influencer via PUT / UPDATE
     submit() {
         API.put('http://localhost:4000/v0/influencers/' + this.$route.params.id,
         {influencer: this.influencer})

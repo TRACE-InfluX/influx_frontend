@@ -6,6 +6,7 @@ import Accounts from './components/accounts/accountindex'
 import Account from './components/accounts/account'
 import AccountForm from './components/accounts/accountedit'
 
+//frontend Routes for our pages
 const routes = [
     { path: '/influencers/:id', component: Influencer },
     { path: '/influencers', component: Influencers },

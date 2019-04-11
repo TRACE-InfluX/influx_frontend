@@ -1,3 +1,4 @@
+<!--Template for showing a single account-->
 <template>
     <div>
         <ul>
@@ -13,15 +14,19 @@
 </template>
 
 <script>
+    //package to make HTTPrequests
     import API from 'axios'
     
     export default {
         data() {
             return {
+                //data to fill in from API call
                 account: {}
             }
         },
         mounted() {
+            //on component instance being mounted get the data required to display account data
+            //via GET + id
             var routeparams = this.$router.currentRoute.params.id;
             var actualroute = 'http://localhost:4000/v0/accounts/' + routeparams;
             API.get(actualroute)

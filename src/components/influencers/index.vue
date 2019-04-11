@@ -1,6 +1,8 @@
+<!--Template for default view for all influencers-->
 <template>
   <ul>
     <h1>Influencers</h1>
+      <!--Looping through all influencers retrieved from API call to backend-->
     <li v-for="influencer in influencers" :key="influencer.id">
         <h2>Name: <router-link :to="`/influencers/${influencer.id}`">{{influencer.name}}</router-link></h2>
       <p>Description: {{influencer.description}}</p>
@@ -13,6 +15,7 @@
 
 
     <h1> Add New Influencer </h1>
+      <!--on submit form addrecord i.e. POST to backend-->
     <form @submit.prevent="addRecord()" method="post">
 
       <p><input type="text" v-model="new_influencer.name" required placeholder="Enter name"></p>
@@ -34,8 +37,10 @@ import API from 'axios'
 
 export default {
   data() {
-    return {
-      influencers: [],
+      return {
+        //array of influencers to display
+        influencers: [],
+        //data for new influencer being added
       new_influencer: {}
     }
   },
@@ -43,7 +48,8 @@ export default {
     this.loadInfluencers()
   },
   methods: {
-    loadInfluencers() {
+      loadInfluencers() {
+        //GET for all influencers in influencer resource
       API.get('http://localhost:4000/v0/influencers')
         .then(res => {
           this.influencers = res.data.data
@@ -53,15 +59,18 @@ export default {
             })
         })
         .catch(alert)
-    },
+      },
+      //DELETE call to backend
     deleteRecord(id){
       API.delete('http://localhost:4000/v0/influencers/'+id)
       .then(this.loadInfluencers)
       .catch(alert)
-    },
+      },
+    //function to lear form data
     resetRecord(){
       this.new_influencer = {}
-    },
+      },
+    //adding a new influencer via POST
     addRecord(){
       const influencer = this.new_influencer
       API.post('http://localhost:4000/v0/influencers', {influencer})
