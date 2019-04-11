@@ -1,62 +1,48 @@
 <!-- template for editing an influencer.-->
 <template>
-  <form
-    id="form"
-        <!--calls submit function in methods array below-->
-    @submit.prevent="submit"
-  >
-    <p>
-      <label for="name">Name: </label>
-      <input
-        id="name"
-        v-model="influencer.name"
-        type="text"
-        name="name"
-      >
-    </p>
-    <p>
-      <label for="description">Description: </label>
-      <input
-        id="description"
-        v-model="influencer.description"
-        type="text"
-        name="description"
-      >
-    </p>
-    <p>
-      <label for="activity">Activity: </label>
-      <input
-        id="activity"
-        v-model="influencer.activity"
-        type="text"
-        name="activity"
-      >
-    </p>
-    <p>
-      <label for="relevance">Relevance: </label>
-      <input
-        id="relevance"
-        v-model="influencer.relevance"
-        type="text"
-        name="relevance"
-      >
-    </p>
-    <p>
-      <label for="engagement">Engagement: </label>
-      <input
-        id="engagement"
-        v-model="influencer.engagement"
-        type="text"
-        name="engagement"
-      >
-    </p>
-    <p>
-      <input
-        type="submit"
-        value="Submit"
-      >
-    </p>
-  </form>
+    <!--calls submit function in methods array below-->
+    <form id="form"
+          @submit.prevent="submit">
+        <p>
+            <label for="name">Name: </label>
+            <input id="name"
+                   v-model="influencer.name"
+                   type="text"
+                   name="name">
+        </p>
+        <p>
+            <label for="description">Description: </label>
+            <input id="description"
+                   v-model="influencer.description"
+                   type="text"
+                   name="description">
+        </p>
+        <p>
+            <label for="activity">Activity: </label>
+            <input id="activity"
+                   v-model="influencer.activity"
+                   type="text"
+                   name="activity">
+        </p>
+        <p>
+            <label for="relevance">Relevance: </label>
+            <input id="relevance"
+                   v-model="influencer.relevance"
+                   type="text"
+                   name="relevance">
+        </p>
+        <p>
+            <label for="engagement">Engagement: </label>
+            <input id="engagement"
+                   v-model="influencer.engagement"
+                   type="text"
+                   name="engagement">
+        </p>
+        <p>
+            <input type="submit"
+                   value="Submit">
+        </p>
+    </form>
 </template>
 
 <script>
