@@ -1,3 +1,4 @@
+<!-- default account view - displays all accounts-->
 <template>
     <div>
         <h1>Accounts</h1>
@@ -10,7 +11,9 @@
                       <input type='button' value='Delete' @click='deleteRecord(account.id);'>
             </li>
         </ul>
+        <!-- adding new account-->
         <h1> Add New Account </h1>
+        <!-- calls submit function in methods array below-->
         <form @submit.prevent="send" method="post">
             <p><input type="text" v-model="accountform.email" required placeholder="Enter email" /></p>
             <p><input type="text" v-model="accountform.name" required placeholder="Enter name" /></p>
@@ -23,12 +26,15 @@
 </template>
 
 <script>
+    //package to make httprequests
     import API from 'axios'
 
     export default {
         data() {
             return {
+                //data for all accounts to show
                 accounts: [],
+                //data for binding form to a new account being added
                 accountform: {}
             }
         },
@@ -36,6 +42,7 @@
     this.loadInfluencers()
   },
   methods: {
+      //loading instance of accounts (not influencers)
     loadInfluencers() {
       API.get('http://localhost:4000/v0/accounts')
         .then(res => {
@@ -43,18 +50,18 @@
         })
         .catch(alert)
     },
-
+      //Deleteing an account
     deleteRecord(id){
       API.delete('http://localhost:4000/v0/accounts/'+id)
       .then(this.loadInfluencers)
       .catch(alert)
 
     },
-
+    //reset the form fields
     resetRecord(){
       this.accountform = {};
     },
-
+    //function to send / POST data to backend
     send: function () {
                 var actualroute = 'http://localhost:4000/v0/accounts';
                 const account = this.accountform;
