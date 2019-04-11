@@ -15,11 +15,11 @@
     <h1> Add New Influencer </h1>
     <form @submit.prevent="addRecord()" method="post">
 
-      <p>Name: <input type="text" v-model="new_influencer.name" required></p>
-      <p>Description: <input type="text" v-model="new_influencer.description" required></p>
-      <p>Activity: <input type="text" v-model="new_influencer.activity" required></p>
-      <p>Relevance: <input type="text" v-model="new_influencer.relevance" required></p>
-      <p>Engagement: <input type="text" v-model="new_influencer.engagement" required></p>
+      <p><input type="text" v-model="new_influencer.name" required placeholder="Enter name"></p>
+      <p><input type="text" v-model="new_influencer.description" required placeholder="Enter description"></p>
+      <p><input type="text" v-model="new_influencer.activity" required placeholder="Enter activity (number)"></p>
+      <p><input type="text" v-model="new_influencer.relevance" required placeholder="Enter relevance (number)"></p>
+      <p><input type="text" v-model="new_influencer.engagement" required placeholder="Enter engagement (number)"></p>
 
       <input type="submit" value='Add' />
       <input type="reset" value="Clear" @click='resetRecord' />
