@@ -73,8 +73,8 @@ export default {
   },
   methods: {
       submit() {
-        //onsubmit function update record of the specific account
-        API.put('http://localhost:4000/v0/accounts/' + this.$route.params.id,
+        //onsubmit function update record of the specific account +  the single patch request in our frontend repo
+        API.patch('http://localhost:4000/v0/accounts/' + this.$route.params.id,
         {account: this.account})
         .then(res => {
             alert('saved')
