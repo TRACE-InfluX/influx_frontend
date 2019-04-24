@@ -26,7 +26,7 @@
         methods: {
             register() {
                 const new_user = this.input;
-                alert(new_user. email + ' ' + new_user.password);
+                API.post('http://localhost:3000/v0/accounts', { email: new_user.email, password: new_user.password });
             }
         }
     }
