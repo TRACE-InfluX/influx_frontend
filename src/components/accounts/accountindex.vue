@@ -15,10 +15,10 @@
         <h1> Add New Account </h1>
         <!-- calls submit function in methods array below-->
         <form @submit.prevent="send" method="post">
-            <p><input type="text" v-model="accountform.email" required placeholder="Enter email" /></p>
-            <p><input type="text" v-model="accountform.name" required placeholder="Enter name" /></p>
-            <p><input type="text" v-model="accountform.website" required placeholder="Enter website" /></p>
-            <p><input type="password" v-model="accountform.password" required placeholder="Enter password" /></p>
+            <p><input type="text" v-model="new_account.email" required placeholder="Enter email" /></p>
+            <p><input type="text" v-model="new_account.name" required placeholder="Enter name" /></p>
+            <p><input type="text" v-model="new_account.website" required placeholder="Enter website" /></p>
+            <p><input type="password" v-model="new_account.password" required placeholder="Enter password" /></p>
             <input type="submit" name="Add" />
             <input type="reset" value="Clear" @click='resetRecord' />
         </form>
@@ -35,15 +35,15 @@
                 //data for all accounts to show
                 accounts: [],
                 //data for binding form to a new account being added
-                accountform: {}
+                new_account: {}
             }
         },
   mounted() {
-    this.loadInfluencers()
+    this.loadAccounts()
   },
   methods: {
       //loading instance of accounts (not influencers)
-    loadInfluencers() {
+    loadAccounts() {
       API.get('http://localhost:4000/v0/accounts')
         .then(res => {
           this.accounts = res.data.data;
@@ -53,21 +53,21 @@
       //Deleteing an account
     deleteRecord(id){
       API.delete('http://localhost:4000/v0/accounts/'+id)
-      .then(this.loadInfluencers)
+      .then(this.loadAccounts)
       .catch(alert)
 
     },
     //reset the form fields
     resetRecord(){
-      this.accountform = {};
+      this.new_account = {};
     },
     //function to send / POST data to backend
     send: function () {
                 var actualroute = 'http://localhost:4000/v0/accounts';
-                const account = this.accountform;
+                const account = this.new_account;
                 API.post(actualroute, { account })
                 .then(this.resetRecord)
-                .then(this.loadInfluencers);
+                .then(this.loadAccounts);
             },
         }
     }

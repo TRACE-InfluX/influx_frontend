@@ -9,7 +9,7 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
-      <router-link :to="`/influencers/${influencer.id}/edit`" tag="button">Edit</router-link>
+      <router-link :to="`/influencers/${influencer.id}/influenceredit`" tag="button">Edit</router-link>
       <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
     </li>
 
@@ -41,7 +41,7 @@ export default {
         //array of influencers to display
         influencers: [],
         //data for new influencer being added
-      new_influencer: {}
+        new_influencer: {}
     }
   },
   mounted() {
