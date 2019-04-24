@@ -5,7 +5,7 @@
     <form id="form"
           @submit.prevent="submit">
        
- <p><input type="text"  v-model="input.username" required placeholder="Username"></p>
+ <p><input type="text"  v-model="input.username" required placeholder="Email"></p>
  <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
 
 <input type="submit"
