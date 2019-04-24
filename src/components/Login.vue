@@ -1,7 +1,7 @@
 <!-- template for a login page.-->
 <template>
 <div>
-     <h1>Welcome User</h1>
+     <h2>Login</h2>
     <form id="form"
           @submit.prevent="submit">
        
@@ -10,8 +10,8 @@
 
 <input type="submit"
                    value="Forgot Password">
- <button type="button" v-on:click="login()">Login</button>                   
-  
+ <button type="button" v-on:click="login()">Login</button>
+
 
     </form>
 </div>
