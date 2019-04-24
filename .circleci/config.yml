@@ -40,8 +40,9 @@ jobs:
       - image: circleci/node:8.11
     steps:
       - checkout
-      - run: sudo npm uninstall vue-cli -g && sudo npm i vue-cli -g
-      - run: yarn run build
+#      - run: sudo npm uninstall vue-cli -g && sudo npm i vue-cli -g
+#      - run: yarn run build
+      - run: npm build
       - run: git status
       - run: ls dist
 workflows:
