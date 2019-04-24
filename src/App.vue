@@ -5,6 +5,9 @@
             <h1>Welcome to InfluX!</h1>
             <h2>This is our admin page</h2>
             <router-link to="/register">Register</router-link>
+                        &nbsp;
+            <router-link to="/login">Login</router-link>
+
             <p>Check out:</p>
             <router-link to="/influencers/influencerindex">Influencers</router-link>
             &nbsp;
