@@ -37,10 +37,10 @@
                         this.$emit("authenticated", true);
                         this.$router.replace({ name: "secure" });
                     } else {
-                        console.log("The username and / or password is incorrect");
+                        alert("The username and / or password is incorrect");
                     }
                 } else {
-                    console.log("A username and password must be present");
+                    alert("A username and password must be present");
                 }
             }
         }
