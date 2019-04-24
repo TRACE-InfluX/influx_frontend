@@ -1,14 +1,15 @@
 <!--home view default view with router view for rendering sub components-->
 <template>
     <div id="app">
-        <div id="welcome">
-            <h1>Welcome to InfluX!</h1>
-            <h2>This is our admin page</h2>
+        <div id="nav">
             <router-link to="/register">Register</router-link>
-                        &nbsp;
+            &nbsp;
             <router-link to="/login">Login</router-link>
-
-            <p>Check out:</p>
+            &nbsp;
+        </div>
+        &nbsp;
+        <h1>Welcome to InfluX!</h1>
+        <div id="links">
             <router-link to="/influencers/influencerindex">Influencers</router-link>
             &nbsp;
             <router-link to="/accounts/accountindex">Accounts</router-link>
@@ -36,6 +37,10 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+    }
+
+    #nav {
+        text-align: right;
     }
 
     h1, h2 {
