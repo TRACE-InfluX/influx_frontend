@@ -3,12 +3,11 @@
     <div>
         <h1>Accounts</h1>
         <ul>
-            <li v-for="account in accounts" :key="account.id">
-                <h2>Name: <router-link :to="'/accounts/account/' + account.id">{{account.name}}</router-link></h2>
+            <li v-for="account in accounts" :key="account.uid">
+                <!--<h2>Name: <router-link :to="'/accounts/account/' + account.uid">{{account.name}}</router-link></h2>-->
                 Email: {{account.email}}<br />
-                Website: {{account.website}}<br />
-                      <router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
-                      <input type='button' value='Delete' @click='deleteRecord(account.id);'>
+                      <!--<router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
+                      <input type='button' value='Delete' @click='deleteRecord(account.id);'>-->
             </li>
         </ul>
         <!-- adding new account-->
@@ -45,8 +44,9 @@
       //loading instance of accounts (not influencers)
     loadAccounts() {
       API.get('/v0/accounts')
-        .then(res => {
-          this.accounts = res.data.data;
+          .then(res => {
+              
+          this.accounts = res.data;
         })
         .catch(alert)
     },
