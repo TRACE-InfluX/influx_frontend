@@ -40,8 +40,8 @@
 </template>
 
 <script>
-    //package to make HTTPrequests :)
-import API from 'axios'
+  //package to make HTTPrequests :)
+  import API from '@/api.js'
 
 export default {
   name:"accountform",
@@ -53,7 +53,7 @@ export default {
   },
         mounted() {
       //API call to backend via GET + id
-    API.get('http://localhost:4000/v0/accounts/' + this.$route.params.id)
+    API.get('/v0/accounts/' + this.$route.params.id)
         .then(res => {
             this.account = res.data.data
         })
@@ -62,7 +62,7 @@ export default {
   methods: {
       submit() {
         //onsubmit function update record of the specific account +  the single patch request in our frontend repo
-        API.patch('http://localhost:4000/v0/accounts/' + this.$route.params.id,
+        API.patch('/v0/accounts/' + this.$route.params.id,
         {account: this.account})
         .then(res => {
             alert('saved')

@@ -46,8 +46,8 @@
 </template>
 
 <script>
-    //using package to make HTTPrequests
-import API from 'axios'
+  //using package to make HTTPrequests
+  import API from '@/api.js'
 
 export default {
   name:"influencerForm",
@@ -59,7 +59,7 @@ export default {
   },
         mounted() {
       //get specific data to prefill form for editing the influencer
-    API.get('http://localhost:4000/v0/influencers/' + this.$route.params.id)
+    API.get('/v0/influencers/' + this.$route.params.id)
         .then(res => {
             this.influencer = res.data.data
         })
@@ -68,7 +68,7 @@ export default {
         methods: {
       //updating influencer via PUT / UPDATE
     submit() {
-        API.put('http://localhost:4000/v0/influencers/' + this.$route.params.id,
+        API.put('/v0/influencers/' + this.$route.params.id,
         {influencer: this.influencer})
         .then(res => {
             alert('saved')

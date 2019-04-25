@@ -33,7 +33,7 @@
 
 
 <script>
-import API from 'axios'
+  import API from '@/api.js'
 
 export default {
   data() {
@@ -50,7 +50,7 @@ export default {
   methods: {
       loadInfluencers() {
         //GET for all influencers in influencer resource
-      API.get('http://localhost:4000/v0/influencers')
+      API.get('/v0/influencers')
         .then(res => {
           this.influencers = res.data.data
             .sort((a,b)=>{
@@ -62,7 +62,7 @@ export default {
       },
       //DELETE call to backend
     deleteRecord(id){
-      API.delete('http://localhost:4000/v0/influencers/'+id)
+      API.delete('/v0/influencers/'+id)
       .then(this.loadInfluencers)
       .catch(alert)
       },
@@ -73,7 +73,7 @@ export default {
     //adding a new influencer via POST
     addRecord(){
       const influencer = this.new_influencer
-      API.post('http://localhost:4000/v0/influencers', {influencer})
+      API.post('/v0/influencers', {influencer})
         .then(this.resetRecord)
         .then(this.loadInfluencers)
         .catch(alert)

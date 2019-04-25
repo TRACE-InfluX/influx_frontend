@@ -15,7 +15,7 @@
 
 <script>
     //package to send httprequests
-    import API from 'axios'
+    import API from '@/api.js'
 
     export default {
         data() {
@@ -27,7 +27,7 @@
             //Setting id given by url / parameter from id from router
             var routeparams = this.$router.currentRoute.params.id;
             //appending id to URL to backend application in a RESTish manner
-            var actualroute = 'http://localhost:4000/v0/influencers/' + routeparams;
+            var actualroute = '/v0/influencers/' + routeparams;
             API.get(actualroute)
                 .then(res => {
                     //populating influencer data with response data

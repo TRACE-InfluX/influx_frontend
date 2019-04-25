@@ -15,7 +15,7 @@
 
 <script>
     //package to make HTTPrequests
-    import API from 'axios'
+    import API from '@/api.js'
     
     export default {
         data() {
@@ -28,7 +28,7 @@
             //on component instance being mounted get the data required to display account data
             //via GET + id
             var routeparams = this.$router.currentRoute.params.id;
-            var actualroute = 'http://localhost:4000/v0/accounts/' + routeparams;
+            var actualroute = '/v0/accounts/' + routeparams;
             API.get(actualroute)
                 .then(res => {
                     this.account = res.data.data

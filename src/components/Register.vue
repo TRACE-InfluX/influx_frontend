@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    //package to make httprequests
-    import API from 'axios'
+  //package to make httprequests
+  import API from '@/api.js'
 
     export default {
         name: "Register",
@@ -26,7 +26,7 @@
         methods: {
             register() {
                 const new_user = this.input;
-                API.post('http://localhost:3000/v0/accounts', { email: new_user.email, password: new_user.password });
+                API.post('/v0/accounts', { email: new_user.email, password: new_user.password });
             }
         }
     }
