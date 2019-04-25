@@ -27,7 +27,7 @@
 
 <script>
     //package to make httprequests
-    import API from 'axios'
+    import API from '@/api.js'
 
     export default {
         data() {
@@ -44,7 +44,7 @@
   methods: {
       //loading instance of accounts (not influencers)
     loadAccounts() {
-      API.get('http://localhost:4000/v0/accounts')
+      API.get('/v0/accounts')
         .then(res => {
           this.accounts = res.data.data;
         })
@@ -52,7 +52,7 @@
     },
       //Deleteing an account
     deleteRecord(id){
-      API.delete('http://localhost:4000/v0/accounts/'+id)
+      API.delete('/v0/accounts/'+id)
       .then(this.loadAccounts)
       .catch(alert)
 
@@ -63,7 +63,7 @@
     },
     //function to send / POST data to backend
     send: function () {
-                var actualroute = 'http://localhost:4000/v0/accounts';
+                var actualroute = '/v0/accounts';
                 const account = this.new_account;
                 API.post(actualroute, { account })
                 .then(this.resetRecord)
