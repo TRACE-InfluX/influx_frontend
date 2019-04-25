@@ -55,12 +55,11 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      #      - run: sudo npm uninstall vue-cli -g && sudo npm i vue-cli -g
       - run: yarn run build
-#      - run: npm update -g @vue/cli
-#      - run: npm run build
+      - run: sudo mv dist docs
+      - run: sudo sed 's+=/+=+g' docs/index.html
       - run: git status
-      - run: ls dist
+      - run: ls docs
 workflows:
   version: 2
   build_deploy:
