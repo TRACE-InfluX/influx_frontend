@@ -30,8 +30,9 @@
                 if(this.input.username != "" && this.input.password != "") {
                     API.post('/v0/auth', { email: this.input.username, password: this.input.password })
                         .then(function(res)  {
-                            console.log(res.data.idToken);
                             localStorage.setItem("bearertoken", res.data.idToken);
+                            localStorage.setItem("admin", res.data.admin);
+                            console.log(localStorage.admin);
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
                         });
                 } else {
