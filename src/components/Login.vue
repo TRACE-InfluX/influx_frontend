@@ -3,8 +3,10 @@
 
 <div class="login">
      <h2>Login</h2>
+    
     <form id="form"
           @submit.prevent="submit">
+
  <div class="user-profile"></div>      
  <p><input type="text"  v-model="input.username" required placeholder="Email"></p>
  <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
@@ -56,6 +58,10 @@
     font-family: Lato; 
 }
 
+img {
+    display: inline-block;
+}
+
 #form {
     width: 50%;
     padding: 1em;
@@ -84,9 +90,11 @@ button {
 
 .user-profile {
 
+  background-image:url('../assets/logo.png');
+  background-position: center center;
   height: 150px;
   width: 150px;
-  background-color: #bbb;
+  background-color: #bbb; /* backup background */
   border-radius: 50%;
   display: inline-block;
 
