@@ -18,7 +18,7 @@
 </template>
 
 <script>
- import API from 'axios'
+  import API from '@/api.js'
 
     export default {
         name: 'Login',
@@ -35,7 +35,7 @@
                 if(this.input.username != "" && this.input.password != "") {
 
 
-                    API.post('http://localhost:3000/v0/auth', { email: this.input.username, password: this.input.password });
+                    API.post('/v0/auth', { email: this.input.username, password: this.input.password });
                 } else {
                     alert("A username and password must be present");
                 }

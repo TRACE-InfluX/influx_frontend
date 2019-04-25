@@ -8,7 +8,7 @@
             &nbsp;
         </div>
         &nbsp;
-        <h1>Welcome to InfluX!</h1>
+        <h1>Welcome to InfluX</h1>
         <div id="links">
             <router-link to="/influencers/influencerindex">Influencers</router-link>
             &nbsp;
