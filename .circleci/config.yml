@@ -60,8 +60,10 @@ jobs:
       - run: sudo sed 's+=/+=+g' docs/index.html
       - run: git checkout master
       - run: git add -A
-      - run: commit_hash=$(<.git/refs/heads/master)
-      - run: git commit -m "release-${commit_hash}"
+      - run: COMMIT_HASH=$(<.git/refs/heads/master)
+      - run: git config user.email "carlomendoza89@gmail.com"
+      - run: git config user.name "Carlo Mendoza"
+      - run: git commit -m "release-$COMMIT_HASH"
       - run: git push origin master
 workflows:
   version: 2
