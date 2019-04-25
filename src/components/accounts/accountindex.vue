@@ -11,16 +11,16 @@
             </li>
         </ul>
         <!-- adding new account-->
-        <h1> Add New Account </h1>
+        <!-- <h1> Add New Account </h1> -->
         <!-- calls submit function in methods array below-->
-        <form @submit.prevent="send" method="post">
+        <!-- <form @submit.prevent="send" method="post">
             <p><input type="text" v-model="new_account.email" required placeholder="Enter email" /></p>
             <p><input type="text" v-model="new_account.name" required placeholder="Enter name" /></p>
             <p><input type="text" v-model="new_account.website" required placeholder="Enter website" /></p>
             <p><input type="password" v-model="new_account.password" required placeholder="Enter password" /></p>
             <input type="submit" name="Add" />
             <input type="reset" value="Clear" @click='resetRecord' />
-        </form>
+        </form> -->
     </div>
 </template>
 
@@ -76,7 +76,7 @@
 <style lang="scss" scoped>
 
     li {
-        width: 300px;
-        display: inline-block;
+        display: block;
+        margin: 16px auto;
     }
 </style>
