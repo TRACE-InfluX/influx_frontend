@@ -3,25 +3,24 @@
     <div>
         <h1>Accounts</h1>
         <ul>
-            <li v-for="account in accounts" :key="account.id">
-                <h2>Name: <router-link :to="'/accounts/account/' + account.id">{{account.name}}</router-link></h2>
+            <li v-for="account in accounts" :key="account.uid">
+                <!--<h2>Name: <router-link :to="'/accounts/account/' + account.uid">{{account.name}}</router-link></h2>-->
                 Email: {{account.email}}<br />
-                Website: {{account.website}}<br />
-                      <router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
-                      <input type='button' value='Delete' @click='deleteRecord(account.id);'>
+                      <!--<router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
+                      <input type='button' value='Delete' @click='deleteRecord(account.id);'>-->
             </li>
         </ul>
         <!-- adding new account-->
-        <h1> Add New Account </h1>
+        <!-- <h1> Add New Account </h1> -->
         <!-- calls submit function in methods array below-->
-        <form @submit.prevent="send" method="post">
+        <!-- <form @submit.prevent="send" method="post">
             <p><input type="text" v-model="new_account.email" required placeholder="Enter email" /></p>
             <p><input type="text" v-model="new_account.name" required placeholder="Enter name" /></p>
             <p><input type="text" v-model="new_account.website" required placeholder="Enter website" /></p>
             <p><input type="password" v-model="new_account.password" required placeholder="Enter password" /></p>
             <input type="submit" name="Add" />
             <input type="reset" value="Clear" @click='resetRecord' />
-        </form>
+        </form> -->
     </div>
 </template>
 
@@ -45,8 +44,9 @@
       //loading instance of accounts (not influencers)
     loadAccounts() {
       API.get('/v0/accounts')
-        .then(res => {
-          this.accounts = res.data.data;
+          .then(res => {
+              
+          this.accounts = res.data;
         })
         .catch(alert)
     },
@@ -76,7 +76,7 @@
 <style lang="scss" scoped>
 
     li {
-        width: 300px;
-        display: inline-block;
+        display: block;
+        margin: 16px auto;
     }
 </style>
