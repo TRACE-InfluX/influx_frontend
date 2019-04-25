@@ -35,7 +35,10 @@
                 if(this.input.username != "" && this.input.password != "") {
                     
 
-                    API.post('http://localhost:3000/v0/auth', { email: this.input.username, password: this.input.password });
+                    API.post('http://localhost:3000/v0/auth', { email: this.input.username, password: this.input.password })
+                        .then(function(res)  {
+                            console.log(res.data.idToken);
+                        });
                 } else {
                     console.log("A username and password must be present");
                 }
