@@ -9,12 +9,9 @@
                 <img src="@/assets/profile.png">
             </div>
         </nav>
-        <div id="searchbar">
-            <h1>Welcome to InfluX</h1>
-            <router-link to="/influencers/influencerindex">Influencers</router-link>
-            <router-link to="/accounts/accountindex">Accounts</router-link>
-        </div>
         <router-view></router-view>
+        <router-link to="/influencers/influencerindex">Influencers</router-link> &nbsp;
+        <router-link to="/accounts/accountindex">Accounts</router-link>
     </div>
 </template>
 <script>
@@ -78,14 +75,6 @@
         flex: 1;
         height: 100px;
         line-height: 100px;
-    }
-
-    #searchbar {
-        margin-top: 25px;
-    }
-
-    #searchbar > a {
-        margin: 10px;
     }
 
     h1, h2 {
