@@ -1,0 +1,78 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build_test:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      #- run: npm test
+
+  deploy_production:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:8.11
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn run build
+      - run: sudo mv dist docs
+      - run: sudo sed 's+=/+=+g' docs/index.html
+      - run: git checkout master
+      - run: git add -A
+      - run: COMMIT_HASH=$(<.git/refs/heads/master)
+      - run: git config user.email "carlomendoza89@gmail.com"
+      - run: git config user.name "Carlo Mendoza"
+      - run: git commit -m "release-$COMMIT_HASH"
+      - run: git push origin master
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - build_test
+      - deploy_production:
+          requires:
+            - build_test
+          filters:
+            branches:
+              only: release
