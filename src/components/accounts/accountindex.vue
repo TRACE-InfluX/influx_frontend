@@ -45,7 +45,7 @@
     loadAccounts() {
       API.get('/v0/accounts')
           .then(res => {
-              console.log(res.data);
+              
           this.accounts = res.data;
         })
         .catch(alert)

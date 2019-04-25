@@ -31,7 +31,7 @@
                         .then(function(res)  {
                             localStorage.setItem("bearertoken", res.data.idToken);
                             localStorage.setItem("admin", res.data.admin);
-                            console.log(localStorage.admin);
+                            
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
                         });
                 } else {
