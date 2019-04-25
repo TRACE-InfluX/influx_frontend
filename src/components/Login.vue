@@ -1,7 +1,8 @@
 <!-- template for a login page.-->
 <template>
+
 <div class="login">
-     <h1>Welcome User</h1>
+     <h2>Login</h2>
     <form id="form"
           @submit.prevent="submit">
  <div class="user-profile"></div>      
@@ -10,14 +11,15 @@
 
 
  <button type="button" v-on:click="login()">Login</button>                   
- <p>Forgot your login details? Get help signing in.</p>
 
+     
+        <p>Forgot your login details?</p><router-link to="">Get help signing in.</router-link></p>
     </form>
 </div>
 </template>
 
 <script>
- import API from 'axios'
+  import API from '@/api.js'
 
     export default {
         name: 'Login',
@@ -32,12 +34,9 @@
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
-                        this.$router.replace({ name: "secure" });
-                    } else {
-                        alert("The username and / or password is incorrect");
-                    }
+
+
+                    API.post('/v0/auth', { email: this.input.username, password: this.input.password });
                 } else {
                     alert("A username and password must be present");
                 }
