@@ -28,11 +28,16 @@
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     API.post('/v0/auth', { email: this.input.username, password: this.input.password })
-                        .then(function(res)  {
+                        .then((res) => {
                             localStorage.setItem("bearertoken", res.data.idToken);
                             localStorage.setItem("admin", res.data.admin);
-                            
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
+                            if (res.data.admin) {
+                              this.$router.push('/accounts/accountindex')
+                            }
+                            else {
+                              this.$router.push('/influencers/influencerindex')
+                            }
                         });
                 } else {
                     alert("A username and password must be present");
