@@ -57,12 +57,14 @@ jobs:
 
       - run: yarn run build
       - run: sudo sed 's+=/+=+g' dist/index.html
+      - run: echo 'www.influxapp.ca' > dist/CNAME
       - run: git checkout master
+      - run: git config user.email "carlomendoza89@gmail.com"
+      - run: git config user.name "Carlo Mendoza"
+      - run: git merge release -m "merging release into master"
       - run: sudo rm -R docs
       - run: sudo mv dist docs
       - run: git add -A
-      - run: git config user.email "carlomendoza89@gmail.com"
-      - run: git config user.name "Carlo Mendoza"
       - run: git commit -m "Release Built"
       - run: git push origin master
 workflows:
