@@ -1,22 +1,19 @@
 <!-- template for a login page.-->
 <template>
-<div>
-     <h2>Login</h2>
-    <form id="form" @submit.prevent="submit">
-        <p><input type="text"  v-model="input.username" required placeholder="Email"></p>
-        <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
-
-        <button type="button" v-on:click="login()">Login</button>
-        <p><router-link to="">Forgot Password</router-link></p>
-    </form>
-</div>
+<form class="login-form" @submit.prevent="submit">
+    <h2>Login</h2>
+    <input type="text"  v-model="input.username" required placeholder="Email">
+    <input type="password"  v-model="input.password" required placeholder="Password">
+    <button type="button" v-on:click="login()">Login</button>
+    <router-link to="">Forgot Password</router-link>
+</form>
 </template>
 
 <script>
   import API from '@/api.js'
 
     export default {
-        name: 'Login',
+        name: 'login-form',
         data() {
             return {
                 input: {
@@ -40,5 +37,9 @@
 </script>
 
 <style lang="scss" scoped>
+    .login-form > *{
+        display: block;
+        margin: 10px auto;
+    }
 
 </style>
