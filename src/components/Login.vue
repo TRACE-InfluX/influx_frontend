@@ -1,17 +1,16 @@
 <!-- template for a login page.-->
 <template>
-<div>
+<div class="login">
      <h1>Welcome User</h1>
     <form id="form"
           @submit.prevent="submit">
-       
+ <div class="user-profile"></div>      
  <p><input type="text"  v-model="input.username" required placeholder="Email"></p>
  <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
 
-<input type="submit"
-                   value="Forgot Password">
+
  <button type="button" v-on:click="login()">Login</button>                   
-  
+ <p>Forgot your login details? Get help signing in.</p>
 
     </form>
 </div>
@@ -47,6 +46,51 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+
+.login {
+    width: 100%;
+    height: 100%;
+    font-family: Lato; 
+}
+
+#form {
+    width: 50%;
+    padding: 1em;
+    display: inline-block;
+}
+
+input {
+    font-family: Lato; 
+    width: 200px; 
+    height: 30px; 
+    display: inline-block;
+}
+
+button { 
+    width: 200px;
+    height: 40px; 
+    background-color: #458eff;
+    color: white; 
+    padding: 10px; 
+    border-radius: .5em; 
+    font-weight: 800; 
+    font-family: Lato; 
+    display: inline-block;
+    
+}
+
+.user-profile {
+
+  height: 150px;
+  width: 150px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+
+}
 
 </style>
