@@ -1,22 +1,21 @@
 <!-- template for a login page.-->
 <template>
-<div>
-     <h2>Login</h2>
-    <form id="form" @submit.prevent="submit">
-        <p><input type="text"  v-model="input.username" required placeholder="Email"></p>
-        <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
-
+    <form class="login-form" @submit.prevent="submit">
+        <h2>Login</h2>
+        <img src="@/assets/profile.png">
+        <input type="text"  v-model="input.username" required placeholder="Email">
+        <input type="password"  v-model="input.password" required placeholder="Password">
         <button type="button" v-on:click="login()">Login</button>
-        <p><router-link to="">Forgot Password</router-link></p>
+        Forgot your login details?
+        <router-link to="">Get help signing in.</router-link>
     </form>
-</div>
 </template>
 
 <script>
   import API from '@/api.js'
 
     export default {
-        name: 'Login',
+        name: 'login-form',
         data() {
             return {
                 input: {
@@ -43,6 +42,40 @@
     }
 </script>
 
-<style lang="scss" scoped>
+
+<style scoped>
+    .login-form {
+        padding: 1em;
+        margin: auto;
+        display: block;
+        width: 240px;
+    }
+
+    .login-form > * {
+        display: block;
+        width: 100%;
+        margin: 16px auto;
+    }
+
+    input {
+        height: 30px;
+        padding-left: 8px;
+    }
+
+    button {
+        height: 40px;
+        background-color: #458eff;
+        color: white;
+        padding: 10px;
+        border-radius: .5em;
+        display: inline-block;
+    }
+
+    .login-form img {
+      height: 150px;
+      width: 150px;
+      border-radius: 150px;
+      display: block;
+    }
 
 </style>
