@@ -17,8 +17,16 @@
 <script>
     export default {
         name: 'app',
-        components: {
-
+        mounted() {
+          if (!localStorage.bearertoken) {
+            this.$router.push('/login')
+          }
+          else if (localStorage.admin == "true") {
+            this.$router.push('/accounts/accountindex')
+          }
+          else {
+            this.$router.push('/influencers/influencerindex')
+          }
         }
     }
 </script>
