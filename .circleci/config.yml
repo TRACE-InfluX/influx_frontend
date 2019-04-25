@@ -56,14 +56,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn run build
-      - run: sudo mv dist docs
-      - run: sudo sed 's+=/+=+g' docs/index.html
+      - run: sudo sed 's+=/+=+g' dist/index.html
       - run: git checkout master
+      - run: sudo rm -R docs
+      - run: sudo mv dist docs
       - run: git add -A
-      - run: COMMIT_HASH=$(<.git/refs/heads/master)
       - run: git config user.email "carlomendoza89@gmail.com"
       - run: git config user.name "Carlo Mendoza"
-      - run: git commit -m "release-$COMMIT_HASH"
+      - run: git commit -m "Release Built"
       - run: git push origin master
 workflows:
   version: 2
