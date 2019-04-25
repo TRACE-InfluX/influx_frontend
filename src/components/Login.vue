@@ -45,11 +45,6 @@
     <!--}-->
 <style scoped>
 
-
-img {
-    display: inline-block;
-}
-
 .login-form {
     padding: 1em;
     margin: auto;
@@ -84,7 +79,6 @@ button {
   background-color: #bbb; /* backup background */
   border-radius: 150px;
   display: block;
-
 }
 
 </style>
