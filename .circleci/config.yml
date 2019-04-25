@@ -60,7 +60,7 @@ jobs:
       - run: sudo sed 's+=/+=+g' docs/index.html
       - run: git checkout master
       - run: git add -A
-      - run: commit_hash=$(.git/refs/heads/master)
+      - run: commit_hash=$(<.git/refs/heads/master)
       - run: git commit -m "release-${commit_hash}"
       - run: git push origin master
 workflows:
