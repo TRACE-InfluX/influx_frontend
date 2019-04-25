@@ -1,4 +1,5 @@
 import Router from 'vue-router'
+import Home from './components/home'
 import Influencer from './components/influencers/influencer'
 import Influencers from './components/influencers/influencerindex'
 import InfluencerForm from './components/influencers/influenceredit'
@@ -10,6 +11,7 @@ import Login from "./components/Login";
 
 //frontend Routes for our pages
 const routes = [
+    { path: '/', component: Home},
     { path: '/register', component: Register},
     { path: '/login', component: Login },
     { path: '/influencers/influencerindex', component: Influencers },
@@ -18,8 +20,6 @@ const routes = [
     { path: '/accounts/accountindex', component: Accounts },
     { path: '/accounts/account/:id', component: Account },
     { path: '/accounts/:id/accountedit', component: AccountForm}
-    
-
 ]
 
 export default new Router({routes})
