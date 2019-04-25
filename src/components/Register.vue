@@ -1,13 +1,11 @@
 <template>
-    <div class="Register">
+    <form class="register-form" @submit.prevent="submit">
         <h2>Register</h2>
-        <form id="form" @submit.prevent="submit">
-            <p><input type="text"  v-model="input.email" required placeholder="Email"></p>
-            <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
-            <button type="button" v-on:click="register()">Register</button>
-            <p><router-link to="/login">Have an account?</router-link>&nbsp;<router-link to="/login">Login</router-link></p>
-        </form>
-    </div>
+        <p><input type="text"  v-model="input.email" required placeholder="Email"></p>
+        <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
+        <button type="button" v-on:click="register()">Register</button>
+        <p><router-link to="/login">Have an account?</router-link></p>
+    </form>
 </template>
 
 <script>
@@ -15,7 +13,7 @@
   import API from '@/api.js'
 
     export default {
-        name: "Register",
+        name: "register-form",
         data() {
             return {
                 input: {
@@ -34,5 +32,8 @@
 </script>
 
 <style scoped>
-
+    .register-form > *{
+        display: block;
+        margin: 10px auto;
+    }
 </style>
