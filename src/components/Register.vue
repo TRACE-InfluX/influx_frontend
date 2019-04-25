@@ -1,17 +1,18 @@
 <template>
     <div class="Register">
-        <h1>Welcome User</h1>
+        <h2>Register</h2>
         <form id="form" @submit.prevent="submit">
             <p><input type="text"  v-model="input.email" required placeholder="Email"></p>
             <p><input type="password"  v-model="input.password" required placeholder="Password"></p>
             <button type="button" v-on:click="register()">Register</button>
+            <p><router-link to="/login">Have an account?</router-link>&nbsp;<router-link to="/login">Login</router-link></p>
         </form>
     </div>
 </template>
 
 <script>
-    //package to make httprequests
-    import API from 'axios'
+  //package to make httprequests
+  import API from '@/api.js'
 
     export default {
         name: "Register",
@@ -26,7 +27,7 @@
         methods: {
             register() {
                 const new_user = this.input;
-                API.post('http://localhost:3000/v0/accounts', { email: new_user.email, password: new_user.password });
+                API.post('/v0/accounts', { email: new_user.email, password: new_user.password });
             }
         }
     }
