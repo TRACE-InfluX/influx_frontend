@@ -57,6 +57,7 @@ jobs:
 
       - run: yarn run build
       - run: sudo sed 's+=/+=+g' dist/index.html
+      - run: echo 'www.influxapp.ca' > dist/CNAME
       - run: git checkout master
       - run: sudo rm -R docs
       - run: sudo mv dist docs
