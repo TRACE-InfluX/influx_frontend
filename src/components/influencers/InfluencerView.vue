@@ -1,16 +1,12 @@
 <!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
-    <div>
-        <ul>
-            <li>
-                <h2>Name: {{influencer.name}}</h2>
-                <p>Description: {{influencer.description}}</p>
-                <p>Activity: {{influencer.activity}}</p>
-                <p>Relevance: {{influencer.relevance}}</p>
-                <p>Engagement: {{influencer.engagement}}</p>
-            </li>
-        </ul>
-    </div>
+  <div class="influencer-view">
+      <h2>Name: {{influencer.name}}</h2>
+      <p>Description: {{influencer.description}}</p>
+      <p>Activity: {{influencer.activity}}</p>
+      <p>Relevance: {{influencer.relevance}}</p>
+      <p>Engagement: {{influencer.engagement}}</p>
+  </div>
 </template>
 
 <script>

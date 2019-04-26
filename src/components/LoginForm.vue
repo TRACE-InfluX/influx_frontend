@@ -15,7 +15,6 @@
   import API from '@/api.js'
 
     export default {
-        name: 'login-form',
         data() {
             return {
                 input: {
@@ -49,14 +48,14 @@
 
 
 <style scoped>
-    .login-form {
+    form {
         padding: 1em;
         margin: auto;
         display: block;
         width: 240px;
     }
 
-    .login-form > * {
+    form > * {
         display: block;
         width: 100%;
         margin: 16px auto;
@@ -76,7 +75,7 @@
         display: inline-block;
     }
 
-    .login-form img {
+    form img {
       height: 150px;
       width: 150px;
       border-radius: 150px;

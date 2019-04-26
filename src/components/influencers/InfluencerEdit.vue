@@ -1,7 +1,7 @@
 <!-- template for editing an influencer.-->
 <template>
     <!--calls submit function in methods array below-->
-    <form id="form"
+    <form class="influencer-edit"
           @submit.prevent="submit">
         <p>
             <label for="name">Name: </label>
@@ -50,7 +50,6 @@
   import API from '@/api.js'
 
 export default {
-  name:"influencerForm",
   data() {
       return {
         //data for influencers

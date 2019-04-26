@@ -3,30 +3,22 @@
     <div id="app">
         <nav>
             <router-link to="/"></router-link>
-            <div class ="profile">
+            <div class="profile">
                 <router-link to="/register">Register</router-link>
                 <router-link to="/login">Login</router-link>
                 <img src="@/assets/profile.png">
             </div>
         </nav>
         <router-view></router-view>
-        <router-link to="/influencers/influencerindex">Influencers</router-link> &nbsp;
-        <router-link to="/accounts/accountindex">Accounts</router-link>
+        <router-link to="/influencers">Influencers</router-link> &nbsp;
+        <router-link to="/accounts">Accounts</router-link>
     </div>
 </template>
 <script>
     export default {
         name: 'app',
         mounted() {
-          if (!localStorage.bearertoken) {
-            this.$router.push('/login')
-          }
-          else if (localStorage.admin == "true") {
-            this.$router.push('/accounts/accountindex')
-          }
-          else {
-            this.$router.push('/influencers/influencerindex')
-          }
+          this.$router.push('/')
         }
     }
 </script>

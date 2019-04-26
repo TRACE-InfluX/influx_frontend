@@ -1,15 +1,9 @@
 <!--Template for showing a single account-->
 <template>
-    <div>
-        <ul>
-            <li>
-                <h2>Name: {{account.name}}</h2>
-                <p>Email: {{account.email}}</p>
-                <p>Website: {{account.website}}</p>
-
-            </li>
-        </ul>
-        
+    <div class="account-view">
+      <h2>Name: {{account.name}}</h2>
+      <p>Email: {{account.email}}</p>
+      <p>Website: {{account.website}}</p>
     </div>
 </template>
 

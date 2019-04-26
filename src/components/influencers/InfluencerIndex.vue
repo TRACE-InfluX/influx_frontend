@@ -1,6 +1,6 @@
 <!--Template for default view for all influencers-->
 <template>
-  <ul>
+  <ul class="influencer-index">
     <h1>Influencers</h1>
       <!--Looping through all influencers retrieved from API call to backend-->
     <li v-for="influencer in influencers" :key="influencer.id">
@@ -9,7 +9,7 @@
       <p>Activity: {{influencer.activity}}</p>
       <p>Relevance: {{influencer.relevance}}</p>
       <p>Engagement: {{influencer.engagement}}</p>
-      <router-link :to="`/influencers/${influencer.id}/influenceredit`" tag="button">Edit</router-link>
+      <router-link :to="`/influencers/${influencer.id}/edit`" tag="button">Edit</router-link>
       <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
     </li>
 

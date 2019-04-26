@@ -2,7 +2,7 @@
 <!-- edit page for accounts -->
 <template>
     <!-- calls submit function on form submit-->
-    <form id="form"
+    <form class="account-edit"
           @submit.prevent="submit">
         <p>
             <label for="name">Name: </label>
@@ -44,7 +44,6 @@
   import API from '@/api.js'
 
 export default {
-  name:"accountform",
   data() {
       return {
         //data for specific account

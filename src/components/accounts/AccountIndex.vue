@@ -1,15 +1,14 @@
 <!-- default account view - displays all accounts-->
 <template>
-    <div>
-        <h1>Accounts</h1>
-        <ul>
-            <li v-for="account in accounts" :key="account.uid">
-                <!--<h2>Name: <router-link :to="'/accounts/account/' + account.uid">{{account.name}}</router-link></h2>-->
-                Email: {{account.email}}<br />
-                      <!--<router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
-                      <input type='button' value='Delete' @click='deleteRecord(account.id);'>-->
-            </li>
-        </ul>
+  <ul class="account-index">
+  <h1>Accounts</h1>
+      <li v-for="account in accounts" :key="account.uid">
+          <!--<h2>Name: <router-link :to="'/accounts/account/' + account.uid">{{account.name}}</router-link></h2>-->
+          Email: {{account.email}}
+        <!--<router-link :to="`/accounts/${account.id}/accountedit`" tag="button">Edit</router-link>
+        <input type='button' value='Delete' @click='deleteRecord(account.id);'>-->
+      </li>
+  </ul>
         <!-- adding new account-->
         <!-- <h1> Add New Account </h1> -->
         <!-- calls submit function in methods array below-->
@@ -21,7 +20,6 @@
             <input type="submit" name="Add" />
             <input type="reset" value="Clear" @click='resetRecord' />
         </form> -->
-    </div>
 </template>
 
 <script>

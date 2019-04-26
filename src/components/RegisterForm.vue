@@ -14,7 +14,6 @@
   import API from '@/api.js'
 
     export default {
-        name: "register-form",
         data() {
             return {
                 input: {
@@ -33,13 +32,13 @@
 </script>
 
 <style scoped>
-    .register-form {
+    form {
         padding: 1em;
         margin: auto;
         display: block;
         width: 240px;
     }
-    .register-form > *{
+    form > *{
         display: block;
         width: 100%;
         margin: 16px auto;
