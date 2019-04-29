@@ -11,14 +11,14 @@
         <div class="popular">
             <h1>Popular</h1>
                 <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-                    <div class="tile" @click="open(popularInfluencer.id)">
-                        <img src="@/assets/profile.png">
+                    <div class="tile" v-on:click="active=!active" v-bind:class="{active:active}" @click="open(popularInfluencer.id)">
+                        <img src="@/assets/why.jpg">
                         <influencer-view :influencer="popularInfluencer" type="tile"/>
                     </div>
                 </li>
         </div>
         <dialog open="!dialog">
-            <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
+            <influencer-view :influencer="popular[selected_influencer]" type="detailed" v-show="active"/>
         </dialog>
     </main>
 </template>
@@ -32,6 +32,7 @@
         ],
         data() {
             return {
+                active: false,
                 popular: [
                     {
                         "id": 0,
@@ -103,6 +104,7 @@
     .popular img {
         height: 100px;
         width: 100px;
+        border-radius: 50%;
     }
 
     .tile {
