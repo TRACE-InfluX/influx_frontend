@@ -1,15 +1,29 @@
 <!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
-  <div class="influencer-view">
-      <h2>Name: {{influencer.name}}</h2>
-      <p>Description: {{influencer.description}}</p>
-      <p>Activity: {{influencer.activity}}</p>
-      <p>Relevance: {{influencer.relevance}}</p>
-      <p>Engagement: {{influencer.engagement}}</p>
-      <div v-if="type === 'detailed'">
-          <p>{{type}}</p>
-      </div>
-  </div>
+    <div v-if="type === 'detailed'" class="influencer-view">
+        <h2>{{influencer.name}}</h2>
+        <h3>{{influencer.description}}</h3>
+        <p>Activity: {{influencer.activity}}</p>
+        <p>Relevance: {{influencer.relevance}}</p>
+        <p>Engagement: {{influencer.engagement}}</p>
+        <button>Contact</button>
+        <button>Favourite</button>
+        <p>Reach</p>
+        <p>Conversion</p>
+        <p>Cost</p>
+        <p>Areas of Influence</p>
+        <p>Word Cloud</p>
+    </div>
+    <div v-else-if="type === 'tile'" class="influencer-view">
+        <p>{{influencer.name}}</p>
+    </div>
+    <div v-else-if="type === 'listing'" class="influencer-view">
+        <h2>{{influencer.name}}</h2>
+        <p>{{influencer.description}}</p>
+        <p>Activity: {{influencer.activity}}</p>
+        <p>Relevance: {{influencer.relevance}}</p>
+        <p>Engagement: {{influencer.engagement}}</p>
+    </div>
 </template>
 
 <script>
@@ -18,7 +32,7 @@
 
     export default {
         props: {
-          type: String,
+            type: String,
             influencer: Object
         },
         data() {
