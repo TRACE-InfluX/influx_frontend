@@ -12,6 +12,7 @@
         <router-view></router-view>
         <router-link to="/influencers">Influencers</router-link> &nbsp;
         <router-link to="/accounts">Accounts</router-link>
+        
     </div>
 </template>
 <script>

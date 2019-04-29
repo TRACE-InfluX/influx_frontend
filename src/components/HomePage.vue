@@ -7,6 +7,7 @@
             <button type="button">Discover</button>
         </form>
     </header>
+
 </template>
 
 <script>
