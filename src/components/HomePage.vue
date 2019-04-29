@@ -4,7 +4,7 @@
             <form>
                 <h1>Connect With Your World</h1>
                 <h2>Discover Influencers Today!</h2>
-                <input type="text" placeholder="Search">
+                <input class="search-bar" type="text" placeholder="Search">
                 <button type="button">Discover</button>
             </form>
         </header>
@@ -114,5 +114,10 @@
         border: 1px solid grey;
         padding: 12px;
         margin: auto;
+    }
+
+    .search-bar {
+        width: 350px;
+        min-width: 200px;  
     }
 </style>
