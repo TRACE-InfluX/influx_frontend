@@ -4,13 +4,20 @@
     <h1>Influencers</h1>
       <!--Looping through all influencers retrieved from API call to backend-->
     <li v-for="influencer in influencers" :key="influencer.id">
-        <h2>Name: <router-link :to="`/influencers/${influencer.id}`">{{influencer.name}}</router-link></h2>
-      <p>Description: {{influencer.description}}</p>
-      <p>Activity: {{influencer.activity}}</p>
-      <p>Relevance: {{influencer.relevance}}</p>
-      <p>Engagement: {{influencer.engagement}}</p>
-      <router-link :to="`/influencers/${influencer.id}/edit`" tag="button">Edit</router-link>
-      <input type='button' value='Delete' @click='deleteRecord(influencer.id);'>
+
+      <influencer-view
+        :influencer="influencer"
+        :type="getType(influencer.id)"
+        @click.native="select(influencer.id)"
+      />
+
+      <!--<h2>Name: <router-link :to="`/influencers/${influencer.id}`">{{influencer.name}}</router-link></h2>-->
+      <!--<p>Description: {{influencer.description}}</p>-->
+      <!--<p>Activity: {{influencer.activity}}</p>-->
+      <!--<p>Relevance: {{influencer.relevance}}</p>-->
+      <!--<p>Engagement: {{influencer.engagement}}</p>-->
+      <!--<router-link :to="`/influencers/${influencer.id}/edit`" tag="button">Edit</router-link>-->
+      <!--<input type='button' value='Delete' @click='deleteRecord(influencer.id);'>-->
     </li>
 
 
@@ -34,12 +41,32 @@
 
 <script>
   import API from '@/api.js'
+  import InfluencerView from "./InfluencerView";
 
 export default {
+  components: {InfluencerView},
   data() {
       return {
         //array of influencers to display
-        influencers: [],
+        influencers: [
+          {
+            "id": 0,
+            "name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+            "activity": 111,
+            "relevance": 222,
+            "engagement": 333
+          },
+          {
+            "id": 1,
+            "name": "Dankiel Yeetington",
+            "description": "Dankest yeet watch maker",
+            "activity": 44,
+            "relevance": 55,
+            "engagement": 66
+          }
+        ],
+        selected_influencer: '',
         //data for new influencer being added
         new_influencer: {}
     }
@@ -48,17 +75,23 @@ export default {
     this.loadInfluencers()
   },
   methods: {
+      select(id) {
+        this.selected_influencer = id;
+      },
+      getType(id) {
+        return id === this.selected_influencer ? "detailed" : "listing"
+      },
       loadInfluencers() {
-        //GET for all influencers in influencer resource
-      API.get('/v0/influencers')
-        .then(res => {
-          this.influencers = res.data.data
-            .sort((a,b)=>{
-              return (b.activity + b.relevance + b.engagement)/3
-                    -(a.activity + a.relevance + a.engagement)/3
-            })
-        })
-        .catch(alert)
+      //   //GET for all influencers in influencer resource
+      // API.get('/v0/influencers')
+      //   .then(res => {
+      //     this.influencers = res.data.data
+      //       .sort((a,b)=>{
+      //         return (b.activity + b.relevance + b.engagement)/3
+      //               -(a.activity + a.relevance + a.engagement)/3
+      //       })
+      //   })
+      //   .catch(alert)
       },
       //DELETE call to backend
     deleteRecord(id){
@@ -85,6 +118,8 @@ export default {
 <style lang="scss" scoped>
   li {
     width: 300px;
-    display: inline-block;
+    display: block;
+    margin:auto;
+    padding: 12px;
   }
 </style>
