@@ -1,5 +1,6 @@
 <!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
+
     <div v-if="type === 'detailed'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <h3>{{influencer.description}}</h3>
@@ -14,9 +15,11 @@
         <p>Areas of Influence</p>
         <p>Word Cloud</p>
     </div>
+
     <div v-else-if="type === 'tile'" class="influencer-view">
         <p>{{influencer.name}}</p>
     </div>
+
     <div v-else-if="type === 'listing'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <p>{{influencer.description}}</p>
@@ -24,11 +27,12 @@
         <p>Relevance: {{influencer.relevance}}</p>
         <p>Engagement: {{influencer.engagement}}</p>
     </div>
+
 </template>
 
 <script>
     //package to send httprequests
-    import API from '@/api.js'
+    // import API from '@/api.js'
 
     export default {
         props: {

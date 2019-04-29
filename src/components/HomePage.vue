@@ -3,8 +3,9 @@
   <header>
       <h1>Connect With Your World</h1>
       <h2>Discover Influencers Today!</h2>
-    <form>
+    <form @submit.prevent="search">
       <input type="text" placeholder="Search">
+      <i class="zmdi zmdi-search" />
       <button type="button">Discover</button>
     </form>
   </header>
@@ -24,9 +25,7 @@
 </template>
 
 <script>
-	import InfluencerView from "./influencers/InfluencerView";
 	export default {
-		components: {InfluencerView},
 		data() {
 			return {
 				popular: [
@@ -47,7 +46,7 @@
 						"engagement": 66
 					}
 				],
-				selected_influencer: '',
+				selected_influencer: 0,
 				dialog: false
 			}
 		},
@@ -61,7 +60,10 @@
 				{
 					this.dialog = false;
 				}
-			}
+      },
+      search() {
+        this.$router.push('influencers')
+      }
 		}
 	}
 </script>
@@ -93,10 +95,21 @@
     }
 
     form {
-      height: 5 * $units;
+      $search-height: 5 * $units;
+
+      height: $search-height;
       display: flex;
 
-      > * {
+      i {
+        position: absolute;
+        color: gray;
+        height: $search-height;
+        width: $search-height;
+        line-height: $search-height;
+        font-size: 3 * $units;
+      }
+
+      input, button {
         font-size: 1.8 * $units;
         border-radius: 0.5 * $units;
         border: none;
@@ -106,7 +119,7 @@
       input {
         flex: 1;
         margin-right: 1 * $units;
-        padding-left: 1.5 * $units;
+        padding-left: 5 * $units;
       }
 
       button {
