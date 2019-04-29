@@ -19,6 +19,7 @@
 		</div>
 		<dialog :open="dialog" @click="close">
 			<influencer-view :influencer="popular[selected_influencer]" type="detailed" v-show="active"/>
+			<div class="X" :open="dialog" @click="close">X</div> 
 		</dialog>
 	</main>
 </template>

@@ -1,6 +1,6 @@
 <!--Template used for rendering an individual influencer - used for show / GET influencer by ID-->
 <template>
-    <div v-if="type === 'detailed'" class="influencer-view">
+    <div id="detailed" v-if="type === 'detailed'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <h3>{{influencer.description}}</h3>
         <p>Activity: {{influencer.activity}}</p>
@@ -14,10 +14,10 @@
         <p>Areas of Influence</p>
         <p>Word Cloud</p>
     </div>
-    <div v-else-if="type === 'tile'" class="influencer-view">
-        <p>{{influencer.name}}</p>
+    <div id="tile" v-else-if="type === 'tile'" class="influencer-view">
+        <h3>{{influencer.name}}</h3>
     </div>
-    <div v-else-if="type === 'listing'" class="influencer-view">
+    <div id="listing" v-else-if="type === 'listing'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <p>{{influencer.description}}</p>
         <p>Activity: {{influencer.activity}}</p>
@@ -57,9 +57,9 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
-    li {
-        width: 300px;
-        display: inline-block;
+    #detailed {
+        width: 500px; 
+        background-color: green; 
     }
 
     
