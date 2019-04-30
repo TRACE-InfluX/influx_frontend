@@ -7,7 +7,7 @@
 
       <form @submit.prevent="search">
         <i class="zmdi zmdi-search" />
-        <input type="search" v-model="query" placeholder="Search">
+        <input ref="search" type="search" v-model="query" placeholder="Search">
         <button>Discover</button>
       </form>
 
@@ -76,7 +76,13 @@
 				dialog: false,
         query: ''
 			}
-		},
+    },
+    mounted() {
+      this.$refs.search.focus();
+      window.onkeydown = () => {
+        this.$refs.search.focus();
+      }
+    },
 		methods: {
 			open(id) {
 				this.selected_influencer = id;
