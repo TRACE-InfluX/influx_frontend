@@ -1,4 +1,5 @@
 <template>
+<div class = "test-page">
     <form class="register-form" @submit.prevent="submit">
         <h2>Register</h2>
         <input type="text"  v-model="input.email" required placeholder="Email">
@@ -7,6 +8,7 @@
         <p>Have an account?<p/>
         <router-link to="/login">Log in now</router-link>
     </form>
+    </div> <!-- test-pages -->
 </template>
 
 <script>
@@ -32,6 +34,11 @@
 </script>
 
 <style scoped>
+
+    #test-page{
+        width:1080px;
+        height:5920px;
+    }
     h2 {
 
     }

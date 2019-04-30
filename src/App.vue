@@ -10,6 +10,22 @@
     </nav>
 
     <router-view></router-view>
+ <footer> <!-- Footer-->
+        <div class = "column_L">
+          <h2>Ready to get started? </h2>
+          <p> Theon. You're good man. Thank you. </p>
+        </div> <!-- left column -->
+
+        <div class = "column_R">
+          <ul>
+            <p> Text Link</p>
+            <p> Text Link</p>
+            <p> Text Link</p>
+            <p> Text Link</p>
+            <p> Text Link</p>
+          </ul>
+        </div> <!-- right column -->
+    </footer> <!-- Footer --> 
 
   </div>
 </template>
@@ -38,6 +54,8 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position:relative;
+    height:2000px;
 
     > nav {
       display: flex;
@@ -92,6 +110,35 @@
       }
 
     }
+
+    footer {
+    
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 300px;
+      background-color: #F2F2F2;
+      color: black;
+
+      > .column_L {
+        padding-top: 5%;
+        padding-bottom: 5%;
+        margin-left:10%;
+        float:left;
+        width: 50%;
+      }
+
+      >.column_R{
+        padding-top: 5%;
+        padding-bottom: 5%;
+        margin-right:10%;
+        float:right;
+      }
+
+    }
+
+
   }
 
 </style>

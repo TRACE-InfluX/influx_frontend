@@ -88,7 +88,7 @@
         text-align:center;
         margin-top:10%;
         position: relative;
-        height: 30%;
+        height: 400px;
     }
 
     h2 {
