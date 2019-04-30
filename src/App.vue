@@ -42,11 +42,13 @@
     > nav {
       display: flex;
       justify-content: flex-end;
-      position: fixed;
+     position: fixed;
       height: $header-height;
       color: white;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(57,57,57,0.9);
+      opacity: 90%;
       width: 100%;
+      top: 0;
 
       > * {
         display: inline-block;

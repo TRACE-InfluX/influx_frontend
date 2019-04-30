@@ -122,4 +122,9 @@ export default {
     margin:auto;
     padding: 12px;
   }
+  
+  .influencer-index{
+    text-align:center;
+    padding-top: 10%;
+  }
 </style>

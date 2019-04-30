@@ -118,7 +118,7 @@
   }
 
 	.popular {
-		height: 200px;
+		height: 5000px;
 		display: inline-block;
 		padding: 12px;
 	}
