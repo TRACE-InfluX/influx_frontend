@@ -5,7 +5,7 @@
       <h2>Discover Influencers Today!</h2>
     <form>
       <input type="text" placeholder="Search">
-      <button type="button">Discover</button>
+      <button type="button" >Discover</button>
     </form>
   </header>
   <div class="popular">
@@ -24,46 +24,49 @@
 </template>
 
 <script>
-	import InfluencerView from "./influencers/InfluencerView";
-	export default {
-		components: {InfluencerView},
-		data() {
-			return {
-				popular: [
-					{
-						"id": 0,
-						"name": "Subtle Asian Cat",
-						"description": "A surprised Pikachu",
-						"activity": 111,
-						"relevance": 222,
-						"engagement": 333
-					},
-					{
-						"id": 1,
-						"name": "Dankiel Yeetington",
-						"description": "Dankest yeet watch maker",
-						"activity": 44,
-						"relevance": 55,
-						"engagement": 66
-					}
-				],
-				selected_influencer: '',
-				dialog: false
-			}
-		},
-		methods: {
-			open(id) {
-				this.selected_influencer = id;
-				this.dialog = true;
-			},
-			close() {
-				if(this.dialog)
-				{
-					this.dialog = false;
-				}
-			}
-		}
-	}
+  import InfluencerView from "./influencers/InfluencerView";
+  export default {
+    components: {InfluencerView},
+    data() {
+      return {
+        popular: [
+          {
+            "id": 0,
+            "name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+            "activity": 111,
+            "relevance": 222,
+            "engagement": 333
+          },
+          {
+            "id": 1,
+            "name": "Dankiel Yeetington",
+            "description": "Dankest yeet watch maker",
+            "activity": 44,
+            "relevance": 55,
+            "engagement": 66
+          }
+        ],
+        selected_influencer: '',
+        dialog: false
+      }
+    },
+    methods: {
+      open(id) {
+        this.selected_influencer = id;
+        this.dialog = true;
+      },
+      close() {
+        if(this.dialog)
+        {
+          this.dialog = false;
+        }
+      },
+      search(term) {
+        alert(term);
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
