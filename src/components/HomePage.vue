@@ -1,37 +1,37 @@
 <template>
-<div class="home-page">
+  <div class="home-page">
 
-  <header>
-    <h1>Connect With Your World</h1>
-    <h2>Discover Influencers Today!</h2>
+    <header>
+      <h1>Connect With Your World</h1>
+      <h2>Discover Influencers Today!</h2>
 
-    <form @submit.prevent="search">
-      <i class="zmdi zmdi-search" />
-      <input type="text" placeholder="Search">
-      <button>Discover</button>
-    </form>
+      <form @submit.prevent="search">
+        <i class="zmdi zmdi-search" />
+        <input type="text" placeholder="Search">
+        <button>Discover</button>
+      </form>
 
-  </header>
+    </header>
 
-  <main>
+    <main>
 
-    <h3>Popular</h3>
-    <ul class="popular">
-      <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-        <influencer-view 
-          @click.native="open(popularInfluencer.id)"
-          :influencer="popularInfluencer" type="tile"
-        />
-      </li>
-    </ul>
+      <h3>Popular</h3>
+      <ul class="popular">
+        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+          <influencer-view type="tile"
+            @click.native="open(popularInfluencer.id)"
+            :influencer="popularInfluencer"
+          />
+        </li>
+      </ul>
 
-  </main>
+    </main>
 
-  <dialog :open="dialog" @click="close">
-    <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
-  </dialog>
+    <dialog :open="dialog" @click="close">
+      <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
+    </dialog>
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -73,7 +73,8 @@
 					}
 				],
 				selected_influencer: 0,
-				dialog: false
+				dialog: false,
+        query: ''
 			}
 		},
 		methods: {
@@ -88,7 +89,8 @@
 				}
       },
       search() {
-        this.$router.push('/influencers')
+        localStorage.setItem("query", this.query);
+        this.$router.push('/influencers');
       }
 		}
 	}
