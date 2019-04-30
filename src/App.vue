@@ -34,8 +34,12 @@
     box-sizing: border-box;
   }
 
+  button {
+    cursor: pointer;
+  }
+
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -84,7 +88,8 @@
       }
 
       .profile {
-        width: $header-height;
+        width: $header-height - 2 * $units;
+        margin: 1 * $units;
         background: url('~@/assets/profile.png');
         background-size: 100%;
       }

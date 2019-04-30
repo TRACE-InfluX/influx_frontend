@@ -1,26 +1,36 @@
 <template>
 <div class="home-page">
+
   <header>
-      <h1>Connect With Your World</h1>
-      <h2>Discover Influencers Today!</h2>
+    <h1>Connect With Your World</h1>
+    <h2>Discover Influencers Today!</h2>
+
     <form @submit.prevent="search">
-      <input type="text" placeholder="Search">
       <i class="zmdi zmdi-search" />
-      <button type="button">Discover</button>
+      <input type="text" placeholder="Search">
+      <button>Discover</button>
     </form>
+
   </header>
-  <div class="popular">
-    <h1>Popular</h1>
+
+  <main>
+
+    <h3>Popular</h3>
+    <ul class="popular">
       <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-        <div class="tile" @click="open(popularInfluencer.id)">
-          <img src="@/assets/profile.png">
-          <influencer-view :influencer="popularInfluencer" type="tile"/>
-        </div>
+        <influencer-view 
+          @click.native="open(popularInfluencer.id)"
+          :influencer="popularInfluencer" type="tile"
+        />
       </li>
-  </div>
+    </ul>
+
+  </main>
+
   <dialog :open="dialog" @click="close">
     <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
   </dialog>
+
 </div>
 </template>
 
@@ -32,13 +42,29 @@
 					{
 						"id": 0,
 						"name": "Subtle Asian Cat",
-						"description": "A surprised Pikachu",
+            "description": "A surprised Pikachu",
 						"activity": 111,
 						"relevance": 222,
 						"engagement": 333
 					},
 					{
 						"id": 1,
+						"name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+						"activity": 111,
+						"relevance": 222,
+						"engagement": 333
+					},
+					{
+						"id": 2,
+						"name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+						"activity": 111,
+						"relevance": 222,
+						"engagement": 333
+					},
+					{
+						"id": 3,
 						"name": "Dankiel Yeetington",
 						"description": "Dankest yeet watch maker",
 						"activity": 44,
@@ -62,7 +88,7 @@
 				}
       },
       search() {
-        this.$router.push('influencers')
+        this.$router.push('/influencers')
       }
 		}
 	}
@@ -95,17 +121,17 @@
     }
 
     form {
-      $search-height: 5 * $units;
+      $height: 5 * $units;
 
-      height: $search-height;
+      height: $height;
       display: flex;
 
       i {
         position: absolute;
         color: gray;
-        height: $search-height;
-        width: $search-height;
-        line-height: $search-height;
+        height: $height;
+        width: $height;
+        line-height: $height;
         font-size: 3 * $units;
       }
 
@@ -119,7 +145,7 @@
       input {
         flex: 1;
         margin-right: 1 * $units;
-        padding-left: 5 * $units;
+        padding-left: $height;
       }
 
       button {
@@ -130,21 +156,38 @@
     }
   }
 
-	.popular {
-		height: 200px;
-		display: inline-block;
-		padding: 12px;
-	}
-	.popular img {
-		height: 100px;
-		width: 100px;
-	}
+  main {
 
-	.tile {
-		border: 1px solid grey;
-		padding: 12px;
-	}
+    h3 {
+      $height: 18 * $units;
 
+      height: $height;
+      line-height: $height;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 5 * $units;
+      color: #999;
+      letter-spacing: 1.5 * $units;
+    }
+
+    .popular {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+
+      li {
+        display: inline-block;
+        max-width: 32 * $units;
+        flex: 1;
+        .influencer-view {
+          display: block;
+          margin: auto;
+        }
+      }
+    }
+
+  }
 	dialog {
 		border: 1px solid grey;
 		padding: 12px;
