@@ -1,80 +1,99 @@
 <template>
-<div class="home-page">
-  <header>
+  <div class="home-page">
+
+    <header>
       <h1>Connect With Your World</h1>
       <h2>Discover Influencers Today!</h2>
-    <form @submit.prevent="search()">
-      <input type="text" placeholder="Search" v-model="query">
-      <button type="submit">Discover</button>
-    </form>
-  </header>
-	
-	
-  <div class="popular">
-		<h1 class="popular-h1">Popular</h1>
-				<li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-					<div class="tile" v-on:click="dialog=!dialog" v-bind:class="{dialog:dialog}" @click="open(popularInfluencer.id)">
-						<img class="popimg" src="@/assets/why.jpg" :style="style">
-						<influencer-view :influencer="popularInfluencer" type="tile"/>
-					</div>
-				</li>
-		</div>
-		<dialog :open="dialog" @click="close">
-			<influencer-view :influencer="popular[selected_influencer]" type="detailed" v-show="dialog"/>
-		</dialog>
 
-		<div class="features">
-			<h2> some features go here blah </h2>
-		</div> 	
-</div>
+      <form @submit.prevent="search">
+        <i class="zmdi zmdi-search" />
+        <input type="search" v-model="query" placeholder="Search">
+        <button>Discover</button>
+      </form>
+
+    </header>
+
+    <main>
+
+      <h3>Popular</h3>
+      <ul class="popular">
+        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+          <influencer-view type="tile"
+            @click.native="open(popularInfluencer.id)"
+            :influencer="popularInfluencer"
+          />
+        </li>
+      </ul>
+
+    </main>
+
+    <dialog :open="dialog" @click="close">
+      <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
+    </dialog>
+
+  </div>
 </template>
 
 <script>
-  import InfluencerView from "./influencers/InfluencerView";
-  export default {
-    components: {InfluencerView},
-    data() {
-      return {
-        popular: [
-          {
-            "id": 0,
-            "name": "Subtle Asian Cat",
+	export default {
+		data() {
+			return {
+				popular: [
+					{
+						"id": 0,
+						"name": "Subtle Asian Cat",
             "description": "A surprised Pikachu",
-            "activity": 111,
-            "relevance": 222,
-            "engagement": 333
-          },
-          {
-            "id": 1,
-            "name": "Dankiel Yeetington",
-            "description": "Dankest yeet watch maker",
-            "activity": 44,
-            "relevance": 55,
-            "engagement": 66
-          }
-        ],
-        selected_influencer: '',
-        dialog: false,
+						"activity": 111,
+						"relevance": 222,
+						"engagement": 333
+					},
+					{
+						"id": 1,
+						"name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+						"activity": 111,
+						"relevance": 222,
+						"engagement": 333
+					},
+					{
+						"id": 2,
+						"name": "Subtle Asian Cat",
+            "description": "A surprised Pikachu",
+						"activity": 111,
+						"relevance": 222,
+						"engagement": 333
+					},
+					{
+						"id": 3,
+						"name": "Dankiel Yeetington",
+						"description": "Dankest yeet watch maker",
+						"activity": 44,
+						"relevance": 55,
+						"engagement": 66
+					}
+				],
+				selected_influencer: 0,
+				dialog: false,
         query: ''
-      }
-    },
-    methods: {
-      open(id) {
-        this.selected_influencer = id;
-        this.dialog = true;
-      },
-      close() {
-        if(this.dialog)
-        {
-          this.dialog = false;
-        }
+			}
+		},
+		methods: {
+			open(id) {
+				this.selected_influencer = id;
+				this.dialog = true;
+			},
+			close() {
+				if(this.dialog)
+				{
+					this.dialog = false;
+				}
       },
       search() {
         localStorage.setItem("query", this.query);
         this.$router.push('/influencers');
       }
-    }
-  }
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -106,10 +125,21 @@
     }
 
     form {
-      height: 5 * $units;
+      $height: 5 * $units;
+
+      height: $height;
       display: flex;
 
-      > * {
+      i {
+        position: absolute;
+        color: gray;
+        height: $height;
+        width: $height;
+        line-height: $height;
+        font-size: 3 * $units;
+      }
+
+      input, button {
         font-size: 1.8 * $units;
         border-radius: 0.5 * $units;
         border: none;
@@ -118,8 +148,9 @@
 
       input {
         flex: 1;
-        margin-right: 1 * $units;
-        padding-left: 1.5 * $units;
+        padding-left: $height;
+        margin-right:  1 * $units;
+        padding-right: 1 * $units;
       }
 
       button {
@@ -131,48 +162,38 @@
     }
   }
 
-	li { 
-				list-style: none; 
-				display: inline-block;
-			}
+  main {
 
-	.popular {
-		margin-left: 40 * $units; 
-		padding: 1 * $units;
-	}
+    h3 {
+      $height: 18 * $units;
 
-	.popular-h1 {
-		display: block; 
-		font-size: 5 * $units; 
-	}
+      height: $height;
+      line-height: $height;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 5 * $units;
+      color: #999;
+      letter-spacing: 1.5 * $units;
+    }
 
-	.popimg {
-	
-		height: 20 * $units; 
-		width: 20 * $units; 
-		border-radius: 50%;
-	}
+    .popular {
+      display: flex;
+      width: 100%;
+      justify-content: center;
 
-	.tile {
-		margin: 1 * $units; 
-		width: 30 * $units;
-		height: 30 * $units;
-		border: 1px solid #ededed;
-		padding: 2 * $units; 
-		text-align: center; 
-		transition: all .3s ease-in-out;
-		box-shadow: 1px 1px grey; 
-		
-		&:hover {
-			background-color: #ededed;
-			transform: scale(1.1);
-			transform: rotate(180deg);
-			
-		}
-		
-	}
+      li {
+        display: inline-block;
+        max-width: 32 * $units;
+        flex: 1;
+        .influencer-view {
+          display: block;
+          margin: auto;
+        }
+      }
+    }
 
-
+  }
 	dialog {
 
 		transition: all .3s ease-in-out;

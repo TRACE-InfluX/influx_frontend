@@ -1,7 +1,7 @@
 <!--Template used for rendering an individual influencer - used for show / GET influencer by ID-->
 <template>
-    <div id="detailed" v-if="type === 'detailed'" class="influencer-view">
-        <div class="close-me">X</div>
+
+    <article v-if="type === 'detailed'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <h3>{{influencer.description}}</h3>
         <p>Activity: {{influencer.activity}}</p>
@@ -14,23 +14,26 @@
         <p>Cost</p>
         <p>Areas of Influence</p>
         <p>Word Cloud</p>
-    </div>
-    <div id="tile" v-else-if="type === 'tile'" class="influencer-view">
-        <div class="popular-img" :style="style"></div> 
-        <p>{{influencer.name}}</p>
-    </div>
-    <div id="listing" v-else-if="type === 'listing'" class="influencer-view">
+    </article>
+
+    <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
+      <img>
+      <p>{{influencer.name}}</p>
+    </article>
+
+    <article v-else-if="type === 'listing'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
         <p>{{influencer.description}}</p>
         <p>Activity: {{influencer.activity}}</p>
         <p>Relevance: {{influencer.relevance}}</p>
         <p>Engagement: {{influencer.engagement}}</p>
-    </div>
+    </article>
+
 </template>
 
 <script>
     //package to send httprequests
-    import API from '@/api.js'
+    // import API from '@/api.js'
 
     export default {
         props: {
@@ -59,35 +62,34 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
-    $primaryBtnText: rgb(255, 255, 255);
+  .influencer-tile {
 
-    button {
-        background: $primaryBtnText; 
+    position: relative;
+    display: inline-block;
+    width: 24 * $units;
+    height: 26 * $units;
+    box-shadow: $shadow;
+
+    img {
+      background-image: url("~@/assets/influxlogo.png");
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
     }
 
-    .influencer-view {
-        display: inline-block; 
+    p {
+      $height: 6 * $units;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: $height;
+      line-height: $height;
+      display: block;
+      background-color: white;
+      text-align: center;
+      font-size: 2 * $units;
     }
-
-    .close-me {
-        margin-left: 50 * $units; 
-    }
-
-    #tile {
-       
-    }
-    
-
-    #listing {
-    
-    }
-
-    #detailed {
-        padding: 5 * $units; 
-        width: 60 * $units;
-        height: 80 * $units; 
-        background-image: linear-gradient(135deg, #f5f7fa 0%, #ededed 100%);
-    }
-
-    
+  }
 </style>
