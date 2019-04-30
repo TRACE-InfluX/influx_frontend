@@ -3,9 +3,9 @@
   <header>
       <h1>Connect With Your World</h1>
       <h2>Discover Influencers Today!</h2>
-    <form>
-      <input type="text" placeholder="Search">
-      <button type="button" >Discover</button>
+    <form @submit.prevent="search()">
+      <input type="text" placeholder="Search" v-model="query">
+      <button type="submit">Discover</button>
     </form>
   </header>
   <div class="popular">
@@ -48,7 +48,8 @@
           }
         ],
         selected_influencer: '',
-        dialog: false
+        dialog: false,
+        query: ''
       }
     },
     methods: {
@@ -62,8 +63,9 @@
           this.dialog = false;
         }
       },
-      search(term) {
-        alert(term);
+      search() {
+        localStorage.setItem("query", this.query);
+        this.$router.push('/influencers');
       }
     }
   }
