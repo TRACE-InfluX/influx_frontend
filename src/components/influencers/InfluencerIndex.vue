@@ -44,11 +44,9 @@
 
 
 <script>
-  import API from '@/api.js'
-  import InfluencerView from "./InfluencerView";
+import API from '@/api.js'
 
 export default {
-  components: {InfluencerView},
   data() {
       return {
         //array of influencers to display

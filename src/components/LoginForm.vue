@@ -1,14 +1,14 @@
 <!-- template for a login page.-->
 <template>
-    <form class="login-form" @submit.prevent="submit">
-        <h2>Login</h2>
-        <img src="@/assets/profile.png">
-        <input type="text"  v-model="input.username" required placeholder="Email">
-        <input type="password"  v-model="input.password" required placeholder="Password">
-        <button type="button" v-on:click="login()">Login</button>
-        Forgot your login details?
-        <router-link to="">Get help signing in.</router-link>
-    </form>
+  <form class="login-form" @submit.prevent="login">
+    <h2>Login</h2>
+    <img src="@/assets/profile.png">
+    <input type="text"  v-model="input.username" required placeholder="Email">
+    <input type="password"  v-model="input.password" required placeholder="Password">
+    <button>Login</button>
+    <p>Forgot your login details?</p>
+    <router-link to="">Get help signing in.</router-link>
+  </form>
 </template>
 
 <script>
@@ -32,10 +32,10 @@
                             localStorage.setItem("admin", res.data.admin);
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
                             if (res.data.admin) {
-                              this.$router.push('/accounts/accountindex')
+                              this.$router.push('/accounts')
                             }
                             else {
-                              this.$router.push('/influencers/influencerindex')
+                              this.$router.push('/influencers')
                             }
                         });
                 } else {
