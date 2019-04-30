@@ -7,7 +7,7 @@
 
       <form @submit.prevent="search">
         <i class="zmdi zmdi-search" />
-        <input type="text" placeholder="Search">
+        <input type="search" v-model="query" placeholder="Search">
         <button>Discover</button>
       </form>
 
@@ -146,8 +146,9 @@
 
       input {
         flex: 1;
-        margin-right: 1 * $units;
         padding-left: $height;
+        margin-right:  1 * $units;
+        padding-right: 1 * $units;
       }
 
       button {

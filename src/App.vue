@@ -19,7 +19,6 @@
     name: 'app',
     mounted() {
       let query = localStorage.getItem("query");
-      console.log(query)
       if (query) {
         this.$router.push('/influencers')
       }
