@@ -1,21 +1,5 @@
 <!--home view default view with router view for rendering sub components-->
 <template>
-<<<<<<< HEAD
-    <div id="app">
-        <nav>
-            <router-link to="/"></router-link>
-            <div class="profile">
-                <router-link to="/register">Register</router-link>
-                <router-link to="/login">Login</router-link>
-                <img src="@/assets/profile.png">
-            </div>
-        </nav>
-        <router-view></router-view>
-        <router-link to="/influencers">Influencers</router-link> &nbsp;
-        <router-link to="/accounts">Accounts</router-link>
-        
-    </div>
-=======
   <div id="app">
 
     <nav>
@@ -28,7 +12,6 @@
     <router-view></router-view>
 
   </div>
->>>>>>> 8cc1aa0e7bbe15140faf5f4e7ce77a03a8eeb1e0
 </template>
 
 <script>

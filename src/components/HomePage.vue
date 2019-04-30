@@ -8,19 +8,24 @@
       <button type="button">Discover</button>
     </form>
   </header>
+	
+	
   <div class="popular">
-			<h1>Popular</h1>
+		<h1 class="popular-h1">Popular</h1>
 				<li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-					<div class="tile" v-on:click="active=!active" v-bind:class="{active:active}" @click="open(popularInfluencer.id)">
-						<img src="@/assets/why.jpg">
+					<div class="tile" v-on:click="dialog=!dialog" v-bind:class="{dialog:dialog}" @click="open(popularInfluencer.id)">
+						<img class="popimg" src="@/assets/why.jpg" :style="style">
 						<influencer-view :influencer="popularInfluencer" type="tile"/>
 					</div>
 				</li>
 		</div>
 		<dialog :open="dialog" @click="close">
-			<influencer-view :influencer="popular[selected_influencer]" type="detailed" v-show="active"/>
-			<div class="X" :open="dialog" @click="close">X</div> 
+			<influencer-view :influencer="popular[selected_influencer]" type="detailed" v-show="dialog"/>
 		</dialog>
+
+		<div class="features">
+			<h2> some features go here blah </h2>
+		</div> 	
 </div>
 </template>
 
@@ -30,8 +35,7 @@
 		components: {InfluencerView},
 		data() {
 			return {
-				active: false, 
-				popular: [
+					popular: [
 					{
 						"id": 0,
 						"name": "Subtle Asian Cat",
@@ -47,7 +51,14 @@
 						"activity": 44,
 						"relevance": 55,
 						"engagement": 66
-					}
+					},
+					{
+						"id": 2,
+						"name": "Nooter Noot Noot",
+						"description": "Nootiest Nooter sending Noots",
+						"activity": 69,
+						"relevance": 69,
+						"engagement": 69					}
 				],
 				selected_influencer: '',
 				dialog: false
@@ -69,6 +80,8 @@
 </script>
 
 <style lang="scss" scoped>
+
+
   header {
     color: white;
     background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
@@ -116,29 +129,60 @@
         color: white;
         width: 12 * $units;
       }
+
     }
   }
 
+	li { 
+				list-style: none; 
+				display: inline-block;
+			}
+
 	.popular {
-		height: 200px;
-		display: inline-block;
-		padding: 12px;
+		margin-left: 40 * $units; 
+		padding: 1 * $units;
 	}
-	.popular img {
-		height: 100px;
-		width: 100px;
+
+	.popular-h1 {
+		display: block; 
+		font-size: 5 * $units; 
+	}
+
+	.popimg {
+	
+		height: 20 * $units; 
+		width: 20 * $units; 
+		border-radius: 50%;
 	}
 
 	.tile {
-		border: 1px solid grey;
-		padding: 12px;
+		margin: 1 * $units; 
+		width: 30 * $units;
+		height: 30 * $units;
+		border: 1px solid #ededed;
+		padding: 2 * $units; 
+		text-align: center; 
+		transition: all .3s ease-in-out;
+		box-shadow: 1px 1px grey; 
+		
+		&:hover {
+			background-color: #ededed;
+			transform: scale(1.1);
+			transform: rotate(180deg);
+			
+		}
+		
 	}
 
+
 	dialog {
-		border: 1px solid grey;
-		padding: 12px;
+
+		transition: all .3s ease-in-out;
+		border: 1px solid #ededed;
+		padding: 1 * $units; 
 		margin: auto;
 		position: fixed;
 		top: 50%;
 	}
+
 </style>

@@ -1,6 +1,7 @@
 <!--Template used for rendering an individual influencer - used for show / GET influencer by ID-->
 <template>
     <div id="detailed" v-if="type === 'detailed'" class="influencer-view">
+        <div class="close-me">X</div>
         <h2>{{influencer.name}}</h2>
         <h3>{{influencer.description}}</h3>
         <p>Activity: {{influencer.activity}}</p>
@@ -15,7 +16,8 @@
         <p>Word Cloud</p>
     </div>
     <div id="tile" v-else-if="type === 'tile'" class="influencer-view">
-        <h3>{{influencer.name}}</h3>
+        <div class="popular-img" :style="style"></div> 
+        <p>{{influencer.name}}</p>
     </div>
     <div id="listing" v-else-if="type === 'listing'" class="influencer-view">
         <h2>{{influencer.name}}</h2>
@@ -57,9 +59,34 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
+    $primaryBtnText: rgb(255, 255, 255);
+
+    button {
+        background: $primaryBtnText; 
+    }
+
+    .influencer-view {
+        display: inline-block; 
+    }
+
+    .close-me {
+        margin-left: 50 * $units; 
+    }
+
+    #tile {
+       
+    }
+    
+
+    #listing {
+    
+    }
+
     #detailed {
-        width: 500px; 
-        background-color: green; 
+        padding: 5 * $units; 
+        width: 60 * $units;
+        height: 80 * $units; 
+        background-image: linear-gradient(135deg, #f5f7fa 0%, #ededed 100%);
     }
 
     
