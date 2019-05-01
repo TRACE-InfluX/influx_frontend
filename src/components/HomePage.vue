@@ -7,7 +7,7 @@
 
       <form @submit.prevent="search">
         <i class="zmdi zmdi-search" />
-        <input ref="search" type="search" v-model="query" placeholder="Search">
+        <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
 
@@ -28,50 +28,18 @@
     </main>
 
     <dialog :open="dialog" @click="close">
-      <influencer-view :influencer="popular[selected_influencer]" type="detailed"/>
+      <influencer-view :influencer="popular[selected_influencer]||{}" type="detailed"/>
     </dialog>
 
   </div>
 </template>
 
 <script>
+  import API from '@/api.js'
 	export default {
 		data() {
 			return {
-				popular: [
-					{
-						"id": 0,
-						"name": "Subtle Asian Cat",
-            "description": "A surprised Pikachu",
-						"activity": 111,
-						"relevance": 222,
-						"engagement": 333
-					},
-					{
-						"id": 1,
-						"name": "Subtle Asian Cat",
-            "description": "A surprised Pikachu",
-						"activity": 111,
-						"relevance": 222,
-						"engagement": 333
-					},
-					{
-						"id": 2,
-						"name": "Subtle Asian Cat",
-            "description": "A surprised Pikachu",
-						"activity": 111,
-						"relevance": 222,
-						"engagement": 333
-					},
-					{
-						"id": 3,
-						"name": "Dankiel Yeetington",
-						"description": "Dankest yeet watch maker",
-						"activity": 44,
-						"relevance": 55,
-						"engagement": 66
-					}
-				],
+				popular: [],
 				selected_influencer: 0,
 				dialog: false,
         query: ''
@@ -82,6 +50,9 @@
       window.onkeydown = () => {
         this.$refs.search.focus();
       }
+      API.get('/v0/influencers').then(res=>{
+        this.popular = res.data.sort((a,b) => b.activity - a.activity).slice(0,4)
+      })
     },
 		methods: {
 			open(id) {
