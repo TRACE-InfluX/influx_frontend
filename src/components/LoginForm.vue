@@ -78,12 +78,7 @@
         width: 200px;
     }
 
-    form img {
-      height: 150px;
-      width: 150px;
-      border-radius: 150px;
-      display: block;
-    }
+
     .login-form{
         text-align:center;
         margin-top:10%;

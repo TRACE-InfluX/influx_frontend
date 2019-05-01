@@ -38,7 +38,8 @@
     #test-page{
         width:1080px;
         height:5920px;
-    }
+    } 
+
     h2 {
 
     }
@@ -75,7 +76,7 @@
         text-align:center;
         margin-top:10%;
         position: relative;
-        height: 30%;
+        height: 400px;
     }
 
     h2 {
