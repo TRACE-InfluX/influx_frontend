@@ -4,7 +4,7 @@
         <input type="text"  v-model="input.email" required placeholder="Email">
         <input type="password"  v-model="input.password" required placeholder="Password">
         <button type="button" v-on:click="register()">Register</button>
-        Have an account?
+        <p>Have an account?</p>
         <router-link to="/login">Log in now</router-link>
     </form>
 </template>
@@ -31,29 +31,44 @@
     }
 </script>
 
-<style scoped>
+<style lang = "scss" scoped>
     form {
         padding: 1em;
         margin: auto;
         display: block;
-        width: 240px;
+        width: 40 * $units;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     }
     form > *{
         display: block;
         width: 100%;
-        margin: 16px auto;
+        margin: 2 * $units auto;
     }
+    
     input {
-        height: 30px;
-        padding-left: 8px;
+        height: 4 * $units;
+        padding-left: 1 * $units;
+        width: 25 * $units;
     }
     button {
-        height: 40px;
+        height: 5 * $units;
         background-color: #458eff;
         color: white;
-        padding: 10px;
-        border-radius: .5em;
+        padding: 1 * $units;
         display: inline-block;
+        width: 25 * $units;
+        border-style:none;
+    }
+
+    .register-form{
+        text-align:center;
+        margin-top:10%;
+        position:relative;
+        height: 50 * $units
+    }
+
+    h2{
+        color:#999999;
     }
 
 </style>

@@ -13,8 +13,9 @@
           @click.native="select(influencer.id)"
         />
       </li>
+      <br>
     </ul>
-  </div>
+  </div> <!--influencer index -->
 </template>
 
 
@@ -87,13 +88,19 @@ export default {
 
 <style lang="scss" scoped>
   li {
-    width: 300px;
+
     display: block;
     margin:auto;
-    padding: 12px;
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    border-radius: 2 * $units;
+    padding: 2 * $units;
+
   }
   .influencer-index {
     padding-top: 10%;
     text-align: center;
+    padding-left:5%;
+    padding-right:5%;
   }
 </style>
