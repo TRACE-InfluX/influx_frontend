@@ -2,7 +2,6 @@
 <template>
   <form class="login-form" @submit.prevent="login">
     <h2>Login</h2>
-    <img src="@/assets/profile.png">
     <input type="text"  v-model="input.username" required placeholder="Email">
     <input type="password"  v-model="input.password" required placeholder="Password">
     <button>Login</button>
@@ -52,7 +51,8 @@
         padding: 1em;
         margin: auto;
         display: block;
-        width: 240px;
+        width: 320px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     }
 
     form > * {
@@ -64,6 +64,7 @@
     input {
         height: 30px;
         padding-left: 8px;
+        width:200px;
     }
 
     button {
@@ -71,15 +72,21 @@
         background-color: #458eff;
         color: white;
         padding: 10px;
-        border-radius: .5em;
         display: inline-block;
+        width:200px;
+        border-style:none;
     }
 
-    form img {
-      height: 150px;
-      width: 150px;
-      border-radius: 150px;
-      display: block;
+    .login-form{
+        text-align:center;
+        margin-top:10%;
+        position:relative;
+        height: 400px;
     }
+
+    h2{
+        color:#999999;
+    }
+
 
 </style>
