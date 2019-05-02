@@ -7,7 +7,7 @@
       <h2>Results for: {{keywords}}</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in filtered_influencers" :key="influencer.id">
-        <influencer-view
+        <influencer-view 
           :influencer="influencer"
           :type="getType(influencer.id)"
           @click.native="select(influencer.id)"
@@ -91,10 +91,8 @@ export default {
 
     display: block;
     margin:auto;
-    border: 1px solid #999999;
-    box-sizing: border-box;
-    border-radius: 2 * $units;
     padding: 2 * $units;
+    
 
   }
   .influencer-index {
@@ -102,5 +100,8 @@ export default {
     text-align: center;
     padding-left:5%;
     padding-right:5%;
+    
   }
+
+  
 </style>

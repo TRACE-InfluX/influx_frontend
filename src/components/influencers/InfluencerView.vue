@@ -17,16 +17,20 @@
     </article>
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
-      <img>
       <p>{{influencer.name}}</p>
     </article>
 
-    <article v-else-if="type === 'listing'" class="influencer-view">
+    <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
+      <div class ="col-left">
+        <img src="~@/assets/rose.png">
+      </div> <!-- col-left= -->
+      <div class = "col-right">
         <h2>{{influencer.name}}</h2>
         <p>{{influencer.description}}</p>
-        <p>Activity: {{influencer.activity}}</p>
-        <p>Relevance: {{influencer.relevance}}</p>
-        <p>Engagement: {{influencer.engagement}}</p>
+        <p>Activity: {{influencer.activity}} | Relevance: {{influencer.relevance}} |Engagement: {{influencer.engagement}}</p>
+        <!-- <p>Relevance: {{influencer.relevance}}</p>
+        <p>Engagement: {{influencer.engagement}}</p> -->
+      </div> <!-- col-right" -->
     </article>
 
 </template>
@@ -75,8 +79,6 @@
       display: block;
       width: 100%;
       height: 100%;
-      background-size: cover;
-      background-position: center;
     }
 
     p {
@@ -91,5 +93,46 @@
       text-align: center;
       font-size: 2 * $units;
     }
+
+  
+  }
+
+  .influencer-listing{
+    height: 40 * $units;
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    border-radius: 2 * $units;
+
+    .col-right{
+      float:right;
+      width:66.6%;
+      padding-top:5%;
+      padding-bottom:5%;
+
+      p {
+        color: #999999;
+      }
+    }
+
+    .col-left{
+      float:left;
+      width:33.3%;
+
+      img{
+        padding-top: 5%;
+        padding-bottom: 5%;
+        max-width: 30 * $units;
+        max-height: 30 * $units;
+        border-radius:50%;
+      }
+
+    }
+
+
+    h2{
+      font-size: 3 * $units;
+    }
+
+
   }
 </style>
