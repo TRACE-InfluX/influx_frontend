@@ -46,34 +46,34 @@
 </script>
 
 
-<style scoped>
+<style lang = "scss" scoped>
     form {
         padding: 1em;
         margin: auto;
         display: block;
-        width: 320px;
+        width: 40 * $units;
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     }
 
     form > * {
         display: block;
         width: 100%;
-        margin: 16px auto;
+        margin: 2 * $units auto;
     }
 
     input {
-        height: 30px;
-        padding-left: 8px;
-        width:200px;
+        height: 4 * $units;
+        padding-left:  1* $units;
+        width: 25 * $units;
     }
 
     button {
-        height: 40px;
+        height: 5 * $units;
         background-color: #458eff;
         color: white;
-        padding: 10px;
+        padding: 1 * $units;
         display: inline-block;
-        width:200px;
+        width:25 * $units;
         border-style:none;
     }
 
@@ -81,7 +81,7 @@
         text-align:center;
         margin-top:10%;
         position:relative;
-        height: 400px;
+        height: 50 * $units;
     }
 
     h2{

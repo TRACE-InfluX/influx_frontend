@@ -13,8 +13,9 @@
           @click.native="select(influencer.id)"
         />
       </li>
+      <br>
     </ul>
-  </div>
+  </div> <!--influencer index -->
 </template>
 
 
@@ -92,8 +93,8 @@ export default {
     margin:auto;
     border: 1px solid #999999;
     box-sizing: border-box;
-    border-radius: 15px;
-    padding:15px
+    border-radius: 2 * $units;
+    padding: 2 * $units;
 
   }
   .influencer-index {
