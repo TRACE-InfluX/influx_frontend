@@ -94,7 +94,7 @@
     position: relative;
     display: inline-block;
     width: 24 * $units;
-    height: 100px;
+    height: 12 * $units;
     box-shadow: $shadow;
 
     img {
