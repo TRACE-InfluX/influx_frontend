@@ -92,10 +92,12 @@
 
     position: relative;
     display: inline-block;
+    border-radius: 50%;
     width: 24 * $units;
-    height: 26 * $units;
-    box-shadow: $shadow;
-
+    height: 24 * $units;
+    margin: 1 * $units; 
+    box-shadow: $shadow; 
+    
     img {
       background-image: url("~@/assets/influxlogo.png");
       display: block;
@@ -103,6 +105,14 @@
       height: 100%;
       background-size: cover;
       background-position: center;
+      border-radius: 50%;
+    }
+
+    img:hover
+    {
+
+      transform: scale(0.9);
+
     }
 
     p {

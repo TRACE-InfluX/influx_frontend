@@ -163,10 +163,12 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
+        max-height: 32 * $units; 
         flex: 1;
         .influencer-view {
           display: block;
           margin: auto;
+          border-radius: 50%;
         }
       }
     }
