@@ -44,7 +44,6 @@
         width: 100%;
         margin: 2 * $units auto;
     }
-    
     input {
         height: 4 * $units;
         padding-left: 1 * $units;

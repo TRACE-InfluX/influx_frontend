@@ -52,7 +52,8 @@
     > nav {
       display: flex;
       justify-content: flex-end;
-      position: relative;
+      position: fixed;
+      top:0;
       height: $header-height;
       color: white;
       background-color: rgba(0,0,0,0.5);
