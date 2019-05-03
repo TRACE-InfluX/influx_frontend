@@ -5,7 +5,6 @@ const routes = [
     { path: '/', component: $['home-page']},
     { path: '/register', component: $['register-form']},
     { path: '/login', component: $['login-form'] },
-    { path: '/influencers', component: $['influencer-card']},
     { path: '/influencers', component: $['influencer-index'] },
     { path: '/influencers/:id', component: $['influencer-view'] },
     { path: '/influencers/:id/edit', component: $['influencer-edit'] },
