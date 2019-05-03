@@ -15,10 +15,11 @@
 
     <main>
 
-      <h3>Popular</h3>
+      <h3>Popular</h3> 
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-          <influencer-view type="tile"
+          <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
+          <influencer-view type="tile" 
             @click.native="open(popularInfluencer.id)"
             :influencer="popularInfluencer"
           />

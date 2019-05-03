@@ -7,14 +7,15 @@
       <h2>Results for: {{keywords}}</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in filtered_influencers" :key="influencer.id">
-        <influencer-view
+        <influencer-view 
           :influencer="influencer"
           :type="getType(influencer.id)"
           @click.native="select(influencer.id)"
         />
       </li>
+      <br>
     </ul>
-  </div>
+  </div> <!--influencer index -->
 </template>
 
 
@@ -86,14 +87,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
   li {
-    width: 300px;
+
     display: block;
     margin:auto;
-    padding: 12px;
+    padding: 2 * $units;
+    
+
   }
   .influencer-index {
     padding-top: 10%;
     text-align: center;
+    padding-left:5%;
+    padding-right:5%;
+    
   }
+
+  
 </style>
