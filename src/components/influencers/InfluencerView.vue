@@ -25,11 +25,11 @@
         <img src="~@/assets/rose.png">
       </div> <!-- col-left= -->
       <div class = "col-right">
-        <h2>{{influencer.name}}</h2>
-        <p>{{influencer.description}}</p>
-        <p>Activity: {{influencer.activity}} | Relevance: {{influencer.relevance}} |Engagement: {{influencer.engagement}}</p>
-        <!-- <p>Relevance: {{influencer.relevance}}</p>
-        <p>Engagement: {{influencer.engagement}}</p> -->
+          <h2>{{influencer.name}}</h2>
+          <p>{{influencer.description}}</p>
+          <p>{{influencer.url}}</p>
+          <p>Following: {{influencer.following}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+          <hr>
       </div> <!-- col-right" -->
     </article>
 
@@ -98,7 +98,7 @@
   }
 
   .influencer-listing{
-    height: 40 * $units;
+    height: 30 * $units;
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
@@ -106,17 +106,22 @@
     .col-right{
       float:right;
       width:66.6%;
-      padding-top:5%;
-      padding-bottom:5%;
+      padding-top:2%;
+      padding-bottom:2%;
+      height: 30 * $units;
+      padding-right:10%;
+      padding-left:10%;
 
       p {
         color: #999999;
       }
+
     }
 
     .col-left{
       float:left;
       width:33.3%;
+      height: 30 * $units;
 
       img{
         padding-top: 5%;
