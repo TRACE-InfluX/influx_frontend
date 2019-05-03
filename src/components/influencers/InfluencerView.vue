@@ -12,6 +12,18 @@
         <p>Engagement: {{influencer.engagement}}</p>
 
 
+        <svg width="100" height="100" class="chart">
+        <circle r="25" cx="50" cy="50" class="pie"/>
+        </svg>
+
+        <svg width="100" height="100" class="chart">
+        <circle r="25" cx="50" cy="50" class="pie"/>
+        </svg>
+
+        <svg width="100" height="100" class="chart">
+        <circle r="25" cx="50" cy="50" class="pie"/>
+        </svg>
+
         </div>
         <div class="indepth-description">
         <p>Reach</p>
@@ -128,6 +140,7 @@
   flex-direction: row;
   align-items: center; 
   background-color: white; 
+  margin-top: -3 * $units;
   width: 120 * $units;
   height: 50 * $units; 
   padding: 1 * $units; 
