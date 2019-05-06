@@ -32,6 +32,8 @@
       <influencer-view :influencer="popular[selected_influencer]||{}" type="detailed"/>
     </dialog>
 
+    <footer id ="footer">footer stuff</footer>
+
   </div>
 </template>
 
@@ -184,4 +186,13 @@
 		top: 50%;
 	}
 
+<<<<<<< HEAD
+=======
+  #footer{
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    height: 5 * $units;
+  }
+>>>>>>> c2d3183fd69e62a23aaf8f90ad0d081ea249dc1d
 </style>

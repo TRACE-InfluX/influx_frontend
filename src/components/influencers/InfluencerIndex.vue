@@ -47,6 +47,7 @@ export default {
       return this.query.split(' ')
     },
     filtered_influencers() {
+
       // Return full list if no query or no list loaded
       return (!this.query ? this.influencers :
         // Else check for match between keywords and any part of name/description
@@ -61,7 +62,9 @@ export default {
         return (b.activity + b.relevance + b.engagement)/3
               -(a.activity + a.relevance + a.engagement)/3
       })
-    }
+    },
+
+
   },
   watch: {
     query(q) {
@@ -81,7 +84,7 @@ export default {
         this.influencers = res.data
       })
       .catch(alert)
-    },
+    }
   }
 }
 </script>
