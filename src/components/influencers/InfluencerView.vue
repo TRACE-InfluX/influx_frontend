@@ -129,13 +129,17 @@
       background-color: white;
       text-align: center;
       font-size: 2 * $units;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 1 * $units;
+      padding-right: 1 * $units;
     }
 
 
   } //influencer tile
 
   .influencer-detailed{
-
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
@@ -143,17 +147,13 @@
     width: 100 * $units;
     margin:auto;
 
-
     h2{
       display:inline-block;
     }
 
-
-
     .influencer-listing-detailed{
     height: 50 * $units;
     border:none;
-
     }
 
       .col-right-details{
@@ -161,13 +161,11 @@
       width:60%;
       text-align: left;
       margin-left:5%;
-    
 
       //gap between buttons
 
         .inline{
         margin: 3 * $units;
-        
         }
 
         button {
@@ -179,8 +177,6 @@
         border: solid #99999999;
         border-width: 1px;
         border-radius: 10px;
-
-
         }
 
       } //col-right-details
@@ -203,7 +199,6 @@
         width:4 * $units;
         float:left;
       }
-
     } //col-right-details
 
     .col-left{
@@ -218,9 +213,7 @@
         height: 30 * $units;
         border-radius:50%;
       }
-
     }
-
 
     h2{
       font-size: 3 * $units;
@@ -238,9 +231,6 @@
     h2{
     display:inline-block;
     }
-
-
-
 
     .col-right{
       float:right;
@@ -274,14 +264,12 @@
         height: 30 * $units;
         border-radius:50%;
       }
-
     }
 
 
     h2{
       font-size: 3 * $units;
     }
-
 
   }
 </style>
