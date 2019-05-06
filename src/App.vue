@@ -22,14 +22,13 @@
       <li><i class="zmdi zmdi-twitter-box"></i><a href="#">twitter</a></li>
       </ul>
 
-      </ul>
 
       
       <ul>
       <li> Legal: </li> 
       <li>Terms</li>  
       <li>Privacy</li>  
-      <li>InfluX & Co. 2019 All Rights Reserved.</li>  
+      <li>InfluX Co. 2019 All Rights Reserved.</li>  
       </ul>  
 
     </footer>  

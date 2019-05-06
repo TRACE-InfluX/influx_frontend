@@ -239,8 +239,10 @@
 
   .product-info{
 
-    margin: 5 * $units; 
     width: 100%; 
+    height: 100%;
+    margin-top: 10 * $units; 
+    margin-bottom: 10 * $units;
     height: 50 * $units; 
     background-color: $nocolor;
     display: flex; 
@@ -249,7 +251,7 @@
     
   img {
     align-self: center; 
-    width: 40%; 
+    width: 35%; 
   }
 
    p {
