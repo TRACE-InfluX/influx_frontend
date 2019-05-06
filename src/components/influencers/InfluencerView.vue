@@ -3,9 +3,10 @@
     <!-- added the entire influencer listing inside of the influencer-view to create an expanded thing, janky af -->
     <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
         <div class ="col-left">
-          <img src="~@/assets/rose.png">
+        <img v-bind:src="influencer.profile_image"/>
         </div> <!-- col-left= -->
         <div class = "col-right">
+          <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -41,12 +42,12 @@
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
       <div class ="col-left">
-        <img src="~@/assets/rose.png">
+        <img v-bind:src="influencer.profile_image"/>
       </div> <!-- col-left= -->
       <div class = "col-right">
             <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
             <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
-            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -127,7 +128,7 @@
       font-size: 2 * $units;
     }
 
-
+  
   }
 
   .influencer-detailed{
@@ -135,8 +136,9 @@
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
+    height: 100 * $units;
     width: 100 * $units;
-    height: 80 * $units;
+    margin:auto;
 
       .col-right-details{
       float:right;
@@ -145,8 +147,8 @@
       margin-left:10% !important;
 
       //gap between buttons
-
-      .inline{
+  
+      .inline{ 
         margin: 3 * $units;
       }
 
@@ -166,7 +168,7 @@
       }
       .col-right{
       float:right;
-      width:66.6%;
+      width:65%;
       padding-top:2%;
       padding-bottom:2%;
       height: 30 * $units;
@@ -177,18 +179,24 @@
         color: #999999;
       }
 
+        .icon{
+        height:2 * $units;
+        width:2 * $units;
+      }
+
     }
 
     .col-left{
       float:left;
-      width:33.3%;
+      width:30%;
       height: 30 * $units;
+      margin-left: 5%;
 
       img{
         padding-top: 5%;
         padding-bottom: 5%;
-        max-width: 30 * $units;
-        max-height: 30 * $units;
+        width: 30 * $units;
+        height: 30 * $units;
         border-radius:50%;
       }
 
@@ -205,10 +213,15 @@
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
+    width: 100 * $units;
+    height: 50 * $units;
+    margin:auto;
+
+
 
     .col-right{
       float:right;
-      width:66.6%;
+      width:65%;
       padding-top:2%;
       padding-bottom:2%;
       height: 30 * $units;
@@ -227,14 +240,15 @@
 
     .col-left{
       float:left;
-      width:33.3%;
+      width:30%; // theseadd up to 100 thats wh
       height: 30 * $units;
+      margin-left:5%;
 
       img{
         padding-top: 5%;
         padding-bottom: 5%;
-        max-width: 10%;
-        max-height: 10%;
+        width: 30 * $units;
+        height: 30 * $units;
         border-radius:50%;
       }
 
