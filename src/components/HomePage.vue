@@ -15,7 +15,7 @@
 
     <main>
 
-      <h3>Popular</h3>
+       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
           <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
@@ -32,12 +32,25 @@
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-    <div class="help">
+<!-- placeholder for content
+        <div class="help">
 
     <img src="~@/assets/preview.png" />
 
 
     </div>
+ --> 
+
+    <div class="product-info">
+      <img src="~@/assets/download.jpg">
+      <p>Influencers at your fingertips. Just a search away.</p>
+
+    </div> 
+
+    <div class="product-info">
+       <img src="~@/assets/noots.jpg">
+      <p>Browse through detailed information to find out if they're right for you.</p>
+    </div> 
 
 
     <div class="call-to-action">
@@ -45,27 +58,6 @@
       <h2>Get started today!</h2>
       <button>sign up</button>
     </div>
-
-    <footer>
-
-      <h3>Ready to get started?</h3>
-      <p> Lorem Ipsum </p>
-
-      <ul>
-
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-
-
-      </ul>  
-
-    </footer>  
-
   </div>
 </template>
 
@@ -114,6 +106,8 @@
 </script>
 
 <style lang="scss" scoped>
+
+
   header {
     color: white;
     background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
@@ -173,6 +167,7 @@
         color: white;
         width: 12 * $units;
       }
+
     }
   }
 
@@ -180,7 +175,6 @@
 
     h3 {
       $height: 18 * $units;
-
       height: $height;
       line-height: $height;
       display: block;
@@ -199,28 +193,66 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
+        max-height: 32 * $units; 
         flex: 1;
         .influencer-view {
           display: block;
           margin: auto;
+          border-radius: 50%;
         }
       }
     }
 
   }
 	dialog {
-		border: 1px solid grey;
-		padding: 12px;
+
+		transition: all .5s ease-in-out;
+		border: 1px solid #ededed;
 		margin: auto;
 		position: fixed;
-		top: 50%;
   }
-  
+
+
+  button 
+  {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 8 * $units; 
+  }
+
+  i {
+    font-size: 3 * $units;
+    line-height: 3 * $units;
+    padding: 1 * $units; 
+  }
+ /** 
   .help
   {
 
     display: flex; 
     justify-content: center; 
+
+  }
+
+  **/
+
+  .product-info{
+
+    margin: 5 * $units; 
+    width: 100%; 
+    height: 50 * $units; 
+    background-color: $nocolor;
+    display: flex; 
+    flex-flow: row wrap; 
+    justify-content: space-evenly;  
+    
+  img, p {
+    align-self: center; 
+    width: 30%; 
+    font-size: 2 * $units; 
+  }
 
   }
 
@@ -253,20 +285,4 @@
 
   }
 
-    footer
-  {
-
-    display: flex; 
-    justify-content: space-around; 
-    height: 50 * $units; 
-    width: 100%;
-    background-color: $footer-color; 
-
-  h3, p, ul
-  {
-    align-self: center; 
-    list-style: none; 
-  }  
-
-  }
 </style>

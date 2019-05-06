@@ -1,7 +1,7 @@
 <!--Template for default view for all influencers-->
 <template>
   <div class="influencer-index">
-    <input ref="search" type="search" v-model="query">
+    <input class="search-bar" ref="search" type="search" v-model="query">
     <h1>Influencers</h1>
     <ul>
       <h2>Results for: {{keywords}}</h2>
@@ -100,6 +100,7 @@ export default {
 
   }
   .influencer-index {
+  
     padding-top: 10%;
     text-align: center;
     padding-left:5%;
@@ -107,5 +108,10 @@ export default {
     
   }
 
+  .search-bar {
+        $height: 5 * $units;
+        width: 40 * $units; 
+        height: $height;  
+      }
   
 </style>
