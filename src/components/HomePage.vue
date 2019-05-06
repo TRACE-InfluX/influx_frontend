@@ -15,61 +15,81 @@
 
     <main>
 
-      <h3>Popular</h3> 
+      <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
           <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
+<<<<<<< HEAD
           <influencer-view type="tile" 
            @click.native="open(popularInfluencer.id)"
+=======
+          <influencer-view type="tile"
+            @click.native="open(popularInfluencer.id)"
+>>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
             :influencer="popularInfluencer"
           />
         </li>
       </ul>
 
     </main>
+<<<<<<< HEAD
     <dialog :open="dialog">
        <button @click="close"> <i class="zmdi zmdi-close" ></i> </button>
       <influencer-view :influencer="popular[selected_influencer]||{}" type="home-list"/>
     </dialog>
+=======
+
+    <dialog :open="dialog" @click="close">
+      <influencer-view :influencer="selected_influencer" type="detailed"/>
+    </dialog>
+
+    <footer id ="footer">footer stuff</footer>
+
+>>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
   </div>
 </template>
 
 <script>
   import API from '@/api.js'
 	export default {
-		data() {
-			return {
-				popular: [],
-				selected_influencer: 0,
-				dialog: false,
-        query: ''
-			}
-    },
-    mounted() {
-      this.$refs.search.focus();
-      window.onkeydown = () => {
-        this.$refs.search.focus();
-      }
-      API.get('/v0/influencers').then(res=>{
-        this.popular = res.data.sort((a,b) => b.activity - a.activity).slice(0,4)
-      })
-    },
-		methods: {
-			open(id) {
-				this.selected_influencer = id;
-				this.dialog = true;
-			},
-			close() {
-				if(this.dialog)
-				{
-					this.dialog = false;
-				}
+      data() {
+        return {
+          popular: [],
+          selected_id: '',
+          dialog: false,
+          query: '',
+        }
       },
-      search() {
-        localStorage.setItem("query", this.query);
-        this.$router.push('/influencers');
+      computed: {
+        selected_influencer() {
+          return this.popular.find(i => i.id === this.selected_id) || {}
+        }
+      },
+      mounted() {
+        this.$refs.search.focus();
+        window.onkeydown = () => {
+          this.$refs.search.focus();
+        }
+        API.get('/v0/influencers').then(res=>{
+          this.popular = res.data.sort((a,b) => b.activity - a.activity).slice(0,4)
+        })
+      },
+      methods: {
+        open(id) {
+          this.selected_id = id;
+          this.dialog = true;
+        },
+        close() {
+          if(this.dialog)
+          {
+            this.dialog = false;
+          }
+        },
+        search() {
+          localStorage.setItem("query", this.query);
+          this.$router.push('/influencers');
+        }
       }
-		}
 	}
 </script>
 
@@ -199,5 +219,14 @@
   }
 	}
 
+<<<<<<< HEAD
 
+=======
+  #footer{
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    height: 5 * $units;
+  }
+>>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
 </style>
