@@ -46,7 +46,7 @@
       <div class = "col-right">
             <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
             <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
-            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
+            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -127,7 +127,7 @@
       font-size: 2 * $units;
     }
 
-  
+
   }
 
   .influencer-detailed{
@@ -135,6 +135,7 @@
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
+    width: 100 * $units;
     height: 80 * $units;
 
       .col-right-details{
@@ -144,8 +145,8 @@
       margin-left:10% !important;
 
       //gap between buttons
-  
-      .inline{ 
+
+      .inline{
         margin: 3 * $units;
       }
 
@@ -232,8 +233,8 @@
       img{
         padding-top: 5%;
         padding-bottom: 5%;
-        max-width: 30 * $units;
-        max-height: 30 * $units;
+        max-width: 10%;
+        max-height: 10%;
         border-radius:50%;
       }
 
