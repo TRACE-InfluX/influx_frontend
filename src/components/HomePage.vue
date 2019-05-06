@@ -145,7 +145,6 @@
         color: gray;
         height: $height;
         width: $height;
-        line-height: $height;
         font-size: 3 * $units;
       }
 
