@@ -233,6 +233,7 @@
     background:url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover; 
     color: white; 
 
 
@@ -247,6 +248,7 @@
         align-self: center; 
         background-color: $primary;
         color: white;
+        border: none;
         height: 6 * $units; 
         width: 15 * $units;
       }
