@@ -32,7 +32,39 @@
       <influencer-view :influencer="popular[selected_influencer]||{}" type="detailed"/>
     </dialog>
 
-    <footer id ="footer">footer stuff</footer>
+    <div class="help">
+
+    <img src="~@/assets/preview.png" />
+
+
+    </div>
+
+
+    <div class="call-to-action">
+      <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
+      <h2>Get started today!</h2>
+      <button>sign up</button>
+    </div>
+
+    <footer>
+
+      <h3>Ready to get started?</h3>
+      <p> Lorem Ipsum </p>
+
+      <ul>
+
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+
+
+      </ul>  
+
+    </footer>  
 
   </div>
 </template>
@@ -177,12 +209,59 @@
 		margin: auto;
 		position: fixed;
 		top: 50%;
-	}
+  }
+  
+  .help
+  {
 
-  #footer{
-    position:absolute;
-    bottom: 0;
-    width:100%;
-    height: 5 * $units;
+    display: flex; 
+    justify-content: center; 
+
+  }
+
+  .call-to-action{
+   
+    display: flex; 
+    flex-flow: column wrap; 
+    justify-content: center; 
+    height: 50 * $units; 
+    background:url('~@/assets/getstarted.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; 
+
+
+  h2, p{
+     align-self: center; 
+     margin: 1 * $units; 
+     text-shadow: $shadow; 
+  } 
+  
+
+  button {
+        align-self: center; 
+        background-color: $primary;
+        color: white;
+        height: 6 * $units; 
+        width: 15 * $units;
+      }
+
+  }
+
+    footer
+  {
+
+    display: flex; 
+    justify-content: space-around; 
+    height: 50 * $units; 
+    width: 100%;
+    background-color: $footer-color; 
+
+  h3, p, ul
+  {
+    align-self: center; 
+    list-style: none; 
+  }  
+
   }
 </style>
