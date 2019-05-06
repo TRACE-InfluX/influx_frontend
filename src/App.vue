@@ -122,12 +122,13 @@
 
     }
 
-         footer
+  footer
   {
     bottom: 0; 
     display: flex; 
+    margin-top: 5 * $units; 
     justify-content: space-around; 
-    height: 50 * $units; 
+    height: 25 * $units; 
     width: 100%;
     background-color: $footer-color; 
     

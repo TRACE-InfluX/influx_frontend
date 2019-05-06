@@ -262,9 +262,11 @@
     flex-flow: column wrap; 
     justify-content: center; 
     height: 50 * $units; 
+    width: 100%; 
     background:url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover; 
     color: white; 
 
 
