@@ -233,7 +233,7 @@
     border-radius: 2 * $units;
     width: 100 * $units;
     height: 50 * $units;
-    margin:auto;
+    margin: auto;
 
     h2{
     display:inline-block;
