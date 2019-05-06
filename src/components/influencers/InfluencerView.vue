@@ -1,7 +1,7 @@
 <!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
     <!-- added the entire influencer listing inside of the influencer-view to create an expanded thing, janky af -->
-    <article v-if="type === 'detailed'" class="influencer-view">
+    <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
         <div class ="col-left">
           <img src="~@/assets/rose.png">
         </div> <!-- col-left= -->
@@ -44,6 +44,9 @@
         <img src="~@/assets/rose.png">
       </div> <!-- col-left= -->
       <div class = "col-right">
+            <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
+            <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
+            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -82,6 +85,13 @@
             //         this.influencer = res.data.data
             //     })
             //     .catch(alert)
+
+        },
+        methods: {
+          linktoURL(url){
+            this.influencer.url = url;
+            window.open(url, _blank);
+          }
         }
     }
 </script>
@@ -94,7 +104,7 @@
     position: relative;
     display: inline-block;
     width: 24 * $units;
-    height: 12 * $units;
+    height: 24 * $units;
     box-shadow: $shadow;
 
     img {
@@ -120,13 +130,12 @@
   
   }
 
-  .influencer-view{
+  .influencer-detailed{
 
     border: 1px solid #999999;
     box-sizing: border-box;
     border-radius: 2 * $units;
     height: 80 * $units;
-
 
       .col-right-details{
       float:right;
@@ -149,6 +158,8 @@
       border: solid #99999999;
       border-width: 1px;
       border-radius: 10px;
+
+
     }
 
       }
@@ -207,6 +218,10 @@
         color: #999999;
       }
 
+      .icon{
+        height:2 * $units;
+        width:2 * $units;
+      }
     }
 
     .col-left{
