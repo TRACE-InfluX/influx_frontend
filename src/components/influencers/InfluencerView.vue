@@ -6,7 +6,7 @@
         <img v-bind:src="influencer.profile_image"/>
         </div> <!-- col-left= -->
         <div class = "col-right">
-          <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
+          <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -37,7 +37,8 @@
     </article>
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
-      <p>{{influencer.name}}</p>
+        <img v-bind:src="influencer.profile_image"/>
+        <p>{{influencer.name}}</p>
     </article>
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
@@ -47,7 +48,7 @@
       <div class = "col-right">
             <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
             <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
-            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a> 
+            <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
           <p>{{influencer.url}}</p>
@@ -128,7 +129,7 @@
       font-size: 2 * $units;
     }
 
-  
+
   }
 
   .influencer-detailed{
@@ -147,8 +148,8 @@
       margin-left:10% !important;
 
       //gap between buttons
-  
-      .inline{ 
+
+      .inline{
         margin: 3 * $units;
       }
 

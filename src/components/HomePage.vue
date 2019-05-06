@@ -15,37 +15,69 @@
 
     <main>
 
-      <h3>Popular</h3>
+       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
           <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
-<<<<<<< HEAD
-          <influencer-view type="tile" 
-           @click.native="open(popularInfluencer.id)"
-=======
           <influencer-view type="tile"
             @click.native="open(popularInfluencer.id)"
->>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
             :influencer="popularInfluencer"
           />
         </li>
       </ul>
 
     </main>
-<<<<<<< HEAD
-    <dialog :open="dialog">
-       <button @click="close"> <i class="zmdi zmdi-close" ></i> </button>
-      <influencer-view :influencer="popular[selected_influencer]||{}" type="home-list"/>
-    </dialog>
-=======
 
     <dialog :open="dialog" @click="close">
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-    <footer id ="footer">footer stuff</footer>
+<!-- placeholder for content
+        <div class="help">
 
->>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
+    <img src="~@/assets/preview.png" />
+
+
+    </div>
+ --> 
+
+    <div class="product-info">
+      <img src="~@/assets/download.jpg">
+      <p>Influencers at your fingertips. Just a search away.</p>
+
+    </div> 
+
+    <div class="product-info">
+       <img src="~@/assets/noots.jpg">
+      <p>Browse through detailed information to find out if they're right for you.</p>
+    </div> 
+
+
+    <div class="call-to-action">
+      <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
+      <h2>Get started today!</h2>
+      <button>sign up</button>
+    </div>
+
+    <footer>
+
+      <h3>Ready to get started?</h3>
+      <p> Lorem Ipsum </p>
+
+      <ul>
+
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+
+
+      </ul>  
+
+    </footer>  
   </div>
 </template>
 
@@ -163,7 +195,6 @@
 
     h3 {
       $height: 18 * $units;
-
       height: $height;
       line-height: $height;
       display: block;
@@ -199,8 +230,7 @@
 		border: 1px solid #ededed;
 		margin: auto;
 		position: fixed;
-		top: 20%;
-    border-radius: 5 * $units;
+  }
 
 
   button 
@@ -217,16 +247,78 @@
     line-height: 3 * $units;
     padding: 1 * $units; 
   }
-	}
+ /** 
+  .help
+  {
 
-<<<<<<< HEAD
+    display: flex; 
+    justify-content: center; 
 
-=======
-  #footer{
-    position:absolute;
-    bottom: 0;
-    width:100%;
-    height: 5 * $units;
   }
->>>>>>> cca9b285d63c3888fd49936f3ff4463fe6671a2f
+
+  **/
+
+  .product-info{
+
+    margin: 5 * $units; 
+    width: 100%; 
+    height: 50 * $units; 
+    background-color: $nocolor;
+    display: flex; 
+    flex-flow: row wrap; 
+    justify-content: space-evenly;  
+    
+  img, p {
+    align-self: center; 
+    width: 30%; 
+    font-size: 2 * $units; 
+  }
+
+  }
+
+  .call-to-action{
+   
+    display: flex; 
+    flex-flow: column wrap; 
+    justify-content: center; 
+    height: 50 * $units; 
+    background:url('~@/assets/getstarted.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; 
+
+
+  h2, p{
+     align-self: center; 
+     margin: 1 * $units; 
+     text-shadow: $shadow; 
+  } 
+  
+
+  button {
+        align-self: center; 
+        background-color: $primary;
+        color: white;
+        height: 6 * $units; 
+        width: 15 * $units;
+      }
+
+  }
+
+    footer
+  {
+
+    display: flex; 
+    justify-content: space-around; 
+    height: 50 * $units; 
+    width: 100%;
+    background-color: $footer-color; 
+
+  h3, p, ul
+  {
+    align-self: center; 
+    list-style: none; 
+  }  
+  }
+
 </style>
