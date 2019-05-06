@@ -4,6 +4,10 @@
     <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
         <div class="profile-photo"></div>
          <div class="embed-insta-post">
+            <i class="zmdi zmdi-close"></i>
+         <i class="zmdi zmdi-favorite-outline"></i>
+<!-- when influencer is liked, show this:: <i class="zmdi zmdi-favorite"></i> -->
+        <i class="zmdi zmdi-smartphone-android"></i>
         <div class="main-description">
         <h2>name: {{influencer.name}}</h2>
         <h3>keywords:{{influencer.description}}</h3>
@@ -55,6 +59,18 @@
         <p>Engagement: {{influencer.engagement}}</p>
     </article>
 
+       <article v-else-if="type === 'home-list'" class="influencer-view influencer-home">
+        <div class="profile-photo"></div>
+        <h3>name: {{influencer.name}}</h3>
+        <p class="description">description: blah blah blah {{influencer.description}}</p>
+        <p class="prog-bar">Activity: {{influencer.activity}}</p>
+        <p class="prog-bar">Relevance: {{influencer.relevance}}</p>
+        <p class="prog-bar">Engagement: {{influencer.engagement}}</p>
+        <button><i class="zmdi zmdi-favorite-outline"></i></button>
+       <button><i class="zmdi zmdi-comment-outline"></i></button>
+       <button><i class="zmdi zmdi-instagram"></i></button>
+    </article>
+
 </template>
 
 <script>
@@ -92,10 +108,11 @@
 
     position: relative;
     display: inline-block;
-    border-radius: 50%;
+    border-radius: height;
     width: 24 * $units;
     height: 24 * $units;
     margin: 1 * $units; 
+    margin-left: 10 * $units; 
     box-shadow: $shadow; 
     
     img {
@@ -129,30 +146,127 @@
     }
   }
 
+  .influencer-home
+  {
+
+  display: flex; 
+  justify-content: flex-start;
+  flex-flow: column wrap; 
+  background-color: white; 
+  width: 100 * $units;
+  height: 40 * $units; 
+  padding: 3 * $units; 
+
+  .influencer-home > * 
+  {
+    flex: 1 30%;
+  }
+
+  h3
+  {
+    order: 0; 
+    align-self: auto; 
+    margin: 1 * $units; 
+  }
+
+  button 
+  {
+    order: 1; 
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+
+  }
+
+  i {
+    order: 1; 
+    font-size: 3 * $units;
+    line-height: 3 * $units;
+    padding: 1 * $units; 
+  }
+
+
+   .profile-photo
+  {    
+
+  order: 0;
+  padding: 3 * $units; 
+  height: 18 * $units;
+  width: 18 * $units;
+  background:url(//unsplash.it/200/200);
+  border-radius: 50%;
+  border: 1 * $units solid #eeeeee;
+  -webkit-transition: all 800ms;
+  transition: all 800ms; 
+
+  }
+  
+  .description 
+  {
+    align-items: flex-start;
+    order: 1;
+    align-self: auto; 
+  }
+
+  .prog-bar
+  {
+    align-self: center; 
+    order: 2; 
+    margin: 1 * $units; 
+    justify-content: space-around;
+    width: 40 * $units; 
+    height: 2 * $units; 
+    background-color: $primary;
+    color: $nocolor; 
+
+  }
+
+  .prog-bar:after
+  {
+
+  left:0%;
+  width:0;
+  height:5px;
+  background: rgb(224, 224, 224); 
+  display:block;
+  content:'';
+  transition: width 0.5s ease-in-out;
+
+  }
+
+  .prog-bar:hover:after
+  {
+    width: 100%;
+    background: black; 
+  }
+
+  }
+
   .influencer-list
   {
 
   display: flex; 
   flex-direction: row;
+  justify-content: center; 
   align-items: center; 
   background-color: white; 
   width: 100 * $units;
   height: 40 * $units; 
   padding: 1 * $units; 
   border-radius: 2 * $units;
-  box-shadow: $shadow;
+  margin-left: 15 * $units; 
 
   }
 
   .influencer-detailed
-  {
-  display: flex; 
-  flex-direction: row;
-  align-items: center; 
+  { 
+  display: flex;
+  align-items: flex-start; 
   background-color: white; 
-  margin-top: -3 * $units;
-  width: 120 * $units;
-  height: 50 * $units; 
+  margin-left: 15 * $units; 
+  width: 100 * $units;
+  height: 80 * $units; 
   padding: 1 * $units; 
   border-radius: 2 * $units;
   box-shadow: $shadow;
@@ -160,12 +274,11 @@
 
   
   .profile-photo
-  {
-  align-self: flex-start;  
-  margin: 5 * $units; 
+  { 
+  margin: 1 * $units; 
   padding: 1 * $units;
-  height: 18 * $units;
-  width: 18 * $units;
+  height: 22 * $units;
+  width: 22 * $units;
   background:url(//unsplash.it/200/200);
   border-radius: 50%;
   border: 1 * $units solid #eeeeee;
@@ -204,13 +317,21 @@
 
 
   }
+  .zmdi
+  {
+    display: inline; 
+    font-size: 6 * $units;
+    line-height: 6 * $units; 
+    padding: 1 * $units; 
+
+  }
 
   .user-action
   {
 
     button 
     {
-      
+        align-self: flex-end; 
         margin: 1* $units; 
         height: 5 * $units;
         background-color: white;
@@ -234,49 +355,4 @@
   }
 
   }
-
-  /**
-  * media query for responsiveness starts here --
-  **/ 
-
- /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) 
-
-{
-
-
-
-} 
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) 
-
-{
-
-
-
-} 
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) 
-{
-
-
-} 
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) 
-{
-
-
-
-} 
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) 
-{
-
-
-
-}
-</style>
+  </style>

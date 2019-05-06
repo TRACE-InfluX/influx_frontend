@@ -20,18 +20,17 @@
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
           <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
           <influencer-view type="tile" 
-            @click.native="open(popularInfluencer.id)"
+           @click.native="open(popularInfluencer.id)"
             :influencer="popularInfluencer"
           />
         </li>
       </ul>
 
     </main>
-
-    <dialog :open="dialog" @click="close">
-      <influencer-view :influencer="popular[selected_influencer]||{}" type="detailed"/>
+    <dialog :open="dialog">
+       <button @click="close"> <i class="zmdi zmdi-close" ></i> </button>
+      <influencer-view :influencer="popular[selected_influencer]||{}" type="home-list"/>
     </dialog>
-
   </div>
 </template>
 
@@ -176,12 +175,29 @@
   }
 	dialog {
 
-		transition: all .3s ease-in-out;
+		transition: all .5s ease-in-out;
 		border: 1px solid #ededed;
-		padding: 1 * $units; 
 		margin: auto;
 		position: fixed;
-		top: 50%;
+		top: 20%;
+    border-radius: 5 * $units;
+
+
+  button 
+  {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 8 * $units; 
+  }
+
+  i {
+    font-size: 3 * $units;
+    line-height: 3 * $units;
+    padding: 1 * $units; 
+  }
 	}
+
 
 </style>
