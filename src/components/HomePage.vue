@@ -42,14 +42,15 @@
  --> 
 
     <div class="product-info">
-      <img src="~@/assets/download.jpg">
+    
       <p>Influencers at your fingertips. Just a search away.</p>
-
+        <img src="~@/assets/preview1.png">
     </div> 
 
     <div class="product-info">
-       <img src="~@/assets/noots.jpg">
+     
       <p>Browse through detailed information to find out if they're right for you.</p>
+        <img src="~@/assets/preview2.png">
     </div> 
 
 
@@ -198,7 +199,6 @@
         .influencer-view {
           display: block;
           margin: auto;
-          border-radius: 50%;
         }
       }
     }
@@ -245,13 +245,19 @@
     height: 50 * $units; 
     background-color: $nocolor;
     display: flex; 
-    flex-flow: row wrap; 
-    justify-content: space-evenly;  
+    flex-flow: column wrap; 
+    justify-content: space-around;  
     
-  img, p {
+  img {
     align-self: center; 
-    width: 30%; 
-    font-size: 2 * $units; 
+    width: 40%; 
+  }
+
+   p {
+    align-self: center; 
+    width: 20%; 
+    font-size: 1.5 * $units; 
+
   }
 
   }

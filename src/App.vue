@@ -13,20 +13,22 @@
 
     <footer>
 
-      <h3>Ready to get started?</h3>
-      <p> Lorem Ipsum </p>
-
+      <h3>InfluX </h3>
       <ul>
-
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
+      <li>We connect the world to you.</li>
+      <li>Get in touch with us:</li>
+      <li><i class="zmdi zmdi-email"></i> <a href="#"> email</a></li>
+      <li><i class="zmdi zmdi-instagram"></i> <a href="#">instagram</a></li>
+      <li><i class="zmdi zmdi-twitter-box"></i><a href="#">twitter</a></li>
+      </ul>
 
 
+      
+      <ul>
+      <li> Legal: </li> 
+      <li>Terms</li>  
+      <li>Privacy</li>  
+      <li>InfluX & Co. 2019 All Rights Reserved.</li>  
       </ul>  
 
     </footer>  
@@ -126,18 +128,33 @@
   {
     bottom: 0; 
     display: flex; 
-    margin-top: 5 * $units; 
     justify-content: space-around; 
     height: 25 * $units; 
     width: 100%;
+    margin-top: 5 * $units; 
+    padding: 5%;
     background-color: $footer-color; 
+    font-size: 1.5 * $units; 
     
 
   h3, p, ul
   {
     align-self: center; 
     list-style: none; 
-  }  
+  }
+  
+  li {
+    margin: 1 * $units; 
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  a:visited{
+    color: black; 
+  }
+
   }
 
   }
