@@ -39,18 +39,18 @@
 
 
     </div>
- --> 
+ -->
 
     <div class="product-info">
       <img src="~@/assets/download.jpg">
       <p>Influencers at your fingertips. Just a search away.</p>
 
-    </div> 
+    </div>
 
     <div class="product-info">
        <img src="~@/assets/noots.jpg">
       <p>Browse through detailed information to find out if they're right for you.</p>
-    </div> 
+    </div>
 
 
     <div class="call-to-action">
@@ -193,7 +193,7 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
-        max-height: 32 * $units; 
+        max-height: 32 * $units;
         flex: 1;
         .influencer-view {
           display: block;
@@ -205,34 +205,33 @@
 
   }
 	dialog {
-
 		transition: all .5s ease-in-out;
 		border: 1px solid #ededed;
 		margin: auto;
-		position: fixed;
+		position: absolute;
   }
 
 
-  button 
+  button
   {
     border: 0;
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    width: 8 * $units; 
+    width: 8 * $units;
   }
 
   i {
     font-size: 3 * $units;
     line-height: 3 * $units;
-    padding: 1 * $units; 
+    padding: 1 * $units;
   }
- /** 
+ /**
   .help
   {
 
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 
   }
 
@@ -240,46 +239,47 @@
 
   .product-info{
 
-    margin: 5 * $units; 
-    width: 100%; 
-    height: 50 * $units; 
+    margin: 5 * $units;
+    width: 100%;
+    height: 50 * $units;
     background-color: $nocolor;
-    display: flex; 
-    flex-flow: row wrap; 
-    justify-content: space-evenly;  
-    
-  img, p {
-    align-self: center; 
-    width: 30%; 
-    font-size: 2 * $units; 
-  }
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+
+    img, p {
+      align-self: center;
+      width: 30%;
+      font-size: 2 * $units;
+    }
 
   }
 
   .call-to-action{
-   
-    display: flex; 
-    flex-flow: column wrap; 
-    justify-content: center; 
-    height: 50 * $units; 
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 50 * $units;
     background:url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
-    color: white; 
+    background-size: cover;
+    color: white;
 
 
   h2, p{
-     align-self: center; 
-     margin: 1 * $units; 
-     text-shadow: $shadow; 
-  } 
-  
+     align-self: center;
+     margin: 1 * $units;
+     text-shadow: $shadow;
+  }
+
 
   button {
-        align-self: center; 
+        align-self: center;
         background-color: $primary;
         color: white;
-        height: 6 * $units; 
+        height: 6 * $units;
         width: 15 * $units;
       }
 
