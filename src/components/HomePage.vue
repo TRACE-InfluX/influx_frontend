@@ -144,8 +144,8 @@
         position: absolute;
         color: gray;
         height: $height;
-        width: $height;
-        font-size: 3 * $units;
+        width: $height
+       
       }
 
       input, button {

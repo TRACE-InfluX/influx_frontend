@@ -22,6 +22,7 @@
       <li><i class="zmdi zmdi-twitter-box"></i><a href="#">twitter</a></li>
       </ul>
 
+      </ul>
 
       
       <ul>
@@ -79,6 +80,7 @@
       color: white;
       background-color: rgba(0,0,0,0.5);
       width: 100%;
+      z-index: 9999;
 
       > * {
         display: inline-block;
