@@ -58,26 +58,6 @@
       <h2>Get started today!</h2>
       <button>sign up</button>
     </div>
-
-    <footer>
-
-      <h3>Ready to get started?</h3>
-      <p> Lorem Ipsum </p>
-
-      <ul>
-
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-
-
-      </ul>  
-
-    </footer>  
   </div>
 </template>
 
@@ -303,22 +283,6 @@
         width: 15 * $units;
       }
 
-  }
-
-    footer
-  {
-
-    display: flex; 
-    justify-content: space-around; 
-    height: 50 * $units; 
-    width: 100%;
-    background-color: $footer-color; 
-
-  h3, p, ul
-  {
-    align-self: center; 
-    list-style: none; 
-  }  
   }
 
 </style>

@@ -11,6 +11,25 @@
 
     <router-view></router-view>
 
+    <footer>
+
+      <h3>Ready to get started?</h3>
+      <p> Lorem Ipsum </p>
+
+      <ul>
+
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+      <li>Product Company</li>  
+
+
+      </ul>  
+
+    </footer>  
   </div>
 </template>
 
@@ -102,6 +121,24 @@
       }
 
     }
+
+         footer
+  {
+    bottom: 0; 
+    display: flex; 
+    justify-content: space-around; 
+    height: 50 * $units; 
+    width: 100%;
+    background-color: $footer-color; 
+    
+
+  h3, p, ul
+  {
+    align-self: center; 
+    list-style: none; 
+  }  
+  }
+
   }
 
 </style>
