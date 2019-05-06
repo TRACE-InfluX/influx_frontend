@@ -18,18 +18,17 @@
 
       <ul>
 
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
+      <li>Product Company</li>
+      <li>Product Company</li>
+      <li>Product Company</li>
+      <li>Product Company</li>
+      <li>Product Company</li>
+      <li>Product Company</li>
+      <li>Product Company</li>
 
+      </ul>
 
-      </ul>  
-
-    </footer>  
+    </footer>
   </div>
 </template>
 
@@ -77,6 +76,7 @@
       color: white;
       background-color: rgba(0,0,0,0.5);
       width: 100%;
+      z-index: 9999;
 
       > * {
         display: inline-block;
@@ -124,19 +124,19 @@
 
          footer
   {
-    bottom: 0; 
-    display: flex; 
-    justify-content: space-around; 
-    height: 50 * $units; 
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 50 * $units;
     width: 100%;
-    background-color: $footer-color; 
-    
+    background-color: $footer-color;
+
 
   h3, p, ul
   {
-    align-self: center; 
-    list-style: none; 
-  }  
+    align-self: center;
+    list-style: none;
+  }
   }
 
   }
