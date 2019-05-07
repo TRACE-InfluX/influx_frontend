@@ -7,16 +7,19 @@
         <img v-bind:src="influencer.profile_image"/>
         </div> <!-- col-left= -->
         <div class = "col-right">
-          <h2>{{influencer.name}}</h2>
-          <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
-          <p>{{influencer.description}}</p>
-          <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+            <div class = "top">
+                <h2>{{influencer.name}}</h2>
+                <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+                <p class = "desc">{{influencer.description}}</p>
+                <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+            </div>
           <hr> <!-- I'll replace this with an actual divider -->
-          <!-- progbar = vuejs styling -->
-          <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
-          <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
-          <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
-
+            <div class = "bot">
+                <!-- progbar = vuejs styling -->
+                <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
+                <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
+                <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
+            </div>
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
@@ -44,14 +47,19 @@
         <img v-bind:src="influencer.profile_image"/>
       </div> <!-- col-left= -->
       <div class = "col-right">
-          <h2>{{influencer.name}}</h2>
-          <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
-          <p>{{influencer.description}}</p>
-          <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
-          <hr>
-          <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
-          <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
-          <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
+          <div class = "top">
+              <h2>{{influencer.name}}</h2>
+              <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+              <p class = "desc">{{influencer.description}}</p>
+              <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+          </div>
+          <hr> <!-- I'll replace this with an actual divider -->
+          <div class = "bot">
+              <!-- progbar = vuejs styling -->
+              <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
+              <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
+              <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
+          </div>
       </div> <!-- col-right" -->
     </article>
 
@@ -69,11 +77,11 @@
         data() {
             return {
           // progress-bar vuejs styling
-            progbar:{
-            backgroundColor: '#458eff',
-            width: 'influencer.relevance',
-            color: 'white'
-            }
+                progbar:{
+                    backgroundColor: '#458eff',
+                    width: 'influencer.relevance',
+                    color: 'white'
+                }
             }
         },
         mounted() {
@@ -104,6 +112,23 @@
     .stats {
         font-weight: bold;
         padding: 1 * $units;
+    }
+
+    .top {
+        height: 15 * $units;
+        border-bottom: #999999;
+        margin: 1 * $units;
+        .desc {
+            height: 7.5 * $units;
+            overflow: hidden;
+        }
+    }
+
+    .bot {
+        height: 10 * $units;
+        margin: 1 * $units;
+        font-weight: bold;
+        text-align: left;
     }
 
   .influencer-tile {
