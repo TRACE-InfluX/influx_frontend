@@ -15,9 +15,9 @@
 
           <hr> <!-- I'll replace this with an actual divider -->
           <br> <!--probably want a div or something instead of just using br to add space -->
-          <p>Insert a bar with Activity here</p>
-          <p>Insert a bar with Relevance here</p>
-          <p>Insert a bar with Engagement here</p>
+          <p>Activity: {{influencer.activity}}</p>
+          <p>Relevance: {{influencer.relevance}}</p>
+          <p>Engagement: {{influencer.engagement}}</p>
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
@@ -27,9 +27,6 @@
         <div class = "col-right-details">
           <button>Contact</button>
           <button class ="inline"> Favourite </button>
-          <p>Activity: {{influencer.activity}}</p>
-          <p>Relevance: {{influencer.relevance}}</p>
-          <p>Engagement: {{influencer.engagement}}</p>
           <p>Reach: {{influencer.reach}}</p>
           <p>Conversion: {{influencer.conversion}}</p>
           <p>Cost: {{influencer.cost}}</p>
@@ -57,9 +54,9 @@
           <p>Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
           <hr>
           <br> <!--probably want a div or something instead of just using br to add space -->
-          <p>Insert a bar with Activity here</p>
-          <p>Insert a bar with Relevance here</p>
-          <p>Insert a bar with Engagement here</p>
+          <p>Activity: {{influencer.activity}}</p>
+          <p>Relevance: {{influencer.relevance}}</p>
+          <p>Engagement: {{influencer.engagement}}</p>
       </div> <!-- col-right" -->
     </article>
 
