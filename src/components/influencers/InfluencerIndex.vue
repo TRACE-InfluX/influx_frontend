@@ -102,9 +102,9 @@ export default {
   .influencer-index {
   
     padding-top: 10%;
-    text-align: center;
     padding-left:5%;
     padding-right:5%;
+    text-align: center;
     
   }
 
