@@ -1,10 +1,8 @@
 <!--Template for default view for all influencers-->
 <template>
   <div class="influencer-index">
-    <input class="search-bar" ref="search" type="search" v-model="query">
-    <h1>Influencers</h1>
+    <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
     <ul>
-      <h2>Results for: {{keywords}}</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in filtered_influencers" :key="influencer.id">
         <influencer-view 
@@ -108,6 +106,8 @@ export default {
     display: block;
     margin:auto;
     padding: 2 * $units;
+    display:inline;
+
     
 
   }
@@ -122,8 +122,18 @@ export default {
 
   .search-bar {
         $height: 5 * $units;
-        width: 40 * $units; 
+        font-size: 1.8 * $units;
+        width: 57 * $units; 
         height: $height;  
+        border-radius: 0.5 * $units;
+        border:none;
+        box-shadow: $shadow;
+        padding-left: 1 * $units;
+        padding-right:1 * $units;
+        margin-right: 1 * $units;
+        padding-right: 1 * $units;
+        margin-bottom: 5%;
+        margin-top: 5%;
       }
   
 </style>
