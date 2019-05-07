@@ -10,11 +10,8 @@
           <h2>{{influencer.name}}</h2>
           <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
           <p>{{influencer.description}}</p>
-          <p>{{influencer.url}}</p>
-          <p>Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
-
+          <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
           <hr> <!-- I'll replace this with an actual divider -->
-          <br> <!--probably want a div or something instead of just using br to add space -->
           <p>Activity: {{influencer.activity}}</p>
           <p>Relevance: {{influencer.relevance}}</p>
           <p>Engagement: {{influencer.engagement}}</p>
@@ -50,10 +47,8 @@
                       <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
           <h2>{{influencer.name}}</h2>
           <p>{{influencer.description}}</p>
-          <p>{{influencer.url}}</p>
-          <p>Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+          <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
           <hr>
-          <br> <!--probably want a div or something instead of just using br to add space -->
           <p>Activity: {{influencer.activity}}</p>
           <p>Relevance: {{influencer.relevance}}</p>
           <p>Engagement: {{influencer.engagement}}</p>
@@ -100,6 +95,11 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
+    .stats {
+        font-weight: bold;
+        padding: 1 * $units;
+    }
+
   .influencer-tile {
 
     position: relative;
@@ -132,8 +132,6 @@
       padding-left: 1 * $units;
       padding-right: 1 * $units;
     }
-
-
   } //influencer tile
 
   .influencer-detailed{
@@ -150,7 +148,7 @@
     }
 
     .influencer-listing-detailed{
-    height: 50 * $units;
+    height: 30 * $units;
     border:none;
     }
 
@@ -188,10 +186,6 @@
       padding-right:5%;
       padding-left:5%;
 
-      p {
-        color: #999999;
-      }
-
         .icon{
         height:4 * $units;
         width:4 * $units;
@@ -223,7 +217,7 @@
     box-sizing: border-box;
     border-radius: 2 * $units;
     width: 100 * $units;
-    height: 50 * $units;
+    height: 30 * $units;
     margin: auto;
     text-align: center;
 
@@ -239,10 +233,6 @@
       height: 30 * $units;
       padding-right:5%;
       padding-left:5%;
-
-      p {
-        color: #999999;
-      }
 
       .icon{
         height:4 * $units;
@@ -265,10 +255,8 @@
       }
     }
 
-
     h2{
       font-size: 3 * $units;
     }
-
   }
 </style>

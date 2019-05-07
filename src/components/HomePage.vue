@@ -16,7 +16,6 @@
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-          <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
           <influencer-view type="tile"
             @click.native="open(popularInfluencer.id)"
             :influencer="popularInfluencer"
@@ -36,7 +35,6 @@
     </div>
 
     <div class="product-info">
-
       <p>Browse through detailed information to find out if they're right for you.</p>
         <img src="~@/assets/preview2.png">
     </div>
@@ -151,6 +149,7 @@
         background-color: $primary;
         color: white;
         width: 12 * $units;
+        border-radius: 0.5 * $units;
       }
     }
   }
@@ -228,26 +227,25 @@
   **/
 
   .product-info{
-  
-    width: 100%; 
+    width: 100%;
     height: 100%;
-    margin-top: 10 * $units; 
+    margin-top: 10 * $units;
     margin-bottom: 10 * $units;
-    height: 50 * $units; 
+    height: 50 * $units;
     background-color: $nocolor;
-    display: flex; 
-    flex-flow: column wrap; 
-    justify-content: space-around;  
-    
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+
   img {
-    align-self: center; 
-    width: 35%; 
+    align-self: center;
+    width: 35%;
   }
 
    p {
-    align-self: center; 
-    width: 20%; 
-    font-size: 1.5 * $units; 
+    align-self: center;
+    width: 20%;
+    font-size: 3 * $units;
 
     }
   }
@@ -259,11 +257,20 @@
     justify-content: center;
     height: 50 * $units;
     width: 100%;
-    background:url('~@/assets/getstarted.jpeg');
+    background:
+            /* top, transparent black, faked with gradient */
+            linear-gradient(
+                            rgba(0, 0, 0, 0.6),
+                            rgba(0, 0, 0, 0.6)
+            ),
+            /* bottom, image */
+            url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     color: white;
+    font-size: 3 * $units;
+    text-align: center;
 
     h2, p{
       align-self: center;
