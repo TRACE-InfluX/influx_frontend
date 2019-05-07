@@ -44,10 +44,16 @@
         width: 100%;
         margin: 2 * $units auto;
     }
-    input {
+
+
+    input { 
         height: 4 * $units;
         padding-left: 1 * $units;
         width: 25 * $units;
+        border-radius: 0.5 * $units;
+        border-style: solid #999999;
+        border-width: 1px;
+        
     }
     button {
         height: 5 * $units;
@@ -57,6 +63,7 @@
         display: inline-block;
         width: 25 * $units;
         border-style:none;
+        border-radius: 0.5 * $units;
     }
 
     .register-form{

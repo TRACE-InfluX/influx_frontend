@@ -42,7 +42,7 @@
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
-      <button>sign up</button>
+      <button>Sign Up</button>
     </div>
   </div>
 </template>
@@ -279,11 +279,13 @@
     }
 
     button {
-      align-self: center;
-      background-color: $primary;
-      color: white;
-      height: 6 * $units;
-      width: 15 * $units;
+      align-self:center;
+        background-color: $primary;
+        color: white;
+        height: 5 * $units;
+        width: 12 * $units;
+        border-radius: 0.5 * $units;
+        font-size: 1.8 * $units;
     }
   }
 
