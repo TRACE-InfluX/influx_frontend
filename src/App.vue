@@ -23,15 +23,15 @@
       </ul>
 
 
-      
-      <ul>
-      <li> Legal: </li> 
-      <li>Terms</li>  
-      <li>Privacy</li>  
-      <li>InfluX Co. 2019 All Rights Reserved.</li>  
-      </ul>  
 
-    </footer>  
+      <ul>
+      <li> Legal: </li>
+      <li>Terms</li>
+      <li>Privacy</li>
+      <li>InfluX Co. 2019 All Rights Reserved.</li>
+      </ul>
+
+    </footer>
   </div>
 </template>
 
@@ -127,33 +127,32 @@
 
   footer
   {
-    bottom: 0; 
-    display: flex; 
-    justify-content: space-around; 
-    height: 25 * $units; 
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 25 * $units;
     width: 100%;
-    margin-top: 5 * $units; 
     padding: 5%;
-    background-color: $footer-color; 
-    font-size: 1.5 * $units; 
-    
+    background-color: $footer-color;
+    font-size: 1.5 * $units;
+
 
   h3, p, ul
   {
-    align-self: center; 
-    list-style: none; 
+    align-self: center;
+    list-style: none;
   }
-  
+
   li {
-    margin: 1 * $units; 
+    margin: 1 * $units;
   }
-  
+
   a{
     text-decoration: none;
   }
 
   a:visited{
-    color: black; 
+    color: black;
   }
 
   }

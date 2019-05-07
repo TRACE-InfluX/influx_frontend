@@ -53,6 +53,7 @@
         display: block;
         width: 40 * $units;
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        margin-bottom: 5 * $units;
     }
 
     form > * {
