@@ -74,6 +74,7 @@ export default {
   watch: {
     query(q) {
       localStorage.setItem("query", q)
+      scrollTo(0,0)
     }
   },
   methods: {
