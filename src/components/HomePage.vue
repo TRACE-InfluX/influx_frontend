@@ -228,7 +228,6 @@
   **/
 
   .product-info{
-  
     width: 100%; 
     height: 100%;
     margin-top: 10 * $units; 
@@ -252,7 +251,9 @@
     }
   }
 
-  .call-to-action{
+
+  .call-to-action
+  {
 
     display: flex;
     flex-flow: column wrap;
@@ -279,5 +280,6 @@
       width: 15 * $units;
     }
   }
+
 
 </style>
