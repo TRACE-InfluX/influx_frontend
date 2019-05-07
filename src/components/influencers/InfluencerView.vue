@@ -242,7 +242,6 @@
       height: 30 * $units;
       padding-right:5%;
       padding-left:5%;
-      justify-content: left;
 
       p {
         color: #999999;

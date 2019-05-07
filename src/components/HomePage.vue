@@ -191,7 +191,6 @@
     transition: all .5s ease-in-out;
     border: none;
     margin: auto;
-    width: 100%;
     position: absolute;
     border-radius: 2 * $units;
 
