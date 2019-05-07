@@ -48,31 +48,30 @@
 </template>
 
 <script>
-  import API from '@/api.js'
+  import { STATE, ACTIONS } from '@/store.js'
 	export default {
       data() {
         return {
-          popular: [],
           selected_id: '',
           dialog: false,
-          query: '',
+          query: ''
         }
       },
       computed: {
+        ...STATE,
         selected_influencer() {
           return this.popular.find(i => i.id === this.selected_id) || {}
         }
       },
       mounted() {
+        this.load_popular()
         this.$refs.search.focus();
         window.onkeydown = () => {
           this.$refs.search.focus();
         }
-        API.get('/v0/influencers').then(res=>{
-          this.popular = res.data.sort((a,b) => b.activity - a.activity).slice(0,4)
-        })
       },
       methods: {
+        ...ACTIONS,
         open(id) {
           this.selected_id = id;
           this.dialog = true;
@@ -84,7 +83,7 @@
           }
         },
         search() {
-          localStorage.setItem("query", this.query);
+          localStorage.setItem('query', this.query);
           this.$router.push('/influencers');
         }
       }

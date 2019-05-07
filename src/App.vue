@@ -36,9 +36,16 @@
 </template>
 
 <script>
+
+  import { ACTIONS } from '@/store.js'
+
   export default {
     name: 'app',
+    methods: {
+      ...ACTIONS
+    },
     mounted() {
+      this.load_influencers()
       let query = localStorage.getItem("query");
       if (query) {
         this.$router.push('/influencers')
