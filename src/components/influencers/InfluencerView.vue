@@ -12,8 +12,6 @@
           <p>{{influencer.description}}</p>
           <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
           <hr> <!-- I'll replace this with an actual divider -->
-
-          <br> <!--probably want a div or something instead of just using br to add space -->
           <!-- progbar = vuejs styling -->
           <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
           <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
@@ -46,17 +44,14 @@
         <img v-bind:src="influencer.profile_image"/>
       </div> <!-- col-left= -->
       <div class = "col-right">
-            <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
-            <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
+          <h2>{{influencer.name}}</h2>
           <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+          <p>{{influencer.description}}</p>
+          <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+          <hr>
           <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
           <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
           <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
-          <p>Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
-          <hr>
-          <p>Activity: {{influencer.activity}}</p>
-          <p>Relevance: {{influencer.relevance}}</p>
-          <p>Engagement: {{influencer.engagement}}</p>
       </div> <!-- col-right" -->
     </article>
 
@@ -73,9 +68,9 @@
         },
         data() {
             return {
-          // progress-bar vuejs styling    
-            progbar:{  
-            backgroundColor: '#458eff', 
+          // progress-bar vuejs styling
+            progbar:{
+            backgroundColor: '#458eff',
             width: 'influencer.relevance',
             color: 'white'
             }
