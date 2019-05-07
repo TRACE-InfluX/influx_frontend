@@ -145,6 +145,7 @@
     border-radius: 2 * $units;
     height: 100 * $units;
     width: 100 * $units;
+    text-align: center;
     margin:auto;
 
     h2{
@@ -227,6 +228,7 @@
     width: 100 * $units;
     height: 50 * $units;
     margin: auto;
+    text-align: center;
 
     h2{
     display:inline-block;
@@ -240,6 +242,7 @@
       height: 30 * $units;
       padding-right:5%;
       padding-left:5%;
+      justify-content: left;
 
       p {
         color: #999999;
