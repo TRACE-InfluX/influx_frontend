@@ -11,6 +11,7 @@
           :influencer="influencer"
           :type="getType(influencer.id)"
           @click.native="select(influencer.id)"
+          @mouseover.native="update_limit(influencer)"
         />
       </li>
       <br>
@@ -29,7 +30,8 @@ export default {
         //array of influencers to display
         influencers: [],
         selected_influencer: '',
-        query: ''
+        query: '',
+        limit: 5
     }
   },
   mounted() {
@@ -47,28 +49,32 @@ export default {
       return this.query.split(' ')
     },
     filtered_influencers() {
-
       // Return full list if no query or no list loaded
-      return (!this.query ? this.influencers :
+      return (!this.query ? this.influencers:
         // Else check for match between keywords and any part of name/description
         this.influencers.filter(influencer => {
           return this.keywords.find(
-            k => influencer.name.toLowerCase().includes(k.toLowerCase()) ||
-                 influencer.description.toLowerCase().includes(k.toLowerCase())
+            k => {
+              let key = k.toLowerCase()
+              return influencer.name.toLowerCase().includes(key) ||
+                     influencer.description.toLowerCase().includes(key) ||
+                     influencer.weights[key] ||
+                     influencer.weights['#' + key] ||
+                     influencer.location.toLowerCase().includes(key)
+            }
           )
       }))
       .sort((a,b) => {
         // Average between our three metrics
-        return (b.activity + b.relevance + b.engagement)/3
-              -(a.activity + a.relevance + a.engagement)/3
+        return b.engagement - a.engagement
       })
+      .slice(0,this.limit)
     },
-
-
   },
   watch: {
     query(q) {
       localStorage.setItem("query", q)
+      scrollTo(0,0)
     }
   },
   methods: {
@@ -79,11 +85,17 @@ export default {
       return id === this.selected_influencer ? "detailed" : "listing"
     },
     loadInfluencers() {
-      API.get('/v0/influencers')
+      return API.get('/v0/influencers')
       .then(res => {
         this.influencers = res.data
+        for(let influencer of this.influencers) {
+          influencer.weights = JSON.parse(atob(influencer.weights.slice(2,-1)))
+        }
       })
       .catch(alert)
+    },
+    update_limit(influencer) {
+      this.limit = 5 + this.filtered_influencers.indexOf(influencer)
     }
   }
 }
