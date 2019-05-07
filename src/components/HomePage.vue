@@ -227,24 +227,27 @@
   **/
 
   .product-info{
-
-    margin: 5 * $units;
-    width: 100%;
-    height: 50 * $units;
+  
+    width: 100%; 
+    height: 100%;
+    margin-top: 10 * $units; 
+    margin-bottom: 10 * $units;
+    height: 50 * $units; 
     background-color: $nocolor;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
+    display: flex; 
+    flex-flow: column wrap; 
+    justify-content: space-around;  
+    
+  img {
+    align-self: center; 
+    width: 35%; 
+  }
 
-    img {
-      align-self: center;
-      width: 40%;
-    }
+   p {
+    align-self: center; 
+    width: 20%; 
+    font-size: 1.5 * $units; 
 
-     p {
-      align-self: center;
-      width: 20%;
-      font-size: 1.5 * $units;
     }
   }
 
