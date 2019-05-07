@@ -78,9 +78,11 @@
             return {
           // progress-bar vuejs styling
                 progbar:{
-                    backgroundColor: '#458eff',
-                    width: 'influencer.relevance',
-                    color: 'white'
+                    // backgroundColor: '#458eff',
+                    // width: 'influencer.relevance',
+                    // color: 'white'
+                    //todo: remove this when bar is working
+                    color: 'blue'
                 }
             }
         },
