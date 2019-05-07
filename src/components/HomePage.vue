@@ -10,12 +10,10 @@
         <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-
     </header>
 
     <main>
-
-       <h3>Popular</h3>
+      <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
           <!-- Popular tile is messed up right now, really tall, because the tile and the expanded view are the same height. Will fix -->
@@ -25,34 +23,23 @@
           />
         </li>
       </ul>
-
     </main>
 
-    <dialog :open="dialog" @click="close">
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-<!-- placeholder for content
-        <div class="help">
-
-    <img src="~@/assets/preview.png" />
-
-
-    </div>
- --> 
-
     <div class="product-info">
-    
       <p>Influencers at your fingertips. Just a search away.</p>
         <img src="~@/assets/preview1.png">
-    </div> 
+    </div>
 
     <div class="product-info">
-     
+
       <p>Browse through detailed information to find out if they're right for you.</p>
         <img src="~@/assets/preview2.png">
-    </div> 
-
+    </div>
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -108,7 +95,6 @@
 
 <style lang="scss" scoped>
 
-
   header {
     color: white;
     background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
@@ -145,7 +131,6 @@
         color: gray;
         height: $height;
         width: $height
-       
       }
 
       input, button {
@@ -167,7 +152,6 @@
         color: white;
         width: 12 * $units;
       }
-
     }
   }
 
@@ -193,7 +177,7 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
-        max-height: 32 * $units; 
+        max-height: 32 * $units;
         flex: 1;
         .influencer-view {
           display: block;
@@ -201,37 +185,42 @@
         }
       }
     }
-
-  }
-	dialog {
-
-		transition: all .5s ease-in-out;
-		border: 1px solid #ededed;
-		margin: auto;
-		position: fixed;
   }
 
+  dialog {
+    transition: all .5s ease-in-out;
+    border: none;
+    margin: auto;
+    position: absolute;
+    border-radius: 2 * $units;
 
-  button 
-  {
+    .close {
+      padding: 1 * $units;
+      position: absolute;
+      right: 2 * $units;
+      font-size: 4 * $units;
+    }
+  }
+
+  button {
     border: 0;
     background: none;
     box-shadow: none;
     border-radius: 0px;
-    width: 8 * $units; 
+    width: 8 * $units;
   }
 
   i {
     font-size: 3 * $units;
     line-height: 3 * $units;
-    padding: 1 * $units; 
+    padding: 1 * $units;
   }
- /** 
+ /**
   .help
   {
 
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 
   }
 
@@ -259,39 +248,48 @@
     width: 20%; 
     font-size: 1.5 * $units; 
 
+    img {
+      align-self: center;
+      width: 40%;
+    }
+
+     p {
+      align-self: center;
+      width: 20%;
+      font-size: 1.5 * $units;
+    }
+  }
   }
 
-  }
 
-  .call-to-action{
-   
-    display: flex; 
-    flex-flow: column wrap; 
-    justify-content: center; 
-    height: 50 * $units; 
-    width: 100%; 
+  .call-to-action
+  {
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 50 * $units;
+    width: 100%;
     background:url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; 
-    color: white; 
+    background-size: cover;
+    color: white;
 
+    h2, p{
+      align-self: center;
+      margin: 1 * $units;
+      text-shadow: $shadow;
+    }
 
-  h2, p{
-     align-self: center; 
-     margin: 1 * $units; 
-     text-shadow: $shadow; 
-  } 
-  
-
-  button {
-        align-self: center; 
-        background-color: $primary;
-        color: white;
-        height: 6 * $units; 
-        width: 15 * $units;
-      }
-
+    button {
+      align-self: center;
+      background-color: $primary;
+      color: white;
+      height: 6 * $units;
+      width: 15 * $units;
+    }
   }
+
 
 </style>
