@@ -10,11 +10,9 @@
         <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-
     </header>
 
     <main>
-
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
@@ -25,47 +23,29 @@
           />
         </li>
       </ul>
-
     </main>
 
-    <dialog :open="dialog" @click="close">
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-    <div class="help">
-
-    <img src="~@/assets/preview.png" />
-
-
+    <div class="product-info">
+      <p>Influencers at your fingertips. Just a search away.</p>
+        <img src="~@/assets/preview1.png">
     </div>
 
+    <div class="product-info">
+
+      <p>Browse through detailed information to find out if they're right for you.</p>
+        <img src="~@/assets/preview2.png">
+    </div>
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
       <button>sign up</button>
     </div>
-
-    <footer>
-
-      <h3>Ready to get started?</h3>
-      <p> Lorem Ipsum </p>
-
-      <ul>
-
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-      <li>Product Company</li>  
-
-
-      </ul>  
-
-    </footer>  
-
   </div>
 </template>
 
@@ -114,6 +94,7 @@
 </script>
 
 <style lang="scss" scoped>
+
   header {
     color: white;
     background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
@@ -149,9 +130,7 @@
         position: absolute;
         color: gray;
         height: $height;
-        width: $height;
-        line-height: $height;
-        font-size: 3 * $units;
+        width: $height
       }
 
       input, button {
@@ -180,7 +159,6 @@
 
     h3 {
       $height: 18 * $units;
-
       height: $height;
       line-height: $height;
       display: block;
@@ -199,6 +177,7 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
+        max-height: 32 * $units;
         flex: 1;
         .influencer-view {
           display: block;
@@ -206,69 +185,99 @@
         }
       }
     }
+  }
 
+  dialog {
+    transition: all .5s ease-in-out;
+    border: none;
+    margin: auto;
+    position: absolute;
+    border-radius: 2 * $units;
+
+    .close {
+      padding: 1 * $units;
+      position: absolute;
+      right: 2 * $units;
+      font-size: 4 * $units;
+      text-align: center;
+    }
   }
-	dialog {
-		border: 1px solid grey;
-		padding: 12px;
-		margin: auto;
-		position: fixed;
-		top: 50%;
+
+  button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 8 * $units;
   }
-  
+
+  i {
+    font-size: 3 * $units;
+    line-height: 3 * $units;
+    padding: 1 * $units;
+  }
+ /**
   .help
   {
 
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 
+  }
+
+  **/
+
+  .product-info{
+  
+    width: 100%; 
+    height: 100%;
+    margin-top: 10 * $units; 
+    margin-bottom: 10 * $units;
+    height: 50 * $units; 
+    background-color: $nocolor;
+    display: flex; 
+    flex-flow: column wrap; 
+    justify-content: space-around;  
+    
+  img {
+    align-self: center; 
+    width: 35%; 
+  }
+
+   p {
+    align-self: center; 
+    width: 20%; 
+    font-size: 1.5 * $units; 
+
+    }
   }
 
   .call-to-action{
-   
-    display: flex; 
-    flex-flow: column wrap; 
-    justify-content: center; 
-    height: 50 * $units; 
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 50 * $units;
+    width: 100%;
     background:url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover; 
-    color: white; 
+    background-size: cover;
+    color: white;
 
+    h2, p{
+      align-self: center;
+      margin: 1 * $units;
+      text-shadow: $shadow;
+    }
 
-  h2, p{
-     align-self: center; 
-     margin: 1 * $units; 
-     text-shadow: $shadow; 
-  } 
-  
-
-  button {
-        align-self: center; 
-        background-color: $primary;
-        color: white;
-        border: none;
-        height: 6 * $units; 
-        width: 15 * $units;
-      }
-
+    button {
+      align-self: center;
+      background-color: $primary;
+      color: white;
+      height: 6 * $units;
+      width: 15 * $units;
+    }
   }
 
-    footer
-  {
-
-    display: flex; 
-    justify-content: space-around; 
-    height: 50 * $units; 
-    width: 100%;
-    background-color: $footer-color; 
-
-  h3, p, ul
-  {
-    align-self: center; 
-    list-style: none; 
-  }  
-
-  }
 </style>
