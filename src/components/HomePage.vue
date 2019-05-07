@@ -199,6 +199,7 @@
       position: absolute;
       right: 2 * $units;
       font-size: 4 * $units;
+      text-align: center;
     }
   }
 
