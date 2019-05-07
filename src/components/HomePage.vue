@@ -199,6 +199,7 @@
       position: absolute;
       right: 2 * $units;
       font-size: 4 * $units;
+      text-align: center;
     }
   }
 
@@ -227,7 +228,7 @@
   **/
 
   .product-info{
-
+  
     width: 100%; 
     height: 100%;
     margin-top: 10 * $units; 
@@ -248,17 +249,7 @@
     width: 20%; 
     font-size: 1.5 * $units; 
 
-    img {
-      align-self: center;
-      width: 40%;
     }
-
-     p {
-      align-self: center;
-      width: 20%;
-      font-size: 1.5 * $units;
-    }
-  }
   }
 
 
