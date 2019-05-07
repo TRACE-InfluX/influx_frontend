@@ -15,9 +15,9 @@
 
           <hr> <!-- I'll replace this with an actual divider -->
           <br> <!--probably want a div or something instead of just using br to add space -->
-          <p>Activity: {{influencer.activity}}</p>
-          <p>Relevance: {{influencer.relevance}}</p>
-          <p>Engagement: {{influencer.engagement}}</p>
+          <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
+          <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
+          <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
@@ -48,9 +48,9 @@
             <!-- Problem: If we click the instagram icon, it doesn't redirect, since clicking anywhere on the listing will expand to the detailed view -->
             <!-- Either need to change how clicking the listing works, or move the instagram icon (maybe to the deai) -->
                       <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
-          <h2>{{influencer.name}}</h2>
-          <p>{{influencer.description}}</p>
-          <p>{{influencer.url}}</p>
+          <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
+          <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
+          <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
           <p>Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
           <hr>
           <br> <!--probably want a div or something instead of just using br to add space -->
@@ -73,6 +73,12 @@
         },
         data() {
             return {
+          // progress-bar vuejs styling    
+            progbar:{  
+            backgroundColor: '#458eff', 
+            width: 'influencer.relevance',
+            color: 'white'
+            }
             }
         },
         mounted() {
