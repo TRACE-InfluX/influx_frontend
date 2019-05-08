@@ -102,7 +102,7 @@
         methods: {
           linktoURL(url){
             this.influencer.url = url;
-            window.open(url, _blank);
+            window.open(url, '_blank');
           }
         }
     }
