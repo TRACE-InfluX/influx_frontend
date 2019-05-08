@@ -8,7 +8,7 @@ export function process(influencers) {
 
   // The accumulator function does a value-inclusive set union on each weight file
   let accumulator = (pool, next) => {
-    for(let key of Object.keys(next.weights)) {
+    for(let key in next.weights) {
       pool[key] = next.weights[key] + (pool[key] || 0)
     }
     return pool
