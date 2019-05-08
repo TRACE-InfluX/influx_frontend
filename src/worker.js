@@ -1,4 +1,19 @@
-export function process(influencers) {
+export function process(influencers, cache) {
+
+  // Skip heavy processing if results are cached
+  if (cache) {
+    let sorted = []
+    let c = JSON.parse(cache)
+    for(let influencer of influencers) {
+      let id = influencer.id
+      influencer.engagement = c.e[id]
+      influencer.relevance  = c.r[id]
+      influencer.activity   = c.a[id]
+      sorted[c.s[id]] = influencer
+    }
+    return { influencers: sorted, cache }
+  }
+
   let length = influencers.length
 
   // Decode Weights from Base64 String to JSON object
@@ -63,29 +78,40 @@ export function process(influencers) {
     }
   }
 
+  cache = {e:{},r:{},a:{},s:{}}
   // Sort and reweight engagement based on percentile
   influencers.sort((a,b) => b.engagement - a.engagement)
   for(let i = 0; i < length; ++i) {
-    influencers[i].engagement = 100 * (length - i) / length
+    let val = 100 * (length - i) / length
+    influencers[i].engagement  = val
+    cache.e[influencers[i].id] = val
   }
 
   // Sort and reweight relevance based on percentile
   influencers.sort((a,b) => b.relevance - a.relevance)
   for(let i = 0; i < length; ++i) {
-    influencers[i].relevance = 100 * (length - i) / length
+    let val = 100 * (length - i) / length
+    influencers[i].relevance   = val
+    cache.r[influencers[i].id] = val
   }
 
   // Sort and reweight activity based on percentile
   influencers.sort((a,b) => b.activity - a.activity)
   for(let i = 0; i < length; ++i) {
-    influencers[i].activity = 100 * (length - i) / length
+    let val = 100 * (length - i) / length
+    influencers[i].activity    = val
+    cache.a[influencers[i].id] = val
   }
 
   // Final sort
   influencers.sort((a,b) =>
     b.activity + b.engagement + b.relevance 
   - a.activity - a.engagement - a.relevance)
+  for(let i = 0; i < length; ++i) {
+    cache.s[influencers[i].id] = i
+  }
+  cache = JSON.stringify(cache)
 
   // We're done \o/
-  return influencers
+  return { influencers, cache }
 }
