@@ -35,12 +35,12 @@ function normalize(average_weights, influencers) {
 
     let new_weights = {}
 
-    for(let key of Object.keys(influencer.weights)) {
+    for(let key in influencer.weights) {
       let avg = average_weights[key]
       if (avg) {
         new_weights[key] = (influencer.weights[key] - avg) / (avg + 1)
         if (key[0] == '#') {
-          new_weights[key] *= 2
+          new_weights[key] *= 5
         }
       }
     }
@@ -51,17 +51,21 @@ function normalize(average_weights, influencers) {
 
 }
 
+function get_relevance(weights_a, weights_b) {
+  let relevance = 0
+  for(let key in weights_a) {
+    if (weights_b[key]) {
+      relevance += weights_a[key] + weights_b[key]
+    }
+  }
+  return relevance
+}
+
 function calculate_relevance(influencers) {
   let account_weights = influencers.find(i => i.username == '@serotoninplus').weights
 
   for(let influencer of influencers) {
-    let union = {...account_weights, ...influencer.weights}
-    let square_sum = 0
-    for(let key of Object.keys(union)) {
-      let distance = (account_weights[key] || 0) - (influencer.weights[key] || 0)
-      square_sum += distance * distance
-    }
-    influencer.relevance = Math.sqrt(square_sum)
+    influencer.relevance = get_relevance(account_weights, influencer.weights)
   }
 
   return influencers
@@ -85,12 +89,29 @@ let actions = {
 
 let mutations = {
   set_influencers(state, influencers) {
-    let decoded = decode_weights(influencers)
-    let average_weights = average_weight(decoded)
-    let normalized = normalize(average_weights, decoded)
-    let processed_influencers = calculate_relevance(normalized)
-    processed_influencers.sort((a,b) => b.relevance - a.relevance)
-    state.influencers = processed_influencers
+    influencers = decode_weights(influencers)
+    let average_weights = average_weight(influencers)
+    influencers = normalize(average_weights, influencers)
+    influencers = calculate_relevance(influencers)
+    influencers = influencers.map(i => {
+      i.engagement = 100 * (influencers.length - influencers.indexOf(i)) / influencers.length
+      return i
+    })
+    influencers.sort((a,b) => b.relevance - a.relevance)
+    influencers = influencers.map(i => {
+      i.relevance = 100 * (influencers.length - influencers.indexOf(i)) / influencers.length
+      return i
+    })
+    influencers.sort((a,b) => b.activity - a.activity)
+    influencers = influencers.map(i => {
+      i.activity = 100 * (influencers.length - influencers.indexOf(i)) / influencers.length
+      return i
+    })
+    influencers.sort((a,b) =>
+      b.activity + b.engagement + b.relevance 
+    - a.activity - a.engagement - a.relevance)
+
+    state.influencers = influencers
   },
   set_popular(state, popular) {
     state.popular = decode_weights(popular)
