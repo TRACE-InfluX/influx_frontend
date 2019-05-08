@@ -1,5 +1,4 @@
-onmessage = function(e) {
-  let influencers = e.data
+export function process(influencers) {
   let length = influencers.length
 
   for(let influencer of influencers) {
@@ -33,7 +32,7 @@ onmessage = function(e) {
     influencer.weights = new_weights
   }
 
-  let account_weights = influencers.find(i => i.username == '@serotoninplus').weights
+  let account_weights = influencers.find(i => i.username == '@itsjustjudy').weights
 
   for(let influencer of influencers) {
     influencer.relevance = 0
@@ -64,5 +63,5 @@ onmessage = function(e) {
     b.activity + b.engagement + b.relevance 
   - a.activity - a.engagement - a.relevance)
 
-  postMessage(influencers)
+  return influencers
 }
