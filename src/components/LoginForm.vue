@@ -2,7 +2,6 @@
 <template>
   <form class="login-form" @submit.prevent="login">
     <h2>Login</h2>
-    <img src="@/assets/profile.png">
     <input type="text"  v-model="input.username" required placeholder="Email">
     <input type="password"  v-model="input.password" required placeholder="Password">
     <button>Login</button>
@@ -47,39 +46,52 @@
 </script>
 
 
-<style scoped>
+<style lang = "scss" scoped>
     form {
         padding: 1em;
         margin: auto;
         display: block;
-        width: 240px;
+        width: 40 * $units;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        margin-bottom: 5 * $units;
     }
 
     form > * {
         display: block;
         width: 100%;
-        margin: 16px auto;
+        margin: 2 * $units auto;
     }
 
     input {
-        height: 30px;
-        padding-left: 8px;
+        height: 4 * $units;
+        padding-left:  1* $units;
+        width: 25 * $units;
+        border-radius: 0.5 * $units;
+        border-style: solid #999999;
+        border-width: 1px;
     }
 
     button {
-        height: 40px;
+        height: 5 * $units;
         background-color: #458eff;
         color: white;
-        padding: 10px;
-        border-radius: .5em;
+        padding: 1 * $units;
         display: inline-block;
+        width:25 * $units;
+        border-style:none;
+        border-radius: 0.5 * $units;
     }
 
-    form img {
-      height: 150px;
-      width: 150px;
-      border-radius: 150px;
-      display: block;
+    .login-form{
+        text-align:center;
+        margin-top:10%;
+        position:relative;
+        height: 50 * $units;
     }
+
+    h2{
+        color:#999999;
+    }
+
 
 </style>
