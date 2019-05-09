@@ -67,14 +67,8 @@ export default {
         return true
       })
     },
-    sorted_influencers() {
-      // Currently the API returns results sorted by engagement already
-      // We will eventually need to improve this function
-      return this.filtered_influencers
-      //.sort((a,b) => b.engagement - a.engagement)
-    },
     rendered_influencers() {
-      return this.sorted_influencers.slice(0,this.render_limit)
+      return this.filtered_influencers.slice(0,this.render_limit)
     }
   },
   watch: {

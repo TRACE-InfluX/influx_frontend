@@ -1,38 +1,42 @@
 import Vue from 'vue'
 import Vuex, { mapActions, mapState } from 'vuex'
 import API from '@/api.js'
+import Worker from '!workerize-loader?inline!./worker.js'
 
 Vue.use(Vuex)
-
-function decode_weights(influencers) {
-  for(let influencer of influencers) {
-    influencer.weights = JSON.parse(atob(influencer.weights.slice(2,-1)))
-  }
-  return influencers
-}
 
 let state =  {
   influencers: [],
   popular: [{},{},{},{}]
 }
 
-let mutations = {
-  set_influencers(state, influencers) {
-    state.influencers = decode_weights(influencers)
-  },
-  set_popular(state, popular) {
-    state.popular = decode_weights(popular)
-  }
-}
-
 let actions = {
   async load_influencers({commit}, page = 0 ) {
+    // let t0 = performance.now()
     let res = await API.get('/v0/influencers', { page })
-    commit('set_influencers', res.data)
+    let worker = new Worker()
+    let cache = localStorage.getItem('sort_cache') || null
+    let influencers = res.data
+    let data = await worker.process(influencers, cache)
+    
+    localStorage.setItem('sort_cache', data.cache)
+    commit('set_influencers', data.influencers)
+
+    // let t1 = performance.now()
+    // console.log("Finished loading after " + (t1 - t0) / 1000 + " seconds.")
   },
   async load_popular({commit}) {
     let res = await API.get('/v0/influencers/popular')
     commit('set_popular', res.data)
+  }
+}
+
+let mutations = {
+  set_influencers(state, influencers) {
+    state.influencers = influencers
+  },
+  set_popular(state, popular) {
+    state.popular = popular
   }
 }
 
