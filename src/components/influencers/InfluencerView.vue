@@ -144,7 +144,6 @@
     box-shadow: $shadow;
 
     img {
-      background-image: url("~@/assets/influxlogo.png");
       display: block;
       width: 100%;
       height: 100%;
