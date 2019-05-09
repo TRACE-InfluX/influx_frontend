@@ -11,6 +11,7 @@ const routes = [
     { path: '/accounts', component: $['account-index'] },
     { path: '/accounts/:id', component: $['account-view'] },
     { path: '/accounts/:id/edit', component: $['account-edit']}
+
 ]
 
 export default new Router({routes})

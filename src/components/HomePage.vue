@@ -10,11 +10,9 @@
         <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-
     </header>
 
     <main>
-
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
@@ -24,56 +22,76 @@
           />
         </li>
       </ul>
-
     </main>
 
-    <dialog :open="dialog" @click="close">
-      <influencer-view :influencer="popular[selected_influencer]||{}" type="detailed"/>
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
+      <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
+    <div class="product-info">
+      <p>Influencers at your fingertips. Just a search away.</p>
+        <img src="~@/assets/preview1.png">
+    </div>
+
+    <div class="product-info">
+      <p>Browse through detailed information to find out if they're right for you.</p>
+        <img src="~@/assets/preview2.png">
+    </div>
+
+    <div class="call-to-action">
+      <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
+      <h2>Get started today!</h2>
+      <button>Sign Up</button>
+    </div>
   </div>
 </template>
 
 <script>
-  import API from '@/api.js'
+  import { STATE, ACTIONS } from '@/store.js'
 	export default {
-		data() {
-			return {
-				popular: [],
-				selected_influencer: 0,
-				dialog: false,
-        query: ''
-			}
-    },
-    mounted() {
-      this.$refs.search.focus();
-      window.onkeydown = () => {
-        this.$refs.search.focus();
-      }
-      API.get('/v0/influencers').then(res=>{
-        this.popular = res.data.sort((a,b) => b.activity - a.activity).slice(0,4)
-      })
-    },
-		methods: {
-			open(id) {
-				this.selected_influencer = id;
-				this.dialog = true;
-			},
-			close() {
-				if(this.dialog)
-				{
-					this.dialog = false;
-				}
+      data() {
+        return {
+          selected_id: '',
+          dialog: false,
+          query: ''
+        }
       },
-      search() {
-        localStorage.setItem("query", this.query);
-        this.$router.push('/influencers');
+      computed: {
+        ...STATE,
+        selected_influencer() {
+          return this.popular.find(i => i.id === this.selected_id) || {}
+        }
+      },
+      mounted() {
+        this.load_popular()
+        this.$refs.search.focus();
+        window.onkeydown = () => {
+          this.$refs.search.focus();
+        }
+      },
+      methods: {
+        ...ACTIONS,
+        open(id) {
+          this.selected_id = id;
+          this.dialog = true;
+        },
+        close() {
+          if(this.dialog)
+          {
+            this.dialog = false;
+          }
+        },
+        search() {
+          localStorage.setItem('query', this.query);
+          this.$router.push('/influencers');
+        }
       }
-		}
 	}
 </script>
 
 <style lang="scss" scoped>
+
   header {
     color: white;
     background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
@@ -109,9 +127,7 @@
         position: absolute;
         color: gray;
         height: $height;
-        width: $height;
-        line-height: $height;
-        font-size: 3 * $units;
+        width: $height
       }
 
       input, button {
@@ -132,6 +148,7 @@
         background-color: $primary;
         color: white;
         width: 12 * $units;
+        border-radius: 0.5 * $units;
       }
     }
   }
@@ -140,7 +157,6 @@
 
     h3 {
       $height: 18 * $units;
-
       height: $height;
       line-height: $height;
       display: block;
@@ -159,6 +175,7 @@
       li {
         display: inline-block;
         max-width: 32 * $units;
+        max-height: 32 * $units;
         flex: 1;
         .influencer-view {
           display: block;
@@ -166,13 +183,112 @@
         }
       }
     }
+  }
+
+  dialog {
+    transition: all .5s ease-in-out;
+    border: none;
+    margin: auto;
+    position: absolute;
+    border-radius: 2 * $units;
+
+    .close {
+      padding: 1 * $units;
+      position: absolute;
+      right: 2 * $units;
+      font-size: 4 * $units;
+      text-align: center;
+    }
+  }
+
+  button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 8 * $units;
+  }
+
+  i {
+    font-size: 3 * $units;
+    line-height: 3 * $units;
+    padding: 1 * $units;
+  }
+ /**
+  .help
+  {
+
+    display: flex;
+    justify-content: center;
 
   }
-	dialog {
-		border: 1px solid grey;
-		padding: 12px;
-		margin: auto;
-		position: fixed;
-		top: 50%;
-	}
+
+  **/
+
+  .product-info{
+    width: 100%; 
+    height: 100%;
+    margin-top: 10 * $units;
+    margin-bottom: 10 * $units;
+    height: 50 * $units;
+    background-color: $nocolor;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+
+  img {
+    align-self: center;
+    width: 35%;
+  }
+
+   p {
+    align-self: center;
+    width: 20%;
+    font-size: 3 * $units;
+
+    }
+  }
+
+
+  .call-to-action
+  {
+
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    height: 50 * $units;
+    width: 100%;
+    background:
+            /* top, transparent black, faked with gradient */
+            linear-gradient(
+                            rgba(0, 0, 0, 0.6),
+                            rgba(0, 0, 0, 0.6)
+            ),
+            /* bottom, image */
+            url('~@/assets/getstarted.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    font-size: 3 * $units;
+    text-align: center;
+
+    h2, p{
+      align-self: center;
+      margin: 1 * $units;
+      text-shadow: $shadow;
+    }
+
+    button {
+      align-self:center;
+        background-color: $primary;
+        color: white;
+        height: 5 * $units;
+        width: 12 * $units;
+        border-radius: 0.5 * $units;
+        font-size: 1.8 * $units;
+    }
+  }
+
+
 </style>
