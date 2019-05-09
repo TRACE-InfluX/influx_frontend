@@ -16,10 +16,18 @@
             </div>
           <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
-                <!-- progbar = vuejs styling -->
-                <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
-                <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
-                <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
+                    <!-- progbar = vuejs styling -->
+                <div class="wordsmetric">
+                <p>Activity: </p>
+                <p>Relevance: </p>
+                <p>Engagement:</p>
+                </div>
+                <div class="barmetric">
+                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}">{{influencer.activity}}</span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
+                </div>
+            
             </div>
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
@@ -57,11 +65,19 @@
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
-              <!-- progbar = vuejs styling -->
-              <p>Activity: <span  v-bind:style="progbar">{{influencer.activity}} </span></p>
-              <p>Relevance: <span v-bind:style="progbar">{{influencer.relevance}}</span></p>
-              <p>Engagement:  <span  v-bind:style="progbar">{{influencer.engagement}}</span></p>
-          </div>
+               <!-- progbar = vuejs styling -->
+                <div class="wordsmetric">
+                <p>Activity: </p>
+                <p>Relevance: </p>
+                <p>Engagement:</p>
+                </div>
+                <div class="barmetric">
+                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}">{{influencer.activity}}</span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
+                </div>
+            
+            </div>
       </div> <!-- col-right" -->
     </article>
 
@@ -70,6 +86,9 @@
 <script>
     //package to send httprequests
     // import API from '@/api.js'
+
+
+  
 
     export default {
         props: {
@@ -80,11 +99,28 @@
             return {
           // progress-bar vuejs styling
                 progbar:{
-                    // backgroundColor: '#458eff',
-                    // width: 'influencer.relevance',
-                    // color: 'white'
-                    //todo: remove this when bar is working
-                    color: 'blue'
+                    display: 'inline-block', 
+                    backgroundColor: 'white',
+                    margin: '1px',
+                    width: '200px',
+                    color: 'white',
+                    border: '1px solid #888888'
+                   
+                },
+                activitybar:{
+                  backgroundColor: '#458eff',
+                  width: 'influencer.activity' + 'px',
+                  color: 'white'
+                },
+                 engagementbar:{
+                  backgroundColor: '#458eff',
+                  width: 'influencer.engagement' + 'px',
+                  color: 'white'
+                },
+                relevancebar:{
+                  backgroundColor: '#458eff',
+                  width: 'influencer.relevance' + 'px',
+                  color: 'white'
                 }
             }
         },
@@ -133,6 +169,29 @@
         margin: 1 * $units;
         font-weight: bold;
         text-align: left;
+    }
+
+
+    .cssbar {
+
+      display: block; 
+
+    }
+
+    .wordsmetric
+    {
+      display: flex; 
+      justify-content: center; 
+      flex-flow: column wrap; 
+
+    }
+    .barmetric
+    {
+      margin-top: -60px; 
+      margin-left: 100px; 
+      display: flex; 
+      justify-content: center; 
+      flex-flow: column wrap; 
     }
 
   .influencer-tile {
