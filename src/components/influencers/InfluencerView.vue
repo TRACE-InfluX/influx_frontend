@@ -8,10 +8,11 @@
         </div> <!-- col-left= -->
         <div class = "col-right">
             <div class = "top">
-                <h2>{{influencer.name}}</h2>
+                <h2>{{influencer.username}}</h2>
                 <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+                <p>{{influencer.name}}</p>
                 <p class = "desc">{{influencer.description}}</p>
-                <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+                <p class = "stats">Posts: {{influencer.posts}} | Followers: {{influencer.followers}} | Following: {{influencer.following}}</p>
             </div>
           <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
@@ -39,7 +40,7 @@
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
         <img v-bind:src="influencer.profile_image"/>
-        <p>{{influencer.name}}</p>
+        <p>{{influencer.username}}</p>
     </article>
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
@@ -48,10 +49,11 @@
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
-              <h2>{{influencer.name}}</h2>
+              <h2>{{influencer.username}}</h2>
               <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+              <p>{{influencer.name}}</p>
               <p class = "desc">{{influencer.description}}</p>
-              <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+              <p class = "stats">Posts: {{influencer.posts}} | Followers: {{influencer.followers}} | Following: {{influencer.following}}</p>
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
@@ -121,7 +123,7 @@
         border-bottom: #999999;
         margin: 1 * $units;
         .desc {
-            height: 7.5 * $units;
+            height: 5.5 * $units;
             overflow: hidden;
         }
     }
@@ -149,6 +151,7 @@
     }
 
     p {
+      font-weight: bold;
       $height: 6 * $units;
       position: absolute;
       bottom: 0;
