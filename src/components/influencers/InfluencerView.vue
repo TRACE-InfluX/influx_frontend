@@ -47,6 +47,41 @@
         <div class = "col-right-details">
           <button>Contact</button>
           <button class ="inline"> Favourite </button>
+
+          <div class="donut-chart">
+
+          <!-- donut charts start here -->   
+                     
+                     
+           <!-- donut chart 1 -->
+
+           <div class="donut">
+          <svg width="120">
+    <class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#21B063" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+      </svg>
+      </div> 
+      <div class="donut">
+             <!-- donut chart 2--> 
+   <svg width="120">
+    <class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="goldenrod" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+  </svg>
+      </div>
+      <div class="donut">
+ <!-- donut chart 3--> 
+  <svg width="120" viewbox="0 0 120 120">
+    <class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#FB5454" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+  </svg>
+      </div> 
+
+    </div> 
+
+
           <p>Reach: {{influencer.reach}}</p>
           <p>Conversion: {{influencer.conversion}}</p>
           <p>Cost: {{influencer.cost}}</p>
@@ -99,6 +134,10 @@
 </template>
 
 <script>
+
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+
     //package to send httprequests
     // import API from '@/api.js'
 
@@ -163,6 +202,10 @@
 
 <!--component specific styling-->
 <style lang="scss" scoped>
+
+    svg{
+      display: inline; 
+    }
 
     .stats {
         font-weight: bold;
@@ -271,11 +314,18 @@
        
     }
 
+    // preview of the social media page positioning -- currently a placeholder
     .feedpreview {
      margin-top: 22px;  
      margin-left: 40px; 
     }
 
+    .donut{
+
+      display: inline; 
+
+
+    }
     .col-left-details{
       margin-top: 20px; 
     }
