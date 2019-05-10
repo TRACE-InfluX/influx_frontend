@@ -31,9 +31,14 @@
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
+
+        <!-- social feed holder is the overall container for the bottom half -->
+       <div class="socialfeedholder"> 
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
-        </div> <!-- col-left-details"-->
+          <img src="https://picsum.photos/300/400" />
+      
+          <!-- col-left-details"-->
         <div class = "col-right-details">
           <button>Contact</button>
           <button class ="inline"> Favourite </button>
@@ -42,7 +47,9 @@
           <p>Cost: {{influencer.cost}}</p>
           <p>Areas of Influence: {{influencer.location}}</p>
           <p>Word Cloud</p>
+          </div>
         </div> <!-- col-right-details -->
+       </div> <!-- social feed holder ends here --> 
     </article>
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
@@ -169,7 +176,6 @@
         text-align: left;
     }
 
-
     .cssbar {
 
       display: block; 
@@ -244,21 +250,34 @@
       display:inline-block;
     }
 
+    // socialfeedholder
+
+    .socialfeedholder
+    {
+      margin-top: 25px;
+      margin-left: -60px;
+       
+    }
+
+    .col-left-details{
+      margin-top: 20px; 
+    }
+
     .influencer-listing-detailed{
     height: 30 * $units;
     border:none;
     }
 
       .col-right-details{
-      float:right;
-      width:60%;
+      float: right; 
+      width:45%;
       text-align: left;
-      margin-left:5%;
+      margin-left:1%;
 
       //gap between buttons
 
         .inline{
-        margin: 3 * $units;
+        margin: 2 * $units;
         }
 
         button {
@@ -266,7 +285,7 @@
         background-color: #FFFFFF;
         color: #458eff;
         display: inline-block;
-        width:25 * $units;
+        width: 22 * $units;
         border: solid #99999999;
         border-width: 1px;
         border-radius: 10px;
