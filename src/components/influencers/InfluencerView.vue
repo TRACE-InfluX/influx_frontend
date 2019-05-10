@@ -11,7 +11,12 @@
                 <h2>{{influencer.name}}</h2>
                 <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
                 <p class = "desc">{{influencer.description}}</p>
-                <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+                <div class = "stats">
+                  
+                  <div class="followers"> Followers: {{influencer.followers}} </div>
+                  <div class="following"> Following: {{influencer.following}} </div>
+                  <div class="posts"> Posts: {{influencer.posts}} </div>
+                </div> 
             </div>
           <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
@@ -36,7 +41,7 @@
        <div class="socialfeedholder"> 
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
-          <img src="https://picsum.photos/300/400" />
+          <img class="feedpreview" src="https://picsum.photos/300/400" />
       
           <!-- col-left-details"-->
         <div class = "col-right-details">
@@ -66,7 +71,12 @@
               <h2>{{influencer.name}}</h2>
               <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
               <p class = "desc">{{influencer.description}}</p>
-              <p class = "stats">Followers: {{influencer.followers}} | Following: {{influencer.following}} | Posts: {{influencer.posts}}</p>
+               <div class = "stats">
+                  
+                  <div class="followers"> Followers: {{influencer.followers}} </div>
+                  <div class="following"> Following: {{influencer.following}} </div>
+                  <div class="posts"> Posts: {{influencer.posts}} </div>
+                </div>
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
@@ -157,6 +167,8 @@
     .stats {
         font-weight: bold;
         padding: 1 * $units;
+        display: flex; 
+        justify-content: space-evenly;
     }
 
     .top {
@@ -259,6 +271,11 @@
        
     }
 
+    .feedpreview {
+     margin-top: 22px;  
+     margin-left: 40px; 
+    }
+
     .col-left-details{
       margin-top: 20px; 
     }
@@ -270,7 +287,7 @@
 
       .col-right-details{
       float: right; 
-      width:45%;
+      width:50%;
       text-align: left;
       margin-left:1%;
 
