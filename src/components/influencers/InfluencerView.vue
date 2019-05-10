@@ -136,7 +136,7 @@
 <script>
 
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+  
 
     //package to send httprequests
     // import API from '@/api.js'
