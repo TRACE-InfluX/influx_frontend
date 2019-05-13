@@ -309,15 +309,15 @@
 
     .socialfeedholder
     {
-      margin-top: 25px;
-      margin-left: -60px;
+      margin-top: 3.125 * $units;
+      margin-left: -7.5 * $units;
        
     }
 
     // preview of the social media page positioning -- currently a placeholder
     .feedpreview {
-     margin-top: 22px;  
-     margin-left: 40px; 
+     margin-top: 2.75 * $units;  
+     margin-left: 5 * $units; 
     }
 
     .donut{
@@ -327,7 +327,7 @@
 
     }
     .col-left-details{
-      margin-top: 20px; 
+      margin-top: 2.5 * $units; 
     }
 
     .influencer-listing-detailed{
