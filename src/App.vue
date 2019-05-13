@@ -20,12 +20,13 @@
       <li><i class="zmdi zmdi-email"></i> <a href="#"> email</a></li>
       <li><i class="zmdi zmdi-instagram"></i> <a href="#">instagram</a></li>
       <li><i class="zmdi zmdi-twitter-box"></i><a href="#">twitter</a></li>
+      <li><img id="discord" src="~@/assets/discord.svg" width="15" height="15"><a href="https://discord.gg/aEZ9Q4e">discord</a></li>
       </ul>
 
 
 
       <ul>
-      <li> Legal: </li>
+      <li>Legal: </li>
       <li>Terms</li>
       <li>Privacy</li>
       <li>InfluX Co. 2019 All Rights Reserved.</li>
@@ -160,6 +161,11 @@
 
   a:visited{
     color: black;
+  }
+
+  #discord
+  {
+    margin-left: -2px; 
   }
 
   }

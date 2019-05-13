@@ -23,10 +23,10 @@
                 <p>Engagement:</p>
                 </div>
                 <div class="barmetric">
-                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}">{{influencer.activity}}</span></span>
-                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
-                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
-                </div>
+                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span></span>
+               </div>
             
             </div>
         </div> <!-- col-right" -->
@@ -72,9 +72,9 @@
                 <p>Engagement:</p>
                 </div>
                 <div class="barmetric">
-                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}">{{influencer.activity}}</span></span>
-                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
-                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
+                <span v-bind:style="progbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span></span>
+                <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span></span>
                 </div>
             
             </div>
@@ -104,7 +104,7 @@
                     margin: '1px',
                     width: '200px',
                     color: 'white',
-                    border: '1px solid #888888'
+                    
                    
                 },
                 activitybar:{
@@ -183,11 +183,16 @@
       display: flex; 
       justify-content: center; 
       flex-flow: column wrap; 
-
+      width: 24%;
+      border: 2px solid #D0D0D0; 
+      background-color: #D0D0D0; 
+      color: white; 
+      font-size: 1rem; 
+      
     }
     .barmetric
     {
-      margin-top: -60px; 
+      margin-top: -62px; 
       margin-left: 100px; 
       display: flex; 
       justify-content: center; 
