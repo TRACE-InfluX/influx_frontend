@@ -57,6 +57,19 @@
       </ul>
     </main>
 
+
+
+    <div class="joindiscord"> 
+
+        <a href="https://discord.gg/YJ79pbf" target="_blank">
+        <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
+      </a>
+
+    </div>  
+
+
+
+
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
@@ -254,16 +267,7 @@
     line-height: 3 * $units;
     padding: 1 * $units;
   }
- /**
-  .help
-  {
 
-    display: flex;
-    justify-content: center;
-
-  }
-
-  **/
 
   .product-info{
     width: 100%; 
@@ -288,6 +292,7 @@
 
     }
   }
+
 
 .why-influx{
   height: 300vh;
@@ -364,9 +369,6 @@
   color:hsl(0,0%,45%);
 }
 
-
-
-
 .why-tutorial{
   width:50%;
   text-align:right;
@@ -398,9 +400,6 @@
   justify-content:space-around;
   align-items: center;
 }
-
-
-
 
   .call-to-action
   {
