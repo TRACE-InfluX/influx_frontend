@@ -8,8 +8,9 @@
         </div> <!-- col-left= -->
         <div class = "col-right">
             <div class = "top">
-                <h2>{{influencer.name}}</h2>
+                <h2>{{influencer.username}}</h2>
                 <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+                <p>{{influencer.name}}</p>
                 <p class = "desc">{{influencer.description}}</p>
                 <div class = "stats">
                   
@@ -57,34 +58,41 @@
 
            <div class="donut">
           <svg width="120">
-    <class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)">
+    <div class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)"></div> 
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">reach</text>    
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="#21B063" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+    
       </svg>
       </div> 
+
       <div class="donut">
              <!-- donut chart 2--> 
    <svg width="120">
-    <class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">
+    <div class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">  </div>
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">conversion</text>    
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="goldenrod" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+  
   </svg>
       </div>
       <div class="donut">
  <!-- donut chart 3--> 
   <svg width="120" viewbox="0 0 120 120">
-    <class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">
+    <div class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">    </div> 
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">cost</text>    
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="#FB5454" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+
   </svg>
       </div> 
 
     </div> 
 
-
+<!-- 
           <p>Reach: {{influencer.reach}}</p>
           <p>Conversion: {{influencer.conversion}}</p>
-          <p>Cost: {{influencer.cost}}</p>
+          <p>Cost: {{influencer.cost}}</p> -->
           <p>Areas of Influence: {{influencer.location}}</p>
           <p>Word Cloud</p>
           </div>
@@ -94,7 +102,7 @@
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
         <img v-bind:src="influencer.profile_image"/>
-        <p>{{influencer.name}}</p>
+        <p>{{influencer.username}}</p>
     </article>
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
@@ -103,8 +111,9 @@
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
-              <h2>{{influencer.name}}</h2>
+              <h2>{{influencer.username}}</h2>
               <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+              <p>{{influencer.name}}</p>
               <p class = "desc">{{influencer.description}}</p>
                <div class = "stats">
                   
@@ -112,6 +121,7 @@
                   <div class="following"> Following: {{influencer.following}} </div>
                   <div class="posts"> Posts: {{influencer.posts}} </div>
                 </div>
+
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
@@ -219,7 +229,7 @@
         border-bottom: #999999;
         margin: 1 * $units;
         .desc {
-            height: 7.5 * $units;
+            height: 5.5 * $units;
             overflow: hidden;
         }
     }
@@ -267,13 +277,13 @@
     box-shadow: $shadow;
 
     img {
-      background-image: url("~@/assets/influxlogo.png");
       display: block;
       width: 100%;
       height: 100%;
     }
 
     p {
+      font-weight: bold;
       $height: 6 * $units;
       position: absolute;
       bottom: 0;
