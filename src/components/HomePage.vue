@@ -29,6 +29,9 @@
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
+
+
+
     <div class="product-info">
       <p>Influencers at your fingertips. Just a search away.</p>
         <img src="~@/assets/preview1.png">
@@ -38,6 +41,18 @@
       <p>Browse through detailed information to find out if they're right for you.</p>
         <img src="~@/assets/preview2.png">
     </div>
+
+
+
+    <div class="joindiscord">
+
+        <a href="https://discord.gg/YJ79pbf" target="_blank">
+        <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
+      </a>
+
+    </div>
+
+
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
