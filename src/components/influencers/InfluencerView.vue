@@ -8,8 +8,9 @@
         </div> <!-- col-left= -->
         <div class = "col-right">
             <div class = "top">
-                <h2>{{influencer.name}}</h2>
+                <h2>{{influencer.username}}</h2>
                 <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+                <p>{{influencer.name}}</p>
                 <p class = "desc">{{influencer.description}}</p>
                 <div class = "stats">
                   
@@ -94,7 +95,7 @@
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
         <img v-bind:src="influencer.profile_image"/>
-        <p>{{influencer.name}}</p>
+        <p>{{influencer.username}}</p>
     </article>
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
@@ -103,8 +104,9 @@
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
-              <h2>{{influencer.name}}</h2>
+              <h2>{{influencer.username}}</h2>
               <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+              <p>{{influencer.name}}</p>
               <p class = "desc">{{influencer.description}}</p>
                <div class = "stats">
                   
@@ -112,6 +114,7 @@
                   <div class="following"> Following: {{influencer.following}} </div>
                   <div class="posts"> Posts: {{influencer.posts}} </div>
                 </div>
+
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
@@ -219,7 +222,7 @@
         border-bottom: #999999;
         margin: 1 * $units;
         .desc {
-            height: 7.5 * $units;
+            height: 5.5 * $units;
             overflow: hidden;
         }
     }
@@ -267,13 +270,13 @@
     box-shadow: $shadow;
 
     img {
-      background-image: url("~@/assets/influxlogo.png");
       display: block;
       width: 100%;
       height: 100%;
     }
 
     p {
+      font-weight: bold;
       $height: 6 * $units;
       position: absolute;
       bottom: 0;
