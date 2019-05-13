@@ -68,8 +68,6 @@
     </div>  
 
 
-
-
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
@@ -400,6 +398,7 @@
   justify-content:space-around;
   align-items: center;
 }
+
 
   .call-to-action
   {
