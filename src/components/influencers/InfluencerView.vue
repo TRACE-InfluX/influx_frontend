@@ -12,7 +12,12 @@
                 <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
                 <p>{{influencer.name}}</p>
                 <p class = "desc">{{influencer.description}}</p>
-                <p class = "stats">Posts: {{influencer.posts}} | Followers: {{influencer.followers}} | Following: {{influencer.following}}</p>
+                <div class = "stats">
+                  
+                  <div class="followers"> Followers: {{influencer.followers}} </div>
+                  <div class="following"> Following: {{influencer.following}} </div>
+                  <div class="posts"> Posts: {{influencer.posts}} </div>
+                </div> 
             </div>
           <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
@@ -32,18 +37,60 @@
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
+
+        <!-- social feed holder is the overall container for the bottom half -->
+       <div class="socialfeedholder"> 
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
-        </div> <!-- col-left-details"-->
+          <img class="feedpreview" src="https://picsum.photos/300/400" />
+      
+          <!-- col-left-details"-->
         <div class = "col-right-details">
           <button>Contact</button>
           <button class ="inline"> Favourite </button>
+
+          <div class="donut-chart">
+
+          <!-- donut charts start here -->   
+                     
+                     
+           <!-- donut chart 1 -->
+
+           <div class="donut">
+          <svg width="120">
+    <class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#21B063" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+      </svg>
+      </div> 
+      <div class="donut">
+             <!-- donut chart 2--> 
+   <svg width="120">
+    <class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="goldenrod" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+  </svg>
+      </div>
+      <div class="donut">
+ <!-- donut chart 3--> 
+  <svg width="120" viewbox="0 0 120 120">
+    <class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">
+      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
+      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#FB5454" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
+  </svg>
+      </div> 
+
+    </div> 
+
+
           <p>Reach: {{influencer.reach}}</p>
           <p>Conversion: {{influencer.conversion}}</p>
           <p>Cost: {{influencer.cost}}</p>
           <p>Areas of Influence: {{influencer.location}}</p>
           <p>Word Cloud</p>
+          </div>
         </div> <!-- col-right-details -->
+       </div> <!-- social feed holder ends here --> 
     </article>
 
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
@@ -61,7 +108,13 @@
               <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
               <p>{{influencer.name}}</p>
               <p class = "desc">{{influencer.description}}</p>
-              <p class = "stats">Posts: {{influencer.posts}} | Followers: {{influencer.followers}} | Following: {{influencer.following}}</p>
+               <div class = "stats">
+                  
+                  <div class="followers"> Followers: {{influencer.followers}} </div>
+                  <div class="following"> Following: {{influencer.following}} </div>
+                  <div class="posts"> Posts: {{influencer.posts}} </div>
+                </div>
+
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
           <div class = "bot">
@@ -84,6 +137,10 @@
 </template>
 
 <script>
+
+
+  
+
     //package to send httprequests
     // import API from '@/api.js'
 
@@ -149,9 +206,15 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
+    svg{
+      display: inline; 
+    }
+
     .stats {
         font-weight: bold;
         padding: 1 * $units;
+        display: flex; 
+        justify-content: space-evenly;
     }
 
     .top {
@@ -170,7 +233,6 @@
         font-weight: bold;
         text-align: left;
     }
-
 
     .cssbar {
 
@@ -246,21 +308,46 @@
       display:inline-block;
     }
 
+    // socialfeedholder
+
+    .socialfeedholder
+    {
+      margin-top: 3.125 * $units;
+      margin-left: -7.5 * $units;
+       
+    }
+
+    // preview of the social media page positioning -- currently a placeholder
+    .feedpreview {
+     margin-top: 2.75 * $units;  
+     margin-left: 5 * $units; 
+    }
+
+    .donut{
+
+      display: inline; 
+
+
+    }
+    .col-left-details{
+      margin-top: 2.5 * $units; 
+    }
+
     .influencer-listing-detailed{
     height: 30 * $units;
     border:none;
     }
 
       .col-right-details{
-      float:right;
-      width:60%;
+      float: right; 
+      width:50%;
       text-align: left;
-      margin-left:5%;
+      margin-left:1%;
 
       //gap between buttons
 
         .inline{
-        margin: 3 * $units;
+        margin: 2 * $units;
         }
 
         button {
@@ -268,7 +355,7 @@
         background-color: #FFFFFF;
         color: #458eff;
         display: inline-block;
-        width:25 * $units;
+        width: 22 * $units;
         border: solid #99999999;
         border-width: 1px;
         border-radius: 10px;

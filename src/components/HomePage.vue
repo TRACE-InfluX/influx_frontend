@@ -43,12 +43,14 @@
     </div>
 
     
-    <div class="product-info">
+
+    <div class="joindiscord"> 
+
         <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
-    </div>
-       
+
+    </div>  
 
 
 
