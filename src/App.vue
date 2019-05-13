@@ -4,11 +4,16 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
+
+      <router-link to="/register">Pricing</router-link>
+      <router-link to="/register">About Us</router-link>
+
       <form @submit.prevent="search" class="nav-search" v-show="showSearchBar">
         <i class="zmdi zmdi-search" />
         <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
+
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/accounts/me" />
@@ -87,7 +92,7 @@
 <!--styling for top level of app-->
 <style lang="scss">
 
-  $header-height: 8 * $units;
+  $header-height: 12 * $units;
 
   * {
     margin: 0;
@@ -105,20 +110,25 @@
   }
 
   #app {
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-family: 'Neutrif', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
     > nav {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       position: fixed;
       top:0;
       height: $header-height;
-      color: white;
-      background-color: rgba(0,0,0,0.5);
+      color: #414042;
+      background-color: #FFFFFF;
       width: 100%;
       z-index: 9999;
+      padding-left:15%;
+      padding-right:15%;
+      box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+
+    
 
       > * {
         display: inline-block;
@@ -165,10 +175,10 @@
         margin-right: auto;
         font-family: 'Puritan', sans-serif;
         font-size: 4 * $units;
-        padding-left: 3 * $units;
         letter-spacing: 1.5 * $units;
         cursor: pointer;
         transition: 0.2s ease;
+        color: $primary;
 
         &:hover {
           transition: 0.2s ease;
@@ -183,7 +193,7 @@
         text-align: center;
 
         &:visited {
-          color: white;
+          color: #414042;
         }
 
         &:hover {
@@ -193,7 +203,8 @@
 
       .profile {
         width: $header-height - 2 * $units;
-        margin: 1 * $units;
+        margin-top: 1  * $units;
+        margin-bottom: 1 * $units;
         background: url('~@/assets/profile.png');
         background-size: 100%;
       }
