@@ -46,7 +46,6 @@
         margin: 2 * $units auto;
     }
 
-
     input {
         height: 4 * $units;
         padding-left: 1 * $units;
@@ -58,7 +57,7 @@
     }
     button {
         height: 5 * $units;
-        background-color: #458eff;
+        background-color: $primary;
         color: white;
         padding: 1 * $units;
         display: inline-block;

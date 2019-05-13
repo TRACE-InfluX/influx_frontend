@@ -4,8 +4,16 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
+
       <router-link to="/register">Pricing</router-link>
       <router-link to="/register">About Us</router-link>
+
+      <form @submit.prevent="search" class="nav-search" v-show="showSearchBar">
+        <i class="zmdi zmdi-search" />
+        <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
+        <button>Discover</button>
+      </form>
+
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/accounts/me" />
@@ -25,8 +33,6 @@
       <li><img id="discord" src="~@/assets/discord.svg" width="15" height="15"><a href="https://discord.gg/aEZ9Q4e">discord</a></li>
       </ul>
 
-
-
       <ul>
       <li>Legal: </li>
       <li>Terms</li>
@@ -43,18 +49,41 @@
   import { ACTIONS } from '@/store.js'
 
   export default {
+    data() {
+      return {
+        query: '',
+        showSearchBar: true,
+        searching: false
+      }
+    },
     name: 'app',
     methods: {
-      ...ACTIONS
+      ...ACTIONS,
+      search() {
+        localStorage.setItem('query', this.query);
+        this.$router.push('/influencers');
+        this.searching = true;
+        scrollTo(0, 0)
+      }
     },
     mounted() {
       this.load_influencers()
-      let query = localStorage.getItem("query");
-      if (query) {
-        this.$router.push('/influencers')
+      if(this.searching) {
+        this.query = localStorage.getItem("query") || ''
+        if (this.query) {
+          this.$router.push('/influencers')
+        }
+        else {
+          this.$router.push('/')
+        }
       }
-      else {
-        this.$router.push('/')
+    },
+    watch: {
+      query(q) {
+        localStorage.setItem("query", q)
+        if(this.searching) {
+          scrollTo(0, 0)
+        }
       }
     }
   }
@@ -73,6 +102,11 @@
 
   button {
     cursor: pointer;
+    background-color: $primary;
+    color: white;
+    border-radius: 0.5 * $units;
+    border-style:none;
+    padding: 1 * $units;
   }
 
   #app {
@@ -99,6 +133,42 @@
       > * {
         display: inline-block;
         line-height: $header-height;
+      }
+
+      .nav-search {
+        $height: 4 * $units;
+        line-height: $height;
+        margin: auto;
+        height: $height;
+        display: flex;
+
+        i {
+          position: absolute;
+          color: gray;
+          height: $height;
+          width: $height;
+          padding: 1 * $units;
+        }
+
+        input, button {
+          font-size: 1.8 * $units;
+          border-radius: 0.5 * $units;
+          border: none;
+          box-shadow: $shadow;
+        }
+
+        input {
+          flex: 1;
+          padding-left: $height;
+          margin-right:  1 * $units;
+          padding-right: 1 * $units;
+        }
+
+        button {
+          background-color: $primary;
+          color: white;
+          border-radius: 0.5 * $units;
+        }
       }
 
       h1 {
@@ -141,42 +211,40 @@
 
     }
 
-  footer
-  {
-    bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    height: 25 * $units;
-    width: 100%;
-    padding: 5%;
-    background-color: $footer-color;
-    font-size: 1.5 * $units;
+    footer
+    {
+      bottom: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 25 * $units;
+      width: 100%;
+      padding: 5%;
+      background-color: $footer-color;
+      font-size: 1.5 * $units;
 
+      h3, p, ul
+      {
+        align-self: center;
+        list-style: none;
+      }
 
-  h3, p, ul
-  {
-    align-self: center;
-    list-style: none;
-  }
+      li {
+        margin: 1 * $units;
+      }
 
-  li {
-    margin: 1 * $units;
-  }
+      a{
+        text-decoration: none;
+      }
 
-  a{
-    text-decoration: none;
-  }
+      a:visited{
+        color: black;
+      }
 
-  a:visited{
-    color: black;
-  }
-
-  #discord
-  {
-    margin-left: -2px; 
-  }
-
-  }
+      #discord
+      {
+        margin-left: -2px;
+      }
+    }
 
   }
 
