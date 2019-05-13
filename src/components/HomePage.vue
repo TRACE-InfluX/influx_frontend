@@ -5,9 +5,9 @@
       <h1>Connect With Your World</h1>
       <h2>Discover Influencers Today!</h2>
 
-      <form @submit.prevent="search">
+      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
         <i class="zmdi zmdi-search" />
-        <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
+        <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
     </header>
@@ -29,9 +29,6 @@
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-
-  
-
     <div class="product-info">
       <p>Influencers at your fingertips. Just a search away.</p>
         <img src="~@/assets/preview1.png">
@@ -42,17 +39,12 @@
         <img src="~@/assets/preview2.png">
     </div>
 
-    
-
-    <div class="joindiscord"> 
+    <div class="joindiscord">
 
         <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
-
-    </div>  
-
-
+    </div>
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -63,13 +55,15 @@
 </template>
 
 <script>
-  import { STATE, ACTIONS } from '@/store.js'
+  import { STATE, ACTIONS } from '@/store.js';
+  import {ObserveVisibility} from 'vue-observe-visibility';
+
 	export default {
+      directives: {ObserveVisibility},
       data() {
         return {
           selected_id: '',
-          dialog: false,
-          query: ''
+          dialog: false
         }
       },
       computed: {
@@ -79,11 +73,7 @@
         }
       },
       mounted() {
-        this.load_popular()
-        this.$refs.search.focus();
-        window.onkeydown = () => {
-          this.$refs.search.focus();
-        }
+        this.load_popular();
       },
       methods: {
         ...ACTIONS,
@@ -98,9 +88,16 @@
           }
         },
         search() {
-          localStorage.setItem('query', this.query);
+          localStorage.setItem('query', this.$parent.query);
           this.$router.push('/influencers');
+        },
+        hideSearchbar(isVisible) {
+          this.$parent.showSearchBar = !isVisible;
         }
+      },
+      beforeRouteLeave(to, from, next) {
+        this.$parent.showSearchBar = true;
+        next();
       }
 	}
 </script>
@@ -230,9 +227,8 @@
     padding: 1 * $units;
   }
 
-
   .product-info{
-    width: 100%; 
+    width: 100%;
     height: 100%;
     margin-top: 10 * $units;
     margin-bottom: 10 * $units;
@@ -251,13 +247,11 @@
     align-self: center;
     width: 20%;
     font-size: 3 * $units;
-
     }
   }
 
   .call-to-action
   {
-
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

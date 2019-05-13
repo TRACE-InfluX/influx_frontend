@@ -13,6 +13,7 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.6",
+    "vue-observe-visibility": "^0.4.4",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
     "workerize-loader": "^1.0.4"
