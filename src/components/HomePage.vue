@@ -29,6 +29,29 @@
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
+    <section class="why-influx">
+      <div class="why-title">
+        <p id = "why-heading"> Why influx?</p>
+        <br>
+        <p id="why-desc">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
+        <p id="why-desc">Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
+      </div>
+      <div class="why-tutorial">
+        <div class = "first-tut">
+          <img src = "~@/assets/tutorial1.png">
+          <p>Search</p>
+        </div>
+        <div class = "second-tut">
+          <img src = "~@/assets/tutorial2.png">
+          <p>Select</p>
+        </div>
+        <div class = "third-tut">
+          <p>Something else.. contact???? </p>          
+        </div>
+      </div>
+
+    </section>
+
     <div class="product-info">
       <p>Influencers at your fingertips. Just a search away.</p>
         <img src="~@/assets/preview1.png">
@@ -69,6 +92,7 @@
         window.onkeydown = () => {
           this.$refs.search.focus();
         }
+        this.splitScroll();
       },
       methods: {
         ...ACTIONS,
@@ -85,7 +109,11 @@
         search() {
           localStorage.setItem('query', this.query);
           this.$router.push('/influencers');
-        }
+        },
+
+
+
+        
       }
 	}
 </script>
@@ -170,13 +198,15 @@
     .popular {
       display: flex;
       width: 100%;
-      justify-content: center;
+      justify-content: space-between;
+      padding-right: 15%;
+      padding-left: 15%;
+      
 
       li {
         display: inline-block;
         max-width: 32 * $units;
         max-height: 32 * $units;
-        flex: 1;
         .influencer-view {
           display: block;
           margin: auto;
@@ -248,6 +278,67 @@
 
     }
   }
+
+.why-influx{
+  height: 300vh;
+  display:flex;
+  top:0;
+  
+}
+
+.why-title{
+    width:50%;
+    height:100vh;
+    position:sticky;
+    flex-direction:column;
+    top:0;
+    justify-content:center;
+    color:#7a7c7f;
+    padding-left:15%;
+    padding-top: 16 * $units;
+
+
+
+}
+
+  #why-desc{
+      font-size: 3.5 * $units;
+      line-height: 5 * $units;
+  }
+
+.why-tutorial{
+  width:50%;
+  text-align:right;
+    padding-right: 15%;
+      padding-top: 16 * $units;
+
+  img{
+    height: 50vh;
+    justify-content: center;
+  }
+  
+}
+
+.first-tut{
+  height:100vh;
+  justify-content:left;
+
+}
+
+.second-tut{
+  height:100vh;
+  justify-content:space-around;
+  align-items: center;
+
+}
+
+.third-tut{
+  height:100vh;
+  justify-content:space-around;
+  align-items: center;
+}
+
+
 
 
   .call-to-action

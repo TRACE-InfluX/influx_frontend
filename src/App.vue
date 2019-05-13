@@ -73,7 +73,7 @@
   }
 
   #app {
-    font-family: 'Lato', Helvetica, Arial, sans-serif;
+    font-family: 'Neutrif', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -84,9 +84,11 @@
       top:0;
       height: $header-height;
       color: white;
-      background-color: rgba(0,0,0,0.5);
+      background-color: #999999;
       width: 100%;
       z-index: 9999;
+      padding-left:15%;
+      padding-right:15%;
 
       > * {
         display: inline-block;
@@ -97,7 +99,6 @@
         margin-right: auto;
         font-family: 'Puritan', sans-serif;
         font-size: 4 * $units;
-        padding-left: 3 * $units;
         letter-spacing: 1.5 * $units;
         cursor: pointer;
         transition: 0.2s ease;
@@ -125,7 +126,8 @@
 
       .profile {
         width: $header-height - 2 * $units;
-        margin: 1 * $units;
+        margin-top: 1  * $units;
+        margin-bottom: 1 * $units;
         background: url('~@/assets/profile.png');
         background-size: 100%;
       }
