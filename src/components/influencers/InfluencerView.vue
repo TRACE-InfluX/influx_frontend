@@ -106,13 +106,14 @@
     </article>
 
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
+        <a v-bind:href ="influencer.url" target="_blank"><img class="left-icon" src="~@/assets/instagram_icon.png" /></a>
       <div class ="col-left">
+        <p class="list-influencer-name">{{influencer.username}}</p>
         <img v-bind:src="influencer.profile_image"/>
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
-              <h2>{{influencer.username}}</h2>
-              <a v-bind:href ="influencer.url" target="_blank"><img src = "~@/assets/instagram_icon.png" class = "icon"></a>
+             
               <p>{{influencer.name}}</p>
               <p class = "desc">{{influencer.description}}</p>
                <div class = "stats">
@@ -404,7 +405,7 @@
       font-size: 3 * $units;
     }
   }
-
+// influencer list view starts here
   .influencer-listing{
     border: 1px solid #999999;
     box-sizing: border-box;
@@ -433,6 +434,21 @@
         float:left;
       }
     }
+   // icons on the left - new addition May 13 2019
+    .left-icon {
+      display: inline-block; 
+      margin-left: -60 * $units; 
+      margin-top: 1 * $units; 
+      height: 3 * $units; 
+      width: 3 * $units; 
+    }
+
+  // .list-influencer-name - new addition May 13 2019
+
+    .list-influencer-name {
+      margin-top: 1 * $units; 
+      font-weight: 800; 
+    }  
 
     .col-left{
       float:left;
@@ -440,10 +456,11 @@
       height: 30 * $units;
 
       img{
+  
         padding-top: 5%;
         padding-bottom: 5%;
-        width: 30 * $units;
-        height: 30 * $units;
+        width: 25 * $units;
+        height: 25 * $units;
         border-radius:50%;
       }
     }
