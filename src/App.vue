@@ -4,6 +4,8 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
+      <router-link to="/register">Pricing</router-link>
+      <router-link to="/register">About Us</router-link>
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/accounts/me" />
@@ -60,7 +62,7 @@
 <!--styling for top level of app-->
 <style lang="scss">
 
-  $header-height: 8 * $units;
+  $header-height: 12 * $units;
 
   * {
     margin: 0;
@@ -79,16 +81,19 @@
 
     > nav {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       position: fixed;
       top:0;
       height: $header-height;
-      color: white;
-      background-color: #999999;
+      color: #414042;
+      background-color: #FFFFFF;
       width: 100%;
       z-index: 9999;
       padding-left:15%;
       padding-right:15%;
+      box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+
+    
 
       > * {
         display: inline-block;
@@ -102,6 +107,7 @@
         letter-spacing: 1.5 * $units;
         cursor: pointer;
         transition: 0.2s ease;
+        color: $primary;
 
         &:hover {
           transition: 0.2s ease;
@@ -116,7 +122,7 @@
         text-align: center;
 
         &:visited {
-          color: white;
+          color: #414042;
         }
 
         &:hover {

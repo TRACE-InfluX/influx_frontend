@@ -2,8 +2,8 @@
   <div class="home-page">
 
     <header>
-      <h1>Connect With Your World</h1>
-      <h2>Discover Influencers Today!</h2>
+      <p><span id = "header">CONNECT WITH YOUR </span> <span id = "header-highlight">WORLD</span></p>
+      <p id = "tagline">Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
       <form @submit.prevent="search">
         <i class="zmdi zmdi-search" />
@@ -12,17 +12,6 @@
       </form>
     </header>
 
-    <main>
-      <h3>Popular</h3>
-      <ul class="popular">
-        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-          <influencer-view type="tile"
-            @click.native="open(popularInfluencer.id)"
-            :influencer="popularInfluencer"
-          />
-        </li>
-      </ul>
-    </main>
 
     <dialog :open="dialog">
       <span class="close" @click="close">&times;</span>
@@ -33,34 +22,40 @@
       <div class="why-title">
         <p id = "why-heading"> Why influx?</p>
         <br>
-        <p id="why-desc">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
-        <p id="why-desc">Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
-      </div>
+        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>  
+        <div class= "steps-container" id="steps-indicator">
+          <p><span id ="Number">01</span><span id ="Step">Search</span></p>
+          <p><span id ="Number">02</span><span id ="Step">Select</span></p>
+          <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
+          <p>test</p>
+        </div>
+      </div> <!-- why-title/right col -->
       <div class="why-tutorial">
         <div class = "first-tut">
           <img src = "~@/assets/tutorial1.png">
-          <p>Search</p>
+          <p>A blazing fast search engine, filled with influencers just for you </p>
         </div>
         <div class = "second-tut">
           <img src = "~@/assets/tutorial2.png">
-          <p>Select</p>
         </div>
         <div class = "third-tut">
           <p>Something else.. contact???? </p>          
         </div>
-      </div>
+      </div> <!-- why-tutorial/left col -->
 
     </section>
 
-    <div class="product-info">
-      <p>Influencers at your fingertips. Just a search away.</p>
-        <img src="~@/assets/preview1.png">
-    </div>
-
-    <div class="product-info">
-      <p>Browse through detailed information to find out if they're right for you.</p>
-        <img src="~@/assets/preview2.png">
-    </div>
+        <main>
+      <h3>Popular</h3>
+      <ul class="popular">
+        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+          <influencer-view type="tile"
+            @click.native="open(popularInfluencer.id)"
+            :influencer="popularInfluencer"
+          />
+        </li>
+      </ul>
+    </main>
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -79,6 +74,9 @@
           dialog: false,
           query: ''
         }
+      },
+      directive: {
+
       },
       computed: {
         ...STATE,
@@ -109,40 +107,53 @@
         search() {
           localStorage.setItem('query', this.query);
           this.$router.push('/influencers');
-        },
+        }
 
 
 
         
       }
-	}
+  }
+  
 </script>
 
 <style lang="scss" scoped>
 
   header {
-    color: white;
-    background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
+    color: #414042;
     background-position: bottom;
     background-size: cover;
     height: 60 * $units;
     padding: 20 * $units 3 * $units 0;
+    
 
     > * {
-      max-width: 70 * $units;
+      max-width: 100 * $units;
       display: block;
       margin: 3 * $units auto;
       text-align: center;
     }
 
-    h1 {
-      font-size: 4.5 * $units;
-      text-shadow: $shadow;
+    #header {
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+
     }
 
-    h2 {
-      font-size: 3 * $units;
-      text-shadow: $shadow;
+    #header-highlight{
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+      color: $primary;
+    }
+
+    
+
+    #tagline {
+      font-size: 2.5 * $units;
+      color: #7a7c7f;
+      
     }
 
     form {
@@ -296,15 +307,66 @@
     color:#7a7c7f;
     padding-left:15%;
     padding-top: 16 * $units;
-
+    padding-right: 2.5%;
 
 
 }
 
-  #why-desc{
-      font-size: 3.5 * $units;
-      line-height: 5 * $units;
+#why-heading{
+  font-size: 3 * $units;
+  color:hsl(0,0%,13%);
+}
+
+
+  #why-desc-1{
+      font-size: 3 * $units;
+      line-height: 3.5 * $units;
+      color:hsl(0,0%,29%);
   }
+
+
+.steps-container{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 3.5 * $units;
+  color:hsl(0,0%,45%);
+    padding-right: 10%;
+  
+}
+
+
+.Current-Number{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color: $primary;
+  padding-right:10%;
+}
+
+
+.Current-Step{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+#Number{
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+  padding-right:10%;
+}
+
+
+#Step{
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+
+
 
 .why-tutorial{
   width:50%;
