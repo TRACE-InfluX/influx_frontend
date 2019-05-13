@@ -3,7 +3,7 @@
   <div class="influencer-index">
     <!--<input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">-->
     <ul>
-      <h2>{{ filtered_influencers.length }} results for {{keywords}}</h2>
+      <h2>{{ filtered_influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in rendered_influencers"
         :key="influencer.id"
@@ -28,8 +28,7 @@ export default {
   data() {
       return {
         selected_influencer: '',
-        render_limit: 4,
-        que: this.$parent.query
+        render_limit: 4
     }
   },
   mounted() {
@@ -72,13 +71,6 @@ export default {
       return this.filtered_influencers.slice(0,this.render_limit)
     }
   },
-  // watch: {
-  //   que(q) {
-  //     this.render_limit = 4
-  //     localStorage.setItem("query", q)
-  //     scrollTo(0,0)
-  //   }
-  // },
   methods: {
     select(id) {
       this.selected_influencer = id;
@@ -114,21 +106,5 @@ export default {
     text-align: center;
 
   }
-
-  /*.search-bar {
-    $height: 5 * $units;
-    font-size: 1.8 * $units;
-    width: 57 * $units;
-    height: $height;
-    border-radius: 0.5 * $units;
-    border:none;
-    box-shadow: $shadow;
-    padding-left: 1 * $units;
-    padding-right:1 * $units;
-    margin-right: 1 * $units;
-    padding-right: 1 * $units;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }*/
 
 </style>

@@ -137,9 +137,6 @@
 
 <script>
 
-
-
-
     //package to send httprequests
     // import API from '@/api.js'
 
@@ -186,7 +183,6 @@
             //         this.influencer = res.data.data
             //     })
             //     .catch(alert)
-
         },
         methods: {
           linktoURL(url){

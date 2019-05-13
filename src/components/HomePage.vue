@@ -29,9 +29,6 @@
       <influencer-view :influencer="selected_influencer" type="detailed"/>
     </dialog>
 
-
-
-
     <div class="product-info">
       <p>Influencers at your fingertips. Just a search away.</p>
         <img src="~@/assets/preview1.png">
@@ -42,17 +39,12 @@
         <img src="~@/assets/preview2.png">
     </div>
 
-
-
     <div class="joindiscord">
 
         <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
-
     </div>
-
-
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -82,10 +74,6 @@
       },
       mounted() {
         this.load_popular();
-        // this.$refs.search.focus();
-        // window.onkeydown = () => {
-        //   this.$refs.search.focus();
-        // }
       },
       methods: {
         ...ACTIONS,
@@ -259,13 +247,11 @@
     align-self: center;
     width: 20%;
     font-size: 3 * $units;
-
     }
   }
 
   .call-to-action
   {
-
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

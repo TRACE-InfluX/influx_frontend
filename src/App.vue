@@ -72,13 +72,6 @@
           this.$router.push('/')
         }
       }
-      // this.query = localStorage.getItem("query") || ''
-      // if (this.query) {
-      //   this.$router.push('/influencers')
-      // }
-      // else {
-      //   this.$router.push('/')
-      // }
     },
     watch: {
       query(q) {
@@ -207,41 +200,40 @@
 
     }
 
-  footer
-  {
-    bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    height: 25 * $units;
-    width: 100%;
-    padding: 5%;
-    background-color: $footer-color;
-    font-size: 1.5 * $units;
-
-    h3, p, ul
+    footer
     {
-      align-self: center;
-      list-style: none;
+      bottom: 0;
+      display: flex;
+      justify-content: space-around;
+      height: 25 * $units;
+      width: 100%;
+      padding: 5%;
+      background-color: $footer-color;
+      font-size: 1.5 * $units;
+
+      h3, p, ul
+      {
+        align-self: center;
+        list-style: none;
+      }
+
+      li {
+        margin: 1 * $units;
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+      a:visited{
+        color: black;
+      }
+
+      #discord
+      {
+        margin-left: -2px;
+      }
     }
-
-    li {
-      margin: 1 * $units;
-    }
-
-    a{
-      text-decoration: none;
-    }
-
-    a:visited{
-      color: black;
-    }
-
-  #discord
-  {
-    margin-left: -2px; 
-  }
-
-  }
 
   }
 
