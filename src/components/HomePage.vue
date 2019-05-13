@@ -90,7 +90,6 @@
         window.onkeydown = () => {
           this.$refs.search.focus();
         }
-        this.splitScroll();
       },
       methods: {
         ...ACTIONS,
