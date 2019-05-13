@@ -27,7 +27,7 @@
                 <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
                 <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
                 </div>
-            
+
             </div>
         </div> <!-- col-right" -->
         </div> <!-- influencer listing -->
@@ -76,7 +76,7 @@
                 <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}">{{influencer.relevance}}</span></span>
                 <span v-bind:style="progbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}">{{influencer.engagement}}</span></span>
                 </div>
-            
+
             </div>
       </div> <!-- col-right" -->
     </article>
@@ -87,9 +87,6 @@
     //package to send httprequests
     // import API from '@/api.js'
 
-
-  
-
     export default {
         props: {
             type: String,
@@ -99,13 +96,13 @@
             return {
           // progress-bar vuejs styling
                 progbar:{
-                    display: 'inline-block', 
+                    display: 'inline-block',
                     backgroundColor: 'white',
                     margin: '1px',
                     width: '200px',
                     color: 'white',
                     border: '1px solid #888888'
-                   
+
                 },
                 activitybar:{
                   backgroundColor: '#458eff',
@@ -174,24 +171,24 @@
 
     .cssbar {
 
-      display: block; 
+      display: block;
 
     }
 
     .wordsmetric
     {
-      display: flex; 
-      justify-content: center; 
-      flex-flow: column wrap; 
+      display: flex;
+      justify-content: center;
+      flex-flow: column wrap;
 
     }
     .barmetric
     {
-      margin-top: -60px; 
-      margin-left: 100px; 
-      display: flex; 
-      justify-content: center; 
-      flex-flow: column wrap; 
+      margin-top: -60px;
+      margin-left: 100px;
+      display: flex;
+      justify-content: center;
+      flex-flow: column wrap;
     }
 
   .influencer-tile {

@@ -5,9 +5,9 @@
       <h1>Connect With Your World</h1>
       <h2>Discover Influencers Today!</h2>
 
-      <form @submit.prevent="search">
+      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
         <i class="zmdi zmdi-search" />
-        <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
+        <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
     </header>
@@ -48,13 +48,15 @@
 </template>
 
 <script>
-  import { STATE, ACTIONS } from '@/store.js'
+  import { STATE, ACTIONS } from '@/store.js';
+  import {ObserveVisibility} from 'vue-observe-visibility';
+
 	export default {
+      directives: {ObserveVisibility},
       data() {
         return {
           selected_id: '',
-          dialog: false,
-          query: ''
+          dialog: false
         }
       },
       computed: {
@@ -64,11 +66,11 @@
         }
       },
       mounted() {
-        this.load_popular()
-        this.$refs.search.focus();
-        window.onkeydown = () => {
-          this.$refs.search.focus();
-        }
+        this.load_popular();
+        // this.$refs.search.focus();
+        // window.onkeydown = () => {
+        //   this.$refs.search.focus();
+        // }
       },
       methods: {
         ...ACTIONS,
@@ -83,9 +85,16 @@
           }
         },
         search() {
-          localStorage.setItem('query', this.query);
+          localStorage.setItem('query', this.$parent.query);
           this.$router.push('/influencers');
+        },
+        hideSearchbar(isVisible) {
+          this.$parent.showSearchBar = !isVisible;
         }
+      },
+      beforeRouteLeave(to, from, next) {
+        this.$parent.showSearchBar = true;
+        next();
       }
 	}
 </script>
@@ -214,19 +223,9 @@
     line-height: 3 * $units;
     padding: 1 * $units;
   }
- /**
-  .help
-  {
-
-    display: flex;
-    justify-content: center;
-
-  }
-
-  **/
 
   .product-info{
-    width: 100%; 
+    width: 100%;
     height: 100%;
     margin-top: 10 * $units;
     margin-bottom: 10 * $units;
@@ -248,7 +247,6 @@
 
     }
   }
-
 
   .call-to-action
   {

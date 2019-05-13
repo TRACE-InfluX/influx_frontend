@@ -1,15 +1,15 @@
 <!--Template for default view for all influencers-->
 <template>
   <div class="influencer-index">
-    <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
+    <!--<input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">-->
     <ul>
-      <h2>{{ filtered_influencers.length }} results</h2>
+      <h2>{{ filtered_influencers.length }} results for {{keywords}}</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
-      <li v-for="influencer in rendered_influencers" 
+      <li v-for="influencer in rendered_influencers"
         :key="influencer.id"
         @mouseover="render_more(influencer)"
       >
-        <influencer-view 
+        <influencer-view
           :influencer="influencer"
           :type="getType(influencer.id)"
           @click.native="select(influencer.id)"
@@ -28,26 +28,27 @@ export default {
   data() {
       return {
         selected_influencer: '',
-        query: '',
-        render_limit: 4
+        render_limit: 4,
+        que: this.$parent.query
     }
   },
   mounted() {
-    this.query = localStorage.getItem("query") || '';
-
-    this.$refs.search.focus();
+    this.$parent.$refs.search.focus();
     window.onkeydown = () => {
-      this.$refs.search.focus();
+      this.$parent.$refs.search.focus();
     }
+    this.$parent.searching = true;
   },
   computed: {
     ...STATE,
     keywords() {
-      return this.query.toLowerCase().split(' ')
+      // return this.query.toLowerCase().split(' ')
+      return this.$parent.query.toLowerCase().split(' ')
     },
     filtered_influencers() {
       // Return full list if no query
-      return !this.query ? this.influencers:
+      // return !this.query ? this.influencers:
+      return !this.$parent.query ? this.influencers:
       // Else filter by keywords
       this.influencers.filter(influencer => {
         for (let key of this.keywords) {
@@ -71,13 +72,13 @@ export default {
       return this.filtered_influencers.slice(0,this.render_limit)
     }
   },
-  watch: {
-    query(q) {
-      this.render_limit = 4
-      localStorage.setItem("query", q)
-      scrollTo(0,0)
-    }
-  },
+  // watch: {
+  //   que(q) {
+  //     this.render_limit = 4
+  //     localStorage.setItem("query", q)
+  //     scrollTo(0,0)
+  //   }
+  // },
   methods: {
     select(id) {
       this.selected_influencer = id;
@@ -108,17 +109,17 @@ export default {
 
   }
   .influencer-index {
-  
+
     padding-top: 10%;
     text-align: center;
-    
+
   }
 
-  .search-bar {
+  /*.search-bar {
     $height: 5 * $units;
     font-size: 1.8 * $units;
-    width: 57 * $units; 
-    height: $height;  
+    width: 57 * $units;
+    height: $height;
     border-radius: 0.5 * $units;
     border:none;
     box-shadow: $shadow;
@@ -128,6 +129,6 @@ export default {
     padding-right: 1 * $units;
     margin-bottom: 5%;
     margin-top: 5%;
-  }
-  
+  }*/
+
 </style>
