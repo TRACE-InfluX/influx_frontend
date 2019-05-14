@@ -4,15 +4,15 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
-
-      <router-link to="/register">Pricing</router-link>
-      <router-link to="/register">About Us</router-link>
-
       <form @submit.prevent="search" class="nav-search" v-show="showSearchBar">
         <i class="zmdi zmdi-search" />
         <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
+      <router-link to="/register">Pricing</router-link>
+      <router-link to="/register">About Us</router-link>
+
+
 
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
@@ -141,6 +141,8 @@
         margin: auto;
         height: $height;
         display: flex;
+        
+
 
         i {
           position: absolute;
@@ -154,7 +156,7 @@
           font-size: 1.8 * $units;
           border-radius: 0.5 * $units;
           border: none;
-          box-shadow: $shadow;
+          box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
         }
 
         input {
@@ -162,6 +164,8 @@
           padding-left: $height;
           margin-right:  1 * $units;
           padding-right: 1 * $units;
+          width: 40 * $units;
+
         }
 
         button {
@@ -179,10 +183,14 @@
         cursor: pointer;
         transition: 0.2s ease;
         color: $primary;
+        padding-left: 2 * $units;
+        padding-right: 2 * $units;
 
         &:hover {
           transition: 0.2s ease;
-          letter-spacing: 1.8 * $units;
+          color: #FFFFFF;
+          background-color: $primary;
+
         }
       }
 
@@ -197,7 +205,8 @@
         }
 
         &:hover {
-          text-decoration: underline;
+          border-bottom: 0.5 * $units solid $primary;
+          transition: 0.2s ease;
         }
       }
 
@@ -207,6 +216,7 @@
         margin-bottom: 1 * $units;
         background: url('~@/assets/profile.png');
         background-size: 100%;
+        background-repeat: no-repeat;
       }
 
     }
