@@ -42,8 +42,9 @@
           <p>Something else.. contact???? </p>          
         </div>
       </div> <!-- why-tutorial/left col -->
-
     </section>
+
+<!-- End of Why influx -->
 
         <main>
       <h3>Popular</h3>
@@ -133,6 +134,7 @@
 </script>
 
 <style lang="scss" scoped>
+
 
   header {
     color: #414042;
@@ -373,8 +375,9 @@
 .why-tutorial{
   width:50%;
   text-align:right;
-    padding-right: 15%;
-      padding-top: 16 * $units;
+  padding-right: 15%;
+  padding-top: 16 * $units;
+  padding-left: 2.5 * $units;
 
   img{
     height: 50vh;
@@ -441,6 +444,7 @@
         font-size: 1.8 * $units;
     }
   }
+
 
 
 </style>
