@@ -2,6 +2,18 @@
 <template>
   <div class="influencer-index">
     <ul>
+      <div class = "sort-dropdown">
+        <button class = "sort-button">Sort By <img src="~@/assets/arrow-down.png"></button>
+        <div class = "sort-content">
+          <a href="#">Name</a>
+          <a href="#">Posts</a>
+          <a href="#">Followers</a>
+          <a href="#">Following</a>
+          <a href="#">Activity</a>
+          <a href="#">Relevance</a>
+          <a href="#">Engagement</a>
+        </div>
+      </div>
       <h2>{{ filtered_influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in rendered_influencers"
@@ -31,10 +43,6 @@ export default {
     }
   },
   mounted() {
-    // this.$parent.$refs.search.focus();
-    // window.onkeydown = () => {
-    //   this.$parent.$refs.search.focus();
-    // }
     this.$parent.searching = true;
   },
   computed: {
@@ -86,6 +94,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+  .sort-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 90 * $units;
+  }
+
+  .sort-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 20 * $units;
+    box-shadow: $shadow;
+    z-index: 1;
+
+    a {
+      color: black;
+      padding: 1 * $units 2 * $units;
+      text-decoration: none;
+      display: block;
+    }
+
+    a:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+
+  .sort-button {
+    color: black;
+    background-color: white;
+    img {
+      height: 1 * $units;
+      width: 1 * $units;
+    }
+  }
+
+  .sort-dropdown:hover .sort-content {display: block;}
+  .sort-dropdown:hover .sort-button {background-color: #999999;}
 
   ul {
     width: 100%;
