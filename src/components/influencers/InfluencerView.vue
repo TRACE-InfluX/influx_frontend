@@ -34,8 +34,7 @@
                </div>
             </div>
         </div> <!-- col-right" -->
-        </div> <!-- influencer listing -->
-        <hr> <!-- I'll replace this with an actual divider -->
+        </div> <!-- influencer listing --> 
 
         <!-- social feed holder is the overall container for the bottom half -->
        <div class="socialfeedholder">
@@ -288,7 +287,6 @@
   .influencer-detailed{
     border: 1px solid #999999;
     box-sizing: border-box;
-    border-radius: 2 * $units;
     height: 100 * $units;
     width: 100 * $units;
     text-align: center;
@@ -300,8 +298,7 @@
 
     // socialfeedholder
 
-    .socialfeedholder
-    {
+    .socialfeedholder{
       margin-top: 3.125 * $units;
       margin-left: -7.5 * $units;
 
@@ -391,11 +388,14 @@
   .influencer-listing{
     border: 1px solid #999999;
     box-sizing: border-box;
-    border-radius: 2 * $units;
     width: 100 * $units;
     height: 30 * $units;
     margin: auto;
     text-align: center;
+
+    &:hover {
+    box-shadow: inset 2.5px 0 0 0 $primary;
+    }
 
     h2{
     display:inline-block;
