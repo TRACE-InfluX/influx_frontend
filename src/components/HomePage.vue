@@ -13,7 +13,7 @@
     </header>
 
 
-              <main>
+    <main>
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
@@ -23,17 +23,8 @@
           />
         </li>
       </ul>
-    </main>
 
-    <dialog :open="dialog">
-      <span class="close" @click="close">&times;</span>
-      <influencer-view :influencer="selected_influencer" type="detailed"/>
-
-    </dialog>
-
-
-
-    <section class="why-influx">
+          <section class="why-influx">
       <div class="why-title">
         <p id = "why-heading"> Why influx?</p>
         <br>
@@ -64,13 +55,26 @@
       </div> <!-- why-tutorial/left col -->
     </section>
 
-<!-- End of Why influx -->
-
-    <div class="joindiscord">
+        <div class="joindiscord">
       <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
     </div>  
+    
+    </main>
+
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
+      <influencer-view :influencer="selected_influencer" type="detailed"/>
+
+    </dialog>
+
+
+
+
+
+<!-- End of Why influx -->
+
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -335,7 +339,7 @@
 
 
 .steps-container{
-  padding-top: 10%;
+  padding-top: 5%;
   font-size: 3 * $units;
   line-height: 3.5 * $units;
   color:hsl(0,0%,45%);
@@ -345,7 +349,7 @@
 
 
 .Current-Number{
-  padding-top: 10%;
+  padding-top: 5%;
   font-size: 3 * $units;
   line-height: 6 * $units;
   color: $primary;
@@ -354,7 +358,7 @@
 
 
 .Current-Step{
-  padding-top: 10%;
+  padding-top: 5%;
   font-size: 3 * $units;
   line-height: 6 * $units;
   color:hsl(0,0%,45%);
