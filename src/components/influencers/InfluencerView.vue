@@ -38,7 +38,7 @@
                </div>
             </div>
         </div> <!-- col-right" -->
-        </div> <!-- influencer listing -->
+         <!-- influencer listing -->
         <hr> <!-- I'll replace this with an actual divider -->
 
         <!-- social feed holder is the overall container for the bottom half -->
