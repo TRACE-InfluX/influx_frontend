@@ -128,8 +128,6 @@
       padding-right:15%;
       box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
 
-    
-
       > * {
         display: inline-block;
         line-height: $header-height;
@@ -141,8 +139,6 @@
         margin: auto;
         height: $height;
         display: flex;
-        
-
 
         i {
           position: absolute;
@@ -165,7 +161,6 @@
           margin-right:  1 * $units;
           padding-right: 1 * $units;
           width: 40 * $units;
-
         }
 
         button {
@@ -190,7 +185,6 @@
           transition: 0.2s ease;
           color: #FFFFFF;
           background-color: $primary;
-
         }
       }
 
@@ -218,7 +212,6 @@
         background-size: 100%;
         background-repeat: no-repeat;
       }
-
     }
 
     footer
@@ -248,11 +241,6 @@
 
       a:visited{
         color: black;
-      }
-
-      #discord
-      {
-        margin-left: -2px;
       }
     }
 
