@@ -13,68 +13,99 @@
     </header>
 
 
-    <main>
-      <h3>Popular</h3>
-      <ul class="popular">
-        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-          <influencer-view type="tile"
-            @click.native="open(popularInfluencer.id)"
-            :influencer="popularInfluencer"
+  <main>
+    <h3>Popular</h3>
+
+    <ul class="popular">
+      <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+        <influencer-view type="tile"
+          @click.native="open(popularInfluencer.id)"
+          :influencer="popularInfluencer"
           />
-        </li>
-      </ul>
+      </li>
+    </ul>
 
-          <section class="why-influx">
+    <section class="why-influx">
       <div class="why-title">
-        <p id = "why-heading"> Why influx?</p>
+        <p id = "why-heading"><span> Why </span>InfluX<span></span></p>
         <br>
-        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>  
-        <div class= "steps-container" id="steps-indicator">
-          <p><span id ="Number">01</span><span id ="Step">Search</span></p>
-          <p><span id ="Number">02</span><span id ="Step">Select</span></p>
-          <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
-        </div>
-      </div> <!-- why-title/right col -->
+        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
+
+
+     </div>     <!-- why-title/right col -->
+
       <div class="why-tutorial">
-
-        <div class = "first-tut">
-          <section v-scroll-reveal.reset ="{ delay: 1000 }">
-          <img src = "~@/assets/tutorial1.png">
-          <p>A blazing fast search engine, filled with influencers just for you </p>
-          </section>
-        </div>
-
+       <div class = "first-tut">
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial1.png">
+           </div>
+         </section>
+         <p id = "picture-description">A blazing fast search engine, filled with influencers just for you. </p>
+       </div>
+      
         <div class = "second-tut">
-          <section v-scroll-reveal.reset ="{ delay: 1250 }">
-          <img src = "~@/assets/tutorial2.png">
-          </section>
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial2.png">
+           </div>
+         </section>
+         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
+       </div>
+
+       <div class = "third-tut">
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial2.png">
+           </div>
+         </section>
+         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
+       </div>      <!-- third tut-->
+      </div>    <!-- why-tutorial/left col -->
+
+    </section>
+    <section v-scroll-reveal-quick.reset ="{ delay: 1000 }">
+     <div class = "trust-banner">
+       <div class = "trust-left">
+        <p id = "header">Who we are</p>
+        <p id = "tagline">We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in: </p>
+        <ul>
+        <li>Programming</li>
+        <li>Marketing</li>
+         <li>Customer Service</li>
+         <li>Recruitment</li>
+        <li>Small Business</li>
+        </ul>
+        <p id = "tagline">We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud. </p>
+        <div class="joindiscord">
+          <a href="https://discord.gg/YJ79pbf" target="_blank">
+          <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
+          </a>
         </div>
-        <div class = "third-tut">
-          <p>Always online support, ready to help </p>
+        <p id = "tagline"> Connect with us through Discord, today! </p>
+      </div>
+
+        <div class = "trust-right">
+          <ul>
+            <li><img src="~@/assets/Toni.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Remy.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Aaron.png" id = "team-pics"></li>
+           <li><img src="~@/assets/Carlo.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Eva.png" id = "team-pics"></li>
+          </ul>
         </div>
-      </div> <!-- why-tutorial/left col -->
+        
+      </div>
+    <!-- trust-banner -->
     </section>
 
-        <div class="joindiscord">
-      <a href="https://discord.gg/YJ79pbf" target="_blank">
-        <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
-      </a>
-    </div>  
-    
-    </main>
+
+</main>
 
     <dialog :open="dialog">
       <span class="close" @click="close">&times;</span>
       <influencer-view :influencer="selected_influencer" type="detailed"/>
-
     </dialog>
-
-
-
-
-
-<!-- End of Why influx -->
-
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -139,13 +170,35 @@
 
 <style lang="scss" scoped>
 
-
-  header {
+header {
     color: #414042;
     background-position: bottom;
     background-size: cover;
     height: 60 * $units;
     padding: 20 * $units 3 * $units 0;
+
+
+
+    #header {
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: 'Oswald';     
+
+    }
+
+    #header-highlight{
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: 'Oswald';
+    color: $primary;
+
+    }
+    
+    #tagline {
+      font-size: 2.5 * $units;
+      color: #7a7c7f;
+      
+    }
   
     
 
@@ -156,27 +209,6 @@
       text-align: center;
     }
 
-    #header {
-      font-size: 6 * $units;
-      font-weight: 400;
-      font-family: 'Oswald';
-
-    }
-
-    #header-highlight{
-      font-size: 6 * $units;
-      font-weight: 400;
-      font-family: 'Oswald';
-      color: $primary;
-    }
-
-    
-
-    #tagline {
-      font-size: 2.5 * $units;
-      color: #7a7c7f;
-      
-    }
 
     form {
       $height: 5 * $units;
@@ -319,7 +351,7 @@
     justify-content:center;
     color:#7a7c7f;
     padding-left:15%;
-    padding-top: 16 * $units;
+    padding-top: 20 * $units;
     padding-right: 2.5%;
 
 
@@ -332,9 +364,16 @@
 
 
   #why-desc-1{
-      font-size: 3 * $units;
+      font-size: 2.5 * $units;
       line-height: 3.5 * $units;
       color:hsl(0,0%,29%);
+  }
+
+  #picture-description{
+    font-size: 3 * $units;
+    line-height: 3.5 * $units;
+    color:hsl(0,0%,29%);
+    padding-top: 5%;
   }
 
 
@@ -368,7 +407,7 @@
   font-size: 2.5 * $units;
   line-height: 6 * $units;
   color:hsl(0,0%,45%);
-  padding-right:10%;
+  padding-right:5%;
 }
 
 
@@ -380,7 +419,7 @@
 
 .why-tutorial{
   width:50%;
-  text-align:right;
+  text-align:center;
   padding-right: 15%;
   padding-top: 16 * $units;
   padding-left: 2.5 * $units;
@@ -396,6 +435,7 @@
 .first-tut{
   height:100vh;
   justify-content:left;
+  width: 100%;
 
 }
 
@@ -411,6 +451,10 @@
   justify-content:space-around;
   align-items: center;
 }
+
+  .img-container{
+    padding-top:15%;
+  }
 
 
   .call-to-action
@@ -455,7 +499,74 @@
 
 .joindiscord{
   text-align:center;
+  padding-top: 2%;
 }
 
+
+.trust-banner{
+  height:100vh;
+  background-color: $primary;
+  color: hsl(216, 100%, 99%);
+  transition:ease-in 750ms;
+
+
+
+  .trust-left{
+    width:50%;
+    float:left;
+    background-color: $primary;
+    height:100vh;
+    padding-top:5%;
+    transition:ease-in 1000ms;
+    padding-bottom:5%;
+
+  }
+
+  .trust-right{
+    width:50%;
+    float:right;
+    background-color: #FFFFFF;
+    height:100vh;
+    padding-top:5%;
+    padding-bottom:5%;
+    color:#000000;
+    text-align: center;
+  }
+
+      #header {
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+      text-align:center;
+
+    }
+
+    #tagline {
+      padding-top: 5%;
+      font-size: 2.5 * $units;
+      color: #FFFFFF;
+      text-align:center;
+      padding-right:10%;
+      padding-left: 10%;
+    }
+
+    ul{
+      text-align:center;
+      font-size: 2.5 * $units;
+      list-style-type:none;
+
+
+      li{
+        padding-top: 1.5%;
+
+      }
+
+    }
+
+    #team-pics{
+      max-width: 20vw;
+      max-height: 20vh;
+    }
+}
 
 </style>

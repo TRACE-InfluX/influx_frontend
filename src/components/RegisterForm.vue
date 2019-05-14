@@ -64,13 +64,14 @@
         width: 25 * $units;
         border-style:none;
         border-radius: 0.5 * $units;
+        font-size: 2 * $units;
     }
 
     .register-form{
         text-align:center;
         margin-top:10%;
         position:relative;
-        height: 50 * $units
+        height: 50 * $units;
     }
 
     h2{

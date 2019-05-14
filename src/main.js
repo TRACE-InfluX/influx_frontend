@@ -13,6 +13,11 @@ Vue.use(VueScrollReveal, {
   duration: 1000,
 });
 
+Vue.use(VueScrollReveal, {
+  class: 'v-scroll-reveal-quick', // A CSS class applied to elements with the v-scroll-reveal directive; useful for animation overrides.
+  duration: 500,
+});
+
 //render new app instance
 new Vue({
   render: h => h(App),
