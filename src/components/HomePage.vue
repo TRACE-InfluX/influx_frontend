@@ -221,11 +221,13 @@
       justify-content: space-between;
       padding-right: 15%;
       padding-left: 15%;
+      margin: auto;
 
       li {
         display: inline-block;
         max-width: 32 * $units;
         max-height: 32 * $units;
+        padding: 1 * $units;
         .influencer-view {
           display: block;
           margin: auto;

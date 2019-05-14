@@ -104,7 +104,7 @@
     <!-- influencer tile view - simple square display as seen on the homepage for popular influencers -->
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
         <img v-bind:src="influencer.profile_image"/>
-        <p>{{influencer.username}}</p>
+        <p>{{influencer.name}}</p>
     </article>
 
     <!-- influencer tile view ends here -->
