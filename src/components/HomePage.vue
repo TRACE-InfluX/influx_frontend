@@ -63,9 +63,8 @@
     </main>
 
     <dialog :open="dialog">
-      <div class="modal-mask">
+      <div class="modal-mask" @click.self="close">
         <div class="modal-container">
-          <span class="close" @click="close">&times;</span>
           <influencer-view :influencer="selected_influencer" type="detailed"/>
         </div>
       </div>
@@ -260,19 +259,6 @@
 
     .influencer-view {
       border: none;
-    }
-
-    .close {
-      padding: 1 * $units;
-      position: fixed;
-      right: 2 * $units;
-      float: right;
-      font-size: 4 * $units;
-      text-align: center;
-    }
-
-    .close:hover {
-      cursor: pointer;
     }
   }
 
