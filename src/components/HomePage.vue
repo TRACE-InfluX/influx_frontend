@@ -27,7 +27,7 @@
 
     <section class="why-influx">
       <div class="why-title">
-        <p id = "why-heading"><span> Why </span>InfluX<span></span></p>
+        <p id = "why-heading"><span> Why </span>InfluX?<span></span></p>
         <br>
         <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
 
@@ -360,6 +360,8 @@ header {
 #why-heading{
   font-size: 3 * $units;
   color:hsl(0,0%,13%);
+  border-bottom: 0.5 * $units solid $primary;
+  padding-top: 5%;
 }
 
 
@@ -421,13 +423,14 @@ header {
   width:50%;
   text-align:center;
   padding-right: 15%;
-  padding-top: 16 * $units;
+  padding-top: 20 * $units;
   padding-left: 2.5 * $units;
 
   img{
     height: 50vh;
     justify-content: center;
     box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+    margin-top: 5%;
   }
   
 }
@@ -453,7 +456,6 @@ header {
 }
 
   .img-container{
-    padding-top:15%;
   }
 
 
@@ -527,8 +529,6 @@ header {
     float:right;
     background-color: #FFFFFF;
     height:100vh;
-    padding-top:5%;
-    padding-bottom:5%;
     color:#000000;
     text-align: center;
   }
