@@ -1,7 +1,6 @@
 <!--Template for default view for all influencers-->
 <template>
   <div class="influencer-index">
-    <!--<input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">-->
     <ul>
       <h2>{{ filtered_influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
@@ -32,16 +31,15 @@ export default {
     }
   },
   mounted() {
-    this.$parent.$refs.search.focus();
-    window.onkeydown = () => {
-      this.$parent.$refs.search.focus();
-    }
+    // this.$parent.$refs.search.focus();
+    // window.onkeydown = () => {
+    //   this.$parent.$refs.search.focus();
+    // }
     this.$parent.searching = true;
   },
   computed: {
     ...STATE,
     keywords() {
-      // return this.query.toLowerCase().split(' ')
       return this.$parent.query.toLowerCase().split(' ')
     },
     filtered_influencers() {
