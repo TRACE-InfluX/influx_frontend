@@ -13,40 +13,7 @@
     </header>
 
 
-    <dialog :open="dialog">
-      <span class="close" @click="close">&times;</span>
-      <influencer-view :influencer="selected_influencer" type="detailed"/>
-    </dialog>
-
-    <section class="why-influx">
-      <div class="why-title">
-        <p id = "why-heading"> Why influx?</p>
-        <br>
-        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>  
-        <div class= "steps-container" id="steps-indicator">
-          <p><span id ="Number">01</span><span id ="Step">Search</span></p>
-          <p><span id ="Number">02</span><span id ="Step">Select</span></p>
-          <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
-          <p>test</p>
-        </div>
-      </div> <!-- why-title/right col -->
-      <div class="why-tutorial">
-        <div class = "first-tut">
-          <img src = "~@/assets/tutorial1.png">
-          <p>A blazing fast search engine, filled with influencers just for you </p>
-        </div>
-        <div class = "second-tut">
-          <img src = "~@/assets/tutorial2.png">
-        </div>
-        <div class = "third-tut">
-          <p>Something else.. contact???? </p>          
-        </div>
-      </div> <!-- why-tutorial/left col -->
-    </section>
-
-<!-- End of Why influx -->
-
-        <main>
+              <main>
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
@@ -58,19 +25,52 @@
       </ul>
     </main>
 
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
+      <influencer-view :influencer="selected_influencer" type="detailed"/>
 
+    </dialog>
+
+
+
+    <section class="why-influx">
+      <div class="why-title">
+        <p id = "why-heading"> Why influx?</p>
+        <br>
+        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>  
+        <div class= "steps-container" id="steps-indicator">
+          <p><span id ="Number">01</span><span id ="Step">Search</span></p>
+          <p><span id ="Number">02</span><span id ="Step">Select</span></p>
+          <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
+        </div>
+      </div> <!-- why-title/right col -->
+      <div class="why-tutorial">
+
+        <div class = "first-tut">
+          <section v-scroll-reveal.reset ="{ delay: 1000 }">
+          <img src = "~@/assets/tutorial1.png">
+          <p>A blazing fast search engine, filled with influencers just for you </p>
+          </section>
+        </div>
+
+        <div class = "second-tut">
+          <section v-scroll-reveal.reset ="{ delay: 1250 }">
+          <img src = "~@/assets/tutorial2.png">
+          </section>
+        </div>
+        <div class = "third-tut">
+          <p>Always online support, ready to help </p>
+        </div>
+      </div> <!-- why-tutorial/left col -->
+    </section>
+
+<!-- End of Why influx -->
 
     <div class="joindiscord">
-
-
-        <a href="https://discord.gg/YJ79pbf" target="_blank">
+      <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
-
-
     </div>  
-
-
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -142,6 +142,7 @@
     background-size: cover;
     height: 60 * $units;
     padding: 20 * $units 3 * $units 0;
+  
     
 
     > * {
@@ -249,6 +250,7 @@
     margin: auto;
     position: absolute;
     border-radius: 2 * $units;
+    z-index: 999;
 
     .close {
       padding: 1 * $units;
@@ -359,7 +361,7 @@
 }
 
 #Number{
-  font-size: 3 * $units;
+  font-size: 2.5 * $units;
   line-height: 6 * $units;
   color:hsl(0,0%,45%);
   padding-right:10%;
@@ -367,7 +369,7 @@
 
 
 #Step{
-  font-size: 3 * $units;
+  font-size: 2.5 * $units;
   line-height: 6 * $units;
   color:hsl(0,0%,45%);
 }
@@ -382,6 +384,7 @@
   img{
     height: 50vh;
     justify-content: center;
+    box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
   }
   
 }
@@ -445,6 +448,10 @@
     }
   }
 
+
+.joindiscord{
+  text-align:center;
+}
 
 
 </style>
