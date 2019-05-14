@@ -73,7 +73,7 @@
 
     button {
         height: 5 * $units;
-        background-color: #458eff;
+        background-color: $primary;
         color: white;
         padding: 1 * $units;
         display: inline-block;

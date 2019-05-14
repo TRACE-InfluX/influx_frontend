@@ -2,17 +2,50 @@
   <div class="home-page">
 
     <header>
-      <h1>Connect With Your World</h1>
-      <h2>Discover Influencers Today!</h2>
+      <p><span id = "header">CONNECT WITH YOUR </span> <span id = "header-highlight">WORLD</span></p>
+      <p id = "tagline">Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
-      <form @submit.prevent="search">
+      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
         <i class="zmdi zmdi-search" />
-        <input ref="search" type="search" v-model="query" placeholder="Type to Search...">
+        <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
     </header>
 
-    <main>
+
+    <dialog :open="dialog">
+      <span class="close" @click="close">&times;</span>
+      <influencer-view :influencer="selected_influencer" type="detailed"/>
+    </dialog>
+
+    <section class="why-influx">
+      <div class="why-title">
+        <p id = "why-heading"> Why influx?</p>
+        <br>
+        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>  
+        <div class= "steps-container" id="steps-indicator">
+          <p><span id ="Number">01</span><span id ="Step">Search</span></p>
+          <p><span id ="Number">02</span><span id ="Step">Select</span></p>
+          <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
+          <p>test</p>
+        </div>
+      </div> <!-- why-title/right col -->
+      <div class="why-tutorial">
+        <div class = "first-tut">
+          <img src = "~@/assets/tutorial1.png">
+          <p>A blazing fast search engine, filled with influencers just for you </p>
+        </div>
+        <div class = "second-tut">
+          <img src = "~@/assets/tutorial2.png">
+        </div>
+        <div class = "third-tut">
+          <p>Something else.. contact???? </p>          
+        </div>
+      </div> <!-- why-tutorial/left col -->
+
+    </section>
+
+        <main>
       <h3>Popular</h3>
       <ul class="popular">
         <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
@@ -24,31 +57,15 @@
       </ul>
     </main>
 
-    <dialog :open="dialog">
-      <span class="close" @click="close">&times;</span>
-      <influencer-view :influencer="selected_influencer" type="detailed"/>
-    </dialog>
 
 
-  
+    <div class="joindiscord">
 
-    <div class="product-info">
-      <p>Influencers at your fingertips. Just a search away.</p>
-        <img src="~@/assets/preview1.png">
-    </div>
-
-    <div class="product-info">
-      <p>Browse through detailed information to find out if they're right for you.</p>
-        <img src="~@/assets/preview2.png">
-    </div>
-
-    
-
-    <div class="joindiscord"> 
 
         <a href="https://discord.gg/YJ79pbf" target="_blank">
         <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
       </a>
+
 
     </div>  
 
@@ -63,14 +80,19 @@
 </template>
 
 <script>
-  import { STATE, ACTIONS } from '@/store.js'
+  import { STATE, ACTIONS } from '@/store.js';
+  import {ObserveVisibility} from 'vue-observe-visibility';
+
 	export default {
+      directives: {ObserveVisibility},
       data() {
         return {
           selected_id: '',
-          dialog: false,
-          query: ''
+          dialog: false
         }
+      },
+      directive: {
+
       },
       computed: {
         ...STATE,
@@ -79,11 +101,7 @@
         }
       },
       mounted() {
-        this.load_popular()
-        this.$refs.search.focus();
-        window.onkeydown = () => {
-          this.$refs.search.focus();
-        }
+        this.load_popular();
       },
       methods: {
         ...ACTIONS,
@@ -98,38 +116,59 @@
           }
         },
         search() {
-          localStorage.setItem('query', this.query);
+          localStorage.setItem('query', this.$parent.query);
           this.$router.push('/influencers');
+        },
+        hideSearchbar(isVisible) {
+          this.$parent.showSearchBar = !isVisible;
         }
+
+      },
+      beforeRouteLeave(to, from, next) {
+        this.$parent.showSearchBar = true;
+        next();
       }
-	}
+  }
+  
 </script>
 
 <style lang="scss" scoped>
 
   header {
-    color: white;
-    background-image: url("~@/assets/aditya-chinchure-494048-unsplash.jpg");
+    color: #414042;
     background-position: bottom;
     background-size: cover;
     height: 60 * $units;
     padding: 20 * $units 3 * $units 0;
+    
 
     > * {
-      max-width: 70 * $units;
+      max-width: 100 * $units;
       display: block;
       margin: 3 * $units auto;
       text-align: center;
     }
 
-    h1 {
-      font-size: 4.5 * $units;
-      text-shadow: $shadow;
+    #header {
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+
     }
 
-    h2 {
-      font-size: 3 * $units;
-      text-shadow: $shadow;
+    #header-highlight{
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+      color: $primary;
+    }
+
+    
+
+    #tagline {
+      font-size: 2.5 * $units;
+      color: #7a7c7f;
+      
     }
 
     form {
@@ -185,13 +224,15 @@
     .popular {
       display: flex;
       width: 100%;
-      justify-content: center;
+      justify-content: space-between;
+      padding-right: 15%;
+      padding-left: 15%;
+      
 
       li {
         display: inline-block;
         max-width: 32 * $units;
         max-height: 32 * $units;
-        flex: 1;
         .influencer-view {
           display: block;
           margin: auto;
@@ -230,9 +271,8 @@
     padding: 1 * $units;
   }
 
-
   .product-info{
-    width: 100%; 
+    width: 100%;
     height: 100%;
     margin-top: 10 * $units;
     margin-bottom: 10 * $units;
@@ -251,13 +291,120 @@
     align-self: center;
     width: 20%;
     font-size: 3 * $units;
-
     }
   }
 
+
+.why-influx{
+  height: 300vh;
+  display:flex;
+  top:0;
+  
+}
+
+.why-title{
+    width:50%;
+    height:100vh;
+    position:sticky;
+    flex-direction:column;
+    top:0;
+    justify-content:center;
+    color:#7a7c7f;
+    padding-left:15%;
+    padding-top: 16 * $units;
+    padding-right: 2.5%;
+
+
+}
+
+#why-heading{
+  font-size: 3 * $units;
+  color:hsl(0,0%,13%);
+}
+
+
+  #why-desc-1{
+      font-size: 3 * $units;
+      line-height: 3.5 * $units;
+      color:hsl(0,0%,29%);
+  }
+
+
+.steps-container{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 3.5 * $units;
+  color:hsl(0,0%,45%);
+    padding-right: 10%;
+  
+}
+
+
+.Current-Number{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color: $primary;
+  padding-right:10%;
+}
+
+
+.Current-Step{
+  padding-top: 10%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+#Number{
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+  padding-right:10%;
+}
+
+
+#Step{
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+.why-tutorial{
+  width:50%;
+  text-align:right;
+    padding-right: 15%;
+      padding-top: 16 * $units;
+
+  img{
+    height: 50vh;
+    justify-content: center;
+  }
+  
+}
+
+.first-tut{
+  height:100vh;
+  justify-content:left;
+
+}
+
+.second-tut{
+  height:100vh;
+  justify-content:space-around;
+  align-items: center;
+
+}
+
+.third-tut{
+  height:100vh;
+  justify-content:space-around;
+  align-items: center;
+}
+
+
   .call-to-action
   {
-
     display: flex;
     flex-flow: column wrap;
     justify-content: center;

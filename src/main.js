@@ -8,6 +8,7 @@ Vue.config.productionTip = false
 //setting router and route paths to use for the app instance
 Vue.use(VueRouter)
 
+
 //render new app instance
 new Vue({
   render: h => h(App),
