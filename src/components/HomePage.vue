@@ -12,7 +12,6 @@
       </form>
     </header>
 
-
     <main>
       <h3>Popular</h3>
       <ul class="popular">
@@ -126,6 +125,17 @@
 
   export default {
     directives: {ObserveVisibility},
+
+    watch: {
+      dialog: function(isOpen) {
+        if(isOpen) {
+          document.documentElement.style.overflow = 'hidden';
+        } else {
+          document.documentElement.style.overflow = 'auto';
+        }
+      }
+    },
+
     data() {
       return {
         selected_id: '',
@@ -175,7 +185,9 @@
 
 <style lang="scss" scoped>
 
+
 header {
+
 
     color: #414042;
     background-position: bottom;
@@ -368,6 +380,11 @@ header {
     padding-right: 2.5%;
   }
 
+  #why-heading{
+    font-size: 3 * $units;
+    color:hsl(0,0%,13%);
+  }
+
 
 #why-heading{
   font-size: 3 * $units;
@@ -375,6 +392,15 @@ header {
   border-bottom: 0.5 * $units solid $primary;
   padding-top: 5%;
 }
+
+
+  .steps-container{
+    padding-top: 5%;
+    font-size: 3 * $units;
+    line-height: 3.5 * $units;
+    color:hsl(0,0%,45%);
+    padding-right: 10%;
+  }
 
 
   #why-desc-1{
@@ -465,8 +491,14 @@ header {
 
 
   .img-container{
+
   }
 
+  .third-tut{
+    height:100vh;
+    justify-content:space-around;
+    align-items: center;
+  }
 
   .third-tut{
     height:100vh;
@@ -515,10 +547,12 @@ header {
   }
 
 
+
 .joindiscord{
   text-align:center;
   padding-top: 2%;
 }
+
 
 
 
