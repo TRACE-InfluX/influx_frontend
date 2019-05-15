@@ -173,7 +173,7 @@
                     display: 'inline-block',
                     backgroundColor: 'white',
                     margin: '1px',
-                    width: '200px',
+                    width: '100%',
                     color: 'white'
                 },
                 activitybar:{
@@ -260,6 +260,7 @@
       background-color: #D0D0D0;
       color: white;
       font-size: 0.75rem;
+      text-align: center; 
 
   
 
@@ -273,7 +274,7 @@
     }
     .barmetric
     {
-      margin-top: -7.6 * $units;
+      margin-top: -7.5 * $units;
       margin-left: 12.9 * $units;
       display: flex;
       justify-content: center;
