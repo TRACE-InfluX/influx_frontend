@@ -38,8 +38,10 @@
                </div>
             </div>
         </div> <!-- col-right" -->
+
       <hr>
   
+
         <!-- social feed holder is the overall container for the bottom half -->
        <div class="socialfeedholder">
         <div class = "col-left-details">

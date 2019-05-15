@@ -186,10 +186,7 @@
 
 <style lang="scss" scoped>
 
-
 header {
-
-
     color: #414042;
     background-position: bottom;
     background-size: cover;
@@ -381,27 +378,12 @@ header {
     padding-right: 2.5%;
   }
 
-  #why-heading{
-    font-size: 3 * $units;
-    color:hsl(0,0%,13%);
-  }
-
-
 #why-heading{
   font-size: 3 * $units;
   color:hsl(0,0%,13%);
   border-bottom: 0.5 * $units solid $primary;
   padding-top: 5%;
 }
-
-
-  .steps-container{
-    padding-top: 5%;
-    font-size: 3 * $units;
-    line-height: 3.5 * $units;
-    color:hsl(0,0%,45%);
-    padding-right: 10%;
-  }
 
 
   #why-desc-1{
@@ -471,6 +453,7 @@ header {
     box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
     margin-top: 5%;
   }
+
   #Step{
     font-size: 2.5 * $units;
     line-height: 6 * $units;
@@ -492,21 +475,12 @@ header {
 
 
   .img-container{
-
   }
-
   .third-tut{
     height:100vh;
     justify-content:space-around;
     align-items: center;
   }
-
-  .third-tut{
-    height:100vh;
-    justify-content:space-around;
-    align-items: center;
-  }
-
 }
   .call-to-action
   {
@@ -546,7 +520,6 @@ header {
       font-size: 1.8 * $units;
     }
   }
-
 
 
 .joindiscord{
@@ -622,4 +595,3 @@ header {
 }
   
 </style>
-
