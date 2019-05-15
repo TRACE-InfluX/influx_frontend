@@ -19,48 +19,89 @@
           <influencer-view type="tile"
                            @click.native="open(popularInfluencer.id)"
                            :influencer="popularInfluencer"
+
           />
-        </li>
-      </ul>
+      </li>
+    </ul>
 
-      <section class="why-influx">
-        <div class="why-title">
-          <p id = "why-heading"> Why influx?</p>
-          <br>
-          <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
-          <div class= "steps-container" id="steps-indicator">
-            <p><span id ="Number">01</span><span id ="Step">Search</span></p>
-            <p><span id ="Number">02</span><span id ="Step">Select</span></p>
-            <p><span id ="Number">03</span><span id ="Step">Etc</span></p>
-          </div>
-        </div> <!-- why-title/right col -->
-        <div class="why-tutorial">
 
-          <div class = "first-tut">
-            <section v-scroll-reveal.reset ="{ delay: 1000 }">
-              <img src = "~@/assets/tutorial1.png">
-              <p>A blazing fast search engine, filled with influencers just for you </p>
-            </section>
-          </div>
+    <section class="why-influx">
+      <div class="why-title">
+        <p id = "why-heading"><span> Why </span>InfluX?<span></span></p>
+        <br>
+        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
 
-          <div class = "second-tut">
-            <section v-scroll-reveal.reset ="{ delay: 1250 }">
-              <img src = "~@/assets/tutorial2.png">
-            </section>
-          </div>
-          <div class = "third-tut">
-            <p>Always online support, ready to help </p>
-          </div>
-        </div> <!-- why-tutorial/left col -->
-      </section>
 
-      <div class="joindiscord">
-        <a href="https://discord.gg/YJ79pbf" target="_blank">
+     </div>     <!-- why-title/right col -->
+
+      <div class="why-tutorial">
+       <div class = "first-tut">
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial1.png">
+           </div>
+         </section>
+         <p id = "picture-description">A blazing fast search engine, filled with influencers just for you. </p>
+       </div>
+      
+        <div class = "second-tut">
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial2.png">
+           </div>
+         </section>
+         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
+       </div>
+
+       <div class = "third-tut">
+         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+           <div class = "img-container">
+           <img src = "~@/assets/tutorial2.png">
+           </div>
+         </section>
+         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
+       </div>      <!-- third tut-->
+      </div>    <!-- why-tutorial/left col -->
+
+    </section>
+    <section v-scroll-reveal-quick.reset ="{ delay: 1000 }">
+     <div class = "trust-banner">
+       <div class = "trust-left">
+        <p id = "header">Who we are</p>
+        <p id = "tagline">We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in: </p>
+        <ul>
+        <li>Programming</li>
+        <li>Marketing</li>
+         <li>Customer Service</li>
+         <li>Recruitment</li>
+        <li>Small Business</li>
+        </ul>
+        <p id = "tagline">We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud. </p>
+        <div class="joindiscord">
+          <a href="https://discord.gg/YJ79pbf" target="_blank">
           <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
-        </a>
+          </a>
+        </div>
+        <p id = "tagline"> Connect with us through Discord, today! </p>
       </div>
 
-    </main>
+        <div class = "trust-right">
+          <ul>
+            <li><img src="~@/assets/Toni.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Remy.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Aaron.png" id = "team-pics"></li>
+           <li><img src="~@/assets/Carlo.png" id = "team-pics"></li>
+            <li><img src="~@/assets/Eva.png" id = "team-pics"></li>
+          </ul>
+        </div>
+        
+      </div>
+    <!-- trust-banner -->
+    </section>
+
+
+</main>
+
 
     <dialog :open="dialog">
       <div class="modal-mask" @click.self="close">
@@ -84,6 +125,7 @@
 
   export default {
     directives: {ObserveVisibility},
+
     watch: {
       dialog: function(isOpen) {
         if(isOpen) {
@@ -93,6 +135,7 @@
         }
       }
     },
+
     data() {
       return {
         selected_id: '',
@@ -143,19 +186,14 @@
 
 <style lang="scss" scoped>
 
-  header {
+header {
     color: #414042;
     background-position: bottom;
     background-size: cover;
     height: 60 * $units;
     padding: 20 * $units 3 * $units 0;
 
-    > * {
-      max-width: 100 * $units;
-      display: block;
-      margin: 3 * $units auto;
-      text-align: center;
-    }
+
 
     #header {
       font-size: 6 * $units;
@@ -164,16 +202,26 @@
     }
 
     #header-highlight{
-      font-size: 6 * $units;
-      font-weight: 400;
-      font-family: 'Oswald';
-      color: $primary;
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: 'Oswald';
+    color: $primary;
     }
 
     #tagline {
       font-size: 2.5 * $units;
       color: #7a7c7f;
     }
+  
+    
+
+    > * {
+      max-width: 100 * $units;
+      display: block;
+      margin: 3 * $units auto;
+      text-align: center;
+    }
+
 
     form {
       $height: 5 * $units;
@@ -255,6 +303,7 @@
       width: 100%;
       height: 100%;
       left: 0;
+      right: 0;
       background-color: rgba(0, 0, 0, .5);
       transition: opacity .3s ease;
     }
@@ -325,49 +374,84 @@
     justify-content:center;
     color:#7a7c7f;
     padding-left:15%;
-    padding-top: 16 * $units;
+    padding-top: 20 * $units;
     padding-right: 2.5%;
   }
 
-  #why-heading{
-    font-size: 3 * $units;
-    color:hsl(0,0%,13%);
-  }
+#why-heading{
+  font-size: 3 * $units;
+  color:hsl(0,0%,13%);
+  border-bottom: 0.5 * $units solid $primary;
+  padding-top: 5%;
+}
+
 
   #why-desc-1{
+      font-size: 2.5 * $units;
+      line-height: 3.5 * $units;
+      color:hsl(0,0%,29%);
+  }
+
+  #picture-description{
     font-size: 3 * $units;
     line-height: 3.5 * $units;
     color:hsl(0,0%,29%);
+    padding-top: 5%;
   }
 
-  .steps-container{
-    padding-top: 5%;
-    font-size: 3 * $units;
-    line-height: 3.5 * $units;
-    color:hsl(0,0%,45%);
+
+.steps-container{
+  padding-top: 5%;
+  font-size: 3 * $units;
+  line-height: 3.5 * $units;
+  color:hsl(0,0%,45%);
     padding-right: 10%;
-  }
+  
+}
 
-  .Current-Number{
-    padding-top: 5%;
-    font-size: 3 * $units;
-    line-height: 6 * $units;
-    color: $primary;
-    padding-right:10%;
-  }
 
-  .Current-Step{
-    padding-top: 5%;
-    font-size: 3 * $units;
-    line-height: 6 * $units;
-    color:hsl(0,0%,45%);
-  }
+.Current-Number{
+  padding-top: 5%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color: $primary;
+  padding-right:10%;
+}
 
-  #Number{
-    font-size: 2.5 * $units;
-    line-height: 6 * $units;
-    color:hsl(0,0%,45%);
-    padding-right:10%;
+
+.Current-Step{
+  padding-top: 5%;
+  font-size: 3 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+#Number{
+  font-size: 2.5 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+  padding-right:5%;
+}
+
+
+#Step{
+  font-size: 2.5 * $units;
+  line-height: 6 * $units;
+  color:hsl(0,0%,45%);
+}
+
+.why-tutorial{
+  width:50%;
+  text-align:center;
+  padding-right: 15%;
+  padding-top: 20 * $units;
+  padding-left: 2.5 * $units;
+
+  img{
+    height: 50vh;
+    justify-content: center;
+    box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+    margin-top: 5%;
   }
 
   #Step{
@@ -376,23 +460,11 @@
     color:hsl(0,0%,45%);
   }
 
-  .why-tutorial{
-    width:50%;
-    text-align:right;
-    padding-right: 15%;
-    padding-top: 16 * $units;
-    padding-left: 2.5 * $units;
-
-    img{
-      height: 50vh;
-      justify-content: center;
-      box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
-    }
-  }
 
   .first-tut{
     height:100vh;
     justify-content:left;
+    width:100%;
   }
 
   .second-tut{
@@ -401,12 +473,15 @@
     align-items: center;
   }
 
+
+  .img-container{
+  }
   .third-tut{
     height:100vh;
     justify-content:space-around;
     align-items: center;
   }
-
+}
   .call-to-action
   {
     display: flex;
@@ -446,8 +521,77 @@
     }
   }
 
-  .joindiscord{
-    text-align:center;
+
+.joindiscord{
+  text-align:center;
+  padding-top: 2%;
+}
+
+
+
+
+.trust-banner{
+  height:100vh;
+  background-color: $primary;
+  color: hsl(216, 100%, 99%);
+  transition:ease-in 750ms;
+
+
+
+  .trust-left{
+    width:50%;
+    float:left;
+    background-color: $primary;
+    height:100vh;
+    padding-top:5%;
+    transition:ease-in 1000ms;
+    padding-bottom:5%;
+
   }
 
+  .trust-right{
+    width:50%;
+    float:right;
+    background-color: #FFFFFF;
+    height:100vh;
+    color:#000000;
+    text-align: center;
+  }
+
+      #header {
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
+      text-align:center;
+
+    }
+
+    #tagline {
+      padding-top: 5%;
+      font-size: 2.5 * $units;
+      color: #FFFFFF;
+      text-align:center;
+      padding-right:10%;
+      padding-left: 10%;
+    }
+
+    ul{
+      text-align:center;
+      font-size: 2.5 * $units;
+      list-style-type:none;
+
+
+      li{
+        padding-top: 1.5%;
+
+      }
+
+    }
+
+    #team-pics{
+      max-width: 20vw;
+      max-height: 20vh;
+    }
+}
+  
 </style>

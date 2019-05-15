@@ -10,10 +10,6 @@
         <button>Discover</button>
       </form>
       <router-link to="/register">Pricing</router-link>
-      <router-link to="/register">About Us</router-link>
-
-
-
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/accounts/me" />
@@ -39,6 +35,7 @@
       <li>Privacy</li>
       <li>InfluX Co. 2019 All Rights Reserved.</li>
       </ul>
+
 
     </footer>
   </div>

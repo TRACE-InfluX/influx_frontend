@@ -38,7 +38,9 @@
                </div>
             </div>
         </div> <!-- col-right" -->
-        </div> <!-- influencer listing -->
+
+      <hr>
+  
 
         <!-- social feed holder is the overall container for the bottom half -->
        <div class="socialfeedholder">
@@ -286,6 +288,7 @@
     width: 24 * $units;
     height: 24 * $units;
     box-shadow: $shadow;
+
 
     img {
       display: block;
