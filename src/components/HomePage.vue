@@ -13,17 +13,18 @@
     </header>
 
 
-  <main>
-    <h3>Popular</h3>
+    <main>
+      <h3>Popular</h3>
+      <ul class="popular">
+        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+          <influencer-view type="tile"
+                           @click.native="open(popularInfluencer.id)"
+                           :influencer="popularInfluencer"
 
-    <ul class="popular">
-      <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-        <influencer-view type="tile"
-          @click.native="open(popularInfluencer.id)"
-          :influencer="popularInfluencer"
           />
       </li>
     </ul>
+
 
     <section class="why-influx">
       <div class="why-title">
@@ -102,9 +103,13 @@
 
 </main>
 
+
     <dialog :open="dialog">
-      <span class="close" @click="close">&times;</span>
-      <influencer-view :influencer="selected_influencer" type="detailed"/>
+      <div class="modal-mask" @click.self="close">
+        <div class="modal-container">
+          <influencer-view :influencer="selected_influencer" type="detailed"/>
+        </div>
+      </div>
     </dialog>
 
     <div class="call-to-action">
@@ -119,58 +124,59 @@
   import { STATE, ACTIONS } from '@/store.js';
   import {ObserveVisibility} from 'vue-observe-visibility';
 
-	export default {
-      directives: {ObserveVisibility},
-      data() {
-        return {
-          selected_id: '',
-          dialog: false
-        }
-      },
-      directive: {
-
-      },
-      computed: {
-        ...STATE,
-        selected_influencer() {
-          return this.popular.find(i => i.id === this.selected_id) || {}
-        }
-      },
-      mounted() {
-        this.load_popular();
-      },
-      methods: {
-        ...ACTIONS,
-        open(id) {
-          this.selected_id = id;
-          this.dialog = true;
-        },
-        close() {
-          if(this.dialog)
-          {
-            this.dialog = false;
-          }
-        },
-        search() {
-          localStorage.setItem('query', this.$parent.query);
-          this.$router.push('/influencers');
-        },
-        hideSearchbar(isVisible) {
-          this.$parent.showSearchBar = !isVisible;
-        }
-
-      },
-      beforeRouteLeave(to, from, next) {
-        this.$parent.showSearchBar = true;
-        next();
+  export default {
+    directives: {ObserveVisibility},
+    data() {
+      return {
+        selected_id: '',
+        dialog: false
       }
+    },
+    directive: {
+
+    },
+    computed: {
+      ...STATE,
+      selected_influencer() {
+        return this.popular.find(i => i.id === this.selected_id) || {}
+      }
+    },
+    mounted() {
+      this.load_popular();
+    },
+    methods: {
+      ...ACTIONS,
+      open(id) {
+        this.selected_id = id;
+        this.dialog = true;
+      },
+      close() {
+        if(this.dialog)
+        {
+          this.dialog = false;
+        }
+      },
+      search() {
+        localStorage.setItem('query', this.$parent.query);
+        this.$router.push('/influencers');
+      },
+      hideSearchbar(isVisible) {
+        this.$parent.showSearchBar = !isVisible;
+      }
+
+    },
+    beforeRouteLeave(to, from, next) {
+      this.$parent.showSearchBar = true;
+      next();
+    }
   }
-  
+
 </script>
 
 <style lang="scss" scoped>
 
 header {
+
     color: #414042;
     background-position: bottom;
     background-size: cover;
@@ -180,10 +186,9 @@ header {
 
 
     #header {
-    font-size: 6 * $units;
-    font-weight: 400;
-    font-family: 'Oswald';     
-
+      font-size: 6 * $units;
+      font-weight: 400;
+      font-family: 'Oswald';
     }
 
     #header-highlight{
@@ -191,13 +196,11 @@ header {
     font-weight: 400;
     font-family: 'Oswald';
     color: $primary;
-
     }
-    
+
     #tagline {
       font-size: 2.5 * $units;
       color: #7a7c7f;
-      
     }
   
     
@@ -266,12 +269,13 @@ header {
       justify-content: space-between;
       padding-right: 15%;
       padding-left: 15%;
-      
+      margin: auto;
 
       li {
         display: inline-block;
         max-width: 32 * $units;
         max-height: 32 * $units;
+        padding: 1 * $units;
         .influencer-view {
           display: block;
           margin: auto;
@@ -281,19 +285,30 @@ header {
   }
 
   dialog {
-    transition: all .5s ease-in-out;
-    border: none;
-    margin: auto;
-    position: absolute;
-    border-radius: 2 * $units;
-    z-index: 999;
+    .modal-mask {
+      position: fixed;
+      z-index: 9999;
+      top: 12 * $units;
+      padding-top: 1 * $units;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, .5);
+      transition: opacity .3s ease;
+    }
 
-    .close {
-      padding: 1 * $units;
-      position: absolute;
-      right: 2 * $units;
-      font-size: 4 * $units;
-      text-align: center;
+    .modal-container {
+      transition: all .3s ease-in-out;
+      margin: auto;
+      height: 100 * $units;
+      width: 100 * $units;
+      border-radius: 2 * $units;
+      background-color: white;
+    }
+
+    .influencer-view {
+      border: none;
     }
   }
 
@@ -322,27 +337,25 @@ header {
     flex-flow: column wrap;
     justify-content: space-around;
 
-  img {
-    align-self: center;
-    width: 35%;
-  }
+    img {
+      align-self: center;
+      width: 35%;
+    }
 
-   p {
-    align-self: center;
-    width: 20%;
-    font-size: 3 * $units;
+    p {
+      align-self: center;
+      width: 20%;
+      font-size: 3 * $units;
     }
   }
 
+  .why-influx{
+    height: 300vh;
+    display:flex;
+    top:0;
+  }
 
-.why-influx{
-  height: 300vh;
-  display:flex;
-  top:0;
-  
-}
-
-.why-title{
+  .why-title{
     width:50%;
     height:100vh;
     position:sticky;
@@ -353,9 +366,8 @@ header {
     padding-left:15%;
     padding-top: 20 * $units;
     padding-right: 2.5%;
+  }
 
-
-}
 
 #why-heading{
   font-size: 3 * $units;
@@ -432,33 +444,37 @@ header {
     box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
     margin-top: 5%;
   }
-  
-}
+  #Step{
+    font-size: 2.5 * $units;
+    line-height: 6 * $units;
+    color:hsl(0,0%,45%);
+  }
 
-.first-tut{
-  height:100vh;
-  justify-content:left;
-  width: 100%;
 
-}
+  .first-tut{
+    height:100vh;
+    justify-content:left;
+    width:100%;
+  }
 
-.second-tut{
-  height:100vh;
-  justify-content:space-around;
-  align-items: center;
+  .second-tut{
+    height:100vh;
+    justify-content:space-around;
+    align-items: center;
+  }
 
-}
-
-.third-tut{
-  height:100vh;
-  justify-content:space-around;
-  align-items: center;
-}
 
   .img-container{
   }
 
 
+  .third-tut{
+    height:100vh;
+    justify-content:space-around;
+    align-items: center;
+  }
+
+}
   .call-to-action
   {
     display: flex;
@@ -472,7 +488,7 @@ header {
                             rgba(0, 0, 0, 0.6),
                             rgba(0, 0, 0, 0.6)
             ),
-            /* bottom, image */
+              /* bottom, image */
             url('~@/assets/getstarted.jpeg');
     background-repeat: no-repeat;
     background-position: center;
@@ -489,12 +505,12 @@ header {
 
     button {
       align-self:center;
-        background-color: $primary;
-        color: white;
-        height: 5 * $units;
-        width: 12 * $units;
-        border-radius: 0.5 * $units;
-        font-size: 1.8 * $units;
+      background-color: $primary;
+      color: white;
+      height: 5 * $units;
+      width: 12 * $units;
+      border-radius: 0.5 * $units;
+      font-size: 1.8 * $units;
     }
   }
 
@@ -503,6 +519,7 @@ header {
   text-align:center;
   padding-top: 2%;
 }
+
 
 
 .trust-banner{
@@ -568,5 +585,6 @@ header {
       max-height: 20vh;
     }
 }
-
+  
 </style>
+
