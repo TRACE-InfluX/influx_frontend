@@ -134,6 +134,7 @@
     },
     beforeRouteLeave(to, from, next) {
       this.$parent.showSearchBar = true;
+      document.documentElement.style.overflow = 'auto';
       next();
     }
   }
