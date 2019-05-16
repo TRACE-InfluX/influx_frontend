@@ -128,18 +128,11 @@
 
           </div>
           <hr> <!-- I'll replace this with an actual divider -->
-          <div class = "bot">
-               <!-- progbar = vuejs styling -->
-                <div class="wordsmetric">
-                <p>Activity: </p>
-                <p>Relevance: </p>
-                <p>Engagement: </p>
-                </div>
-                <div class="barmetric">
-                <span v-bind:style="progbar" class="cssbar"><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span></span>
-                <span v-bind:style="progbar" class="cssbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span></span>
-                <span v-bind:style="progbar" class="cssbar"><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span></span>
-                </div>
+            <div class = "bot">
+                    <!-- progbar = vuejs styling -->       
+                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span>
+                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span>
+                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
 
             </div>
       </div> <!-- col-right" -->
@@ -233,18 +226,19 @@
     }
 
     .bot {
+        padding: 1 * $units; 
         height: 8 * $units;
-        font-size: 16px; 
+        font-size: 2 * $units; 
         text-align: center;
         display: grid; 
         grid-template-columns: auto auto;
-        grid-gap: 8px; 
+        grid-gap: 1 * $units; 
     }
 
     .cssbar {
 
      display: inline-block; 
-     margin-left: -161px;  
+     margin-left: -19.25 * $units;  
      margin-top: 1px; 
      width: 100%;
       
