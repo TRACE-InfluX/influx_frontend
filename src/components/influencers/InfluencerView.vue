@@ -1,12 +1,12 @@
 <!--Template used for rendeing an individual influencer - used for show / GET influencer by ID-->
 <template>
     <!-- added the entire influencer listing inside of the influencer-view to create an expanded thing, janky af -->
-    
-    <!-- influencer detailed view starts here --> 
+
+    <!-- influencer detailed view starts here -->
     <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
           <a v-bind:href ="influencer.url" target="_blank"><img class="detailed-left-icon" src="~@/assets/instagram_icon.png" height="20"/></a>
       <div class ="col-left">
-        
+
         <p class="detailed-influencer-name">{{influencer.username}}</p>
         <img v-bind:src="influencer.profile_image"/>
       </div> <!-- col-left= -->
@@ -20,7 +20,7 @@
                   <div class="posts"> Posts: {{influencer.posts}} </div>
                   <div class="followers"> Followers: {{influencer.followers}} </div>
                   <div class="following"> Following: {{influencer.following}} </div>
-                 
+
                 </div>
             </div>
           <hr> <!-- I'll replace this with an actual divider -->
@@ -38,9 +38,9 @@
                </div>
             </div>
         </div> <!-- col-right" -->
-         <!-- influencer listing -->
-        <hr> <!-- I'll replace this with an actual divider -->
 
+      <hr>
+  
 
         <!-- social feed holder is the overall container for the bottom half -->
        <div class="socialfeedholder">
@@ -62,30 +62,30 @@
 
            <div class="donut">
           <svg width="120">
-    <div class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)"></div> 
+    <div class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)"></div>
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-      <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">reach</text>    
+      <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">reach</text>
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="#21B063" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
-    
+
       </svg>
-      </div> 
+      </div>
 
       <div class="donut">
              <!-- donut chart 2-->
    <svg width="120">
     <div class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">  </div>
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">conversion</text>    
+        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">conversion</text>
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="goldenrod" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
-  
+
   </svg>
       </div>
       <div class="donut">
  <!-- donut chart 3-->
   <svg width="120" viewbox="0 0 120 120">
-    <div class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">    </div> 
+    <div class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">    </div>
       <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">cost</text>    
+        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">cost</text>
       <circle cx="60" cy="60" fill="transparent" r="40" stroke="#FB5454" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
 
   </svg>
@@ -93,7 +93,7 @@
 
     </div>
 
-        
+
           <p>Word Cloud</p>
           </div>
         </div> <!-- col-right-details -->
@@ -101,18 +101,18 @@
     </article>
 
 
-      <!-- influencer detailed view ends here --> 
+      <!-- influencer detailed view ends here -->
 
     <!-- influencer tile view - simple square display as seen on the homepage for popular influencers -->
     <article v-else-if="type === 'tile'" class="influencer-view influencer-tile">
         <img v-bind:src="influencer.profile_image"/>
-        <p>{{influencer.username}}</p>
+        <p>{{influencer.name}}</p>
     </article>
 
-    <!-- influencer tile view ends here --> 
+    <!-- influencer tile view ends here -->
 
 
-    <!-- influencer listing view starts here --> 
+    <!-- influencer listing view starts here -->
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
         <a v-bind:href ="influencer.url" target="_blank"><img class="left-icon" src="~@/assets/instagram_icon.png" /></a>
       <div class ="col-left">
@@ -121,7 +121,7 @@
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
-             
+
               <h3>{{influencer.name}}</h3>
                <p>Areas of Influence: {{influencer.location}}</p>
               <p class = "desc">{{influencer.description}}</p>
@@ -130,7 +130,7 @@
                   <div class="posts"> Posts: {{influencer.posts}} </div>
                   <div class="followers"> Followers: {{influencer.followers}} </div>
                   <div class="following"> Following: {{influencer.following}} </div>
-                 
+
                 </div>
 
           </div>
@@ -152,7 +152,7 @@
       </div> <!-- col-right" -->
     </article>
 
-    <!-- influencer listing view ends here--> 
+    <!-- influencer listing view ends here-->
 
 </template>
 
@@ -262,15 +262,15 @@
       font-size: 0.75rem;
       text-align: center; 
 
-  
+
 
     }
 
     .wordsmetric p {
 
-        border: 1px solid white; 
-        padding: 0.13rem; 
-      
+        border: 1px solid white;
+        padding: 0.13rem;
+
     }
     .barmetric
     {
@@ -279,7 +279,7 @@
       display: flex;
       justify-content: center;
       flex-flow: column wrap;
-      
+
     }
 
   .influencer-tile {
@@ -289,6 +289,7 @@
     width: 24 * $units;
     height: 24 * $units;
     box-shadow: $shadow;
+
 
     img {
       display: block;
@@ -316,12 +317,16 @@
     }
   } //influencer tile
 
+    .influencer-tile:hover{
+        cursor: pointer;
+    }
+
    .detailed-left-icon {
-      display: inline-block; 
-      margin-left: -60 * $units; 
-      margin-top: 1 * $units; 
-      height: 3 * $units; 
-      width: 3 * $units; 
+      display: inline-block;
+      margin-left: -60 * $units;
+      margin-top: 1 * $units;
+      height: 3 * $units;
+      width: 3 * $units;
     }
 
   .influencer-detailed{
@@ -411,7 +416,7 @@
         width:4 * $units;
         float:left;
       }
-      
+
     } //col-right-details
 
     .col-left{
@@ -420,7 +425,7 @@
       height: 30 * $units;
 
       img{
-  
+
         padding-top: 5%;
         padding-bottom: 5%;
         width: 25 * $units;
@@ -428,7 +433,7 @@
         border-radius:50%;
       }
 
-      
+
     }
 
     h2{
@@ -469,11 +474,11 @@
     }
    // icons on the left - new addition May 13 2019
     .left-icon {
-      display: inline-block; 
-      margin-left: -60 * $units; 
-      margin-top: 1 * $units; 
-      height: 3 * $units; 
-      width: 3 * $units; 
+      display: inline-block;
+      margin-left: -60 * $units;
+      margin-top: 1 * $units;
+      height: 3 * $units;
+      width: 3 * $units;
     }
 
   // .list-influencer-name - new addition May 13 2019
@@ -490,7 +495,6 @@
       height: 30 * $units;
 
       img{
-  
         padding-top: 5%;
         padding-bottom: 5%;
         width: 25 * $units;

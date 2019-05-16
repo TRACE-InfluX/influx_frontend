@@ -80,6 +80,7 @@
         width:25 * $units;
         border-style:none;
         border-radius: 0.5 * $units;
+        font-size: 2 * $units;
     }
 
     .login-form{
