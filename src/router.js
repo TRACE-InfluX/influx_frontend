@@ -9,7 +9,8 @@ const routes = [
     { path: '/influencers/:id', component: $['influencer-view'] },
     { path: '/accounts', component: $['account-index'] },
     { path: '/accounts/:id', component: $['account-view'] },
-    { path: '/accounts/:id/edit', component: $['account-edit']}
+    { path: '/accounts/:id/edit', component: $['account-edit']},
+    { path: '/profile', component: $['profile']}
 
 ]
 
