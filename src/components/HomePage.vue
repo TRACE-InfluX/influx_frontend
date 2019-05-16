@@ -36,27 +36,27 @@
 
       <div class="why-tutorial">
        <div class = "first-tut">
-         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+         <section v-scroll-reveal.reset ="{ delay: 100 }">
            <div class = "img-container">
-           <img src = "~@/assets/tutorial1.png">
+           <img src = "~@/assets/tutorial1-1.png">
            </div>
          </section>
          <p id = "picture-description">A blazing fast search engine, filled with influencers just for you. </p>
        </div>
       
         <div class = "second-tut">
-         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+         <section v-scroll-reveal.reset ="{ delay: 100 }">
            <div class = "img-container">
-           <img src = "~@/assets/tutorial2.png">
+           <img src = "~@/assets/tutorial1-2.png">
            </div>
          </section>
          <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
        </div>
 
        <div class = "third-tut">
-         <section v-scroll-reveal.reset ="{ delay: 1000 }">
+         <section v-scroll-reveal.reset ="{ delay: 100 }">
            <div class = "img-container">
-           <img src = "~@/assets/tutorial2.png">
+           <img src = "~@/assets/tutorial1-2.png">
            </div>
          </section>
          <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
@@ -64,7 +64,7 @@
       </div>    <!-- why-tutorial/left col -->
 
     </section>
-    <section v-scroll-reveal-quick.reset ="{ delay: 1000 }">
+    <section v-scroll-reveal.reset ="{ delay: 100 }">
      <div class = "trust-banner">
        <div class = "trust-left">
         <p id = "header">Who we are</p>
@@ -123,8 +123,10 @@
   import { STATE, ACTIONS } from '@/store.js';
   import {ObserveVisibility} from 'vue-observe-visibility';
 
+
   export default {
     directives: {ObserveVisibility},
+    
 
     watch: {
       dialog: function(isOpen) {
@@ -374,7 +376,7 @@ header {
     justify-content:center;
     color:#7a7c7f;
     padding-left:15%;
-    padding-top: 20 * $units;
+    padding-top: 50 * $units;
     padding-right: 2.5%;
   }
 
