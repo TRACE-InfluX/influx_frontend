@@ -4,6 +4,7 @@
 
     <!-- influencer detailed view starts here -->
     <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
+        <div class = "detailed-listing">
           <a v-bind:href ="influencer.url" target="_blank"><img class="detailed-left-icon" src="~@/assets/instagram_icon.png" height="20"/></a>
       <div class ="col-left">
 
@@ -16,25 +17,21 @@
                <p>Areas of Influence: {{influencer.location}}</p>
               <p class = "desc">{{influencer.description}}</p>
                 <div class = "stats">
-
                   <div class="posts"> Posts: {{influencer.posts}} </div>
                   <div class="followers"> Followers: {{influencer.followers}} </div>
                   <div class="following"> Following: {{influencer.following}} </div>
-
                 </div>
             </div>
-          <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
-                    <!-- progbar = vuejs styling -->       
+                    <!-- progbar = vuejs styling -->
                 <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span>
                 <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span>
                 <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
             </div>
         </div> <!-- col-right" -->
-
-      <hr>
-  
-
+        <img class ="collapse" v-show="collapsable" src="~@/assets/arrow-down.png" @click="toggleType">
+        </div>
+        <div class = "detailed-detailed">
         <!-- social feed holder is the overall container for the bottom half -->
        <div class="socialfeedholder">
         <div class = "col-left-details">
@@ -91,6 +88,7 @@
           </div>
         </div> <!-- col-right-details -->
        </div> <!-- social feed holder ends here -->
+        </div>
     </article>
 
 
@@ -127,15 +125,15 @@
                 </div>
 
           </div>
-          <hr> <!-- I'll replace this with an actual divider -->
             <div class = "bot">
-                    <!-- progbar = vuejs styling -->       
+                    <!-- progbar = vuejs styling -->
                 <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span>
                 <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span>
                 <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
 
             </div>
       </div> <!-- col-right" -->
+      <img class = "expand" src="~@/assets/arrow-down.png" @click="toggleType">
     </article>
 
     <!-- influencer listing view ends here-->
@@ -151,6 +149,7 @@
         props: {
             type: String,
             influencer: Object
+            // collapsable: Boolean
         },
         data() {
             return {
@@ -166,7 +165,7 @@
                   backgroundColor: '#458eff',
                   width: 'influencer.activity' + 'px',
                   color: 'white'
-                
+
                 },
                  engagementbar:{
                   backgroundColor: '#458eff',
@@ -177,7 +176,8 @@
                   backgroundColor: '#458eff',
                   width: 'influencer.relevance' + 'px',
                   color: 'white'
-                }
+                },
+                collapsable: false
             }
         },
         mounted() {
@@ -196,6 +196,22 @@
           linktoURL(url){
             this.influencer.url = url;
             window.open(url, '_blank');
+          },
+          toggleType() {
+              // if(this.type == 'listing') {
+              //     this.type = 'detailed'
+              //     this.collapsable = true;
+              // } else {
+              //     this.type = 'listing'
+              //     this.collapsable = false;
+              // }
+              if(this.type == 'listing') {
+                  this.collapsable = true;
+                  this.$emit('expand');
+              } else {
+                  this.collapsable = false;
+                  this.$emit('collapse');
+              }
           }
         }
     }
@@ -208,16 +224,20 @@
       display: inline;
     }
 
+    .detailed-detailed {
+        border-top: solid 1px #999999;
+    }
+
     .stats {
         font-weight: bold;
         padding: 1 * $units;
         display: flex;
         justify-content: space-evenly;
+        border-bottom: solid 1px #999999;
     }
 
     .top {
         height: 15 * $units;
-        border-bottom: #999999;
         margin: 1 * $units;
         .desc {
             height: 5.5 * $units;
@@ -226,35 +246,28 @@
     }
 
     .bot {
-        padding: 1 * $units; 
+        padding: 1 * $units;
         height: 8 * $units;
-        font-size: 2 * $units; 
+        font-size: 2 * $units;
         text-align: center;
-        display: grid; 
+        display: grid;
         grid-template-columns: auto auto;
-        grid-gap: 1 * $units; 
+        grid-gap: 1 * $units;
     }
 
     .cssbar {
-
-     display: inline-block; 
-     margin-left: -19.25 * $units;  
-     margin-top: 1px; 
+     display: inline-block;
+     margin-left: -19.25 * $units;
+     margin-top: 1px;
      width: 100%;
-      
-
     }
 
-
-
   .influencer-tile {
-
     position: relative;
     display: inline-block;
     width: 24 * $units;
     height: 24 * $units;
     box-shadow: $shadow;
-
 
     img {
       display: block;
@@ -282,17 +295,17 @@
     }
   } //influencer tile
 
-    .influencer-tile:hover{
-        cursor: pointer;
-    }
+  .influencer-tile:hover{
+    cursor: pointer;
+  }
 
-   .detailed-left-icon {
-      display: inline-block;
-      margin-left: -60 * $units;
-      margin-top: 1 * $units;
-      height: 3 * $units;
-      width: 3 * $units;
-    }
+  .detailed-left-icon {
+    display: inline-block;
+    margin-left: -60 * $units;
+    margin-top: 1 * $units;
+    height: 3 * $units;
+    width: 3 * $units;
+  }
 
   .influencer-detailed{
     border: 1px solid #999999;
@@ -301,6 +314,18 @@
     width: 100 * $units;
     text-align: center;
     margin:auto;
+
+      .collapse {
+        position: relative;
+        height: 2 * $units;
+        width: 2 * $units;
+        transform: rotate(180deg);
+        left: 47 * $units;
+        top: 28 * $units;
+      }
+      .collapse:hover {
+          cursor: pointer;
+      }
 
     h2{
       display:inline-block;
@@ -311,7 +336,6 @@
     .socialfeedholder{
       margin-top: 3.125 * $units;
       margin-left: -7.5 * $units;
-
     }
 
     // preview of the social media page positioning -- currently a placeholder
@@ -321,25 +345,23 @@
     }
 
     .donut{
-
       display: inline;
-
-
     }
+
     .col-left-details{
       margin-top: 2.5 * $units;
     }
 
-     .detailed-influencer-name {
+    .detailed-influencer-name {
       margin-top: 1.5 * $units;
       margin-left: 1 * $units;
       font-weight: 800;
     }
 
 
-    .influencer-listing-detailed{
-    height: 30 * $units;
-    border:none;
+    .detailed-listing{
+      height: 33 * $units;
+      border-bottom: black;
     }
 
       .col-right-details{
@@ -351,7 +373,7 @@
       //gap between buttons
 
         .inline{
-        margin: 2 * $units;
+          margin: 2 * $units;
         }
 
         button {
@@ -368,13 +390,13 @@
       } //col-right-details
 
       .col-right{
-      float:right;
-      width:65%;
-      padding-top:2%;
-      padding-bottom:2%;
-      height: 30 * $units;
-      padding-right:5%;
-      padding-left:5%;
+        float:right;
+        width:65%;
+        padding-top:2%;
+        padding-bottom:2%;
+        height: 30 * $units;
+        padding-right:5%;
+        padding-left:5%;
 
         .icon{
         height:4 * $units;
@@ -390,32 +412,34 @@
       height: 30 * $units;
 
       img{
-
         padding-top: 5%;
         padding-bottom: 5%;
         width: 25 * $units;
         height: 25 * $units;
         border-radius:50%;
       }
-
-
     }
 
     h2{
       font-size: 3 * $units;
     }
+
+      &:hover {
+          box-shadow: inset 2.5px 0 0 0 $primary;
+      }
   }
+
 // influencer list view starts here
   .influencer-listing{
     border: 1px solid #999999;
     box-sizing: border-box;
     width: 100 * $units;
-    height: 30 * $units;
+    height: 33 * $units;
     margin: auto;
     text-align: center;
 
     &:hover {
-    box-shadow: inset 2.5px 0 0 0 $primary;
+      box-shadow: inset 2.5px 0 0 0 $primary;
     }
 
     h2{
@@ -456,7 +480,7 @@
 
     .col-left{
       float:left;
-      width:35%; // theseadd up to 100 thats wh
+      width:35%; // these add up to 100 thats why
       height: 30 * $units;
 
       img{
@@ -470,6 +494,17 @@
 
     h2{
       font-size: 3 * $units;
+    }
+
+    .expand {
+      position: relative;
+      height: 2 * $units;
+      width: 2 * $units;
+      left: 47 * $units;
+      top: 28 * $units;
+    }
+    .expand:hover {
+        cursor: pointer;
     }
   }
 </style>
