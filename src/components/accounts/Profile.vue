@@ -3,6 +3,11 @@
 
     <header></header>
     <body>
+
+
+    <div class="container">
+    
+    
     <div class="nav">    
 
     <h3 class="username">john wick</h3>
@@ -13,28 +18,30 @@
 
         <ul>
 
-            <li><i class="zmdi zmdi-view-dashboard"></i><a href="#">Dashboard</a></li>
-            <li><i class="zmdi zmdi-view-list"></i><a href="#">Tasks</a></li>
-            <li><i class="zmdi zmdi-email"></i><a href="#">Email</a></li>
-            <li><i class="zmdi zmdi-accounts"></i><a href="#">Contacts</a></li>
-            <li><i class="zmdi zmdi-comments"></i><a href="#">Chat</a></li>
-            <li><i class="zmdi zmdi-money"></i><a href="#">Deals</a></li>
-             <li><i class="zmdi zmdi-settings"></i><a href="#">Settings</a></li>
+            <li><i class="zmdi zmdi-view-dashboard"></i><a class="dashboard" href="#">Dashboard</a></li>
+            
+            <li><i class="zmdi zmdi-email"></i><a class="usremail" href="#">Email</a></li>
+            
+             <li><i class="zmdi zmdi-settings"></i><a class="settings" href="#">Settings</a></li>
         </ul>    
 
     </div>
+
+     <div class="dash-content">
+
+
+   
+
+
+    </div>
+
     </div>
 
 
-    <div class="container">
-    
-    
-
-    
+     
 
     
     </div>     
-
         
     </body> 
 
@@ -74,18 +81,20 @@ export default {
   }
 
     .nav {
-        float: left; 
-        height: 100vh; 
+        display: inline-block; 
+        height: 80vh; 
         width: 20vw; 
         padding: 5 * $units; 
         border-radius: 2%;
         border: 1px solid var(--bordercol);
         margin-left: 25 * $units;   
+        margin-top: 10 * $units;  
         margin-bottom: 10 * $units;  
         margin-right: 1 * $units; 
         grid-gap: 1 * $units; 
         display: flex; 
         flex-direction: column; 
+        justify-content: center; 
         align-items: center; 
 
     }
@@ -118,14 +127,52 @@ export default {
         color: $primary; 
     }
 
+    button {
+        text-decoration: none; 
+        border: none; 
+        background: transparent; 
+        font-family: 'Puritan', sans-serif;
+        font-size: 2 * $units; 
     }
-  
+
+    }
+    
+
+
   .container {
       border-radius: 1%;
       height: 100vh; 
-      border: 1px solid var(--bordercol); 
+      width: 100vw; 
+    //   border: 1px solid var(--bordercol); 
       margin: 5 * $units; 
       display: grid; 
+      grid-template-columns: auto auto; 
   }
+
+  .dash-content{
+    margin-top: -40 * $units;   
+    margin-left: 120 * $units; 
+    border: 1px solid var(--bordercol); 
+    padding: 35 * $units; 
+    width: 40vw; 
+    height: 80vh; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    }
+
+
+    .email-content{
+
+    visibility: hidden; 
+    background-color: $primary;
+    color: white;  
+    align-self: center;
+
+    }
+
+
+
+    
 
 </style>
