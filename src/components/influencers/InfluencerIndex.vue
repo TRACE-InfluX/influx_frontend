@@ -20,10 +20,16 @@
         :key="influencer.id"
         @mouseover="render_more(influencer)"
       >
+        <!--<influencer-view-->
+          <!--:influencer="influencer"-->
+          <!--:type="getType(influencer.id)"-->
+          <!--@click.native="select(influencer.id)"-->
+        <!--/>-->
         <influencer-view
           :influencer="influencer"
           :type="getType(influencer.id)"
-          @click.native="select(influencer.id)"
+          v-on:expand="select(influencer.id)"
+          v-on:collapse="select"
         />
       </li>
     </ul>
@@ -82,7 +88,7 @@ export default {
       this.selected_influencer = id;
     },
     getType(id) {
-      return id === this.selected_influencer ? "detailed" : "listing"
+      return id === this.selected_influencer ? "detailed" : "listing";
     },
     render_more(influencer) {
       // This will lazy load profiles into the ui to make the experience smoother
