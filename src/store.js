@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex, { mapActions, mapState } from 'vuex'
 import API from '@/api.js'
-import Worker from '!workerize-loader?inline!./worker.js'
 
 Vue.use(Vuex)
 
@@ -11,19 +10,11 @@ let state =  {
 }
 
 let actions = {
-  async load_influencers({commit}, page = 0 ) {
-    // let t0 = performance.now()
-    let res = await API.get('/v0/influencers', { page })
-    let worker = new Worker()
-    let cache = localStorage.getItem('sort_cache') || null
+  async load_influencers({commit}, query, sort_by = { engagement: -3, relevance: -2, activity: -2 }) {
+    const params = { query, sort_by }
+    let res = await API.get('/v0/influencers', { params })
     let influencers = res.data
-    let data = await worker.process(influencers, cache)
-    
-    localStorage.setItem('sort_cache', data.cache)
-    commit('set_influencers', data.influencers)
-
-    // let t1 = performance.now()
-    // console.log("Finished loading after " + (t1 - t0) / 1000 + " seconds.")
+    commit('set_influencers', influencers)
   },
   async load_popular({commit}) {
     let res = await API.get('/v0/influencers/popular')

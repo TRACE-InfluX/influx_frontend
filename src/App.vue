@@ -49,40 +49,30 @@
     data() {
       return {
         query: '',
-        showSearchBar: true,
-        searching: false
+        showSearchBar: true
       }
     },
     name: 'app',
     methods: {
       ...ACTIONS,
       search() {
-        localStorage.setItem('query', this.query);
-        this.$router.push('/influencers');
-        this.searching = true;
-        scrollTo(0, 0)
+        this.load_influencers(this.query)
+          .then(() => {
+            localStorage.setItem('query', this.query);
+            this.$router.push('/influencers');
+            scrollTo(0, 0)
+          })
       }
     },
     mounted() {
-      this.load_influencers()
-      if(this.searching) {
-        this.query = localStorage.getItem("query") || ''
-        if (this.query) {
-          this.$router.push('/influencers')
-        }
-        else {
-          this.$router.push('/')
-        }
+      this.query = localStorage.getItem('query') || ''
+      if (this.query) {
+        this.search()
+      }
+      else {
+        this.$router.push('/')
       }
     },
-    watch: {
-      query(q) {
-        localStorage.setItem("query", q)
-        if(this.searching) {
-          scrollTo(0, 0)
-        }
-      }
-    }
   }
 </script>
 
