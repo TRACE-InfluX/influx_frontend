@@ -324,7 +324,7 @@ main {
   .popular {
     display: flex;
     justify-content: space-evenly;
-    width: 50%;
+    width: 75%;
     margin: auto;
 
     li {
