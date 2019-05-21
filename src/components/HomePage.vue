@@ -2,7 +2,7 @@
   <div class="home-page">
     <header>
       <p>
-        <span id="header">CONNECT WITH YOUR</span>
+        <span id="header">CONNECT WITH YOUR </span>
         <span id="header-highlight">WORLD</span>
       </p>
       <p
@@ -19,19 +19,16 @@
     <main>
       <section class="influx-overview">
         <div class="overview-left">
-          <p id="why-heading">
+          <p class="why-heading">
             <span>Why</span> InfluX?
             <span></span>
           </p>
           <br>
-          <p
-            id="why-desc-1"
-          >A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign.</p>
+          <p><span class = "blue-text">Simple</span><span class="why-desc-1">, fast, and informative searching to find the perfect influencers for your marketing purposes/campaign.</span></p>
           <br>
+          <p><span class = "blue-text">Easily </span><span class="why-desc-1">sort through the list by using our sorting and filter options.</span></p>
           <br>
-          <p id="why-desc-1">Easily sort through the list by using our sorting and filter options.</p>
-          <br>
-          <p id="why-desc-1">Quick access to the influencer’s profile with the click of a button.</p>
+          <p><span class = "blue-text">Quick</span><span class="why-desc-1"> access to the influencer’s profile with the click of a button.</span></p>
           <br>
         </div>
         <div class="overview-right">
@@ -44,39 +41,32 @@
           <img src="~@/assets/tutorial1-1.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
         <div class="overview-right">
-          <p id="why-heading">Metrics</p>
+          <p class="why-heading">Metrics</p>
           <br>
-          <p
-            id="why-desc-1"
-          >Activity: Determined by how often the influencer has posted in a given time frame. This well enable you to find influencers that are current, and reliably post often.</p>
+          <p><span class = "blue-text">Activity: </span><span class="why-desc-1">How often the influencer has posted in a given time frame. This well enable you to find influencers that are current, and reliably post often.</span></p>
           <br>
-          <p
-            id="why-desc-1"
-          >Relevance: Relevance is determined by how many time the search term appears in the influencer's profile. This metric is used to try and find the best matching influencer, to ensure that they can market the product to its full potential.</p>
+          <p><span class = "blue-text">Relevance: </span><span class="why-desc-1" >How many times the search term appears in the influencer's profile. This metric is used to try and find the best matching influencer, to ensure that they can market the product to its full potential.</span></p>
           <br>
-          <p
-            id="why-desc-1"
-          >Engagement: Engagement is determined by how much an influencer interacts with their followers, and is tracked by doing things such as replying to their comments. The higher the engagement score, the more an influencer is connected to their followers on a personal level, thus increasing the chances that a follower would take product recommendations and advice.</p>
+          <p><span class = "blue-text">Engagement: </span><span class="why-desc-1">How much an influencer interacts with their followers, 
+            and is tracked by doing things such as replying to their comments. The higher the engagement 
+            score, the more an influencer is connected to their followers on a personal level, thus increasing 
+            the chances that a follower would take product recommendations and advice.</span></p>
           <br>
-          <p id="why-desc-1">Area of Influence: The market sphere of the influencer.</p>
+          <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer.</span></p>
         </div>
       </section>
 
       <section class="influx-overview">
         <div class="overview-left">
-          <p id="why-heading">Detailed View</p>
+          <p class="why-heading">Detailed View</p>
           <br>
-          <p id="why-desc-1">Reach: Based on the number of followers</p>
+          <p><span class = blue-text>Reach: </span><span class="why-desc-1">Based on the number of followers</span></p>
           <br>
-          <p
-            id="why-desc-1"
-          >Profit Potential:Estimate of how often their followers purchase products based on the recommendation of that influencer.</p>
+          <p><span class = "blue-text">Profit Potential: </span><span class="why-desc-1">Estimate of how often their followers purchase products based on the recommendation of that influencer.</span></p>
           <br>
-          <p id="why-desc-1">Cost: Estimated cost of the influencer’s services</p>
+          <p><span class = blue-text>Cost: </span><span class="why-desc-1">Estimated cost of the influencer's service.</span></p>
           <br>
-          <p
-            id="why-desc-1"
-          >Word Cloud: Visualization of the influencer’s common hashtags, with the most used being the biggest.</p>
+          <p><span class = blue-text>Word Cloud: </span><span class="why-desc-1">Visualization of the influencer’s common hashtags, with the most used being the biggest.</span></p>
         </div>
         <div class="overview-right">
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
@@ -96,8 +86,7 @@
         </ul>
         <div class="try-now">
           <span class="span-buttons">
-            <button @click="linkToInfluencers" class="try-button1">Search Now</button>
-            <button @click="linkToRegister" class="try-button2">Register Today</button>
+            <button @click="linkToInfluencers" class="try-button1">Try it out now!</button>
           </span>
         </div>
       </section>
@@ -424,7 +413,7 @@ i {
   padding-right: 2.5%;
 }
 
-#why-heading {
+.why-heading {
   font-size: 5 * $units;
   font-weight: 100;
   color: hsl(0, 0%, 13%);
@@ -432,7 +421,7 @@ i {
   padding-top: 5%;
 }
 
-#why-desc-1 {
+.why-desc-1 {
   font-size: 2.5 * $units;
   line-height: 3.5 * $units;
   color: hsl(0, 0%, 29%);
@@ -695,22 +684,24 @@ i {
   background-color: $primary;
   color: white;
   height: 5 * $units;
-  width: 24 * $units;
+  width: 50 * $units;
   border-radius: 0.5 * $units;
   font-size: 1.8 * $units;
-  padding-right: 2 * $units;
-  margin-right: 5%;
+  text-align: center;
 }
 
-.try-button2 {
-  background-color: $primary;
-  color: white;
-  height: 5 * $units;
-  width: 24 * $units;
-  border-radius: 0.5 * $units;
-  font-size: 1.8 * $units;
-  padding-right: 2 * $units;
-  margin-left: 5%;
+.span-buttons {
+  text-align: center;
+} 
+
+
+
+.blue-text{
+  color: $primary;
+  font-weight:900;
+  display:inline;
+    font-size: 2.5 * $units;
+  line-height: 3.5 * $units;
 }
 </style>
 
