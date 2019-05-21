@@ -5,8 +5,7 @@
         <span id="header">CONNECT WITH YOUR </span>
         <span id="header-highlight">WORLD</span>
       </p>
-      <p
-        id="tagline"
+      <p class="banner-tagline"
       >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
       <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
@@ -94,8 +93,7 @@
         <div class="trust-banner">
           <div class="trust-left">
             <p id="header">Who we are</p>
-            <p
-              id="tagline"
+            <p class="tagline"
             >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
             <ul>
               <li>Programming</li>
@@ -104,8 +102,7 @@
               <li>Recruitment</li>
               <li>Small Business</li>
             </ul>
-            <p
-              id="tagline"
+            <p class="tagline"
             >We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud.</p>
             <div class="joindiscord">
               <a href="https://discord.gg/YJ79pbf" target="_blank">
@@ -117,25 +114,25 @@
                 >
               </a>
             </div>
-            <p id="tagline">Connect with us through Discord, today!</p>
+            <p class="tagline">Connect with us through Discord, today!</p>
           </div>
 
           <div class="trust-right">
             <ul>
               <li>
-                <img src="~@/assets/Toni.png" id="team-pics">
+                <img src="~@/assets/Toni.png" class="team-pics">
               </li>
               <li>
-                <img src="~@/assets/Remy.png" id="team-pics">
+                <img src="~@/assets/Remy.png" class="team-pics">
               </li>
               <li>
-                <img src="~@/assets/Aaron.png" id="team-pics">
+                <img src="~@/assets/Aaron.png" class="team-pics">
               </li>
               <li>
-                <img src="~@/assets/Carlo.png" id="team-pics">
+                <img src="~@/assets/Carlo.png" class="team-pics">
               </li>
               <li>
-                <img src="~@/assets/Eva.png" id="team-pics">
+                <img src="~@/assets/Eva.png" class="team-pics">
               </li>
             </ul>
           </div>
@@ -228,6 +225,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
 header {
   color: #414042;
   background-position: bottom;
@@ -248,7 +247,7 @@ header {
     color: $primary;
   }
 
-  #tagline {
+  .banner-tagline {
     font-size: 2.5 * $units;
     color: #7a7c7f;
   }
@@ -556,14 +555,14 @@ i {
 
 .trust-banner {
   height: 100vh;
-  background-color: $primary;
   color: hsl(216, 100%, 99%);
   transition: ease-in 750ms;
+  background-color: $primary;
+        box-shadow: 0 0 10px 20px $primary;
 
   .trust-left {
     width: 50%;
     float: left;
-    background-color: $primary;
     height: 100vh;
     padding-top: 5%;
     transition: ease-in 1000ms;
@@ -573,7 +572,6 @@ i {
   .trust-right {
     width: 50%;
     float: right;
-    background-color: #ffffff;
     height: 100%;
     color: #000000;
     text-align: center;
@@ -586,7 +584,7 @@ i {
     text-align: center;
   }
 
-  #tagline {
+  .tagline {
     padding-top: 5%;
     font-size: 2.5 * $units;
     color: #ffffff;
@@ -605,7 +603,7 @@ i {
     }
   }
 
-  #team-pics {
+  .team-pics {
     max-width: 20vw;
     max-height: 20vh;
   }
