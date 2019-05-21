@@ -27,6 +27,16 @@
     <h3 class="welcomemsg">Welcome to Influx!</h3>    
     <!-- have span class to bind to username, currently placeholder -->  
 
+      <div class="settingsform">
+    <form>
+    Website:<br>
+    <input type="text" placeholder="thebogeyman@gmail.com"><br>
+    Instagram:<br>
+    <input type="text" name="@johnwick">
+    </form>        
+
+    </div>     
+
     <span class="dashdefault">
     <div class="profile-picture"><img src="https://pixel.nymag.com/imgs/daily/vulture/2017/02/07/07-john-wick-2-2.w100.h100.jpg" alt="profile image"/></div>
     <span class="username">signed in as John Wick</span>
@@ -40,10 +50,7 @@
     </div>
     <!-- end of dash-content --> 
 
-    <div class="settingsform">
-
-
-    </div>     
+  
 
      
 
@@ -62,15 +69,21 @@ export default {
 
 methods: {
 dash: function() {
-   
-    this.$el.getElementsByClassName('dashdefault')[0].style.visibility = "visible";
-    this.$el.getElementsByClassName('dashemail')[0].style.visibility = "visible";
-  //  this.$el.getElementByClassName("dashdefault")[0].style.transition = "all 2s";
+
+    this.$el.getElementsByClassName('dashdefault')[0].style.display = "block";
+    this.$el.getElementsByClassName('dashemail')[0].style.display = "block";
+  this.$el.getElementsByClassName('settingsform')[0].style.display = "none";
 },
 
 getemail: function(){
 
-    this.$el.getElementsByClassName('dashemail')[0].style.visibility = "visible";
+    this.$el.getElementsByClassName('dashemail')[0].style.display = "block";
+}, 
+
+getsettings: function(){
+     this.$el.getElementsByClassName('settingsform')[0].style.display = "block";
+      this.$el.getElementsByClassName('dashdefault')[0].style.display = "none";
+    this.$el.getElementsByClassName('dashemail')[0].style.display = "none";
 }
 }
 
@@ -204,8 +217,8 @@ getemail: function(){
         margin-left: 7.5 * $units; 
     }
 
-    .dashdefault, .dashemail {
-        visibility: hidden; 
+    .dashdefault, .dashemail, .settingsform {
+       display: none; 
     }
 
     }
