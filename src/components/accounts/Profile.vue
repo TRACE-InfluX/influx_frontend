@@ -14,11 +14,9 @@
 
         <ul>
 
-            <li><i class="zmdi zmdi-view-dashboard"></i><button class="dashboard" @click="dash">Dashboard</button></li>
+            <li><i class="zmdi zmdi-view-dashboard"></i><button class="dashboard">Dashboard</button></li>
             
-       <!--     <li><i class="zmdi zmdi-email"></i><button class="usremail" @click="getemail">Email</button></li> -->
-            
-             <li><i class="zmdi zmdi-settings"></i><button class="settings" @click="getsettings">Settings</button></li>
+           <li><i class="zmdi zmdi-settings"></i><button class="settings">Settings</button></li>
         </ul>    
 
     </div>
@@ -26,26 +24,11 @@
      <div class="dash-content">
     <h3 class="welcomemsg">Welcome to Influx!</h3>    
     <!-- have span class to bind to username, currently placeholder -->  
-
-      <div class="settingsform">
-    <form>
-    Website:<br>
-    <input type="text" placeholder="thebogeyman@gmail.com"><br>
-    Instagram:<br>
-    <input type="text" name="@johnwick">
-    </form>        
-
-    </div>     
-
-    <span class="dashdefault">
-    <div class="profile-picture"><img src="https://pixel.nymag.com/imgs/daily/vulture/2017/02/07/07-john-wick-2-2.w100.h100.jpg" alt="profile image"/></div>
-    <span class="username">signed in as John Wick</span>
-    </span>
-
-    <div class="dashemail">
-        <p>thebogeyman@gmail.com</p>
-        <div class="logout"><button>Logout</button></div>   
-    </div>     
+    <h3 class="signedin">signed in as:</h3>
+    <p>  {{ email }}  </p>
+      
+     
+    <div class="logout"><button class="buttonbar" @click="logout">Logout</button></div>
     </div>
     </div>
     <!-- end of dash-content --> 
@@ -64,27 +47,37 @@
 
 <script>
 
+import API from '@/api.js'
+
 
 export default {
 
-methods: {
-dash: function() {
+data(){
 
-    this.$el.getElementsByClassName('dashdefault')[0].style.display = "block";
-    this.$el.getElementsByClassName('dashemail')[0].style.display = "block";
-  this.$el.getElementsByClassName('settingsform')[0].style.display = "none";
+return{
+    email: ""
+}
+
 },
 
-getemail: function(){
+mounted(){
+   this.getaccount()
+  
+},  
 
-    this.$el.getElementsByClassName('dashemail')[0].style.display = "block";
-}, 
+methods: {
 
-getsettings: function(){
-     this.$el.getElementsByClassName('settingsform')[0].style.display = "block";
-      this.$el.getElementsByClassName('dashdefault')[0].style.display = "none";
-    this.$el.getElementsByClassName('dashemail')[0].style.display = "none";
-}
+    getaccount: function(){
+        
+        API.get('/v0/accounts/me',{}, {headers: {'Authorization': `Bearer ${localStorage.bearertoken}`}}).then(res => {this.email = res.data.email})
+        
+    }, 
+    logout: function(){
+
+    // need logic for logout
+     this.$router.push('/')
+     
+    }
 }
 
 }
@@ -214,14 +207,20 @@ getsettings: function(){
     }
 
     .logout {
-        margin-left: 7.5 * $units; 
+       
+        margin-left: 0.5 * $units; 
+        margin-top: 2 * $units; 
     }
 
-    .dashdefault, .dashemail, .settingsform {
-       display: none; 
+    .buttonbar {
+        width: 10vw; 
     }
+    // .dashdefault, .dashemail, .settingsform {
+    //    display: none; 
+    // }
 
     }
+
   
 
 
