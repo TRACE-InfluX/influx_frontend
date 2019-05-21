@@ -84,7 +84,7 @@
       </section>
 
       <section>
-        <p id="try-heading">Something about look at some of our popular examples</p>
+        <p id="try-heading">Popular Examples</p>
         <ul class="popular">
           <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
             <influencer-view
@@ -323,13 +323,12 @@ main {
 
   .popular {
     display: flex;
-    justify-content: space-between;
-    padding-right: 15%;
-    padding-left: 15%;
+    justify-content: space-evenly;
+    width: 75%;
     margin: auto;
 
     li {
-      display: block;
+      display: inline;
       max-width: 32 * $units;
       max-height: 32 * $units;
       padding: 1 * $units;
@@ -637,14 +636,12 @@ i {
     height: 100%;
     padding-left: 7.5%;
     padding-right: 2.5%;
-    align-content: left;
 
     img {
       height: 80%;
-      width: 80;
+      width: 100%;
       box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
       justify-content: left;
-      align-content: left;
       text-align: left;
     }
   }
@@ -654,7 +651,6 @@ i {
     width: 50%;
     height: 100%;
     justify-content: right;
-    align-items: right;
     padding-left: 2.5%;
     padding-right: 7.5%;
     z-index: 999;
@@ -662,10 +658,9 @@ i {
 
     img {
       height: 80%;
-      width: 80;
+      width: 100%;
       box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
       justify-content: right;
-      align-content: right;
       text-align: right;
     }
   }
@@ -674,7 +669,6 @@ i {
 .ree {
   width: 50vh;
   text-align: center;
-  margin: none;
   justify-content: center;
 
   input {
