@@ -7,9 +7,8 @@
         <div class = "detailed-listing">
           <a v-bind:href ="influencer.url" target="_blank"><img class="detailed-left-icon" src="~@/assets/instagram_icon.png" height="20"/></a>
       <div class ="col-left">
-
         <p class="detailed-influencer-name">{{influencer.username}}</p>
-        <img v-bind:src="influencer.profile_image"/>
+        <a v-bind:href ="influencer.url" target="_blank"><img v-bind:src="influencer.profile_image"/></a>
       </div> <!-- col-left= -->
         <div class = "col-right">
             <div class = "top">
@@ -29,7 +28,8 @@
                 <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
             </div>
         </div> <!-- col-right" -->
-        <img class ="collapse" v-show="collapsable" src="~@/assets/arrow-down.png" @click="toggleType">
+        <!--<img class ="collapse" v-show="collapsable" src="~@/assets/arrow-down.png" @click="toggleType">-->
+        <p class = "collapse" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
         </div>
         <div class = "detailed-detailed">
         <!-- social feed holder is the overall container for the bottom half -->
@@ -108,7 +108,7 @@
         <a v-bind:href ="influencer.url" target="_blank"><img class="left-icon" src="~@/assets/instagram_icon.png" /></a>
       <div class ="col-left">
         <p class="list-influencer-name">{{influencer.username}}</p>
-        <img v-bind:src="influencer.profile_image"/>
+          <a v-bind:href ="influencer.url" target="_blank"><img v-bind:src="influencer.profile_image"/></a>
       </div> <!-- col-left= -->
       <div class = "col-right">
           <div class = "top">
@@ -133,7 +133,8 @@
 
             </div>
       </div> <!-- col-right" -->
-      <img class = "expand" src="~@/assets/arrow-down.png" @click="toggleType">
+      <!--<img class = "expand" src="~@/assets/arrow-down.png" @click="toggleType">-->
+        <p class = "expand" @click="toggleType">More Details <img src="~@/assets/arrow-down.png"></p>
     </article>
 
     <!-- influencer listing view ends here-->
@@ -252,7 +253,7 @@
         text-align: center;
         display: grid;
         grid-template-columns: auto auto;
-        grid-gap: 1 * $units;
+        grid-gap: .5 * $units;
     }
 
     .cssbar {
@@ -317,11 +318,14 @@
 
       .collapse {
         position: relative;
-        height: 2 * $units;
-        width: 2 * $units;
-        transform: rotate(180deg);
-        left: 47 * $units;
-        top: 28 * $units;
+          margin-left: auto;
+          margin-right: auto;
+          width: 15 * $units;
+        img {
+            height: 1.5 * $units;
+            width: 1.5 * $units;
+            transform: rotate(180deg);
+        }
       }
       .collapse:hover {
           cursor: pointer;
@@ -440,6 +444,9 @@
 
     &:hover {
       box-shadow: inset 2.5px 0 0 0 $primary;
+      .expand {
+        visibility: visible;
+      }
     }
 
     h2{
@@ -497,11 +504,15 @@
     }
 
     .expand {
+      visibility: hidden;
       position: relative;
-      height: 2 * $units;
-      width: 2 * $units;
-      left: 47 * $units;
-      top: 28 * $units;
+      margin-left: auto;
+      margin-right: auto;
+      width: 15 * $units;
+        img {
+            height: 1.5 * $units;
+            width: 1.5 * $units;
+        }
     }
     .expand:hover {
         cursor: pointer;

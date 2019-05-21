@@ -20,11 +20,6 @@
         :key="influencer.id"
         @mouseover="render_more(influencer)"
       >
-        <!--<influencer-view-->
-          <!--:influencer="influencer"-->
-          <!--:type="getType(influencer.id)"-->
-          <!--@click.native="select(influencer.id)"-->
-        <!--/>-->
         <influencer-view
           :influencer="influencer"
           :type="getType(influencer.id)"
