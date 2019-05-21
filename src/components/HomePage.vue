@@ -192,6 +192,8 @@ export default {
   },
   mounted() {
     this.load_popular();
+    this.$parent.query = ''
+    localStorage.setItem('query', '')
   },
   methods: {
     ...ACTIONS,
@@ -205,8 +207,7 @@ export default {
       }
     },
     search() {
-      localStorage.setItem("query", this.$parent.query);
-      this.$router.push("/influencers");
+      this.$parent.search()
     },
     hideSearchbar(isVisible) {
       this.$parent.showSearchBar = !isVisible;
