@@ -10,33 +10,40 @@
     
     <div class="nav">    
 
-    <h3 class="username">john wick</h3>
-    <p>@johnwick</p>
-    <div class="profile-picture"><img src="https://pixel.nymag.com/imgs/daily/vulture/2017/02/07/07-john-wick-2-2.w100.h100.jpg" /></div>
-
     <div class="menu">
 
         <ul>
 
-            <li><i class="zmdi zmdi-view-dashboard"></i><a class="dashboard" href="#">Dashboard</a></li>
+            <li><i class="zmdi zmdi-view-dashboard"></i><button class="dashboard" @click="dash">Dashboard</button></li>
             
-            <li><i class="zmdi zmdi-email"></i><a class="usremail" href="#">Email</a></li>
+       <!--     <li><i class="zmdi zmdi-email"></i><button class="usremail" @click="getemail">Email</button></li> -->
             
-             <li><i class="zmdi zmdi-settings"></i><a class="settings" href="#">Settings</a></li>
+             <li><i class="zmdi zmdi-settings"></i><button class="settings" @click="getsettings">Settings</button></li>
         </ul>    
 
     </div>
 
      <div class="dash-content">
+    <h3 class="welcomemsg">Welcome to Influx!</h3>    
+    <!-- have span class to bind to username, currently placeholder -->  
 
+    <span class="dashdefault">
+    <div class="profile-picture"><img src="https://pixel.nymag.com/imgs/daily/vulture/2017/02/07/07-john-wick-2-2.w100.h100.jpg" alt="profile image"/></div>
+    <span class="username">signed in as John Wick</span>
+    </span>
 
-   
-
-
+    <div class="dashemail">
+        <p>thebogeyman@gmail.com</p>
+        <div class="logout"><button>Logout</button></div>   
+    </div>     
     </div>
-
     </div>
+    <!-- end of dash-content --> 
 
+    <div class="settingsform">
+
+
+    </div>     
 
      
 
@@ -49,7 +56,23 @@
 </template>
 
 <script>
+
+
 export default {
+
+methods: {
+dash: function() {
+   
+    this.$el.getElementsByClassName('dashdefault')[0].style.visibility = "visible";
+    this.$el.getElementsByClassName('dashemail')[0].style.visibility = "visible";
+  //  this.$el.getElementByClassName("dashdefault")[0].style.transition = "all 2s";
+},
+
+getemail: function(){
+
+    this.$el.getElementsByClassName('dashemail')[0].style.visibility = "visible";
+}
+}
 
 }
 </script>
@@ -82,7 +105,7 @@ export default {
 
     .nav {
         display: inline-block; 
-        height: 80vh; 
+        height: 60vh; 
         width: 20vw; 
         padding: 5 * $units; 
         border-radius: 2%;
@@ -101,10 +124,12 @@ export default {
 
     .menu {
 
-        margin-top: 5 * $units; 
-
+    ul {
+        margin-top: 20 * $units;
+    } 
 
     li {
+      
       padding: 2 * $units;   
       list-style: none; 
       width: 100%; 
@@ -115,6 +140,16 @@ export default {
           transition: 0.3s ease;
         }
      }
+
+     button {
+         border: none; 
+         background: none; 
+         color: $primary; 
+         font-family: 'Puritan', sans-serif;
+         font-size: 2 * $units; 
+         outline: inherit;
+     }
+
 
     a {
       padding: 2 * $units;     
@@ -127,17 +162,9 @@ export default {
         color: $primary; 
     }
 
-    button {
-        text-decoration: none; 
-        border: none; 
-        background: transparent; 
-        font-family: 'Puritan', sans-serif;
-        font-size: 2 * $units; 
-    }
 
     }
     
-
 
   .container {
       border-radius: 1%;
@@ -150,26 +177,39 @@ export default {
   }
 
   .dash-content{
-    margin-top: -40 * $units;   
+    margin-top: -37 * $units;   
     margin-left: 120 * $units; 
     border: 1px solid var(--bordercol); 
-    padding: 35 * $units; 
+    padding: 20 * $units; 
     width: 40vw; 
-    height: 80vh; 
+    height: 60vh; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
+    justify-content: center; 
+
+    .welcomemsg {
+        font-family: 'Puritan', sans-serif;
+        color: $primary;
+        animation: mymove 5s infinite;
     }
 
+     img {
+        margin-left: 2.5 * $units; 
+        border-radius: 50%;
+       
+    }
 
-    .email-content{
+    .logout {
+        margin-left: 7.5 * $units; 
+    }
 
-    visibility: hidden; 
-    background-color: $primary;
-    color: white;  
-    align-self: center;
+    .dashdefault, .dashemail {
+        visibility: hidden; 
+    }
 
     }
+  
 
 
 
