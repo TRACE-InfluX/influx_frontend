@@ -1,107 +1,159 @@
 <template>
   <div class="home-page">
-
     <header>
-      <p><span id = "header">CONNECT WITH YOUR </span> <span id = "header-highlight">WORLD</span></p>
-      <p id = "tagline">Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
+      <p>
+        <span id="header">CONNECT WITH YOUR</span>
+        <span id="header-highlight">WORLD</span>
+      </p>
+      <p
+        id="tagline"
+      >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
       <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
-        <i class="zmdi zmdi-search" />
+        <i class="zmdi zmdi-search"/>
         <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
     </header>
 
     <main>
-      <h3>Popular</h3>
-      <ul class="popular">
-        <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-          <influencer-view type="tile"
-                           @click.native="open(popularInfluencer.id)"
-                           :influencer="popularInfluencer"
+      <section class="influx-overview">
+        <div class="overview-left">
+          <p id="why-heading">
+            <span>Why</span> InfluX?
+            <span></span>
+          </p>
+          <br>
+          <p
+            id="why-desc-1"
+          >A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign.</p>
+          <br>
+          <br>
+          <p id="why-desc-1">Easily sort through the list by using our sorting and filter options.</p>
+          <br>
+          <p id="why-desc-1">Quick access to the influencer’s profile with the click of a button.</p>
+          <br>
+        </div>
+        <div class="overview-right">
+          <img src="~@/assets/feastonhisflesh.png" v-scroll-reveal.reset="{ delay: 100 }">
+        </div>
+      </section>
 
-          />
-      </li>
-    </ul>
+      <section class="influx-overview">
+        <div class="overview-left">
+          <img src="~@/assets/tutorial1-1.png" v-scroll-reveal.reset="{ delay: 100 }">
+        </div>
+        <div class="overview-right">
+          <p id="why-heading">Metrics</p>
+          <br>
+          <p
+            id="why-desc-1"
+          >Activity: Determined by how often the influencer has posted in a given time frame. This well enable you to find influencers that are current, and reliably post often.</p>
+          <br>
+          <p
+            id="why-desc-1"
+          >Relevance: Relevance is determined by how many time the search term appears in the influencer's profile. This metric is used to try and find the best matching influencer, to ensure that they can market the product to its full potential.</p>
+          <br>
+          <p
+            id="why-desc-1"
+          >Engagement: Engagement is determined by how much an influencer interacts with their followers, and is tracked by doing things such as replying to their comments. The higher the engagement score, the more an influencer is connected to their followers on a personal level, thus increasing the chances that a follower would take product recommendations and advice.</p>
+          <br>
+          <p id="why-desc-1">Area of Influence: The market sphere of the influencer.</p>
+        </div>
+      </section>
 
+      <section class="influx-overview">
+        <div class="overview-left">
+          <p id="why-heading">Detailed View</p>
+          <br>
+          <p id="why-desc-1">Reach: Based on the number of followers</p>
+          <br>
+          <p
+            id="why-desc-1"
+          >Profit Potential:Estimate of how often their followers purchase products based on the recommendation of that influencer.</p>
+          <br>
+          <p id="why-desc-1">Cost: Estimated cost of the influencer’s services</p>
+          <br>
+          <p
+            id="why-desc-1"
+          >Word Cloud: Visualization of the influencer’s common hashtags, with the most used being the biggest.</p>
+        </div>
+        <div class="overview-right">
+          <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
+        </div>
+      </section>
 
-    <section class="why-influx">
-      <div class="why-title">
-        <p id = "why-heading"><span> Why </span>InfluX?<span></span></p>
-        <br>
-        <p id="why-desc-1">A simple, fast, and informative way to find the perfect influencers for your marketing purposes/campaign </p>
-
-
-     </div>     <!-- why-title/right col -->
-
-      <div class="why-tutorial">
-       <div class = "first-tut">
-         <section v-scroll-reveal.reset ="{ delay: 100 }">
-           <div class = "img-container">
-           <img src = "~@/assets/tutorial1-1.png">
-           </div>
-         </section>
-         <p id = "picture-description">A blazing fast search engine, filled with influencers just for you. </p>
-       </div>
-
-        <div class = "second-tut">
-         <section v-scroll-reveal.reset ="{ delay: 100 }">
-           <div class = "img-container">
-           <img src = "~@/assets/tutorial1-2.png">
-           </div>
-         </section>
-         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
-       </div>
-
-       <div class = "third-tut">
-         <section v-scroll-reveal.reset ="{ delay: 100 }">
-           <div class = "img-container">
-           <img src = "~@/assets/tutorial1-2.png">
-           </div>
-         </section>
-         <p id = "picture-description">Detailed metrics to help you make your decision easy as can be.</p>
-       </div>      <!-- third tut-->
-      </div>    <!-- why-tutorial/left col -->
-
-    </section>
-    <section v-scroll-reveal.reset ="{ delay: 100 }">
-     <div class = "trust-banner">
-       <div class = "trust-left">
-        <p id = "header">Who we are</p>
-        <p id = "tagline">We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in: </p>
-        <ul>
-        <li>Programming</li>
-        <li>Marketing</li>
-         <li>Customer Service</li>
-         <li>Recruitment</li>
-        <li>Small Business</li>
+      <section>
+        <p id="try-heading">Something about look at some of our popular examples</p>
+        <ul class="popular">
+          <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+            <influencer-view
+              type="tile"
+              @click.native="open(popularInfluencer.id)"
+              :influencer="popularInfluencer"
+            />
+          </li>
         </ul>
-        <p id = "tagline">We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud. </p>
-        <div class="joindiscord">
-          <a href="https://discord.gg/YJ79pbf" target="_blank">
-          <img class="discordbanner" src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4" alt="InfluX Discord" style="max-width:308px">
-          </a>
+        <div class="try-now">
+          <span class="span-buttons">
+            <button @click="linkToInfluencers" class="try-button1">Search Now</button>
+            <button @click="linkToRegister" class="try-button2">Register Today</button>
+          </span>
         </div>
-        <p id = "tagline"> Connect with us through Discord, today! </p>
-      </div>
+      </section>
+      <section v-scroll-reveal.reset="{ delay: 100 }">
+        <div class="trust-banner">
+          <div class="trust-left">
+            <p id="header">Who we are</p>
+            <p
+              id="tagline"
+            >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
+            <ul>
+              <li>Programming</li>
+              <li>Marketing</li>
+              <li>Customer Service</li>
+              <li>Recruitment</li>
+              <li>Small Business</li>
+            </ul>
+            <p
+              id="tagline"
+            >We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud.</p>
+            <div class="joindiscord">
+              <a href="https://discord.gg/YJ79pbf" target="_blank">
+                <img
+                  class="discordbanner"
+                  src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4"
+                  alt="InfluX Discord"
+                  style="max-width:308px"
+                >
+              </a>
+            </div>
+            <p id="tagline">Connect with us through Discord, today!</p>
+          </div>
 
-        <div class = "trust-right">
-          <ul>
-            <li><img src="~@/assets/Toni.png" id = "team-pics"></li>
-            <li><img src="~@/assets/Remy.png" id = "team-pics"></li>
-            <li><img src="~@/assets/Aaron.png" id = "team-pics"></li>
-           <li><img src="~@/assets/Carlo.png" id = "team-pics"></li>
-            <li><img src="~@/assets/Eva.png" id = "team-pics"></li>
-          </ul>
+          <div class="trust-right">
+            <ul>
+              <li>
+                <img src="~@/assets/Toni.png" id="team-pics">
+              </li>
+              <li>
+                <img src="~@/assets/Remy.png" id="team-pics">
+              </li>
+              <li>
+                <img src="~@/assets/Aaron.png" id="team-pics">
+              </li>
+              <li>
+                <img src="~@/assets/Carlo.png" id="team-pics">
+              </li>
+              <li>
+                <img src="~@/assets/Eva.png" id="team-pics">
+              </li>
+            </ul>
+          </div>
         </div>
-
-      </div>
-    <!-- trust-banner -->
-    </section>
-
-
-</main>
-
+        <!-- trust-banner -->
+      </section>
+    </main>
 
     <dialog :open="dialog">
       <div class="modal-mask" @click.self="close">
@@ -120,472 +172,551 @@
 </template>
 
 <script>
-  import { STATE, ACTIONS } from '@/store.js';
-  import {ObserveVisibility} from 'vue-observe-visibility';
+import { STATE, ACTIONS } from "@/store.js";
+import { ObserveVisibility } from "vue-observe-visibility";
 
+export default {
+  directives: { ObserveVisibility },
 
-  export default {
-    directives: {ObserveVisibility},
-
-
-    watch: {
-      dialog: function(isOpen) {
-        if(isOpen) {
-          document.documentElement.style.overflow = 'hidden';
-        } else {
-          document.documentElement.style.overflow = 'auto';
-        }
+  watch: {
+    dialog: function(isOpen) {
+      if (isOpen) {
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "auto";
       }
-    },
-
-    data() {
-      return {
-        selected_id: '',
-        dialog: false
-      }
-    },
-    directive: {
-
-    },
-    computed: {
-      ...STATE,
-      selected_influencer() {
-        return this.popular.find(i => i.id === this.selected_id) || {}
-      }
-    },
-    mounted() {
-      this.load_popular();
-    },
-    methods: {
-      ...ACTIONS,
-      open(id) {
-        this.selected_id = id;
-        this.dialog = true;
-      },
-      close() {
-        if(this.dialog)
-        {
-          this.dialog = false;
-        }
-      },
-      search() {
-        localStorage.setItem('query', this.$parent.query);
-        this.$router.push('/influencers');
-      },
-      hideSearchbar(isVisible) {
-        this.$parent.showSearchBar = !isVisible;
-      }
-
-    },
-    beforeRouteLeave(to, from, next) {
-      this.$parent.showSearchBar = true;
-      document.documentElement.style.overflow = 'auto';
-      next();
     }
-  }
+  },
 
+  data() {
+    return {
+      selected_id: "",
+      dialog: false
+    };
+  },
+  directive: {},
+  computed: {
+    ...STATE,
+    selected_influencer() {
+      return this.popular.find(i => i.id === this.selected_id) || {};
+    }
+  },
+  mounted() {
+    this.load_popular();
+  },
+  methods: {
+    ...ACTIONS,
+    open(id) {
+      this.selected_id = id;
+      this.dialog = true;
+    },
+    close() {
+      if (this.dialog) {
+        this.dialog = false;
+      }
+    },
+    search() {
+      localStorage.setItem("query", this.$parent.query);
+      this.$router.push("/influencers");
+    },
+    hideSearchbar(isVisible) {
+      this.$parent.showSearchBar = !isVisible;
+    },
+    linkToInfluencers() {
+      this.$router.push("/influencers");
+      scrollTo(0, 0);
+    },
+    linkToRegister() {
+      this.$router.push("/register");
+    }
+  },
+  beforeRouteLeave(to, from, next) {
+    this.$parent.showSearchBar = true;
+    document.documentElement.style.overflow = "auto";
+    next();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-
 header {
-    color: #414042;
-    background-position: bottom;
-    background-size: cover;
-    height: 60 * $units;
-    padding: 20 * $units 3 * $units 0;
+  color: #414042;
+  background-position: bottom;
+  background-size: cover;
+  height: 60 * $units;
+  padding: 20 * $units 3 * $units 0;
 
-    #header {
-      font-size: 6 * $units;
-      font-weight: 400;
-      font-family: 'Oswald';
-    }
-
-    #header-highlight{
+  #header {
     font-size: 6 * $units;
     font-weight: 400;
-    font-family: 'Oswald';
+    font-family: "Oswald";
+  }
+
+  #header-highlight {
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: "Oswald";
     color: $primary;
-    }
-
-    #tagline {
-      font-size: 2.5 * $units;
-      color: #7a7c7f;
-    }
-
-    > * {
-      max-width: 100 * $units;
-      display: block;
-      margin: 3 * $units auto;
-      text-align: center;
-    }
-
-    form {
-      $height: 5 * $units;
-
-      height: $height;
-      display: flex;
-
-      i {
-        position: absolute;
-        color: gray;
-        height: $height;
-        width: $height
-      }
-
-      input, button {
-        font-size: 1.8 * $units;
-        border-radius: 0.5 * $units;
-        border: none;
-        box-shadow: $shadow;
-      }
-
-      input {
-        flex: 1;
-        padding-left: $height;
-        margin-right:  1 * $units;
-        padding-right: 1 * $units;
-      }
-
-      button {
-        background-color: $primary;
-        color: white;
-        width: 12 * $units;
-        border-radius: 0.5 * $units;
-      }
-    }
   }
 
-  main {
-
-    h3 {
-      $height: 18 * $units;
-      height: $height;
-      line-height: $height;
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 5 * $units;
-      color: #999;
-      letter-spacing: 1.5 * $units;
-    }
-
-    .popular {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      padding-right: 15%;
-      padding-left: 15%;
-      margin: auto;
-
-      li {
-        display: inline-block;
-        max-width: 32 * $units;
-        max-height: 32 * $units;
-        padding: 1 * $units;
-        .influencer-view {
-          display: block;
-          margin: auto;
-        }
-      }
-    }
+  #tagline {
+    font-size: 2.5 * $units;
+    color: #7a7c7f;
   }
 
-  dialog {
-    .modal-mask {
-      position: fixed;
-      z-index: 9999;
-      top: 12 * $units;
-      padding-top: 1 * $units;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, .5);
-      transition: opacity .3s ease;
+  > * {
+    max-width: 100 * $units;
+    display: block;
+    margin: 3 * $units auto;
+    text-align: center;
+  }
+
+  form {
+    $height: 5 * $units;
+
+    height: $height;
+    display: flex;
+
+    i {
+      position: absolute;
+      color: gray;
+      height: $height;
+      width: $height;
     }
 
-    .modal-container {
-      transition: all .3s ease-in-out;
-      margin: auto;
-      height: 100 * $units;
-      width: 100 * $units;
-      border-radius: 2 * $units;
-      background-color: white;
-    }
-
-    .influencer-view {
+    input,
+    button {
+      font-size: 1.8 * $units;
+      border-radius: 0.5 * $units;
       border: none;
+      box-shadow: $shadow;
+    }
+
+    input {
+      flex: 1;
+      padding-left: $height;
+      margin-right: 1 * $units;
+      padding-right: 1 * $units;
+    }
+
+    button {
+      background-color: $primary;
+      color: white;
+      width: 12 * $units;
+      border-radius: 0.5 * $units;
     }
   }
+}
 
-  button {
-    border: 0;
-    background: none;
-    box-shadow: none;
-    border-radius: 0px;
-    width: 8 * $units;
+main {
+  h3 {
+    $height: 18 * $units;
+    height: $height;
+    line-height: $height;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 5 * $units;
+    color: #999;
+    letter-spacing: 1.5 * $units;
   }
 
-  i {
-    font-size: 3 * $units;
-    line-height: 3 * $units;
-    padding: 1 * $units;
-  }
+  .popular {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 15%;
+    padding-left: 15%;
+    margin: auto;
 
-  .product-info{
+    li {
+      display: block;
+      max-width: 32 * $units;
+      max-height: 32 * $units;
+      padding: 1 * $units;
+      .influencer-view {
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+}
+
+dialog {
+  .modal-mask {
+    position: fixed;
+    z-index: 9999;
+    top: 12 * $units;
+    padding-top: 1 * $units;
     width: 100%;
     height: 100%;
-    margin-top: 10 * $units;
-    margin-bottom: 10 * $units;
-    height: 50 * $units;
-    background-color: $nocolor;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-
-    img {
-      align-self: center;
-      width: 35%;
-    }
-
-    p {
-      align-self: center;
-      width: 20%;
-      font-size: 3 * $units;
-    }
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease;
   }
 
-  .why-influx{
-    height: 300vh;
-    display:flex;
-    top:0;
+  .modal-container {
+    transition: all 0.3s ease-in-out;
+    margin: auto;
+    height: 100 * $units;
+    width: 100 * $units;
+    border-radius: 2 * $units;
+    background-color: white;
   }
 
-  .why-title{
-    width:50%;
-    height:100vh;
-    position:sticky;
-    flex-direction:column;
-    top:0;
-    justify-content:center;
-    color:#7a7c7f;
-    padding-left:15%;
-    padding-top: 50 * $units;
-    padding-right: 2.5%;
+  .influencer-view {
+    border: none;
+  }
+}
+
+button {
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0px;
+  width: 8 * $units;
+}
+
+i {
+  font-size: 3 * $units;
+  line-height: 3 * $units;
+  padding: 1 * $units;
+}
+
+.product-info {
+  width: 100%;
+  height: 100%;
+  margin-top: 10 * $units;
+  margin-bottom: 10 * $units;
+  height: 50 * $units;
+  background-color: $nocolor;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+
+  img {
+    align-self: center;
+    width: 35%;
   }
 
-  #why-heading{
+  p {
+    align-self: center;
+    width: 20%;
     font-size: 3 * $units;
-    color:hsl(0,0%,13%);
-    border-bottom: 0.5 * $units solid $primary;
-    padding-top: 5%;
   }
+}
 
-  #why-desc-1{
-      font-size: 2.5 * $units;
-      line-height: 3.5 * $units;
-      color:hsl(0,0%,29%);
-  }
+.why-influx {
+  height: 300vh;
+  display: flex;
+  top: 0;
+}
 
-  #picture-description{
-    font-size: 3 * $units;
-    line-height: 3.5 * $units;
-    color:hsl(0,0%,29%);
-    padding-top: 5%;
-  }
+.why-title {
+  width: 50%;
+  height: 100vh;
+  position: sticky;
+  flex-direction: column;
+  top: 0;
+  justify-content: center;
+  color: #7a7c7f;
+  padding-left: 7.5%;
+  padding-top: 10 * $units;
+  padding-right: 2.5%;
+}
 
+#why-heading {
+  font-size: 5 * $units;
+  font-weight: 100;
+  color: hsl(0, 0%, 13%);
+  border-bottom: 0.5 * $units solid $primary;
+  padding-top: 5%;
+}
 
-.steps-container{
+#why-desc-1 {
+  font-size: 2.5 * $units;
+  line-height: 3.5 * $units;
+  color: hsl(0, 0%, 29%);
+}
+
+#picture-description {
+  width: 85vh;
+  font-size: 3 * $units;
+  line-height: 3.5 * $units;
+  color: hsl(0, 0%, 29%);
+  padding-top: 5%;
+}
+
+.steps-container {
   padding-top: 5%;
   font-size: 3 * $units;
   line-height: 3.5 * $units;
-  color:hsl(0,0%,45%);
-    padding-right: 10%;
+  color: hsl(0, 0%, 45%);
+  padding-right: 10%;
 }
 
-.Current-Number{
+.Current-Number {
   padding-top: 5%;
   font-size: 3 * $units;
   line-height: 6 * $units;
   color: $primary;
-  padding-right:10%;
+  padding-right: 10%;
 }
 
-
-.Current-Step{
+.Current-Step {
   padding-top: 5%;
   font-size: 3 * $units;
   line-height: 6 * $units;
-  color:hsl(0,0%,45%);
+  color: hsl(0, 0%, 45%);
 }
 
-#Number{
+#Number {
   font-size: 2.5 * $units;
   line-height: 6 * $units;
-  color:hsl(0,0%,45%);
-  padding-right:5%;
+  color: hsl(0, 0%, 45%);
+  padding-right: 5%;
 }
 
-
-#Step{
+#Step {
   font-size: 2.5 * $units;
   line-height: 6 * $units;
-  color:hsl(0,0%,45%);
+  color: hsl(0, 0%, 45%);
 }
 
-.why-tutorial{
-  width:50%;
-  text-align:center;
+.why-tutorial {
+  width: 50%;
+  text-align: center;
   padding-right: 15%;
   padding-top: 20 * $units;
   padding-left: 2.5 * $units;
 
-  img{
-    height: 50vh;
+  img {
+    height: 80vh;
+    width: 80vh;
     justify-content: center;
-    box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
     margin-top: 5%;
   }
 
-  #Step{
+  #Step {
     font-size: 2.5 * $units;
     line-height: 6 * $units;
-    color:hsl(0,0%,45%);
+    color: hsl(0, 0%, 45%);
   }
 
-
-  .first-tut{
-    height:100vh;
-    justify-content:left;
-    width:100%;
+  .first-tut {
+    height: 100vh;
+    justify-content: left;
+    width: 100%;
   }
 
-  .second-tut{
-    height:100vh;
-    justify-content:space-around;
+  .second-tut {
+    height: 100vh;
+    justify-content: space-around;
     align-items: center;
   }
 
-
-  .img-container{
+  .img-container {
   }
-  .third-tut{
-    height:100vh;
-    justify-content:space-around;
+  .third-tut {
+    height: 100vh;
+    justify-content: space-around;
     align-items: center;
   }
 }
-  .call-to-action
-  {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    height: 50 * $units;
-    width: 100%;
-    background:
-            /* top, transparent black, faked with gradient */
-            linear-gradient(
-                            rgba(0, 0, 0, 0.6),
-                            rgba(0, 0, 0, 0.6)
-            ),
-              /* bottom, image */
-            url('~@/assets/getstarted.jpeg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    color: white;
-    font-size: 3 * $units;
-    text-align: center;
+.call-to-action {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  height: 50 * $units;
+  width: 100%;
+  background:
+            /* top, transparent black, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.6)
+    ),
+    /* bottom, image */ url("~@/assets/getstarted.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  font-size: 3 * $units;
+  text-align: center;
 
-    h2, p{
-      align-self: center;
-      margin: 1 * $units;
-      text-shadow: $shadow;
-    }
-
-    button {
-      align-self:center;
-      background-color: $primary;
-      color: white;
-      height: 5 * $units;
-      width: 12 * $units;
-      border-radius: 0.5 * $units;
-      font-size: 1.8 * $units;
-    }
+  h2,
+  p {
+    align-self: center;
+    margin: 1 * $units;
+    text-shadow: $shadow;
   }
 
+  button {
+    align-self: center;
+    background-color: $primary;
+    color: white;
+    height: 5 * $units;
+    width: 12 * $units;
+    border-radius: 0.5 * $units;
+    font-size: 1.8 * $units;
+  }
+}
 
-.joindiscord{
-  text-align:center;
+.joindiscord {
+  text-align: center;
   padding-top: 2%;
 }
 
-
-
-
-.trust-banner{
-  height:100vh;
+.trust-banner {
+  height: 100vh;
   background-color: $primary;
   color: hsl(216, 100%, 99%);
-  transition:ease-in 750ms;
+  transition: ease-in 750ms;
 
-
-
-  .trust-left{
-    width:50%;
-    float:left;
+  .trust-left {
+    width: 50%;
+    float: left;
     background-color: $primary;
-    height:100vh;
-    padding-top:5%;
-    transition:ease-in 1000ms;
-    padding-bottom:5%;
-
+    height: 100vh;
+    padding-top: 5%;
+    transition: ease-in 1000ms;
+    padding-bottom: 5%;
   }
 
-  .trust-right{
-    width:50%;
-    float:right;
-    background-color: #FFFFFF;
-    height:100vh;
-    color:#000000;
+  .trust-right {
+    width: 50%;
+    float: right;
+    background-color: #ffffff;
+    height: 100%;
+    color: #000000;
     text-align: center;
   }
 
-      #header {
-      font-size: 6 * $units;
-      font-weight: 400;
-      font-family: 'Oswald';
-      text-align:center;
+  #header {
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: "Oswald";
+    text-align: center;
+  }
 
+  #tagline {
+    padding-top: 5%;
+    font-size: 2.5 * $units;
+    color: #ffffff;
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+
+  ul {
+    text-align: center;
+    font-size: 2.5 * $units;
+    list-style-type: none;
+
+    li {
+      padding-top: 1.5%;
     }
+  }
 
-    #tagline {
-      padding-top: 5%;
-      font-size: 2.5 * $units;
-      color: #FFFFFF;
-      text-align:center;
-      padding-right:10%;
-      padding-left: 10%;
-    }
-
-    ul{
-      text-align:center;
-      font-size: 2.5 * $units;
-      list-style-type:none;
-
-
-      li{
-        padding-top: 1.5%;
-
-      }
-
-    }
-
-    #team-pics{
-      max-width: 20vw;
-      max-height: 20vh;
-    }
+  #team-pics {
+    max-width: 20vw;
+    max-height: 20vh;
+  }
 }
 
+.gap {
+  height: 30vh;
+}
+
+.influx-overview {
+  height: 100vh;
+  width: 100%;
+
+  .overview-left {
+    float: left;
+    width: 50%;
+    height: 100%;
+    padding-left: 7.5%;
+    padding-right: 2.5%;
+    align-content: left;
+
+    img {
+      height: 80%;
+      width: 80;
+      box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+      justify-content: left;
+      align-content: left;
+      text-align: left;
+    }
+  }
+
+  .overview-right {
+    float: left;
+    width: 50%;
+    height: 100%;
+    justify-content: right;
+    align-items: right;
+    padding-left: 2.5%;
+    padding-right: 7.5%;
+    z-index: 999;
+    background-color: white;
+
+    img {
+      height: 80%;
+      width: 80;
+      box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+      justify-content: right;
+      align-content: right;
+      text-align: right;
+    }
+  }
+}
+
+.ree {
+  width: 50vh;
+  text-align: center;
+  margin: none;
+  justify-content: center;
+
+  input {
+    text-align: center;
+  }
+}
+
+#try-heading {
+  font-size: 5 * $units;
+  font-weight: 100;
+  color: hsl(0, 0%, 13%);
+  padding-top: 5%;
+  text-align: center;
+  padding-bottom: 5vh;
+}
+
+.try-now {
+  text-align: center;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.try-button1 {
+  background-color: $primary;
+  color: white;
+  height: 5 * $units;
+  width: 24 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  padding-right: 2 * $units;
+  margin-right: 5%;
+}
+
+.try-button2 {
+  background-color: $primary;
+  color: white;
+  height: 5 * $units;
+  width: 24 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  padding-right: 2 * $units;
+  margin-left: 5%;
+}
 </style>
+
