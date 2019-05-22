@@ -17,13 +17,14 @@
       <h2>{{ influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in rendered_influencers"
-        :key="influencer.id"
+        :key="influencer._id"
         @mouseover="render_more(influencer)"
       >
         <influencer-view
           :influencer="influencer"
-          :type="getType(influencer.id)"
-          v-on:expand="select(influencer.id)"
+          :weights="weights"
+          :type="getType(influencer._id)"
+          v-on:expand="select(influencer._id)"
           v-on:collapse="select"
         />
       </li>
@@ -35,15 +36,15 @@
 
 <script>
 import { STATE } from '@/store.js'
+import API from '@/api.js'
 
 export default {
   data() {
       return {
         selected_influencer: '',
+        weights: {},
         render_limit: 4
     }
-  },
-  mounted() {
   },
   computed: {
     ...STATE,
@@ -54,6 +55,12 @@ export default {
   methods: {
     select(id) {
       this.selected_influencer = id;
+      if (id) {
+        let params = { _id: id }
+        API.get('/v0/weights', { params }).then(res => {
+          this.weights = res.data.processed_weights
+        })
+      }
     },
     getType(id) {
       return id === this.selected_influencer ? "detailed" : "listing";
@@ -119,11 +126,10 @@ export default {
     padding: 2 * $units;
 
   }
-  .influencer-index {
 
+  .influencer-index {
     padding-top: 10%;
     text-align: center;
-
   }
 
 </style>

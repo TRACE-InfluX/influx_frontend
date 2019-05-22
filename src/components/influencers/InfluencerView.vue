@@ -13,7 +13,7 @@
         <div class = "col-right">
             <div class = "top">
                 <h3>{{influencer.name}}</h3>
-               <p>Areas of Influence: {{influencer.location}}</p>
+               <p>Last Location: {{influencer.location}}</p>
               <p class = "desc">{{influencer.description}}</p>
                 <div class = "stats">
                   <div class="posts"> Posts: {{influencer.posts}} </div>
@@ -23,72 +23,68 @@
             </div>
             <div class = "bot">
                     <!-- progbar = vuejs styling -->
-                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span>
-                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span>
-                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
+                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"></span>
+                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"></span>
+                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"></span>
             </div>
         </div> <!-- col-right" -->
-        <!--<img class ="collapse" v-show="collapsable" src="~@/assets/arrow-down.png" @click="toggleType">-->
-        <p class = "collapse" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
+        <p class = "collapse" v-show="collapsable" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
         </div>
         <div class = "detailed-detailed">
-        <!-- social feed holder is the overall container for the bottom half -->
-       <div class="socialfeedholder">
+
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
-          <img class="feedpreview" src="https://picsum.photos/300/400" />
-
-          <!-- col-left-details"-->
-        <div class = "col-right-details">
-          <button>Contact</button>
-          <button class ="inline"> Favourite </button>
-
-          <div class="donut-chart">
-
-          <!-- donut charts start here -->
-
-
-           <!-- donut chart 1 -->
-
-           <div class="donut">
-          <svg width="120">
-    <div class="circle1" transform="translate(-400, 0) rotate(-90, 80, 80)"></div>
-      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-      <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">reach</text>
-      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#21B063" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
-
-      </svg>
-      </div>
-
-      <div class="donut">
-             <!-- donut chart 2-->
-   <svg width="120">
-    <div class="circle2" transform="translate(-400, 0) rotate(-90, 80, 80)">  </div>
-      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">conversion</text>
-      <circle cx="60" cy="60" fill="transparent" r="40" stroke="goldenrod" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
-
-  </svg>
-      </div>
-      <div class="donut">
- <!-- donut chart 3-->
-  <svg width="120" viewbox="0 0 120 120">
-    <div class="circle3" transform="translate(-400, 0) rotate(-90, 80, 80)">    </div>
-      <circle class="outline" cx="60" cy="60" fill="transparent" r="40" stroke="#eee" stroke-width="10"></circle>
-        <text x="50%" y="40%" dominant-baseline="middle" text-anchor="middle" font-size="12px">cost</text>
-      <circle cx="60" cy="60" fill="transparent" r="40" stroke="#FB5454" stroke-dasharray="374.99111843077515" stroke-dashoffset="200.75525273624842" stroke-width="10"></circle>
-
-  </svg>
-      </div>
-
-    </div>
-
-
-          <p>Word Cloud</p>
-          </div>
-        </div> <!-- col-right-details -->
-       </div> <!-- social feed holder ends here -->
+          <h3>Preview</h3>
+          <img class="feedpreview" :src="influencer.preview.length ? influencer.preview[0] : ''" />
+          <img class="feedpreview" :src="influencer.preview.length ? influencer.preview[1] : ''" />
         </div>
+        
+        <div class = "col-right-details">
+
+          <ul class="donut-chart">
+            <h3>Valuation</h3>
+
+            <li class="donut">
+              <svg>
+                <circle class="outline" cx="60" cy="60" fill="transparent" r="50" stroke="#eee" stroke-width="10"></circle>
+                <circle class="progress" cx="60" cy="60" fill="transparent" r="50" stroke="#458eff" :stroke-dasharray="progress_max" :stroke-dashoffset="progress('reach')" stroke-width="10"></circle>
+              </svg>
+              <p>{{ influencer.reach.toFixed(2) + '%'}}</p>
+              <h4>Reach</h4>
+            </li>
+
+            <li class="donut">
+              <svg>
+                <circle class="outline" cx="60" cy="60" fill="transparent" r="50" stroke="#eee" stroke-width="10"></circle>
+                <circle class="progress" cx="60" cy="60" fill="transparent" r="50" stroke="#21B063" :stroke-dasharray="progress_max" :stroke-dashoffset="progress('profit')" stroke-width="10"></circle>
+              </svg>
+              <p>{{ '$' + influencer.profit_cad }}</p>
+              <h4>Profit</h4>
+            </li>
+
+            <li class="donut">
+              <svg>
+                <circle class="outline" cx="60" cy="60" fill="transparent" r="50" stroke="#eee" stroke-width="10"></circle>
+                <circle class="progress" cx="60" cy="60" fill="transparent" r="50" stroke="#ff5555" :stroke-dasharray="progress_max" :stroke-dashoffset="progress('cost')" stroke-width="10"></circle>
+              </svg>
+              <p>{{ '$' + influencer.cost_cad }}</p>
+              <h4>Cost</h4>
+            </li>
+
+          </ul>
+
+          <vue-wordcloud
+            :data="wordcloud_data"
+            nameKey="key"
+            valueKey="value"
+            :showTooltip="false"
+            :rotate="{from:0, to: 0}"
+            :wordClick="follow_link"
+          />
+
+        </div>
+
+      </div>
     </article>
 
 
@@ -114,7 +110,7 @@
           <div class = "top">
 
               <h3>{{influencer.name}}</h3>
-               <p>Areas of Influence: {{influencer.location}}</p>
+               <p>Last Location: {{influencer.location}}</p>
               <p class = "desc">{{influencer.description}}</p>
                <div class = "stats">
 
@@ -145,11 +141,13 @@
 
     //package to send httprequests
     // import API from '@/api.js'
+    import wordcloud from 'vue-wordcloud'
 
     export default {
         props: {
             type: String,
-            influencer: Object
+            influencer: Object,
+            weights: Object
             // collapsable: Boolean
         },
         data() {
@@ -178,6 +176,7 @@
                   width: 'influencer.relevance' + 'px',
                   color: 'white'
                 },
+                progress_max: 2 * Math.PI * 50,
                 collapsable: false
             }
         },
@@ -199,13 +198,6 @@
             window.open(url, '_blank');
           },
           toggleType() {
-              // if(this.type == 'listing') {
-              //     this.type = 'detailed'
-              //     this.collapsable = true;
-              // } else {
-              //     this.type = 'listing'
-              //     this.collapsable = false;
-              // }
               if(this.type == 'listing') {
                   this.collapsable = true;
                   this.$emit('expand');
@@ -213,7 +205,34 @@
                   this.collapsable = false;
                   this.$emit('collapse');
               }
+          },
+          progress(metric) {
+            return this.progress_max - (this.progress_max * this.influencer[metric] / 100)
+          },
+          follow_link(word) {
+            if (word[0] == '#') {
+              word = word.substr(1)
+            }
+            this.$parent.$parent.query = word // ewwwwwwwwwwwwwwwww
+            this.$parent.$parent.search()
           }
+        },
+        computed: {
+          wordcloud_data() {
+            let result  = []
+            for (let key in this.weights) {
+              if (this.weights[key] > 1) {
+                result.push({
+                  key,
+                  value: this.weights[key]
+                })
+              }
+            }
+            return result
+          }
+        },
+        components: {
+          'vue-wordcloud': wordcloud
         }
     }
 </script>
@@ -221,12 +240,13 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
-    svg{
-      display: inline;
+    .wordCloud {
+      height: 40 * $units;
     }
 
     .detailed-detailed {
         border-top: solid 1px #999999;
+        padding: 3 * $units 5 * $units;
     }
 
     .stats {
@@ -317,10 +337,10 @@
     margin:auto;
 
       .collapse {
-        position: relative;
           margin-left: auto;
           margin-right: auto;
           width: 15 * $units;
+          height: 3 * $units;
         img {
             height: 1.5 * $units;
             width: 1.5 * $units;
@@ -328,32 +348,47 @@
         }
       }
       .collapse:hover {
-          cursor: pointer;
+        cursor: pointer;
       }
 
     h2{
       display:inline-block;
     }
 
-    // socialfeedholder
-
-    .socialfeedholder{
-      margin-top: 3.125 * $units;
-      margin-left: -7.5 * $units;
-    }
-
     // preview of the social media page positioning -- currently a placeholder
     .feedpreview {
-     margin-top: 2.75 * $units;
-     margin-left: 5 * $units;
+      margin-top: 3 * $units;
+      width: 25 * $units;
+      display: block;
+    }
+
+    .donut-chart h3 {
+      margin-bottom: 2 * $units;
     }
 
     .donut{
-      display: inline;
+      $size: 15 * $units;
+      position: relative;
+      display: inline-block;
+      margin: 0 1 * $units;
+      svg {
+        width: $size;
+        height: $size;
+        transform: rotate(-90deg);
+      }
+      p {
+        position: absolute;
+        top:0;
+        left:0;
+        width: $size;
+        height: $size;
+        line-height: $size;
+      }
     }
 
     .col-left-details{
-      margin-top: 2.5 * $units;
+      float: left;
+      width: 25 * $units;
     }
 
     .detailed-influencer-name {
@@ -369,10 +404,7 @@
     }
 
       .col-right-details{
-      float: right;
-      width:50%;
-      text-align: left;
-      margin-left:1%;
+      margin-left: 30 * $units;
 
       //gap between buttons
 
@@ -428,9 +460,9 @@
       font-size: 3 * $units;
     }
 
-      &:hover {
+      /*&:hover {
           box-shadow: inset 2.5px 0 0 0 $primary;
-      }
+      }*/
   }
 
 // influencer list view starts here
@@ -445,7 +477,7 @@
     &:hover {
       box-shadow: inset 2.5px 0 0 0 $primary;
       .expand {
-        visibility: visible;
+        /*visibility: visible;*/
       }
     }
 
@@ -504,10 +536,12 @@
     }
 
     .expand {
+/*
       visibility: hidden;
-      position: relative;
+*/
       margin-left: auto;
       margin-right: auto;
+      height: 3 * $units;
       width: 15 * $units;
         img {
             height: 1.5 * $units;
