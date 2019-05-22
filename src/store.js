@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 let state =  {
   influencers: [],
-  popular: [{},{},{},{}]
+  // popular: [{preview:[]},{preview:[]},{preview:[]},{preview:[]}]
 }
 
 let actions = {
-  async load_influencers({commit}, query, sort_by = { engagement: -3, relevance: -2, activity: -2 }) {
+  async load_influencers({commit}, query, sort_by = { relevance: -6, engagement: -2,  reach: -1, activity: -1 }) {
     try {
       const params = { query, sort_by }
       let res = await API.get('/v0/influencers', { params })
@@ -23,19 +23,19 @@ let actions = {
       }
     }
   },
-  async load_popular({commit}) {
-    let res = await API.get('/v0/influencers/popular')
-    commit('set_popular', res.data)
-  }
+  // async load_popular({commit}) {
+  //   let res = await API.get('/v0/influencers/popular')
+  //   commit('set_popular', res.data)
+  // }
 }
 
 let mutations = {
   set_influencers(state, influencers) {
     state.influencers = influencers
   },
-  set_popular(state, popular) {
-    state.popular = popular
-  }
+  // set_popular(state, popular) {
+  //   state.popular = popular
+  // }
 }
 
 export default new Vuex.Store({ state, mutations, actions })

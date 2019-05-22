@@ -23,9 +23,9 @@
             </div>
             <div class = "bot">
                     <!-- progbar = vuejs styling -->
-                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"></span>
-                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"></span>
-                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"></span>
+                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
+                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
             </div>
         </div> <!-- col-right" -->
         <p class = "collapse" v-show="collapsable" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
@@ -35,8 +35,8 @@
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
           <h3>Preview</h3>
-          <img class="feedpreview" :src="influencer.preview.length ? influencer.preview[0] : ''" />
-          <img class="feedpreview" :src="influencer.preview.length ? influencer.preview[1] : ''" />
+          <img class="feedpreview" :src="influencer.preview && influencer.preview[0] ? influencer.preview[0] : ''" />
+          <img class="feedpreview" :src="influencer.preview && influencer.preview[1] ? influencer.preview[1] : ''" />
         </div>
         
         <div class = "col-right-details">
@@ -49,7 +49,7 @@
                 <circle class="outline" cx="60" cy="60" fill="transparent" r="50" stroke="#eee" stroke-width="10"></circle>
                 <circle class="progress" cx="60" cy="60" fill="transparent" r="50" stroke="#458eff" :stroke-dasharray="progress_max" :stroke-dashoffset="progress('reach')" stroke-width="10"></circle>
               </svg>
-              <p>{{ influencer.reach.toFixed(2) + '%'}}</p>
+              <p>{{ influencer.reach ? influencer.reach.toFixed(2) + '%' : ''}}</p>
               <h4>Reach</h4>
             </li>
 
@@ -123,9 +123,9 @@
           </div>
             <div class = "bot">
                     <!-- progbar = vuejs styling -->
-                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: influencer.activity + '%'}"><span style="opacity: 0">{{influencer.activity}}</span></span>
-                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.relevance + '%'}"><span style="opacity: 0">{{influencer.relevance}}</span></span>
-                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
+                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
+                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
 
             </div>
       </div> <!-- col-right" -->
@@ -222,10 +222,19 @@
             let result  = []
             for (let key in this.weights) {
               if (this.weights[key] > 1) {
-                result.push({
-                  key,
-                  value: this.weights[key]
-                })
+                let words = this.$parent.$parent.weights_query.split(' ')
+                if (words.find(w => key.includes(w))) {
+                  result.push({
+                    key,
+                    value: this.weights[key]
+                  })
+                }
+                else {
+                  result.push({
+                    key,
+                    value: this.weights[key]
+                  })
+                }
               }
             }
             return result
@@ -280,7 +289,6 @@
      display: inline-block;
      margin-left: -19.25 * $units;
      margin-top: 1px;
-     width: 100%;
     }
 
   .influencer-tile {

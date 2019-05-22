@@ -48,6 +48,7 @@
     data() {
       return {
         query: '',
+        weights_query: '',
         showSearchBar: true,
         searching: false
       }
@@ -61,6 +62,7 @@
           .then(() => {
             this.searching = false;
             localStorage.setItem('query', this.query);
+            this.weights_query = this.query
             this.$router.push('/influencers');
             scrollTo(0, 0)
           })
