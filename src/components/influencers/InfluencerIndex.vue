@@ -29,6 +29,7 @@
         />
       </li>
     </ul>
+    <back-to-top class = "btn-to-top">Back to Top</back-to-top>
   </div> <!--influencer index -->
 </template>
 
