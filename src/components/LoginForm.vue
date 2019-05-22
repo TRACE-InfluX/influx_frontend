@@ -1,13 +1,15 @@
 <!-- template for a login page.-->
 <template>
+
   <form class="login-form" @submit.prevent="login">
-    <h2>Login</h2>
+    <h2 class="blah">Login</h2>
     <input type="text"  v-model="input.username" required placeholder="Email">
     <input type="password"  v-model="input.password" required placeholder="Password">
-    <button>Login</button>
+    <button @click="logged">Login</button>
     <p>Forgot your login details?</p>
-    <router-link to="">Get help signing in.</router-link>
+    <router-link to="">Get help signing in.</router-link>    
   </form>
+ 
 </template>
 
 <script>
@@ -15,26 +17,46 @@
 
     export default {
         data() {
+
             return {
+                
                 input: {
                     username: "",
                     password: ""
                 }
             }
         },
+//         watch: {
+//         input: function () {
+//         if (isLocalStorage() /* function to detect if localstorage is supported*/) {
+//         localStorage.setItem('storedData', this.input)
+//         }
+//     }
+// },
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    API.post('/v0/auth', { email: this.input.username, password: this.input.password })
+                    API.post('/v0/auth', { email: this.input.username, password: this.input.password }, {headers: {'Content-Type': 'application/json'}})
                         .then((res) => {
-                            localStorage.setItem("bearertoken", res.data.idToken);
+                            localStorage.setItem("bearertoken", res.data.token);
+                            console.log(localStorage.bearertoken)
                             localStorage.setItem("admin", res.data.admin);
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
+                    API.get('/v0/accounts/me', {}, {headers: {'Authorization': `Bearer ${localStorage.bearertoken}`}}).then(res => {
+                        
+                        if (res.data.admin) {
+                            this.$router.push('/accounts')
+                        }
+                        else {
+                            this.$router.go('/profile')
+                        }
+                        
+                    })   
                             if (res.data.admin) {
                               this.$router.push('/accounts')
                             }
                             else {
-                              this.$router.push('/influencers')
+                              this.$router.push('/profile')
                             }
                         });
                 } else {
