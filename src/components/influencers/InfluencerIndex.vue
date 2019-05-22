@@ -119,11 +119,10 @@ export default {
     padding: 2 * $units;
 
   }
-  .influencer-index {
 
+  .influencer-index {
     padding-top: 10%;
     text-align: center;
-
   }
 
 </style>
