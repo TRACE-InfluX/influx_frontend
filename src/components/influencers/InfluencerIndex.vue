@@ -55,6 +55,7 @@ export default {
   methods: {
     select(id) {
       this.selected_influencer = id;
+      this.weights = {}
       if (id) {
         let params = { _id: id }
         API.get('/v0/weights', { params }).then(res => {

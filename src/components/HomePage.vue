@@ -72,7 +72,7 @@
         </div>
       </section>
 
-      <section>
+      <!-- <section>
         <p id="try-heading">Popular Examples</p>
         <ul class="popular">
           <li v-for="popularInfluencer in popular" :key="popularInfluencer._id">
@@ -88,7 +88,7 @@
             <button @click="linkToInfluencers" class="try-button1">Try it out now!</button>
           </span>
         </div>
-      </section>
+      </section> -->
       <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
@@ -141,13 +141,13 @@
       </section>
     </main>
 
-    <dialog :open="dialog">
-      <div class="modal-mask" @click.self="close">
-        <div class="modal-container">
-          <influencer-view :influencer="selected_influencer" type="detailed"/>
-        </div>
-      </div>
-    </dialog>
+    <!-- // <dialog :open="dialog">
+    //   <div class="modal-mask" @click.self="close">
+    //     <div class="modal-container">
+    //       <influencer-view :influencer="selected_influencer" :weights="weights" type="detailed"/>
+    //     </div>
+    //   </div>
+    // </dialog> -->
 
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
@@ -158,7 +158,6 @@
 </template>
 
 <script>
-import { STATE, ACTIONS } from "@/store.js";
 import { ObserveVisibility } from "vue-observe-visibility";
 
 export default {
@@ -175,34 +174,13 @@ export default {
   },
 
   data() {
-    return {
-      selected_id: "",
-      dialog: false
-    };
-  },
-  directive: {},
-  computed: {
-    ...STATE,
-    selected_influencer() {
-      return this.popular.find(i => i._id === this.selected_id) || {};
-    }
+    return {};
   },
   mounted() {
-    this.load_popular();
     this.$parent.query = ''
     localStorage.setItem('query', '')
   },
   methods: {
-    ...ACTIONS,
-    open(id) {
-      this.selected_id = id;
-      this.dialog = true;
-    },
-    close() {
-      if (this.dialog) {
-        this.dialog = false;
-      }
-    },
     search() {
       this.$parent.search()
     },
@@ -310,23 +288,23 @@ main {
     letter-spacing: 1.5 * $units;
   }
 
-  .popular {
-    display: flex;
-    justify-content: space-evenly;
-    width: 75%;
-    margin: auto;
+  // .popular {
+  //   display: flex;
+  //   justify-content: space-evenly;
+  //   width: 75%;
+  //   margin: auto;
 
-    li {
-      display: inline;
-      max-width: 32 * $units;
-      max-height: 32 * $units;
-      padding: 1 * $units;
-      .influencer-view {
-        display: block;
-        margin: auto;
-      }
-    }
-  }
+  //   li {
+  //     display: inline;
+  //     max-width: 32 * $units;
+  //     max-height: 32 * $units;
+  //     padding: 1 * $units;
+  //     .influencer-view {
+  //       display: block;
+  //       margin: auto;
+  //     }
+  //   }
+  // }
 }
 
 dialog {
@@ -571,6 +549,7 @@ i {
   }
 
   .trust-right {
+    padding-top: 3*$units;
     width: 50%;
     float: right;
     height: 100%;
@@ -617,6 +596,7 @@ i {
 .influx-overview {
   height: 100vh;
   width: 100%;
+  padding-bottom: 3*$units;
 
   .overview-left {
     float: left;
