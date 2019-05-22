@@ -17,13 +17,13 @@
       <h2>{{ influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
       <li v-for="influencer in rendered_influencers"
-        :key="influencer.id"
+        :key="influencer._id"
         @mouseover="render_more(influencer)"
       >
         <influencer-view
           :influencer="influencer"
-          :type="getType(influencer.id)"
-          v-on:expand="select(influencer.id)"
+          :type="getType(influencer._id)"
+          v-on:expand="select(influencer._id)"
           v-on:collapse="select"
         />
       </li>
@@ -119,11 +119,10 @@ export default {
     padding: 2 * $units;
 
   }
-  .influencer-index {
 
+  .influencer-index {
     padding-top: 10%;
     text-align: center;
-
   }
 
 </style>

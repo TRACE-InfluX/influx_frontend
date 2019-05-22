@@ -28,8 +28,7 @@
                 <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: influencer.engagement + '%'}"><span style="opacity: 0">{{influencer.engagement}}</span></span>
             </div>
         </div> <!-- col-right" -->
-        <!--<img class ="collapse" v-show="collapsable" src="~@/assets/arrow-down.png" @click="toggleType">-->
-        <p class = "collapse" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
+        <p class = "collapse" v-show="collapsable" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
         </div>
         <div class = "detailed-detailed">
         <!-- social feed holder is the overall container for the bottom half -->
@@ -199,13 +198,6 @@
             window.open(url, '_blank');
           },
           toggleType() {
-              // if(this.type == 'listing') {
-              //     this.type = 'detailed'
-              //     this.collapsable = true;
-              // } else {
-              //     this.type = 'listing'
-              //     this.collapsable = false;
-              // }
               if(this.type == 'listing') {
                   this.collapsable = true;
                   this.$emit('expand');
@@ -317,10 +309,10 @@
     margin:auto;
 
       .collapse {
-        position: relative;
           margin-left: auto;
           margin-right: auto;
           width: 15 * $units;
+          height: 3 * $units;
         img {
             height: 1.5 * $units;
             width: 1.5 * $units;
@@ -328,7 +320,7 @@
         }
       }
       .collapse:hover {
-          cursor: pointer;
+        cursor: pointer;
       }
 
     h2{
@@ -428,9 +420,9 @@
       font-size: 3 * $units;
     }
 
-      &:hover {
+      /*&:hover {
           box-shadow: inset 2.5px 0 0 0 $primary;
-      }
+      }*/
   }
 
 // influencer list view starts here
@@ -445,7 +437,7 @@
     &:hover {
       box-shadow: inset 2.5px 0 0 0 $primary;
       .expand {
-        visibility: visible;
+        /*visibility: visible;*/
       }
     }
 
@@ -504,10 +496,12 @@
     }
 
     .expand {
+/*
       visibility: hidden;
-      position: relative;
+*/
       margin-left: auto;
       margin-right: auto;
+      height: 3 * $units;
       width: 15 * $units;
         img {
             height: 1.5 * $units;

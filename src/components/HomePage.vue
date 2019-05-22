@@ -46,9 +46,9 @@
           <br>
           <p><span class = "blue-text">Relevance: </span><span class="why-desc-1" >How many times the search term appears in the influencer's profile. This metric is used to try and find the best matching influencer, to ensure that they can market the product to its full potential.</span></p>
           <br>
-          <p><span class = "blue-text">Engagement: </span><span class="why-desc-1">How much an influencer interacts with their followers, 
-            and is tracked by doing things such as replying to their comments. The higher the engagement 
-            score, the more an influencer is connected to their followers on a personal level, thus increasing 
+          <p><span class = "blue-text">Engagement: </span><span class="why-desc-1">How much an influencer interacts with their followers,
+            and is tracked by doing things such as replying to their comments. The higher the engagement
+            score, the more an influencer is connected to their followers on a personal level, thus increasing
             the chances that a follower would take product recommendations and advice.</span></p>
           <br>
           <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer.</span></p>
@@ -75,10 +75,10 @@
       <section>
         <p id="try-heading">Popular Examples</p>
         <ul class="popular">
-          <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
+          <li v-for="popularInfluencer in popular" :key="popularInfluencer._id">
             <influencer-view
               type="tile"
-              @click.native="open(popularInfluencer.id)"
+              @click.native="open(popularInfluencer._id)"
               :influencer="popularInfluencer"
             />
           </li>
@@ -184,7 +184,7 @@ export default {
   computed: {
     ...STATE,
     selected_influencer() {
-      return this.popular.find(i => i.id === this.selected_id) || {};
+      return this.popular.find(i => i._id === this.selected_id) || {};
     }
   },
   mounted() {
@@ -691,7 +691,7 @@ i {
 
 .span-buttons {
   text-align: center;
-} 
+}
 
 
 
