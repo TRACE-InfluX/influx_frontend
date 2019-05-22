@@ -12,13 +12,12 @@
       <router-link to="/register">Pricing</router-link>
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
-      <router-link class="profile" to="/accounts/me" />
+      <router-link class="profile" to="/profile" />  
     </nav>
 
     <router-view></router-view>
 
     <footer>
-
       <h3>InfluX </h3>
       <ul>
       <li>We connect the world to you.</li>
