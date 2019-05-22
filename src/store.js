@@ -11,10 +11,17 @@ let state =  {
 
 let actions = {
   async load_influencers({commit}, query, sort_by = { engagement: -3, relevance: -2, activity: -2 }) {
-    const params = { query, sort_by }
-    let res = await API.get('/v0/influencers', { params })
-    let influencers = res.data
-    commit('set_influencers', influencers)
+    try {
+      const params = { query, sort_by }
+      let res = await API.get('/v0/influencers', { params })
+      let influencers = res.data
+      commit('set_influencers', influencers)
+    }
+    catch (error) {
+      if (error.message.includes('404')) {
+        commit('set_influencers', [])
+      }
+    }
   },
   async load_popular({commit}) {
     let res = await API.get('/v0/influencers/popular')
