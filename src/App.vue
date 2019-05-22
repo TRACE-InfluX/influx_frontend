@@ -9,10 +9,10 @@
         <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-      <router-link to="/register">Pricing</router-link>
+      <!--<router-link to="/register">Pricing</router-link>-->
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
-      <router-link class="profile" to="/profile" />  
+      <router-link class="profile" to="/profile" />
     </nav>
 
     <router-view></router-view>
@@ -110,8 +110,8 @@
       background-color: #FFFFFF;
       width: 100%;
       z-index: 9999;
-      padding-left:15%;
-      padding-right:15%;
+      /*padding-left:15%;
+      padding-right:15%;*/
       box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
 
       > * {
@@ -146,7 +146,7 @@
           padding-left: $height;
           margin-right:  1 * $units;
           padding-right: 1 * $units;
-          width: 40 * $units;
+          width: 100%
         }
 
         button {
@@ -191,7 +191,7 @@
       }
 
       .profile {
-        width: $header-height - 2 * $units;
+        width: $header-height - 1.5 * $units;
         margin-top: 1  * $units;
         margin-bottom: 1 * $units;
         background: url('~@/assets/profile.png');
