@@ -48,15 +48,18 @@
     data() {
       return {
         query: '',
-        showSearchBar: true
+        showSearchBar: true,
+        searching: false
       }
     },
     name: 'app',
     methods: {
       ...ACTIONS,
       search() {
+        this.searching = true;
         this.load_influencers(this.query)
           .then(() => {
+            this.searching = false;
             localStorage.setItem('query', this.query);
             this.$router.push('/influencers');
             scrollTo(0, 0)
