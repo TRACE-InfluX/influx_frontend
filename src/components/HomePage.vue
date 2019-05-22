@@ -71,24 +71,6 @@
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
-
-      <!-- <section>
-        <p id="try-heading">Popular Examples</p>
-        <ul class="popular">
-          <li v-for="popularInfluencer in popular" :key="popularInfluencer._id">
-            <influencer-view
-              type="tile"
-              @click.native="open(popularInfluencer._id)"
-              :influencer="popularInfluencer"
-            />
-          </li>
-        </ul>
-        <div class="try-now">
-          <span class="span-buttons">
-            <button @click="linkToInfluencers" class="try-button1">Try it out now!</button>
-          </span>
-        </div>
-      </section> -->
       <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
@@ -153,6 +135,7 @@
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
       <button>Sign Up</button>
+      <back-to-top class = "btn-to-top">Back to Top</back-to-top>
     </div>
   </div>
 </template>
@@ -537,7 +520,6 @@ i {
   color: hsl(216, 100%, 99%);
   transition: ease-in 750ms;
   background-color: $primary;
-        box-shadow: 0 0 10px 20px $primary;
 
   .trust-left {
     width: 50%;
@@ -681,6 +663,20 @@ i {
   display:inline;
     font-size: 2.5 * $units;
   line-height: 3.5 * $units;
+}
+
+.btn-to-top{
+  border: 0;
+  background: none;
+  background-color: $primary;
+  color: white;
+  height: 5 * $units;
+  width: 20 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  text-align: center;
+  box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
+  padding: 1 * $units;
 }
 </style>
 
