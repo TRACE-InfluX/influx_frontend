@@ -22,6 +22,7 @@
       >
         <influencer-view
           :influencer="influencer"
+          :weights="weights"
           :type="getType(influencer._id)"
           v-on:expand="select(influencer._id)"
           v-on:collapse="select"
@@ -35,15 +36,15 @@
 
 <script>
 import { STATE } from '@/store.js'
+import API from '@/api.js'
 
 export default {
   data() {
       return {
         selected_influencer: '',
+        weights: {},
         render_limit: 4
     }
-  },
-  mounted() {
   },
   computed: {
     ...STATE,
@@ -54,6 +55,12 @@ export default {
   methods: {
     select(id) {
       this.selected_influencer = id;
+      if (id) {
+        let params = { _id: id }
+        API.get('/v0/weights', { params }).then(res => {
+          this.weights = res.data.processed_weights
+        })
+      }
     },
     getType(id) {
       return id === this.selected_influencer ? "detailed" : "listing";

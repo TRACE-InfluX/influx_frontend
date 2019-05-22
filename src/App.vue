@@ -233,4 +233,10 @@
 
   }
 
+  // This is for the wordcloud, it needs to be outside the scoped css
+  #app .text:hover {
+    cursor: pointer !important;
+    text-decoration: underline;
+  }
+
 </style>
