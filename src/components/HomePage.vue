@@ -46,9 +46,9 @@
           <br>
           <p><span class = "blue-text">Relevance: </span><span class="why-desc-1" >How many times the search term appears in the influencer's profile. This metric is used to try and find the best matching influencer, to ensure that they can market the product to its full potential.</span></p>
           <br>
-          <p><span class = "blue-text">Engagement: </span><span class="why-desc-1">How much an influencer interacts with their followers, 
-            and is tracked by doing things such as replying to their comments. The higher the engagement 
-            score, the more an influencer is connected to their followers on a personal level, thus increasing 
+          <p><span class = "blue-text">Engagement: </span><span class="why-desc-1">How much an influencer interacts with their followers,
+            and is tracked by doing things such as replying to their comments. The higher the engagement
+            score, the more an influencer is connected to their followers on a personal level, thus increasing
             the chances that a follower would take product recommendations and advice.</span></p>
           <br>
           <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer.</span></p>
@@ -72,23 +72,6 @@
         </div>
       </section>
 
-      <section>
-        <p id="try-heading">Popular Examples</p>
-        <ul class="popular">
-          <li v-for="popularInfluencer in popular" :key="popularInfluencer.id">
-            <influencer-view
-              type="tile"
-              @click.native="open(popularInfluencer.id)"
-              :influencer="popularInfluencer"
-            />
-          </li>
-        </ul>
-        <div class="try-now">
-          <span class="span-buttons">
-            <button @click="linkToInfluencers" class="try-button1">Try it out now!</button>
-          </span>
-        </div>
-      </section>
       <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
@@ -153,6 +136,7 @@
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
       <button>Sign Up</button>
+      <back-to-top class = "btn-to-top">Back to Top</back-to-top>
     </div>
   </div>
 </template>
@@ -184,7 +168,7 @@ export default {
   computed: {
     ...STATE,
     selected_influencer() {
-      return this.popular.find(i => i.id === this.selected_id) || {};
+      return this.popular.find(i => i._id === this.selected_id) || {};
     }
   },
   mounted() {
@@ -559,7 +543,6 @@ i {
   color: hsl(216, 100%, 99%);
   transition: ease-in 750ms;
   background-color: $primary;
-        box-shadow: 0 0 10px 20px $primary;
 
   .trust-left {
     width: 50%;
@@ -691,7 +674,7 @@ i {
 
 .span-buttons {
   text-align: center;
-} 
+}
 
 
 
@@ -701,6 +684,20 @@ i {
   display:inline;
     font-size: 2.5 * $units;
   line-height: 3.5 * $units;
+}
+
+.btn-to-top{
+  border: 0;
+  background: none;
+  background-color: $primary;
+  color: white;
+  height: 5 * $units;
+  width: 20 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  text-align: center;
+  box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
+  padding: 1 * $units;
 }
 </style>
 
