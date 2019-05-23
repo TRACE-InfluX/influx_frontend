@@ -4,18 +4,18 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
-      <div class = "nav-mid" v-if="showSearchBar">
-        <form @submit.prevent="search" class="nav-search" v-if="!searching">
+      <div class = "nav-mid">
+        <form @submit.prevent="search" class="nav-search" v-if="showSearchBar && !searching">
           <i class="zmdi zmdi-search" />
           <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
           <button>Discover</button>
         </form>
-        <loading-screen v-else></loading-screen>
+        <loading-screen v-else-if="showSearchBar && searching"></loading-screen>
       </div>
       <div class="nav-profile">
-        <router-link to="/register">Register</router-link>
-        <router-link to="/login">Login</router-link>
-        <router-link class="profile" to="/profile" />
+        <router-link class="profile-link" to="/register">Register</router-link>
+        <router-link class="profile-link" to="/login">Login</router-link>
+        <router-link class="profile" to="/profile"><img src="~@/assets/profile.png"></router-link>
       </div>
     </nav>
 
@@ -89,7 +89,7 @@
 <!--styling for top level of app-->
 <style lang="scss">
 
-  $header-height: 12 * $units;
+  $header-height: 9 * $units;
 
   * {
     margin: 0;
@@ -125,18 +125,37 @@
 
       > * {
         display: inline-block;
+        height: $header-height;
         line-height: $header-height;
       }
 
       .nav-mid {
-        width: 40%;
+        flex: 2;
+        max-width: 90 * $units;
         margin: auto;
+
+        .loading-screen {
+          display:flex;
+          height: $header-height;
+          img{
+            margin-left: auto;
+          }
+          p{
+            display:inline-block;
+            height: $header-height;
+            line-height: $header-height;
+            font-size: 2.5 * $units;
+            margin-right: auto;
+          }
+        }
+
         .nav-search {
           text-align: center;
           $height: 4 * $units;
           line-height: $height;
           height: $height;
           display: flex;
+          margin: 2.5 * $units;
 
           i {
             position: absolute;
@@ -169,15 +188,15 @@
         }
       }
 
-
       h1 {
+        flex: 1;
         font-family: 'Puritan', sans-serif;
         font-size: 4 * $units;
         letter-spacing: 1.5 * $units;
         cursor: pointer;
         transition: 0.2s ease;
         color: $primary;
-        padding-left: 2 * $units;
+        text-align: center;
 
         &:hover {
           transition: 0.2s ease;
@@ -186,12 +205,21 @@
         }
       }
 
-      nav-profile {
+      .nav-profile {
+        width: 45 * $units;
+        flex: 1;
+        display: flex;
+        height: $header-height;
+
         a {
-          width: 15 * $units;
+          flex: 1;
+          width: 12 * $units;
           font-size: 2.5 * $units;
           text-decoration: none;
           text-align: center;
+          line-height: $header-height;
+          height: $header-height;
+          display: inline-block;
 
           &:visited {
             color: #414042;
@@ -204,12 +232,15 @@
         }
 
         .profile {
-          width: $header-height - 1.5 * $units;
-          margin-top: 1  * $units;
-          margin-bottom: 1 * $units;
-          background: url('~@/assets/profile.png');
-          background-size: 100%;
-          background-repeat: no-repeat;
+          flex: 1;
+          img {
+            width: $header-height - 3 * $units;
+            margin-top: 1  * $units;
+            margin-bottom: 1 * $units;
+            /*background: url('~@/assets/profile.png');
+            background-size: 100%;
+            background-repeat: no-repeat;*/
+          }
         }
       }
 
