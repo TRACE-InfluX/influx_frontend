@@ -2,13 +2,14 @@
   <div class="home-page">
     <header>
       <p>
-        <span id="header">CONNECT WITH YOUR </span>
+        <span class="header">CONNECT WITH YOUR </span>
         <span id="header-highlight">WORLD</span>
       </p>
       <p class="banner-tagline"
       >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
-      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
+      <loading-screen v-if="$parent.searching"></loading-screen>
+      <form @submit.prevent="search" v-else v-observe-visibility="hideSearchbar">
         <i class="zmdi zmdi-search"/>
         <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
@@ -74,7 +75,7 @@
       <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
-            <p id="header">Who we are</p>
+            <p class="header">Who we are</p>
             <p class="tagline"
             >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
             <ul>
@@ -196,7 +197,7 @@ header {
   height: 60 * $units;
   padding: 20 * $units 3 * $units 0;
 
-  #header {
+  .header {
     font-size: 6 * $units;
     font-weight: 400;
     font-family: "Oswald";

@@ -4,12 +4,12 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
-      <form @submit.prevent="search" class="nav-search" v-show="showSearchBar">
+      <form @submit.prevent="search" class="nav-search" v-if="showSearchBar && !searching">
         <i class="zmdi zmdi-search" />
         <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-      <loading-screen v-show="searching"></loading-screen>
+      <loading-screen v-show="showSearchBar" v-if="searching && showSearchBar"></loading-screen>
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/profile" />
@@ -60,11 +60,9 @@
       ...ACTIONS,
       search() {
         this.searching = true;
-        this.showSearchBar= false;
         this.load_influencers(this.query)
           .then(() => {
             this.searching = false;
-            this.showSearchBar= true;
             localStorage.setItem('query', this.query);
             this.weights_query = this.query
             this.$router.push('/influencers');
@@ -127,10 +125,9 @@
       }
 
       .nav-search {
+        width: 40%;
+        max-width: 90 * $units;
         text-align: center;
-        width: 45%;
-        padding-right: 5%;
-        padding-left: 5%;
         $height: 4 * $units;
         line-height: $height;
         margin: auto;

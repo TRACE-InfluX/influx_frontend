@@ -13,7 +13,7 @@
 <style lang="scss" scoped>
     .loading {
         height: 10 * $units;
-        width: 45%;
+        width: 50%;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
