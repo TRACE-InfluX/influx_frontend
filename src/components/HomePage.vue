@@ -60,23 +60,27 @@
         <div class="overview-left">
           <p class="why-heading">Detailed View</p>
           <br>
-          <p><span class = blue-text>Reach: </span><span class="why-desc-1">Based on the number of followers</span></p>
+          <p><span class = "blue-text">Preview: </span><span class ="why-desc-1"> A quick preview of the influencer's instagram page, so you can quickly gauge if they're the one for you. </span></p>
+          <br>
+          <p><span class = "blue-text">Reach: </span><span class="why-desc-1">Based on the number of followers.</span></p>
           <br>
           <p><span class = "blue-text">Profit Potential: </span><span class="why-desc-1">Estimate of how often their followers purchase products based on the recommendation of that influencer.</span></p>
           <br>
-          <p><span class = blue-text>Cost: </span><span class="why-desc-1">Estimated cost of the influencer's services, calculated with with the various other metrics.</span></p>
+          <p><span class = "blue-text">Cost: </span><span class="why-desc-1">Estimated cost of the influencer's services, calculated with with the various other metrics.</span></p>
           <br>
-          <p><span class = blue-text>Word Cloud: </span><span class="why-desc-1">Don't know what to search for? We include a word cloud visualization made up of each influencer's hashtags, so you can change the search with a click of a button</span></p>
+          <p><span class = "blue-text">Word Cloud: </span><span class="why-desc-1">Don't know what to search for? We include a word cloud visualization made up of each influencer's hashtags, so you can change the search with a click of a button</span></p>
         </div>
         <div class="overview-right">
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
-        <div class="trust-banner">
           <div class="trust-left">
+            <div class = "left-container">
             <p class="header">Who we are</p>
+            <br>
             <p class="tagline"
             >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
+            <br>
             <ul>
               <li>Programming</li>
               <li>Marketing</li>
@@ -84,24 +88,16 @@
               <li>Recruitment</li>
               <li>Small Business</li>
             </ul>
+            <br>
             <p class="tagline"
             >We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud.</p>
-            <div class="joindiscord">
-              <a href="https://discord.gg/YJ79pbf" target="_blank">
-                <img
-                  class="discordbanner"
-                  src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4"
-                  alt="InfluX Discord"
-                  style="max-width:308px"
-                >
-              </a>
-                          <p class="tagline">Connect with us through Discord, today!</p>
-            </div> <!-- join discord -->
 
+          </div>
           </div> <!-- trust left -->
 
           <div class="trust-right">
-            <ul class = "team-container">
+            <div class = "team-container">
+            <ul>
               <li>
                 <img src="~@/assets/Toni.png" class="team-pics">
               </li>
@@ -118,8 +114,9 @@
                 <img src="~@/assets/Eva.png" class="team-pics">
               </li>
             </ul>
+            </div>
           </div>
-        </div>
+
         <!-- trust-banner -->
     </main>
 
@@ -522,31 +519,14 @@ i {
   padding-top: 2%;
 }
 
-.trust-banner {
-  height: 110vh;
-  color: hsl(216, 100%, 99%);
-  transition: ease-in 750ms;
-  background-color: $primary;
 
 
-  .trust-left {
-    width: 50%;
-    float: left;
-    height: 100%;
-    padding-top: 5%;
-    transition: ease-in 1000ms;
-  }
 
-  .trust-right {
-    padding: auto;
-    width: 50%;
-    float: right;
-    height: 100%;
-    color: #000000;
-    text-align: center;
-  }
 
-  #header {
+
+
+
+  .header {
     font-size: 6 * $units;
     font-weight: 400;
     font-family: "Oswald";
@@ -554,12 +534,9 @@ i {
   }
 
   .tagline {
-    padding-top: 5%;
     font-size: 2.5 * $units;
-    color: #ffffff;
+    color: #FFFFFF;
     text-align: center;
-    padding-right: 10%;
-    padding-left: 10%;
   }
 
   ul {
@@ -572,15 +549,10 @@ i {
     }
   }
 
-.team-container{
-  height: auto;
-  width: auto;
-}
   .team-pics {
-    max-width: 50%;
-    max-height: 50%;
+    width: 40%;
+    height: 40%;
   }
-}
 
 .gap {
   height: 30vh;
@@ -689,6 +661,27 @@ i {
   text-align: center;
   box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
   padding: 1 * $units;
+}
+
+
+.left-container{
+  height: 100vh;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  color: #FFFFFF;
+  background-color: $primary;
+      width: 50%;
+    float: left;
+    font-size: 5vh;
+}
+
+.team-container{
+  background-color: $primary;
+    height: 100vh;
+    padding: auto;
+    width: 50%;
+    float: right;
+    text-align: center;
 }
 </style>
 
