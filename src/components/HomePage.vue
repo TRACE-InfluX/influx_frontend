@@ -293,7 +293,7 @@ main {
 dialog {
   .modal-mask {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     top: 12 * $units;
     padding-top: 1 * $units;
     width: 100%;
