@@ -4,33 +4,41 @@
 
     <!-- influencer detailed view starts here -->
     <article v-if="type === 'detailed'" class="influencer-view influencer-detailed">
-        <div class = "detailed-listing">
-          <a v-bind:href ="influencer.url" target="_blank"><img class="detailed-left-icon" src="~@/assets/instagram_icon.png" height="20"/></a>
-      <div class ="col-left">
-        <p class="detailed-influencer-name">{{influencer.username}}</p>
-        <a v-bind:href ="influencer.url" target="_blank"><img v-bind:src="influencer.profile_image"/></a>
-      </div> <!-- col-left= -->
-        <div class = "col-right">
-            <div class = "top">
-                <h3>{{influencer.name}}</h3>
-               <p>Last Location: {{influencer.location}}</p>
-              <p class = "desc">{{influencer.description}}</p>
-                <div class = "stats">
-                  <div class="posts"> Posts: {{influencer.posts}} </div>
-                  <div class="followers"> Followers: {{influencer.followers}} </div>
-                  <div class="following"> Following: {{influencer.following}} </div>
-                </div>
-            </div>
-            <div class = "bot">
-                    <!-- progbar = vuejs styling -->
-                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
-                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
-                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
-            </div>
-        </div> <!-- col-right" -->
-        <p class = "collapse" v-show="collapsable" @click="toggleType">Less Details <img src="~@/assets/arrow-down.png"></p>
+      <div class = "influencer-listing">
+
+        <a class ="col-left" :href ="influencer.url" target="_blank">
+          <img class="instagram-link" v-bind:href ="influencer.url" src="~@/assets/instagram_icon.png" />
+          <h2 class="list-influencer-name">{{influencer.username}}</h2>
+          <img class="profile-picture" v-bind:src="influencer.profile_image"/>
+        </a> <!-- col-left= -->
+
+        <div class = "col-right" @click="toggleType">
+
+          <div class = "top">
+              <h3>{{influencer.name}}</h3>
+              <p>Last Location: {{influencer.location}}</p>
+            <p class = "desc">{{influencer.description}}</p>
+              <div class = "stats">
+                <div class="posts"> Posts: {{influencer.posts}} </div>
+                <div class="followers"> Followers: {{influencer.followers}} </div>
+                <div class="following"> Following: {{influencer.following}} </div>
+              </div>
+          </div>
+
+          <div class = "bot">
+                  <!-- progbar = vuejs styling -->
+              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+              <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
+              <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
+          </div>
+
         </div>
-        <div class = "detailed-detailed">
+
+        <p class="collapse" @click="toggleType"><img src="~@/assets/arrow-down.png"> Less Details</p>
+
+      </div>
+      
+      <div class = "detailed-detailed">
 
         <div class = "col-left-details">
           <!-- Add the snapshot of socials here -->
@@ -38,7 +46,7 @@
           <img class="feedpreview" :src="influencer.preview && influencer.preview[0] ? influencer.preview[0] : ''" />
           <img class="feedpreview" :src="influencer.preview && influencer.preview[1] ? influencer.preview[1] : ''" />
         </div>
-        
+      
         <div class = "col-right-details">
 
           <ul class="donut-chart">
@@ -101,12 +109,12 @@
 
     <!-- influencer listing view starts here -->
     <article v-else-if="type === 'listing'" class="influencer-view influencer-listing">
-        <a v-bind:href ="influencer.url" target="_blank"><img class="left-icon" src="~@/assets/instagram_icon.png" /></a>
-      <div class ="col-left">
-        <p class="list-influencer-name">{{influencer.username}}</p>
-          <a v-bind:href ="influencer.url" target="_blank"><img v-bind:src="influencer.profile_image"/></a>
-      </div> <!-- col-left= -->
-      <div class = "col-right">
+      <a class ="col-left" :href ="influencer.url" target="_blank">
+        <img class="instagram-link" v-bind:href ="influencer.url" src="~@/assets/instagram_icon.png" />
+        <h2 class="list-influencer-name">{{influencer.username}}</h2>
+        <img class="profile-picture" v-bind:src="influencer.profile_image"/>
+      </a> <!-- col-left= -->
+      <div class = "col-right" @click="toggleType">
           <div class = "top">
 
               <h3>{{influencer.name}}</h3>
@@ -123,14 +131,13 @@
           </div>
             <div class = "bot">
                     <!-- progbar = vuejs styling -->
-                <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
-                <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
-                <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
+              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+              <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
+              <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
 
             </div>
       </div> <!-- col-right" -->
-      <!--<img class = "expand" src="~@/assets/arrow-down.png" @click="toggleType">-->
-        <p class = "expand" @click="toggleType">More Details <img src="~@/assets/arrow-down.png"></p>
+      <p class="expand" @click="toggleType"><img src="~@/assets/arrow-down.png"> More Details</p>
     </article>
 
     <!-- influencer listing view ends here-->
@@ -156,24 +163,20 @@
                 progbar:{
                     display: 'inline-block',
                     backgroundColor: 'grey',
-                    marginTop: '1px',
                     width: '125px',
                     color: 'white'
                 },
                 activitybar:{
                   backgroundColor: '#458eff',
-                  width: 'influencer.activity' + 'px',
                   color: 'white'
 
                 },
                  engagementbar:{
                   backgroundColor: '#458eff',
-                  width: 'influencer.engagement' + 'px',
                   color: 'white'
                 },
                 relevancebar:{
                   backgroundColor: '#458eff',
-                  width: 'influencer.relevance' + 'px',
                   color: 'white'
                 },
                 progress_max: 2 * Math.PI * 50,
@@ -249,13 +252,75 @@
 <!--component specific styling-->
 <style lang="scss" scoped>
 
-    .wordCloud {
-      height: 40 * $units;
-    }
+  .wordCloud {
+    height: 38 * $units;
+  }
 
-    .detailed-detailed {
-        border-top: solid 1px #999999;
-        padding: 3 * $units 5 * $units;
+  .col-left{
+    display: inline-block;
+    flex: 1;
+    text-decoration: none;
+    color: black;
+    &:hover .list-influencer-name {
+      transition: 0.2s ease;
+      color: $primary;
+    }
+    &:hover .instagram-link {
+      transition: 0.2s ease;
+      padding: 0;
+    }
+    &:hover + * + .expand {
+      transition: 0.2s ease;
+      border: none !important;
+      color: #444444 !important;
+    }
+  }
+
+  .instagram-link {
+    position: absolute;
+    left: 31.5 * $units;
+    top: 1.5 * $units;
+    width: 6 * $units;
+    padding: 1px;
+    transition: 0.2s ease;
+  }
+
+  .profile-picture {
+    width: 24 * $units;
+    height: 24 * $units;
+    margin: auto;
+    border-radius:50%;
+  }
+
+  .list-influencer-name {
+    max-width: 27 * $units;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 1.5 * $units auto 0.5 * $units;
+    height: 5 * $units;
+    line-height: 5 * $units;
+    font-size: 2.5 * $units;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s ease;
+  }
+
+  .col-right{
+    cursor: pointer;
+    flex: 2;
+    padding-right: 5 * $units;
+  }
+
+  .top {
+    height: 15 * $units;
+    h3 {
+      margin: 1.75 * $units 0 0.5 * $units;
+      height: 5 * $units;
+      line-height: 5 * $units;
+    }
+    .desc {
+      height: 5.5 * $units;
+      overflow: hidden;
     }
 
     .stats {
@@ -265,31 +330,53 @@
         justify-content: space-evenly;
         border-bottom: solid 1px #999999;
     }
+  }
 
-    .top {
-        height: 15 * $units;
-        margin: 1 * $units;
-        .desc {
-            height: 5.5 * $units;
-            overflow: hidden;
-        }
-    }
+  .bot {
+    padding: 6 * $units 0;
+    font-size: 2 * $units;
+    line-height: 2.75 * $units;
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0.75 * $units;
+  }
 
-    .bot {
-        padding: 1 * $units;
-        height: 8 * $units;
-        font-size: 2 * $units;
-        text-align: center;
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-gap: .5 * $units;
-    }
+  .cssbar {
+    display: inline-block;
+    margin-left: -23.8 * $units;
+  }
 
-    .cssbar {
-     display: inline-block;
-     margin-left: -19.25 * $units;
-     margin-top: 1px;
+  .detailed-detailed {
+    display: flex;
+    border: solid 1px #999999;
+  }
+
+  .col-left-details {
+    flex: 1;
+    padding-left: 2 * $units;
+    h3 {
+      height: 6 * $units;
+      line-height: 6 * $units;
     }
+  }
+
+  .col-right-details {
+    flex: 2;
+    padding-right: 3 * $units;
+    h3 {
+      height: 6 * $units;
+      line-height: 6 * $units;
+    }
+  }
+  
+  .feedpreview {
+    margin: auto;
+    margin-bottom: 3 * $units;
+    width: 25 * $units;
+    display: block;
+  }
+
 
   .influencer-tile {
     position: relative;
@@ -328,53 +415,17 @@
     cursor: pointer;
   }
 
-  .detailed-left-icon {
-    display: inline-block;
-    margin-left: -60 * $units;
-    margin-top: 1 * $units;
-    height: 3 * $units;
-    width: 3 * $units;
-  }
-
   .influencer-detailed{
-    border: 1px solid #999999;
     box-sizing: border-box;
     height: 100 * $units;
     width: 100 * $units;
-    text-align: center;
-    margin:auto;
+    margin: auto;  
 
-      .collapse {
-          margin-left: auto;
-          margin-right: auto;
-          width: 15 * $units;
-          height: 3 * $units;
-        img {
-            height: 1.5 * $units;
-            width: 1.5 * $units;
-            transform: rotate(180deg);
-        }
-      }
-      .collapse:hover {
-        cursor: pointer;
-      }
-
-    h2{
-      display:inline-block;
+    .influencer-listing {
+      border-bottom: none;
     }
 
-    // preview of the social media page positioning -- currently a placeholder
-    .feedpreview {
-      margin-top: 3 * $units;
-      width: 25 * $units;
-      display: block;
-    }
-
-    .donut-chart h3 {
-      margin-bottom: 2 * $units;
-    }
-
-    .donut{
+    .donut {
       $size: 15 * $units;
       position: relative;
       display: inline-block;
@@ -394,170 +445,53 @@
       }
     }
 
-    .col-left-details{
-      float: left;
-      width: 25 * $units;
-    }
-
-    .detailed-influencer-name {
-      margin-top: 1.5 * $units;
-      margin-left: 1 * $units;
-      font-weight: 800;
-    }
-
-
-    .detailed-listing{
-      height: 33 * $units;
-      border-bottom: black;
-    }
-
-      .col-right-details{
-      margin-left: 30 * $units;
-
-      //gap between buttons
-
-        .inline{
-          margin: 2 * $units;
-        }
-
-        button {
-        height: 5 * $units;
-        background-color: #FFFFFF;
-        color: #458eff;
-        display: inline-block;
-        width: 22 * $units;
-        border: solid #99999999;
-        border-width: 1px;
-        border-radius: 10px;
-        }
-
-      } //col-right-details
-
-      .col-right{
-        float:right;
-        width:65%;
-        padding-top:2%;
-        padding-bottom:2%;
-        height: 30 * $units;
-        padding-right:5%;
-        padding-left:5%;
-
-        .icon{
-        height:4 * $units;
-        width:4 * $units;
-        float:left;
-      }
-
-    } //col-right-details
-
-    .col-left{
-      float:left;
-      width:35%;
-      height: 30 * $units;
-
-      img{
-        padding-top: 5%;
-        padding-bottom: 5%;
-        width: 25 * $units;
-        height: 25 * $units;
-        border-radius:50%;
-      }
-    }
-
-    h2{
-      font-size: 3 * $units;
-    }
-
-      /*&:hover {
-          box-shadow: inset 2.5px 0 0 0 $primary;
-      }*/
   }
 
 // influencer list view starts here
   .influencer-listing{
+    position: relative;
+    display: flex;
     border: 1px solid #999999;
     box-sizing: border-box;
     width: 100 * $units;
-    height: 33 * $units;
+    height: 38 * $units;
     margin: auto;
-    text-align: center;
 
-    &:hover {
-      box-shadow: inset 2.5px 0 0 0 $primary;
-      .expand {
-        /*visibility: visible;*/
+    &:hover .expand, .expand:hover {
+      transition: 0.2s ease;
+      border-bottom: 0.5 * $units solid $primary;
+      color: $primary;
+    }
+
+    &:hover .collapse, .collapse:hover{
+      transition: 0.2s ease;
+      color: $primary;
+    }
+
+    .expand, .collapse {
+      text-align: left;
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      height: 6 * $units;
+      line-height: 6 * $units;  
+      width: 100%;
+      font-size: 2 * $units;
+      font-weight: bold;
+      padding: 0 6.5 * $units;
+      letter-spacing: 1px;
+      cursor: pointer;
+      color: #444444;
+      transition: 0.2s ease;
+      img {
+          height: 1.5 * $units;
+          width: 1.5 * $units;
+          margin-right: 1 * $units;
       }
     }
-
-    h2{
-    display:inline-block;
-    }
-
-    .col-right{
-      float:right;
-      width:65%;
-      padding-top:2%;
-      padding-bottom:2%;
-      height: 30 * $units;
-      padding-right:5%;
-      padding-left:5%;
-
-      .icon{
-        height:4 * $units;
-        width:4 * $units;
-        float:left;
-      }
-    }
-   // icons on the left - new addition May 13 2019
-    .left-icon {
-      display: inline-block;
-      margin-left: -60 * $units;
-      margin-top: 1 * $units;
-      height: 3 * $units;
-      width: 3 * $units;
-    }
-
-  // .list-influencer-name - new addition May 13 2019
-
-    .list-influencer-name {
-      margin-top: 1.5 * $units;
-      margin-left: 1 * $units;
-      font-weight: 800;
-    }
-
-    .col-left{
-      float:left;
-      width:35%; // these add up to 100 thats why
-      height: 30 * $units;
-
-      img{
-        padding-top: 5%;
-        padding-bottom: 5%;
-        width: 25 * $units;
-        height: 25 * $units;
-        border-radius:50%;
-      }
-    }
-
-    h2{
-      font-size: 3 * $units;
-    }
-
-    .expand {
-/*
-      visibility: hidden;
-*/
-      margin-left: auto;
-      margin-right: auto;
-      height: 3 * $units;
-      width: 15 * $units;
-        img {
-            height: 1.5 * $units;
-            width: 1.5 * $units;
-        }
-    }
-    .expand:hover {
-        cursor: pointer;
+    .collapse img {
+      transition: 0.2s ease;
+      transform: rotate(180deg);
     }
   }
 </style>
