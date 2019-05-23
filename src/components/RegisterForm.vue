@@ -1,9 +1,9 @@
 <template>
-    <form class="register-form" @submit.prevent="submit">
+    <form class="register-form" @submit.prevent="submit()">
         <h2>Register</h2>
-        <input type="text"  v-model="input.email" required placeholder="Email">
-        <input type="password"  v-model="input.password" required placeholder="Password">
-        <button type="button" v-on:click="register()">Register</button>
+        <input type="text"  v-model="credentials.email" required placeholder="Email">
+        <input type="password"  v-model="credentials.password" required placeholder="Password">
+        <button>Register</button>
         <p>Have an account?</p>
         <router-link to="/login">Log in now</router-link>
     </form>
@@ -11,21 +11,23 @@
 
 <script>
   //package to make httprequests
-  import API from '@/api.js'
+  import {ACTIONS} from '@/store.js'
 
     export default {
         data() {
             return {
-                input: {
+                credentials: {
                     email: "",
                     password: ""
                 }
             }
         },
         methods: {
-            register() {
-                const new_user = this.input;
-                API.post('/v0/accounts', { email: new_user.email, password: new_user.password });
+            ...ACTIONS,
+            submit() {
+                this.register(this.credentials).then(() => {
+                    this.$router.push('/')
+                })
             }
         }
     }
@@ -46,7 +48,6 @@
         margin: 2 * $units auto;
     }
 
-
     input {
         height: 4 * $units;
         padding-left: 1 * $units;
@@ -58,20 +59,21 @@
     }
     button {
         height: 5 * $units;
-        background-color: #458eff;
+        background-color: $primary;
         color: white;
         padding: 1 * $units;
         display: inline-block;
         width: 25 * $units;
         border-style:none;
         border-radius: 0.5 * $units;
+        font-size: 2 * $units;
     }
 
     .register-form{
         text-align:center;
         margin-top:10%;
         position:relative;
-        height: 50 * $units
+        height: 50 * $units;
     }
 
     h2{

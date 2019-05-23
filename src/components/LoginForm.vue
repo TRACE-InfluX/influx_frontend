@@ -1,45 +1,37 @@
 <!-- template for a login page.-->
 <template>
-  <form class="login-form" @submit.prevent="login">
+
+  <form class="login-form" @submit.prevent="submit()">
     <h2>Login</h2>
-    <input type="text"  v-model="input.username" required placeholder="Email">
-    <input type="password"  v-model="input.password" required placeholder="Password">
+    <input type="text" v-model="credentials.email" required placeholder="Email">
+    <input type="password"  v-model="credentials.password" required placeholder="Password">
     <button>Login</button>
-    <p>Forgot your login details?</p>
-    <router-link to="">Get help signing in.</router-link>
   </form>
+
 </template>
 
 <script>
-  import API from '@/api.js'
+  import {ACTIONS, STATE} from '@/store.js'
 
     export default {
         data() {
+
             return {
-                input: {
-                    username: "",
+                credentials:{
+                    email: "",
                     password: ""
                 }
             }
         },
+        computed: {
+            ...STATE
+        },
         methods: {
-            login() {
-                if(this.input.username != "" && this.input.password != "") {
-                    API.post('/v0/auth', { email: this.input.username, password: this.input.password })
-                        .then((res) => {
-                            localStorage.setItem("bearertoken", res.data.idToken);
-                            localStorage.setItem("admin", res.data.admin);
-                            API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
-                            if (res.data.admin) {
-                              this.$router.push('/accounts')
-                            }
-                            else {
-                              this.$router.push('/influencers')
-                            }
-                        });
-                } else {
-                    alert("A username and password must be present");
-                }
+            ...ACTIONS,
+            submit() {
+                this.login(this.credentials).then(() => {
+                    this.$router.push('/')
+                })
             }
         }
     }
@@ -73,13 +65,14 @@
 
     button {
         height: 5 * $units;
-        background-color: #458eff;
+        background-color: $primary;
         color: white;
         padding: 1 * $units;
         display: inline-block;
         width:25 * $units;
         border-style:none;
         border-radius: 0.5 * $units;
+        font-size: 2 * $units;
     }
 
     .login-form{

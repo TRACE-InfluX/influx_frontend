@@ -1,100 +1,124 @@
 <!--Template for default view for all influencers-->
 <template>
   <div class="influencer-index">
-    <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
     <ul>
-      <h2>{{ filtered_influencers.length }} results</h2>
+      <div class = "sort-dropdown">
+        <button class = "sort-button">Sort By <img src="~@/assets/arrow-down.png"></button>
+        <div class = "sort-content">
+          <a href="#" @click.prevent="sort_influencers('default')">Default</a>
+          <a href="#" @click.prevent="sort_influencers('relevance')">Relevance</a>
+          <a href="#" @click.prevent="sort_influencers('engagement')">Engagement</a>
+          <a href="#" @click.prevent="sort_influencers('activity')">Activity</a>
+          <a href="#" @click.prevent="sort_influencers('profit')">Profit</a>
+          <a href="#" @click.prevent="sort_influencers('profit/cost')">Profit/Cost</a>
+          <a href="#" @click.prevent="sort_influencers('followers')">Followers</a>
+          <a href="#" @click.prevent="sort_influencers('posts')">Posts</a>
+          <a href="#" @click.prevent="sort_influencers('following')">Following</a>
+        </div>
+      </div>
+      <h2>{{ influencers.length }} results</h2>
       <!--Looping through all influencers retrieved from API call to backend-->
-      <li v-for="influencer in rendered_influencers" 
-        :key="influencer.id"
+      <li v-for="influencer in rendered_influencers"
+        :key="influencer._id"
         @mouseover="render_more(influencer)"
       >
-        <influencer-view 
+        <influencer-view
           :influencer="influencer"
-          :type="getType(influencer.id)"
-          @click.native="select(influencer.id)"
+          :weights="weights"
+          :type="getType(influencer._id)"
+          v-on:expand="select(influencer._id)"
+          v-on:collapse="select"
         />
       </li>
     </ul>
+    <back-to-top class = "btn-to-top">Back to Top</back-to-top>
   </div> <!--influencer index -->
 </template>
 
 
 
 <script>
-import { STATE } from '@/store.js'
+import { STATE, ACTIONS } from '@/store.js'
+import API from '@/api.js'
 
 export default {
   data() {
       return {
         selected_influencer: '',
-        query: '',
+        weights: {},
         render_limit: 4
-    }
-  },
-  mounted() {
-    this.query = localStorage.getItem("query") || '';
-
-    this.$refs.search.focus();
-    window.onkeydown = () => {
-      this.$refs.search.focus();
     }
   },
   computed: {
     ...STATE,
-    keywords() {
-      return this.query.toLowerCase().split(' ')
-    },
-    filtered_influencers() {
-      // Return full list if no query
-      return !this.query ? this.influencers:
-      // Else filter by keywords
-      this.influencers.filter(influencer => {
-        for (let key of this.keywords) {
-          // Test that every key matches at least one criterion
-          if ( !influencer.name.toLowerCase().includes(key)
-            && !influencer.username.toLowerCase().includes(key)
-            && !influencer.description.toLowerCase().includes(key)
-            && !influencer.location.toLowerCase().includes(key)
-            && !influencer.weights[key]
-            && !influencer.weights['#' + key]
-          ) {
-            // Reject the influencer if any key matches zero criteria
-            return false
-          }
-        }
-        // If all keys have a match, allow through the filter
-        return true
-      })
-    },
     rendered_influencers() {
-      return this.filtered_influencers.slice(0,this.render_limit)
-    }
-  },
-  watch: {
-    query(q) {
-      this.render_limit = 4
-      localStorage.setItem("query", q)
-      scrollTo(0,0)
+      return this.influencers.slice(0,this.render_limit)
     }
   },
   methods: {
+    ...ACTIONS,
     select(id) {
       this.selected_influencer = id;
+      this.weights = {}
+      if (id) {
+        let params = { _id: id }
+        API.get('/v0/weights', { params }).then(res => {
+          this.weights = res.data.processed_weights
+        })
+      }
     },
     getType(id) {
-      return id === this.selected_influencer ? "detailed" : "listing"
+      return id === this.selected_influencer ? "detailed" : "listing";
     },
     render_more(influencer) {
       // This will lazy load profiles into the ui to make the experience smoother
       // it will always render a depth 10 more than the current hover
-      this.render_limit = Math.max(this.render_limit, 10 + this.filtered_influencers.indexOf(influencer))
+      this.render_limit = Math.max(this.render_limit, 10 + this.influencers.indexOf(influencer))
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
+  .sort-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 90 * $units;
+  }
+
+  .sort-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 20 * $units;
+    box-shadow: $shadow;
+    z-index: 1;
+
+    a {
+      color: black;
+      padding: 1 * $units 2 * $units;
+      text-decoration: none;
+      display: block;
+    }
+
+    a:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+
+  .sort-button {
+    color: black;
+    background-color: white;
+    img {
+      height: 1 * $units;
+      width: 1 * $units;
+    }
+  }
+
+  .sort-dropdown:hover .sort-content {display: block;}
+  .sort-dropdown:hover .sort-button {background-color: #999999;}
 
   ul {
     width: 100%;
@@ -107,27 +131,25 @@ export default {
     padding: 2 * $units;
 
   }
+
   .influencer-index {
-  
     padding-top: 10%;
     text-align: center;
-    
   }
 
-  .search-bar {
-    $height: 5 * $units;
-    font-size: 1.8 * $units;
-    width: 57 * $units; 
-    height: $height;  
-    border-radius: 0.5 * $units;
-    border:none;
-    box-shadow: $shadow;
-    padding-left: 1 * $units;
-    padding-right:1 * $units;
-    margin-right: 1 * $units;
-    padding-right: 1 * $units;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }
-  
+  .btn-to-top{
+  border: 0;
+  background: none;
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
+  height: 5 * $units;
+  width: 20 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  text-align: center;
+  box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
+  padding: 1 * $units;
+}
+
 </style>
