@@ -8,11 +8,13 @@
       <p class="banner-tagline"
       >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
-      <loading-screen v-if="$parent.searching"></loading-screen>
-      <form @submit.prevent="search" v-else v-observe-visibility="hideSearchbar">
-        <i class="zmdi zmdi-search"/>
-        <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
-        <button>Discover</button>
+      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
+        <loading-screen v-if="$parent.searching"></loading-screen>
+        <template v-else>
+          <i class="zmdi zmdi-search"/>
+          <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
+          <button>Discover</button>
+        </template>
       </form>
     </header>
 
@@ -224,6 +226,14 @@ header {
     height: $height;
     display: flex;
 
+    .loading-screen {
+      display:flex;
+      height: 9 * $units;
+      margin: auto;
+      line-height: 9 * $units;
+      font-size: 4 * $units;
+    }
+
     i {
       position: absolute;
       color: gray;
@@ -274,24 +284,6 @@ main {
     color: #999;
     letter-spacing: 1.5 * $units;
   }
-
-  // .popular {
-  //   display: flex;
-  //   justify-content: space-evenly;
-  //   width: 75%;
-  //   margin: auto;
-
-  //   li {
-  //     display: inline;
-  //     max-width: 32 * $units;
-  //     max-height: 32 * $units;
-  //     padding: 1 * $units;
-  //     .influencer-view {
-  //       display: block;
-  //       margin: auto;
-  //     }
-  //   }
-  // }
 }
 
 dialog {
