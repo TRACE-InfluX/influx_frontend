@@ -2,16 +2,16 @@
     <div class="profile">
 
     <header></header>
-    <body>
-
+   
 
   
     
     <div class="container">
+   
     <div class="nav">    
-
+               
     <div class="menu">
-
+        <h3 class="welcomemsg">Welcome to Influx!</h3>   
         <ul>
 
             <li><i class="zmdi zmdi-view-dashboard"></i><button>Dashboard</button></li>
@@ -24,7 +24,7 @@
 
 
      <div class="dash-content">
-    <h3 class="welcomemsg">Welcome to Influx!</h3>    
+   
     <!-- have span class to bind to username, currently placeholder -->  
     <h3 class="signedin">signed in as:</h3>
     <p>  {{ email }}  </p>
@@ -42,7 +42,6 @@
     
     </div>     
         
-    </body> 
 
     </div>
 </template>
@@ -100,8 +99,14 @@ methods: {
     box-sizing: border-box;
   }
 
+ .welcomemsg {
+     position: relative; 
+     top: -10vh; 
+ }
+
  .container {
-     margin-top: 40 * $units; 
+     width: 80vw; 
+     margin-top: 30 * $units; 
     //  display: flex; 
     //  justify-content: center; 
      display: grid; 
@@ -120,15 +125,15 @@ methods: {
      grid-area: navigation; 
      height: 50vh; 
      width: 50vw; 
-
-     
   }
 
   .menu 
   {
-      
-      display: flex;
-      justify-content: center; 
+      position: relative; 
+      left: 10vw; 
+    //   display: flex;
+    //   justify-content: center; 
+      width: 40vw; 
       font-family: 'Puritan', sans-serif;
       font-size: 3 * $units; 
       color: $primary; 
@@ -150,14 +155,14 @@ ul {
 }
 
 li {
-     display: inline; 
-     border-bottom: 5px solid white; 
+
+     border-left: 5px solid white; 
      padding: 1 * $units; 
      transition: all 0.5s; 
 }
 
  li:hover {
-          border-bottom: 5px solid $primary; 
+          border-left: 5px solid $primary; 
           padding: 1 * $units; 
       }
 
@@ -165,7 +170,7 @@ li {
 
   .dash-content {
       
-      margin-top: -10 * $units; 
+      top: -10vh; 
       grid-area: dashcontent;  
       height: 50vh; 
       width: 50vw; 
