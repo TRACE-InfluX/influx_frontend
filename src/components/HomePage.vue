@@ -2,7 +2,7 @@
   <div class="home-page">
     <header>
       <p>
-        <span id="header">CONNECT WITH YOUR </span>
+        <span class="header">CONNECT WITH YOUR </span>
         <span id="header-highlight">WORLD</span>
       </p>
       <p class="banner-tagline"
@@ -74,7 +74,7 @@
       <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
-            <p id="header">Who we are</p>
+            <p class="header">Who we are</p>
             <p class="tagline"
             >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
             <ul>
@@ -95,12 +95,13 @@
                   style="max-width:308px"
                 >
               </a>
-            </div>
-            <p class="tagline">Connect with us through Discord, today!</p>
-          </div>
+                          <p class="tagline">Connect with us through Discord, today!</p>
+            </div> <!-- join discord -->
+
+          </div> <!-- trust left -->
 
           <div class="trust-right">
-            <ul>
+            <ul class = "team-container">
               <li>
                 <img src="~@/assets/Toni.png" class="team-pics">
               </li>
@@ -196,7 +197,7 @@ header {
   height: 60 * $units;
   padding: 20 * $units 3 * $units 0;
 
-  #header {
+  .header {
     font-size: 6 * $units;
     font-weight: 400;
     font-family: "Oswald";
@@ -257,6 +258,13 @@ header {
     }
   }
 }
+
+  .header {
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: "Oswald";
+    text-align:center;
+  }
 
 main {
   h3 {
@@ -516,22 +524,22 @@ i {
 }
 
 .trust-banner {
-  height: 100vh;
+  height: 110vh;
   color: hsl(216, 100%, 99%);
   transition: ease-in 750ms;
   background-color: $primary;
 
+
   .trust-left {
     width: 50%;
     float: left;
-    height: 100vh;
+    height: 100%;
     padding-top: 5%;
     transition: ease-in 1000ms;
-    padding-bottom: 5%;
   }
 
   .trust-right {
-    padding-top: 3*$units;
+    padding: auto;
     width: 50%;
     float: right;
     height: 100%;
@@ -565,9 +573,13 @@ i {
     }
   }
 
+.team-container{
+  height: auto;
+  width: auto;
+}
   .team-pics {
-    max-width: 20vw;
-    max-height: 20vh;
+    max-width: 50%;
+    max-height: 50%;
   }
 }
 
@@ -668,8 +680,9 @@ i {
 .btn-to-top{
   border: 0;
   background: none;
-  background-color: $primary;
-  color: white;
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
   height: 5 * $units;
   width: 20 * $units;
   border-radius: 0.5 * $units;
