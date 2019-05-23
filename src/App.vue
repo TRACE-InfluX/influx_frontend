@@ -4,15 +4,19 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
-      <form @submit.prevent="search" class="nav-search" v-if="showSearchBar && !searching">
-        <i class="zmdi zmdi-search" />
-        <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
-        <button>Discover</button>
-      </form>
-      <loading-screen v-show="showSearchBar" v-if="searching && showSearchBar"></loading-screen>
-      <router-link to="/register">Register</router-link>
-      <router-link to="/login">Login</router-link>
-      <router-link class="profile" to="/profile" />
+      <div class = "nav-mid" v-if="showSearchBar">
+        <form @submit.prevent="search" class="nav-search" v-if="!searching">
+          <i class="zmdi zmdi-search" />
+          <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
+          <button>Discover</button>
+        </form>
+        <loading-screen v-else></loading-screen>
+      </div>
+      <div class="nav-profile">
+        <router-link to="/register">Register</router-link>
+        <router-link to="/login">Login</router-link>
+        <router-link class="profile" to="/profile" />
+      </div>
     </nav>
 
     <router-view></router-view>
@@ -109,8 +113,8 @@
 
     > nav {
       display: flex;
-      justify-content: space-between;
       position: fixed;
+      justify-content: space-between;
       top:0;
       height: $header-height;
       color: #414042;
@@ -124,48 +128,49 @@
         line-height: $header-height;
       }
 
-      .nav-search {
+      .nav-mid {
         width: 40%;
-        max-width: 90 * $units;
-        text-align: center;
-        $height: 4 * $units;
-        line-height: $height;
         margin: auto;
-        height: $height;
-        display: flex;
-
-        i {
-          position: absolute;
-          color: gray;
+        .nav-search {
+          text-align: center;
+          $height: 4 * $units;
+          line-height: $height;
           height: $height;
-          width: $height;
-          padding: 1 * $units;
-        }
+          display: flex;
 
-        input, button {
-          font-size: 1.8 * $units;
-          border-radius: 0.5 * $units;
-          border: none;
-          box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
-        }
+          i {
+            position: absolute;
+            color: gray;
+            height: $height;
+            width: $height;
+            padding: 1 * $units;
+          }
 
-        input {
-          flex: 1;
-          padding-left: $height;
-          margin-right:  1 * $units;
-          padding-right: 1 * $units;
-          width: 100%
-        }
+          input, button {
+            font-size: 1.8 * $units;
+            border-radius: 0.5 * $units;
+            border: none;
+            box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
+          }
 
-        button {
-          background-color: $primary;
-          color: white;
-          border-radius: 0.5 * $units;
+          input {
+            flex: 1;
+            padding-left: $height;
+            margin-right:  1 * $units;
+            padding-right: 1 * $units;
+            width: 100%
+          }
+
+          button {
+            background-color: $primary;
+            color: white;
+            border-radius: 0.5 * $units;
+          }
         }
       }
 
+
       h1 {
-        margin-right: auto;
         font-family: 'Puritan', sans-serif;
         font-size: 4 * $units;
         letter-spacing: 1.5 * $units;
@@ -181,29 +186,31 @@
         }
       }
 
-      a {
-        width: 15 * $units;
-        font-size: 2.5 * $units;
-        text-decoration: none;
-        text-align: center;
+      nav-profile {
+        a {
+          width: 15 * $units;
+          font-size: 2.5 * $units;
+          text-decoration: none;
+          text-align: center;
 
-        &:visited {
-          color: #414042;
+          &:visited {
+            color: #414042;
+          }
+
+          &:hover {
+            border-bottom: 0.5 * $units solid $primary;
+            transition: 0.2s ease;
+          }
         }
 
-        &:hover {
-          border-bottom: 0.5 * $units solid $primary;
-          transition: 0.2s ease;
+        .profile {
+          width: $header-height - 1.5 * $units;
+          margin-top: 1  * $units;
+          margin-bottom: 1 * $units;
+          background: url('~@/assets/profile.png');
+          background-size: 100%;
+          background-repeat: no-repeat;
         }
-      }
-
-      .profile {
-        width: $header-height - 1.5 * $units;
-        margin-top: 1  * $units;
-        margin-bottom: 1 * $units;
-        background: url('~@/assets/profile.png');
-        background-size: 100%;
-        background-repeat: no-repeat;
       }
 
     }
