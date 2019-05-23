@@ -39,7 +39,6 @@
                     API.post('/v0/auth', { email: this.input.username, password: this.input.password }, {headers: {'Content-Type': 'application/json'}})
                         .then((res) => {
                             localStorage.setItem("bearertoken", res.data.token);
-                            console.log(localStorage.bearertoken)
                             localStorage.setItem("admin", res.data.admin);
                             API.defaults.headers.common = { 'Authorization': `Bearer ${localStorage.bearertoken}` };
                     API.get('/v0/accounts/me', {}, {headers: {'Authorization': `Bearer ${localStorage.bearertoken}`}}).then(res => {
