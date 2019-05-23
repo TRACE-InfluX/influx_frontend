@@ -2,16 +2,19 @@
   <div class="home-page">
     <header>
       <p>
-        <span id="header">CONNECT WITH YOUR </span>
+        <span class="header">CONNECT WITH YOUR </span>
         <span id="header-highlight">WORLD</span>
       </p>
       <p class="banner-tagline"
       >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
       <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
-        <i class="zmdi zmdi-search"/>
-        <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
-        <button>Discover</button>
+        <loading-screen v-if="$parent.searching"></loading-screen>
+        <template v-else>
+          <i class="zmdi zmdi-search"/>
+          <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
+          <button>Discover</button>
+        </template>
       </form>
     </header>
 
@@ -51,7 +54,7 @@
             score, the more an influencer is connected to their followers on a personal level, thus increasing
             the chances that a follower would take product recommendations and advice.</span></p>
           <br>
-          <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer.</span></p>
+          <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer, last posted location.</span></p>
         </div>
       </section>
 
@@ -59,24 +62,27 @@
         <div class="overview-left">
           <p class="why-heading">Detailed View</p>
           <br>
-          <p><span class = blue-text>Reach: </span><span class="why-desc-1">Based on the number of followers</span></p>
+          <p><span class = "blue-text">Preview: </span><span class ="why-desc-1"> A quick preview of the influencer's instagram page, so you can quickly gauge if they're the one for you. </span></p>
+          <br>
+          <p><span class = "blue-text">Reach: </span><span class="why-desc-1">Based on the number of followers.</span></p>
           <br>
           <p><span class = "blue-text">Profit Potential: </span><span class="why-desc-1">Estimate of how often their followers purchase products based on the recommendation of that influencer.</span></p>
           <br>
-          <p><span class = blue-text>Cost: </span><span class="why-desc-1">Estimated cost of the influencer's service.</span></p>
+          <p><span class = "blue-text">Cost: </span><span class="why-desc-1">Estimated cost of the influencer's services, calculated with with the various other metrics.</span></p>
           <br>
-          <p><span class = blue-text>Word Cloud: </span><span class="why-desc-1">Visualization of the influencer’s common hashtags, with the most used being the biggest.</span></p>
+          <p><span class = "blue-text">Word Cloud: </span><span class="why-desc-1">Don't know what to search for? We include a word cloud visualization made up of each influencer's hashtags, so you can change the search with a click of a button</span></p>
         </div>
         <div class="overview-right">
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
-      <section v-scroll-reveal.reset="{ delay: 100 }">
-        <div class="trust-banner">
           <div class="trust-left">
-            <p id="header">Who we are</p>
+            <div class = "left-container">
+            <p class="header">Who we are</p>
+            <br>
             <p class="tagline"
             >We are a group of gradutes from the Britsh Columbia Institute of Technology, with years of experience in:</p>
+            <br>
             <ul>
               <li>Programming</li>
               <li>Marketing</li>
@@ -84,22 +90,15 @@
               <li>Recruitment</li>
               <li>Small Business</li>
             </ul>
+            <br>
             <p class="tagline"
             >We have combined our skills and expertise together with our passion for social media and marketing to make the InfluX a product that we are proud.</p>
-            <div class="joindiscord">
-              <a href="https://discord.gg/YJ79pbf" target="_blank">
-                <img
-                  class="discordbanner"
-                  src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner4"
-                  alt="InfluX Discord"
-                  style="max-width:308px"
-                >
-              </a>
-            </div>
-            <p class="tagline">Connect with us through Discord, today!</p>
+
           </div>
+          </div> <!-- trust left -->
 
           <div class="trust-right">
+            <div class = "team-container">
             <ul>
               <li>
                 <img src="~@/assets/Toni.png" class="team-pics">
@@ -117,10 +116,10 @@
                 <img src="~@/assets/Eva.png" class="team-pics">
               </li>
             </ul>
+            </div>
           </div>
-        </div>
+
         <!-- trust-banner -->
-      </section>
     </main>
 
     <!-- // <dialog :open="dialog">
@@ -196,7 +195,7 @@ header {
   height: 60 * $units;
   padding: 20 * $units 3 * $units 0;
 
-  #header {
+  .header {
     font-size: 6 * $units;
     font-weight: 400;
     font-family: "Oswald";
@@ -226,6 +225,14 @@ header {
 
     height: $height;
     display: flex;
+
+    .loading-screen {
+      display:flex;
+      height: 9 * $units;
+      margin: auto;
+      line-height: 9 * $units;
+      font-size: 4 * $units;
+    }
 
     i {
       position: absolute;
@@ -258,6 +265,13 @@ header {
   }
 }
 
+  .header {
+    font-size: 6 * $units;
+    font-weight: 400;
+    font-family: "Oswald";
+    text-align:center;
+  }
+
 main {
   h3 {
     $height: 18 * $units;
@@ -270,30 +284,12 @@ main {
     color: #999;
     letter-spacing: 1.5 * $units;
   }
-
-  // .popular {
-  //   display: flex;
-  //   justify-content: space-evenly;
-  //   width: 75%;
-  //   margin: auto;
-
-  //   li {
-  //     display: inline;
-  //     max-width: 32 * $units;
-  //     max-height: 32 * $units;
-  //     padding: 1 * $units;
-  //     .influencer-view {
-  //       display: block;
-  //       margin: auto;
-  //     }
-  //   }
-  // }
 }
 
 dialog {
   .modal-mask {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     top: 12 * $units;
     padding-top: 1 * $units;
     width: 100%;
@@ -515,31 +511,14 @@ i {
   padding-top: 2%;
 }
 
-.trust-banner {
-  height: 100vh;
-  color: hsl(216, 100%, 99%);
-  transition: ease-in 750ms;
-  background-color: $primary;
 
-  .trust-left {
-    width: 50%;
-    float: left;
-    height: 100vh;
-    padding-top: 5%;
-    transition: ease-in 1000ms;
-    padding-bottom: 5%;
-  }
 
-  .trust-right {
-    padding-top: 3*$units;
-    width: 50%;
-    float: right;
-    height: 100%;
-    color: #000000;
-    text-align: center;
-  }
 
-  #header {
+
+
+
+
+  .header {
     font-size: 6 * $units;
     font-weight: 400;
     font-family: "Oswald";
@@ -547,12 +526,9 @@ i {
   }
 
   .tagline {
-    padding-top: 5%;
     font-size: 2.5 * $units;
-    color: #ffffff;
+    color: #FFFFFF;
     text-align: center;
-    padding-right: 10%;
-    padding-left: 10%;
   }
 
   ul {
@@ -566,10 +542,10 @@ i {
   }
 
   .team-pics {
-    max-width: 20vw;
-    max-height: 20vh;
+
+    width: 35%;
+    height: 35%;
   }
-}
 
 .gap {
   height: 30vh;
@@ -668,8 +644,9 @@ i {
 .btn-to-top{
   border: 0;
   background: none;
-  background-color: $primary;
-  color: white;
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
   height: 5 * $units;
   width: 20 * $units;
   border-radius: 0.5 * $units;
@@ -677,6 +654,34 @@ i {
   text-align: center;
   box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
   padding: 1 * $units;
+}
+
+
+.left-container{
+  height: 100vh;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  color: #FFFFFF;
+  background-color: $primary;
+      width: 50%;
+    float: left;
+    font-size: 5vh;
+    padding-left: 7.5%;
+}
+
+.team-container{
+  background-color: $primary;
+    height: 100vh;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    width: 50%;
+    float: right;
+    text-align: center;
+
+    ul{
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
 }
 </style>
 
