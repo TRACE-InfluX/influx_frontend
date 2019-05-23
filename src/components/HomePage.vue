@@ -52,7 +52,7 @@
             score, the more an influencer is connected to their followers on a personal level, thus increasing
             the chances that a follower would take product recommendations and advice.</span></p>
           <br>
-          <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer.</span></p>
+          <p><span class = "blue-text">Area of Influence: </span><span class="why-desc-1">The market sphere of the influencer, last posted location.</span></p>
         </div>
       </section>
 
@@ -64,9 +64,9 @@
           <br>
           <p><span class = "blue-text">Profit Potential: </span><span class="why-desc-1">Estimate of how often their followers purchase products based on the recommendation of that influencer.</span></p>
           <br>
-          <p><span class = blue-text>Cost: </span><span class="why-desc-1">Estimated cost of the influencer's service.</span></p>
+          <p><span class = blue-text>Cost: </span><span class="why-desc-1">Estimated cost of the influencer's services, calculated with with the various other metrics.</span></p>
           <br>
-          <p><span class = blue-text>Word Cloud: </span><span class="why-desc-1">Visualization of the influencer’s common hashtags, with the most used being the biggest.</span></p>
+          <p><span class = blue-text>Word Cloud: </span><span class="why-desc-1">Don't know what to search for? We include a word cloud visualization made up of each influencer's hashtags, so you can change the search with a click of a button</span></p>
         </div>
         <div class="overview-right">
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
