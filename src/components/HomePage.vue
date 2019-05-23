@@ -666,13 +666,14 @@ i {
 
 .left-container{
   height: 100vh;
-  padding-top: 5%;
+  padding-top: 10%;
   padding-bottom: 5%;
   color: #FFFFFF;
   background-color: $primary;
       width: 50%;
     float: left;
     font-size: 5vh;
+    padding-left: 7.5%;
 }
 
 .team-container{
