@@ -27,7 +27,7 @@
 
           <div class = "bot">
                   <!-- progbar = vuejs styling -->
-              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: Math.min(2 * influencer.relevance, 200)+ '%'}"></span>
               <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
               <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
           </div>
@@ -131,7 +131,7 @@
           </div>
             <div class = "bot">
                     <!-- progbar = vuejs styling -->
-              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.relevance)+ '%'}"></span>
+              <span v-bind:style="progbar">Relevance</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: Math.min(2 * influencer.relevance, 200)+ '%'}"></span>
               <span v-bind:style="progbar">Engagement</span><span class="cssbar" :style="{ backgroundColor: '#458eff', width: (2 * influencer.engagement)+ '%'}"></span>
               <span v-bind:style="progbar">Activity</span><span class="cssbar"  :style="{ backgroundColor: '#458eff', width: (2 * influencer.activity) + '%'}"></span>
 
