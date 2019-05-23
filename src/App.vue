@@ -15,7 +15,7 @@
       <div class="nav-profile">
         <router-link class="profile-link" to="/register">Register</router-link>
         <router-link class="profile-link" to="/login">Login</router-link>
-        <router-link class="profile" to="/profile"><img src="~@/assets/profile.png"></router-link>
+        <router-link v-if="user.email" class="profile" to="/profile"><img src="~@/assets/profile.png" /></router-link>
       </div>
     </nav>
 
@@ -45,7 +45,7 @@
 
 <script>
 
-  import { ACTIONS } from '@/store.js'
+  import { ACTIONS, STATE } from '@/store.js'
   import LoadingScreen from "./components/LoadingScreen";
 
   export default {
@@ -75,6 +75,8 @@
     },
     mounted() {
       this.query = localStorage.getItem('query') || ''
+      let token = localStorage.getItem('bearertoken') || ''
+      if (token) this.get_user()
       if (this.query) {
         this.search()
       }
@@ -82,6 +84,9 @@
         this.$router.push('/')
       }
     },
+    computed: {
+      ...STATE
+    }
   }
 </script>
 
