@@ -3,9 +3,9 @@
 
   <form class="login-form" @submit.prevent="login">
     <h2 class="blah">Login</h2>
-    <input type="text"  v-model="input.username" required placeholder="Email">
+    <input type="text" v-model="input.username" required placeholder="Email">
     <input type="password"  v-model="input.password" required placeholder="Password">
-    <button @click="logged">Login</button>
+    <button @click="login()">Login</button>
     <p>Forgot your login details?</p>
     <router-link to="">Get help signing in.</router-link>    
   </form>
@@ -26,13 +26,6 @@
                 }
             }
         },
-//         watch: {
-//         input: function () {
-//         if (isLocalStorage() /* function to detect if localstorage is supported*/) {
-//         localStorage.setItem('storedData', this.input)
-//         }
-//     }
-// },
         methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {

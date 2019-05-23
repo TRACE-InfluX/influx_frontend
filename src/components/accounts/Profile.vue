@@ -5,21 +5,23 @@
     <body>
 
 
+  
+    
     <div class="container">
-    
-    
     <div class="nav">    
 
     <div class="menu">
 
         <ul>
 
-            <li><i class="zmdi zmdi-view-dashboard"></i><button class="dashboard">Dashboard</button></li>
+            <li><i class="zmdi zmdi-view-dashboard"></i><button>Dashboard</button></li>
             
-           <li><i class="zmdi zmdi-settings"></i><button class="settings">Settings</button></li>
+           <li><i class="zmdi zmdi-settings"></i><button>Settings</button></li>
         </ul>    
 
     </div>
+    </div>
+
 
      <div class="dash-content">
     <h3 class="welcomemsg">Welcome to Influx!</h3>    
@@ -30,7 +32,7 @@
      
     <div class="logout"><button class="buttonbar" @click="logout">Logout</button></div>
     </div>
-    </div>
+    
     <!-- end of dash-content --> 
 
   
@@ -98,133 +100,82 @@ methods: {
     box-sizing: border-box;
   }
 
-  header {
+ .container {
+     margin-top: 40 * $units; 
+    //  display: flex; 
+    //  justify-content: center; 
+     display: grid; 
+     grid-gap: 1 * $units; 
+     grid-template-areas: 'navigation navigation 
+                           
+                           dashcontent dashcontent'; 
+
+                    
+ }
+
+
+  .nav 
+  {
     
-      margin-top: 15 * $units; 
+     grid-area: navigation; 
+     height: 50vh; 
+     width: 50vw; 
+
+     
   }
 
-  body {
-        
-    font-family: 'Puritan', sans-serif;
-    line-height: 1.4;
-  }
-
-    .nav {
-        display: inline-block; 
-        height: 60vh; 
-        width: 20vw; 
-        padding: 5 * $units; 
-        border-radius: 2%;
-        border: 1px solid var(--bordercol);
-        margin-left: 25 * $units;   
-        margin-top: 10 * $units;  
-        margin-bottom: 10 * $units;  
-        margin-right: 1 * $units; 
-        grid-gap: 1 * $units; 
-        display: flex; 
-        flex-direction: column; 
-        justify-content: center; 
-        align-items: center; 
-
-    }
-
-    .menu {
-
-    ul {
-        margin-top: 20 * $units;
-    } 
-
-    li {
+  .menu 
+  {
       
-      padding: 2 * $units;   
-      list-style: none; 
-      width: 100%; 
-      border-left: 0.5 * $units solid var(--invisi);
-
-     &:hover {
-          border-left: 0.5 * $units solid $primary;
-          transition: 0.3s ease;
-        }
-     }
-
-     button {
-         border: none; 
-         background: none; 
-         color: $primary; 
-         font-family: 'Puritan', sans-serif;
-         font-size: 2 * $units; 
-         outline: inherit;
-     }
+      display: flex;
+      justify-content: center; 
+      font-family: 'Puritan', sans-serif;
+      font-size: 3 * $units; 
+      color: $primary; 
 
 
-    a {
-      padding: 2 * $units;     
-      color: var(--textcol);  
-      text-decoration: none; 
-      width: 100%;       
-    }
+      button {
+      font-family: 'Puritan', sans-serif;
+      font-size: 2 * $units; 
+      color: $primary; 
+      background: none; 
+      border: none; 
+      outline: none; 
 
-    i {
-        color: $primary; 
-    }
-
-
-    }
-    
-
-  .container {
-      border-radius: 1%;
-      height: 100vh; 
-      width: 100vw; 
-    //   border: 1px solid var(--bordercol); 
-      margin: 5 * $units; 
-      display: grid; 
-      grid-template-columns: auto auto; 
+     
   }
 
-  .dash-content{
-    margin-top: -37 * $units;   
-    margin-left: 120 * $units; 
-    border: 1px solid var(--bordercol); 
-    padding: 20 * $units; 
-    width: 40vw; 
-    height: 60vh; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
+ul {
+    list-style: none; 
+}
 
-    .welcomemsg {
-        font-family: 'Puritan', sans-serif;
-        color: $primary;
-        animation: mymove 5s infinite;
-    }
+li {
+     display: inline; 
+     border-bottom: 5px solid white; 
+     padding: 1 * $units; 
+     transition: all 0.5s; 
+}
 
-     img {
-        margin-left: 2.5 * $units; 
-        border-radius: 50%;
-       
-    }
+ li:hover {
+          border-bottom: 5px solid $primary; 
+          padding: 1 * $units; 
+      }
 
-    .logout {
-       
-        margin-left: 0.5 * $units; 
-        margin-top: 2 * $units; 
-    }
+  }
 
-    .buttonbar {
-        width: 10vw; 
-    }
-    // .dashdefault, .dashemail, .settingsform {
-    //    display: none; 
-    // }
+  .dash-content {
+      
+      margin-top: -10 * $units; 
+      grid-area: dashcontent;  
+      height: 50vh; 
+      width: 50vw; 
+      
 
-    }
+      button {
+          width: 20vw; 
+          margin-top: 10 * $units; 
+      }
+  }
 
   
-
-
-
-    
-
 </style>
