@@ -72,7 +72,6 @@
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
-      <section v-scroll-reveal.reset="{ delay: 100 }">
         <div class="trust-banner">
           <div class="trust-left">
             <p class="header">Who we are</p>
@@ -122,7 +121,6 @@
           </div>
         </div>
         <!-- trust-banner -->
-      </section>
     </main>
 
     <!-- // <dialog :open="dialog">

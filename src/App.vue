@@ -22,10 +22,10 @@
       <ul>
       <li>We connect the world to you.</li>
       <li>Get in touch with us:</li>
-      <li><i class="zmdi zmdi-email"></i> <a href="#"> email</a></li>
-      <li><i class="zmdi zmdi-instagram"></i> <a href="#">instagram</a></li>
-      <li><i class="zmdi zmdi-twitter-box"></i><a href="#">twitter</a></li>
-      <li><img id="discord" src="~@/assets/discord.svg" width="15" height="15"><a href="https://discord.gg/aEZ9Q4e">discord</a></li>
+      <li><i class="zmdi zmdi-email"></i> <a href="#"> Email</a></li>
+      <li><i class="zmdi zmdi-instagram"></i> <a href="#"> Instagram</a></li>
+      <li><i class="zmdi zmdi-twitter-box"></i><a href="#"> Twitter</a></li>
+      <li><img id="discord" src="~@/assets/discord.svg" width="15" height="15"><a href="https://discord.gg/aEZ9Q4e"> Discord</a></li>
       </ul>
 
       <ul>
@@ -219,18 +219,28 @@
       background-color: $footer-color;
       font-size: 1.5 * $units;
 
+      h3{
+        color: $primary;
+      }
+
       h3, p, ul
       {
         align-self: center;
         list-style: none;
+        font-size: 5 * $units;
+        
       }
 
       li {
         margin: 1 * $units;
+        font-size: 2 * $units;
+      
       }
 
       a{
         text-decoration: none;
+        font-size: 2 * $units;
+        text-align:center;
       }
 
       a:visited{
