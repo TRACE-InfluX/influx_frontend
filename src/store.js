@@ -39,6 +39,45 @@ let actions = {
     let res = await API.get('/v0/accounts/me')
     commit('set_user', res.data)
   },
+  sort_influencers({state, commit}, type) {
+    let cmp =
+      type == 'default' ? (a,b) => {
+        return b.relevance * 6 + b.engagement * 2 + b.reach + b.activity
+             -(a.relevance * 6 + a.engagement * 2 + a.reach + a.activity)
+      }:
+      type == 'relevance' ? (a,b) => {
+        return b.relevance - a.relevance
+      }:
+      type == 'engagement' ? (a,b) => {
+        return b.engagement - a.engagement
+      }:
+      type == 'activity' ? (a,b) => {
+        return b.activity - a.activity
+      }:
+      type == 'profit' ? (a,b) => {
+        return b.profit - a.profit
+      }:
+      type == 'profit/cost' ? (a,b) => {
+        return b.profit/b.cost - a.profit/a.cost
+      }:
+      type == 'followers' ? (a,b) => {
+        return b.followers - a.followers
+      }:
+      type == 'posts' ? (a,b) => {
+        return b.posts - a.posts
+      }:
+      type == 'following' ? (a,b) => {
+        return b.following - a.following
+      }:() => 0
+
+      // deepclone
+      let new_influencers = JSON.parse(JSON.stringify(state.influencers))
+
+      new_influencers.sort(cmp)
+      commit('set_influencers', new_influencers)
+
+  }
+
   // async load_popular({commit}) {
   //   let res = await API.get('/v0/influencers/popular')
   //   commit('set_popular', res.data)
