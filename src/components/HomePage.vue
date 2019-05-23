@@ -76,6 +76,7 @@
           <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
+      <section>
           <div class="trust-left">
             <div class = "left-container">
             <p class="header">Who we are</p>
@@ -97,28 +98,7 @@
           </div>
           </div> <!-- trust left -->
 
-          <div class="trust-right">
-            <div class = "team-container">
-            <ul>
-              <li>
-                <img src="~@/assets/Toni.png" class="team-pics">
-              </li>
-              <li>
-                <img src="~@/assets/Remy.png" class="team-pics">
-              </li>
-              <li>
-                <img src="~@/assets/Aaron.png" class="team-pics">
-              </li>
-              <li>
-                <img src="~@/assets/Carlo.png" class="team-pics">
-              </li>
-              <li>
-                <img src="~@/assets/Eva.png" class="team-pics">
-              </li>
-            </ul>
-            </div>
-          </div>
-
+      </section>
         <!-- trust-banner -->
     </main>
 
@@ -133,7 +113,7 @@
     <div class="call-to-action">
       <p>90% of consumers trust peer recommendations and only 33% trust ads. Let your customers hear about you from people they trust.</p>
       <h2>Get started today!</h2>
-      <button>Sign Up</button>
+      <button @click.prevent="$router.push('/register')">Sign Up</button>
       <back-to-top class = "btn-to-top">Back to Top</back-to-top>
     </div>
   </div>
@@ -663,10 +643,9 @@ i {
   padding-bottom: 5%;
   color: #FFFFFF;
   background-color: $primary;
-      width: 50%;
+      width: 100%;
     float: left;
     font-size: 5vh;
-    padding-left: 7.5%;
 }
 
 .team-container{

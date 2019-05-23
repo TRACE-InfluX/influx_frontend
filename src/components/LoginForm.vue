@@ -6,10 +6,8 @@
     <input type="text" v-model="credentials.email" required placeholder="Email">
     <input type="password"  v-model="credentials.password" required placeholder="Password">
     <button>Login</button>
-    <p>Forgot your login details?</p>
-    <router-link to="">Get help signing in.</router-link>    
   </form>
- 
+
 </template>
 
 <script>

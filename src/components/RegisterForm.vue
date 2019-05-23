@@ -1,9 +1,9 @@
 <template>
-    <form class="register-form" @submit.prevent="submit">
+    <form class="register-form" @submit.prevent="submit()">
         <h2>Register</h2>
-        <input type="text"  v-model="input.email" required placeholder="Email">
-        <input type="password"  v-model="input.password" required placeholder="Password">
-        <button type="button" v-on:click="register()">Register</button>
+        <input type="text"  v-model="credentials.email" required placeholder="Email">
+        <input type="password"  v-model="credentials.password" required placeholder="Password">
+        <button>Register</button>
         <p>Have an account?</p>
         <router-link to="/login">Log in now</router-link>
     </form>
@@ -11,21 +11,23 @@
 
 <script>
   //package to make httprequests
-  import API from '@/api.js'
+  import {ACTIONS} from '@/store.js'
 
     export default {
         data() {
             return {
-                input: {
+                credentials: {
                     email: "",
                     password: ""
                 }
             }
         },
         methods: {
-            register() {
-                const new_user = this.input;
-                API.post('/v0/accounts', { email: new_user.email, password: new_user.password });
+            ...ACTIONS,
+            submit() {
+                this.register(this.credentials).then(() => {
+                    this.$router.push('/')
+                })
             }
         }
     }

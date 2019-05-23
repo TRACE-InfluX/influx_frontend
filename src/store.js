@@ -31,6 +31,13 @@ let actions = {
     API.defaults.headers.common['Authorization'] = `Bearer ${localStorage.bearertoken}`
     await dispatch('get_user')
   },
+  async register({dispatch}, {email, password}) {
+    const data = { email, password }
+    let res = await API.post('/v0/accounts', data )
+    localStorage.setItem('bearertoken',res.data.token)
+    API.defaults.headers.common['Authorization'] = `Bearer ${localStorage.bearertoken}`
+    await dispatch('get_user')
+  },
   async logout({commit}) {
     localStorage.removeItem('bearertoken')
     commit('set_user', {})

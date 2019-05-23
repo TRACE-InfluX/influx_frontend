@@ -13,8 +13,10 @@
         <loading-screen v-else-if="showSearchBar && searching"></loading-screen>
       </div>
       <div class="nav-profile">
-        <router-link class="profile-link" to="/register">Register</router-link>
-        <router-link class="profile-link" to="/login">Login</router-link>
+        <a style="visibility:hidden"></a>
+        <router-link v-if="!user.email" class="profile-link" to="/register">Register</router-link>
+        <router-link v-if="!user.email" class="profile-link" to="/login">Login</router-link>
+        <a v-else class="profile-link" @click.prevent="logout">Logout</a>
         <router-link v-if="user.email" class="profile" to="/profile"><img src="~@/assets/profile.png" /></router-link>
       </div>
     </nav>
@@ -26,17 +28,11 @@
       <ul>
       <li>We connect the world to you.</li>
       <li>Get in touch with us:</li>
-      <li><i class="zmdi zmdi-email"></i> <a href="#"> Email</a></li>
-      <li><i class="zmdi zmdi-instagram"></i> <a href="#"> Instagram</a></li>
-      <li><i class="zmdi zmdi-twitter-box"></i><a href="#"> Twitter</a></li>
-      <li><img id="discord" src="~@/assets/discord.svg" width="15" height="15"><a href="https://discord.gg/aEZ9Q4e"> Discord</a></li>
+      <li><a href="https://discord.gg/X2QYd5J" target="_blank"><img src="https://discordapp.com/api/guilds/497123604287193089/widget.png?style=banner2" alt="Musical Nexus Discord" style="max-width:308px"></a></li>
       </ul>
 
       <ul>
-      <li>Legal: </li>
-      <li>Terms</li>
-      <li>Privacy</li>
-      <li>InfluX Co. 2019 All Rights Reserved.</li>
+      <li>Team TRACE 2019 All Rights Reserved.</li>
       </ul>
 
     </footer>
@@ -239,11 +235,8 @@
           flex: 1;
           img {
             width: $header-height - 3 * $units;
-            margin-top: 1  * $units;
+            margin-top: 1.5  * $units;
             margin-bottom: 1 * $units;
-            /*background: url('~@/assets/profile.png');
-            background-size: 100%;
-            background-repeat: no-repeat;*/
           }
         }
       }
@@ -270,13 +263,13 @@
         align-self: center;
         list-style: none;
         font-size: 5 * $units;
-        
+
       }
 
       li {
         margin: 1 * $units;
         font-size: 2 * $units;
-      
+
       }
 
       a{
