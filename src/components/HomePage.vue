@@ -34,13 +34,13 @@
           <br>
         </div>
         <div class="overview-right">
-          <img src="~@/assets/feastonhisflesh.png" v-scroll-reveal.reset="{ delay: 100 }">
+          <img class ="first-img" src="~@/assets/Group.svg" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
 
       <section class="influx-overview">
         <div class="overview-left">
-          <img src="~@/assets/tutorial1-1.png" v-scroll-reveal.reset="{ delay: 100 }">
+          <img src="~@/assets/tutorial1.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
         <div class="overview-right">
           <p class="why-heading">Metrics</p>
@@ -73,7 +73,7 @@
           <p><span class = "blue-text">Word Cloud: </span><span class="why-desc-1">Don't know what to search for? We include a word cloud visualization made up of each influencer's hashtags, so you can change the search with a click of a button</span></p>
         </div>
         <div class="overview-right">
-          <img src="~@/assets/tutorial1-2.png" v-scroll-reveal.reset="{ delay: 100 }">
+          <img class = "next-img" src="~@/assets/tutorial2.png" v-scroll-reveal.reset="{ delay: 100 }">
         </div>
       </section>
       <section>
@@ -562,12 +562,22 @@ i {
     z-index: 999;
     background-color: white;
 
-    img {
+
+
+    .next-img {
       height: 80%;
       width: 100%;
       box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
       justify-content: right;
       text-align: right;
+    }
+
+      .first-image {
+      height: 80%;
+      width: 100%;
+      justify-content: right;
+      text-align: right;
+      box-shadow:none;
     }
   }
 }

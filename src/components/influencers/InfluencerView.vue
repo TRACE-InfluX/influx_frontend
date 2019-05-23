@@ -16,7 +16,7 @@
 
           <div class = "top">
               <h3>{{influencer.name}}</h3>
-              <p>Last Location: {{influencer.location}}</p>
+              <h4>Last Location: {{influencer.location}}</h4>
             <p class = "desc">{{influencer.description}}</p>
               <div class = "stats">
                 <div class="posts"> Posts: {{influencer.posts}} </div>
@@ -118,7 +118,7 @@
           <div class = "top">
 
               <h3>{{influencer.name}}</h3>
-               <p>Last Location: {{influencer.location}}</p>
+               <h4>Last Location: {{influencer.location}}</h4>
               <p class = "desc">{{influencer.description}}</p>
                <div class = "stats">
 
@@ -493,5 +493,9 @@
       transition: 0.2s ease;
       transform: rotate(180deg);
     }
+  }
+
+  h4{
+    padding-bottom: 2.5%;
   }
 </style>
