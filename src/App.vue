@@ -12,7 +12,8 @@
       <!--<router-link to="/register">Pricing</router-link>-->
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
-      <router-link class="profile" to="/profile" />
+      <!-- profile only shows up when logged in --> 
+      <router-link v-if="user.email" class="profile" to="/profile" />
     </nav>
 
     <router-view></router-view>
@@ -42,14 +43,15 @@
 
 <script>
 
-  import { ACTIONS } from '@/store.js'
+  import { ACTIONS, STATE } from '@/store.js'
 
   export default {
     data() {
       return {
         query: '',
         weights_query: '',
-        showSearchBar: true
+        showSearchBar: true,
+        logged: false,
       }
     },
     name: 'app',
@@ -67,6 +69,8 @@
     },
     mounted() {
       this.query = localStorage.getItem('query') || ''
+      let token = localStorage.getItem('bearertoken') || ''
+      if (token) this.get_user()
       if (this.query) {
         this.search()
       }
@@ -74,6 +78,9 @@
         this.$router.push('/')
       }
     },
+    computed: {
+      ...STATE
+    }
   }
 </script>
 

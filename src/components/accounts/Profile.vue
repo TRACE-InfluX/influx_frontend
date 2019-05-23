@@ -1,11 +1,5 @@
 <template>
     <div class="profile">
-
-    <header></header>
-   
-
-  
-    
     <div class="container">
    
     <div class="nav">    
@@ -27,10 +21,10 @@
    
     <!-- have span class to bind to username, currently placeholder -->  
     <h3 class="signedin">signed in as:</h3>
-    <p>  {{ email }}  </p>
+    <p>  {{ user.email }}  </p>
       
      
-    <div class="logout"><button class="buttonbar" @click="logout">Logout</button></div>
+    <div class="logout"><button class="buttonbar" @click="logout_back">Logout</button></div>
     </div>
     
     <!-- end of dash-content --> 
@@ -48,38 +42,29 @@
 
 <script>
 
-import API from '@/api.js'
+import {ACTIONS, STATE} from '@/store.js'
 
 
 export default {
 
-data(){
+    data(){
 
-return{
-    email: ""
-}
+        return{
+        }
 
-},
+    },
 
-mounted(){
-   this.getaccount()
-  
-},  
-
-methods: {
-
-    getaccount: function(){
-        
-        API.get('/v0/accounts/me',{}, {headers: {'Authorization': `Bearer ${localStorage.bearertoken}`}}).then(res => {this.email = res.data.email})
-        
-    }, 
-    logout: function(){
-
-    // need logic for logout
-     this.$router.push('/')
-     
+    computed: {
+        ...STATE
+    },
+    methods: {
+        ...ACTIONS,
+        logout_back() {
+            this.logout().then(() => {
+                this.$router.push('/')
+            })
+        }
     }
-}
 
 }
 </script>
