@@ -8,7 +8,8 @@
       <p class="banner-tagline"
       >Connect with influencers you can trust - with our focus on micro-influencers, build trust in your brand with real people, with real connections to the community.</p>
 
-      <form @submit.prevent="search" v-observe-visibility="hideSearchbar">
+      <loading-screen v-if="$parent.searching"></loading-screen>
+      <form @submit.prevent="search" v-else v-observe-visibility="hideSearchbar">
         <i class="zmdi zmdi-search"/>
         <input ref="search" type="search" v-model="$parent.query" placeholder="Type to Search...">
         <button>Discover</button>
@@ -301,7 +302,7 @@ main {
 dialog {
   .modal-mask {
     position: fixed;
-    z-index: 9999;
+    z-index: 999;
     top: 12 * $units;
     padding-top: 1 * $units;
     width: 100%;
