@@ -4,12 +4,12 @@
 
     <nav>
       <router-link to="/" tag="h1">InfluX</router-link>
-      <form @submit.prevent="search" class="nav-search" v-show="showSearchBar">
+      <form @submit.prevent="search" class="nav-search" v-if="showSearchBar && !searching">
         <i class="zmdi zmdi-search" />
         <input class="search-bar" ref="search" type="search" v-model="query" placeholder="Type to Search...">
         <button>Discover</button>
       </form>
-      <!--<router-link to="/register">Pricing</router-link>-->
+      <loading-screen v-show="showSearchBar" v-if="searching && showSearchBar"></loading-screen>
       <router-link to="/register">Register</router-link>
       <router-link to="/login">Login</router-link>
       <router-link class="profile" to="/profile" />
@@ -43,21 +43,26 @@
 <script>
 
   import { ACTIONS } from '@/store.js'
+  import LoadingScreen from "./components/LoadingScreen";
 
   export default {
+    components: {LoadingScreen},
     data() {
       return {
         query: '',
         weights_query: '',
-        showSearchBar: true
+        showSearchBar: true,
+        searching: false
       }
     },
     name: 'app',
     methods: {
       ...ACTIONS,
       search() {
+        this.searching = true;
         this.load_influencers(this.query)
           .then(() => {
+            this.searching = false;
             localStorage.setItem('query', this.query);
             this.weights_query = this.query
             this.$router.push('/influencers');
@@ -111,9 +116,7 @@
       color: #414042;
       background-color: #FFFFFF;
       width: 100%;
-      z-index: 9999;
-      /*padding-left:15%;
-      padding-right:15%;*/
+      z-index: 998;
       box-shadow: 0 4px 6px 0 hsla(0,0%,0%,0.2);
 
       > * {
@@ -122,6 +125,9 @@
       }
 
       .nav-search {
+        width: 40%;
+        max-width: 90 * $units;
+        text-align: center;
         $height: 4 * $units;
         line-height: $height;
         margin: auto;
@@ -167,7 +173,6 @@
         transition: 0.2s ease;
         color: $primary;
         padding-left: 2 * $units;
-        padding-right: 2 * $units;
 
         &:hover {
           transition: 0.2s ease;
@@ -200,6 +205,7 @@
         background-size: 100%;
         background-repeat: no-repeat;
       }
+
     }
 
     footer
