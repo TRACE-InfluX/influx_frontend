@@ -14,9 +14,9 @@
 
         <ul>
 
-            <li><i class="zmdi zmdi-view-dashboard"></i><button class="dashboard">Dashboard</button></li>
+            <li><i class="zmdi zmdi-view-dashboard"></i><button>Dashboard</button></li>
             
-           <li><i class="zmdi zmdi-settings"></i><button class="settings">Settings</button></li>
+           <li><i class="zmdi zmdi-settings"></i><button>Settings</button></li>
         </ul>    
 
     </div>
@@ -102,27 +102,80 @@ methods: {
 
  .container {
      margin-top: 40 * $units; 
+    //  display: flex; 
+    //  justify-content: center; 
      display: grid; 
-     grid-template-areas: 'navigation dash
-                          dashcontent auto'; 
+     grid-gap: 1 * $units; 
+     grid-template-areas: 'navigation navigation 
+                           
+                           dashcontent dashcontent'; 
+
+                    
  }
 
 
   .nav 
   {
-      grid-area: navigation; 
+    
+     grid-area: navigation; 
+     height: 50vh; 
+     width: 50vw; 
+
+     
   }
 
   .menu 
   {
-      grid-area: dash; 
+      
+      display: flex;
+      justify-content: center; 
+      font-family: 'Puritan', sans-serif;
+      font-size: 3 * $units; 
+      color: $primary; 
+
+
+      button {
+      font-family: 'Puritan', sans-serif;
+      font-size: 2 * $units; 
+      color: $primary; 
+      background: none; 
+      border: none; 
+      outline: none; 
+
+     
+  }
+
+ul {
+    list-style: none; 
+}
+
+li {
+     display: inline; 
+     border-bottom: 5px solid white; 
+     padding: 1 * $units; 
+     transition: all 0.5s; 
+}
+
+ li:hover {
+          border-bottom: 5px solid $primary; 
+          padding: 1 * $units; 
+      }
+
   }
 
   .dash-content {
-      grid-area: dashcontent; 
+      
+      margin-top: -10 * $units; 
+      grid-area: dashcontent;  
+      height: 50vh; 
+      width: 50vw; 
+      
+
+      button {
+          width: 20vw; 
+          margin-top: 10 * $units; 
+      }
   }
 
-
-    
-
+  
 </style>
