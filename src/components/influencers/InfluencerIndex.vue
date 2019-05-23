@@ -5,13 +5,15 @@
       <div class = "sort-dropdown">
         <button class = "sort-button">Sort By <img src="~@/assets/arrow-down.png"></button>
         <div class = "sort-content">
-          <a href="#">Name</a>
-          <a href="#">Posts</a>
-          <a href="#">Followers</a>
-          <a href="#">Following</a>
-          <a href="#">Activity</a>
-          <a href="#">Relevance</a>
-          <a href="#">Engagement</a>
+          <a href="#" @click.prevent="sort_influencers('default')">Default</a>
+          <a href="#" @click.prevent="sort_influencers('relevance')">Relevance</a>
+          <a href="#" @click.prevent="sort_influencers('engagement')">Engagement</a>
+          <a href="#" @click.prevent="sort_influencers('activity')">Activity</a>
+          <a href="#" @click.prevent="sort_influencers('profit')">Profit</a>
+          <a href="#" @click.prevent="sort_influencers('profit/cost')">Profit/Cost</a>
+          <a href="#" @click.prevent="sort_influencers('followers')">Followers</a>
+          <a href="#" @click.prevent="sort_influencers('posts')">Posts</a>
+          <a href="#" @click.prevent="sort_influencers('following')">Following</a>
         </div>
       </div>
       <h2>{{ influencers.length }} results</h2>
@@ -36,7 +38,7 @@
 
 
 <script>
-import { STATE } from '@/store.js'
+import { STATE, ACTIONS } from '@/store.js'
 import API from '@/api.js'
 
 export default {
@@ -54,6 +56,7 @@ export default {
     }
   },
   methods: {
+    ...ACTIONS,
     select(id) {
       this.selected_influencer = id;
       this.weights = {}
