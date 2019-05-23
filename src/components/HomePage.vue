@@ -550,8 +550,9 @@ i {
   }
 
   .team-pics {
-    width: 40%;
-    height: 40%;
+
+    width: 35%;
+    height: 35%;
   }
 
 .gap {
@@ -679,10 +680,16 @@ i {
 .team-container{
   background-color: $primary;
     height: 100vh;
-    padding: auto;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
     width: 50%;
     float: right;
     text-align: center;
+
+    ul{
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
 }
 </style>
 
