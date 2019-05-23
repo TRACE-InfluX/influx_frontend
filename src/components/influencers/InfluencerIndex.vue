@@ -134,4 +134,19 @@ export default {
     text-align: center;
   }
 
+  .btn-to-top{
+  border: 0;
+  background: none;
+  background-color: white;
+  border: 1px solid $primary;
+  color: $primary;
+  height: 5 * $units;
+  width: 20 * $units;
+  border-radius: 0.5 * $units;
+  font-size: 1.8 * $units;
+  text-align: center;
+  box-shadow: inset 0 2px 4px 0 hsla(0,0%, 0%, 0.2);
+  padding: 1 * $units;
+}
+
 </style>
