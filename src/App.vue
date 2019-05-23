@@ -35,8 +35,6 @@
       <li>InfluX Co. 2019 All Rights Reserved.</li>
       </ul>
 
-Vm39sp0sdk
-
     </footer>
   </div>
 </template>
